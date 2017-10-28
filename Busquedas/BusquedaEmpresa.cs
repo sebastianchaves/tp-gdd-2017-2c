@@ -71,6 +71,11 @@ namespace PagoAgilFrba.Busquedas
             resultadosGrid.DataSource = resultadosEmpresas;
         }
 
+        public int getIdEmpresaEncontrada()
+        {
+            return 1;
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)

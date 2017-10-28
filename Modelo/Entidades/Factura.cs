@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    class Factura
+    public class Factura
     {
         // Atributos
         public int idCliente;

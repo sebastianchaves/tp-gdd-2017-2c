@@ -37,21 +37,15 @@ namespace PagoAgilFrba
             try
             {
                 // revisar esta sentencia dependiendo de como queden las tablas dps de ejecurtar el scrip
-            SqlCommand cmd = new SqlCommand("select nombreUsuario, contrasenia" from USUARIOS where nombreUsuario=''+txtUsuario.Text+"' and  contrasenia='"+txtContrasenia.Text+"' ",cn);
+            SqlCommand cmd = new SqlCommand("select nombreUsuario, contrasenia from USUARIOS where nombreUsuario=" + txtUsuario.Text + " and  contrasenia=" + txtContrasenia.Text + "' ",cn);
             cn.Open();
-            cmd.ExecuteNonQuery(cn);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds,"USUARIOS);"
+                da.Fill(ds,"USUARIOS");
 
                     DataRow dro;
                 dro=ds.Tables["USUARIOS"].Rows[0];
 
-                if(txtUsuario.Text= dro["nombreUsuario"].ToString() || (txtContrasenia.Text == dro["Contrasenia"].ToString()));
-
-                    FrmLogin Login = new Login();
-                    Login.Show();
-                    this.Hide();
             }
             catch
             {

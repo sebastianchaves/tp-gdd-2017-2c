@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -56,19 +57,23 @@ namespace PagoAgilFrba.Busquedas
             }
         }
 
+        public int getIdClienteEncontrado()
+        {
+            return clienteBuscado.dni;
+        }
+
         // Eventos
         // Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            IList <Cliente> resultados = this.clienteDao.findCliente(this.cargarNombre(), 
+            SqlDataReader resultados = this.clienteDao.findCliente(this.cargarNombre(), 
                                                         this.cargarApellido(), 
                                                         this.cargarDni());
-
-            if (resultados.Count() == 0)
+            if (!resultados.HasRows)
             {
                 MessageBox.Show("No existe ningún cliente que concuerde con esos parámetros.");
             }
-            else if (resultados.Count() > 0)
+            else
             {
                 using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda())
                 {

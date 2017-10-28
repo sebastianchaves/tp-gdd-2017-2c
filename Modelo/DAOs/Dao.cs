@@ -12,9 +12,15 @@ namespace PagoAgilFrba.Modelo.DAOs
     class Dao
     {
 
-        public static const string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
-        public static const String ALL = "*";
+        private String CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
+        public const String ALL = "*";
         private SqlConnection connection;
+
+        public Dao()
+        {
+            this.connection = new SqlConnection(CONNECTION_STRING);
+            this.connection.Open();
+        }
 
         public SqlDataReader select(String tabla, String[] parametros, String conditions)
         {

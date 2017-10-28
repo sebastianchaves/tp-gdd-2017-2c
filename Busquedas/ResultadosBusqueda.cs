@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace PagoAgilFrba.Busquedas
         }
 
         // Metodos
-        public void cargarDataGridClientes(IList<Cliente> clientes)
+        public void cargarDataGridClientes(SqlDataReader clientes)
         {
             DataTable resultadosClientes = new DataTable();
 

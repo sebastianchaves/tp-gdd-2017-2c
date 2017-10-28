@@ -14,7 +14,7 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
 
         // Atributos
-        private static const String TABLA = "GD2C2017.ROCKET_DATABASE.CLIENTES";
+        private const String TABLA = "GD2C2017.ROCKET_DATABASE.CLIENTES";
 
         // Adds
         public void agregarCliente(Cliente cliente)

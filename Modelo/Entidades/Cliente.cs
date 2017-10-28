@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PagoAgilFrba.Model
 {
    
-    class Cliente
+    public class Cliente
     {
         // Atributos
         public String nombre;

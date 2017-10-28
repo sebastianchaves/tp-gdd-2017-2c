@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    class ItemFactura
+    public class ItemFactura
     {
         // Atributos
         public int cantidad;
