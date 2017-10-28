@@ -160,6 +160,7 @@
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(179, 20);
             this.nombreInput.TabIndex = 0;
+            this.nombreInput.TextChanged += new System.EventHandler(this.nombreInput_TextChanged);
             this.nombreInput.Leave += new System.EventHandler(this.nombreInput_Leave);
             // 
             // AltaEmpresa

@@ -134,5 +134,10 @@ namespace PagoAgilFrba.AbmEmpresa
 
         }
 
+        private void nombreInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
