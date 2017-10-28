@@ -54,7 +54,7 @@
             this.pisoInput = new System.Windows.Forms.TextBox();
             this.departamentoInput = new System.Windows.Forms.TextBox();
             this.botonAceptar = new System.Windows.Forms.Button();
-            this.botonCancelar = new System.Windows.Forms.Button();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.fechaDeNacimientoInput = new System.Windows.Forms.DateTimePicker();
             this.numeroDomicilioInput = new System.Windows.Forms.TextBox();
             this.numeroDomicilioLabel = new System.Windows.Forms.Label();
@@ -286,15 +286,15 @@
             this.botonAceptar.UseVisualStyleBackColor = true;
             this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
             // 
-            // botonCancelar
+            // botonVolver
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(276, 376);
-            this.botonCancelar.Name = "botonCancelar";
-            this.botonCancelar.Size = new System.Drawing.Size(89, 29);
-            this.botonCancelar.TabIndex = 13;
-            this.botonCancelar.Text = "Cancelar";
-            this.botonCancelar.UseVisualStyleBackColor = true;
-            this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
+            this.botonVolver.Location = new System.Drawing.Point(276, 376);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(89, 29);
+            this.botonVolver.TabIndex = 13;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // fechaDeNacimientoInput
             // 
@@ -340,7 +340,7 @@
             this.Controls.Add(this.numeroDomicilioLabel);
             this.Controls.Add(this.numeroDomicilioInput);
             this.Controls.Add(this.fechaDeNacimientoInput);
-            this.Controls.Add(this.botonCancelar);
+            this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.botonAceptar);
             this.Controls.Add(this.departamentoInput);
             this.Controls.Add(this.pisoInput);
@@ -400,7 +400,7 @@
         private System.Windows.Forms.TextBox pisoInput;
         private System.Windows.Forms.TextBox departamentoInput;
         private System.Windows.Forms.Button botonAceptar;
-        private System.Windows.Forms.Button botonCancelar;
+        private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.DateTimePicker fechaDeNacimientoInput;
         private System.Windows.Forms.TextBox numeroDomicilioInput;
         private System.Windows.Forms.Label numeroDomicilioLabel;
