@@ -151,6 +151,7 @@
             this.direccionInput.Name = "direccionInput";
             this.direccionInput.Size = new System.Drawing.Size(179, 20);
             this.direccionInput.TabIndex = 2;
+            this.direccionInput.TextChanged += new System.EventHandler(this.direccionInput_TextChanged);
             this.direccionInput.Leave += new System.EventHandler(this.direccionInput_Leave);
             // 
             // nombreInput

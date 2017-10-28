@@ -129,5 +129,10 @@ namespace PagoAgilFrba.AbmEmpresa
             this.nuevaEmpresa.rubro = rubroCombo.SelectedItem.ToString();
         }
 
+        private void direccionInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
