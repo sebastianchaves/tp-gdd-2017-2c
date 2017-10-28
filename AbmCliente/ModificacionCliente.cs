@@ -18,7 +18,7 @@ namespace PagoAgilFrba.AbmCliente
     {
 
         // Atributos
-        private Util utils;
+        private Utils utils;
         private Cliente clienteACargar;
         private Cliente clienteModificado;
         private ClienteDAO clienteDao;
@@ -27,7 +27,7 @@ namespace PagoAgilFrba.AbmCliente
         public ModificacionCliente()
         {
             InitializeComponent();
-            this.utils = new Util();
+            this.utils = new Utils();
             this.clienteModificado = new Cliente();
             this.clienteACargar = new Cliente();
             this.clienteDao = new ClienteDAO();

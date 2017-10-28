@@ -19,7 +19,7 @@ namespace PagoAgilFrba.Busquedas
         // Atributos
         private IList<Sucursal> sucursalesEncontradas;
         private SucursalDAO sucursalDao;
-        private Util utils;
+        private Utils utils;
         private DataGridView resultadosGrid;
         private String nombreABuscar;
         private String direccionABuscar;
@@ -30,7 +30,7 @@ namespace PagoAgilFrba.Busquedas
         {
             InitializeComponent();
 
-            this.utils = new Util();
+            this.utils = new Utils();
             this.sucursalDao = new SucursalDAO();
             this.resultadosGrid = resultadosGrid;
         }

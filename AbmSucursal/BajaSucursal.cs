@@ -18,7 +18,7 @@ namespace PagoAgilFrba.AbmSucursal
     {
 
         // Atributos
-        private Util utils;
+        private Utils utils;
         private SucursalDAO sucursalDao;
         private Sucursal sucursalSeleccionada;
 
@@ -27,7 +27,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             InitializeComponent();
 
-            this.utils = new Util();
+            this.utils = new Utils();
             this.sucursalDao = new SucursalDAO();
             this.utils.iniciarGrids(this.resultadosGrid);
         }

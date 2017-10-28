@@ -31,10 +31,10 @@
             this.registroPagoLabel = new System.Windows.Forms.Label();
             this.facturasGrid = new System.Windows.Forms.DataGridView();
             this.agregeFacturasGroupBox = new System.Windows.Forms.GroupBox();
-            this.botonCargarFactura = new System.Windows.Forms.Button();
-            this.botonEliminar = new System.Windows.Forms.Button();
-            this.botonVolver = new System.Windows.Forms.Button();
             this.botonRegistrar = new System.Windows.Forms.Button();
+            this.botonEliminar = new System.Windows.Forms.Button();
+            this.botonCargarFactura = new System.Windows.Forms.Button();
+            this.botonVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.facturasGrid)).BeginInit();
             this.agregeFacturasGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -70,14 +70,14 @@
             this.agregeFacturasGroupBox.TabStop = false;
             this.agregeFacturasGroupBox.Text = "Agregue facturas a registrar";
             // 
-            // botonCargarFactura
+            // botonRegistrar
             // 
-            this.botonCargarFactura.Location = new System.Drawing.Point(6, 248);
-            this.botonCargarFactura.Name = "botonCargarFactura";
-            this.botonCargarFactura.Size = new System.Drawing.Size(90, 30);
-            this.botonCargarFactura.TabIndex = 0;
-            this.botonCargarFactura.Text = "Cargar Factura";
-            this.botonCargarFactura.UseVisualStyleBackColor = true;
+            this.botonRegistrar.Location = new System.Drawing.Point(423, 248);
+            this.botonRegistrar.Name = "botonRegistrar";
+            this.botonRegistrar.Size = new System.Drawing.Size(90, 30);
+            this.botonRegistrar.TabIndex = 2;
+            this.botonRegistrar.Text = "Registrar";
+            this.botonRegistrar.UseVisualStyleBackColor = true;
             // 
             // botonEliminar
             // 
@@ -88,6 +88,16 @@
             this.botonEliminar.Text = "Eliminar";
             this.botonEliminar.UseVisualStyleBackColor = true;
             // 
+            // botonCargarFactura
+            // 
+            this.botonCargarFactura.Location = new System.Drawing.Point(6, 248);
+            this.botonCargarFactura.Name = "botonCargarFactura";
+            this.botonCargarFactura.Size = new System.Drawing.Size(90, 30);
+            this.botonCargarFactura.TabIndex = 0;
+            this.botonCargarFactura.Text = "Cargar Factura";
+            this.botonCargarFactura.UseVisualStyleBackColor = true;
+            this.botonCargarFactura.Click += new System.EventHandler(this.botonCargarFactura_Click);
+            // 
             // botonVolver
             // 
             this.botonVolver.Location = new System.Drawing.Point(441, 322);
@@ -96,15 +106,7 @@
             this.botonVolver.TabIndex = 2;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = true;
-            // 
-            // botonRegistrar
-            // 
-            this.botonRegistrar.Location = new System.Drawing.Point(423, 248);
-            this.botonRegistrar.Name = "botonRegistrar";
-            this.botonRegistrar.Size = new System.Drawing.Size(90, 30);
-            this.botonRegistrar.TabIndex = 2;
-            this.botonRegistrar.Text = "Registrar";
-            this.botonRegistrar.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // RegistroPago
             // 

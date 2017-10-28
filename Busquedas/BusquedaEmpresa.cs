@@ -19,18 +19,23 @@ namespace PagoAgilFrba.Busquedas
         // Atributos
         private IList<Empresa> empresasEncontradas;
         private EmpresaDAO empresaDao;
-        private Util util;
+        private Utils util;
         private DataGridView resultadosGrid;
         private String nombreABuscar;
         private int cuitABuscar;
         private String rubroABuscar;
 
         // Constructores
+        public BusquedaEmpresa()
+        {
+
+        }
+
         public BusquedaEmpresa(DataGridView resultadosGrid)
         {
             InitializeComponent();
 
-            this.util = new Util();
+            this.util = new Utils();
             this.empresaDao = new EmpresaDAO();
             this.cargarRubrosDisponibles();
             this.resultadosGrid = resultadosGrid;

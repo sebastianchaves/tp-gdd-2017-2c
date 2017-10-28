@@ -19,7 +19,7 @@ namespace PagoAgilFrba.AbmSucursal
         // Atributos
         private Sucursal nuevaSucursal;
         private SucursalDAO sucursalDao;
-        private Util utils;
+        private Utils utils;
 
         // Constructores
         public AltaSucursal()
@@ -28,7 +28,7 @@ namespace PagoAgilFrba.AbmSucursal
 
             this.nuevaSucursal = new Sucursal();
             this.sucursalDao = new SucursalDAO();
-            this.utils = new Util();
+            this.utils = new Utils();
         }
 
         // Metodos

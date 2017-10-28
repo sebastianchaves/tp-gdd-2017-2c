@@ -55,6 +55,7 @@
             this.cancelarButton.TabIndex = 9;
             this.cancelarButton.Text = "Volver";
             this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // aceptarButton
             // 
@@ -64,6 +65,7 @@
             this.aceptarButton.TabIndex = 8;
             this.aceptarButton.Text = "Aceptar";
             this.aceptarButton.UseVisualStyleBackColor = true;
+            this.aceptarButton.Click += new System.EventHandler(this.aceptarButton_Click);
             // 
             // label2
             // 

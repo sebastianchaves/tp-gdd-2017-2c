@@ -21,7 +21,7 @@ namespace PagoAgilFrba.AbmCliente
         // Variables
         private ClienteDAO clienteDAO;
         private Cliente nuevoCliente;
-        private Util utils;
+        private Utils utils;
 
         // Constructores
         public AltaCliente()
@@ -29,7 +29,7 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
             this.nuevoCliente = new Cliente();
             this.clienteDAO = new ClienteDAO();
-            this.utils = new Util();
+            this.utils = new Utils();
         }
 
         // Metodos

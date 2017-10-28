@@ -19,7 +19,7 @@ namespace PagoAgilFrba.AbmEmpresa
         // Atributos
         private Empresa nuevaEmpresa;
         private EmpresaDAO empresaDao;
-        private Util utils;
+        private Utils utils;
 
         // Constructores
         public AltaEmpresa()
@@ -28,7 +28,7 @@ namespace PagoAgilFrba.AbmEmpresa
 
             this.nuevaEmpresa = new Empresa();
             this.empresaDao = new EmpresaDAO();
-            this.utils = new Util();
+            this.utils = new Utils();
             this.cargarRubros();
         }
 

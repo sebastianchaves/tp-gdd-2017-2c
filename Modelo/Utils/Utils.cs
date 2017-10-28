@@ -9,14 +9,12 @@ using System.Drawing;
 
 namespace PagoAgilFrba.Modelo.Utils
 {
-    class Util
+    class Utils
     {
 
         // Atributos
         public DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
         public DateTime minTime = new DateTime(1890, 1, 1);
-
-        public static string connectionString = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
 
         // Metodo para borrar contenido de inputs
         public void clearTextBoxes(Control control)

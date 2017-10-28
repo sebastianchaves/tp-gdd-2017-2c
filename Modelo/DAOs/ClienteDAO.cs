@@ -1,6 +1,7 @@
 ﻿using PagoAgilFrba.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,11 @@ namespace PagoAgilFrba.Modelo.DAOs
 {
 
     // TODO agregarCliente, existeDni, existeMail
-    class ClienteDAO
+    class ClienteDAO : Dao
     {
+
+        // Atributos
+        private static const String TABLA = "GD2C2017.ROCKET_DATABASE.CLIENTES";
 
         // Adds
         public void agregarCliente(Cliente cliente)
@@ -30,10 +34,20 @@ namespace PagoAgilFrba.Modelo.DAOs
         }
 
         // Finds
-        public IList<Cliente> findCliente(string nombreCliente, string apellidoCliente, int dni)
+        public SqlDataReader findCliente(string nombreCliente, string apellidoCliente, int dni)
         {
-            IList<Cliente> resultados = new List<Cliente>();
-            return resultados;
+            List<String> columns = new List<String>();
+            List<String> conditions = new List<String>();
+
+            columns.Add("nombre");
+            columns.Add("apellido");
+            columns.Add("dni");
+            
+            conditions.Add(nombreCliente);
+            conditions.Add(nombreCliente);
+            conditions.Add(dni.ToString());
+
+            return this.select(TABLA, ALL, this.armarWhere(columns, conditions));
         }
 
         // Updates

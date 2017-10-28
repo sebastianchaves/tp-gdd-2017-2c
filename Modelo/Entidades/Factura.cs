@@ -10,8 +10,8 @@ namespace PagoAgilFrba.Modelo.Entidades
     class Factura
     {
         // Atributos
-        public Cliente cliente;
-        public Empresa empresa;
+        public int idCliente;
+        public int idEmpresa;
         public int numero;
         public DateTime fechaAlta;
         public DateTime fechaVencimiento;

@@ -160,14 +160,16 @@
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\DAOs\ClienteDAO.cs" />
+    <Compile Include="Modelo\DAOs\Dao.cs" />
     <Compile Include="Modelo\DAOs\EmpresaDAO.cs" />
     <Compile Include="Modelo\DAOs\SucursalDAO.cs" />
     <Compile Include="Modelo\Entidades\Cliente.cs" />
     <Compile Include="Modelo\Entidades\Empresa.cs" />
     <Compile Include="Modelo\Entidades\Factura.cs" />
     <Compile Include="Modelo\Entidades\ItemFactura.cs" />
+    <Compile Include="Modelo\Entidades\Pago.cs" />
     <Compile Include="Modelo\Entidades\Sucursal.cs" />
-    <Compile Include="Modelo\Utils\Util.cs" />
+    <Compile Include="Modelo\Utils\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroPago\CargaFactura.cs">

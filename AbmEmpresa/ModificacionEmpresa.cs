@@ -18,7 +18,7 @@ namespace PagoAgilFrba.AbmEmpresa
     {
 
         // Atributos
-        private Util utils;
+        private Utils utils;
         private Empresa empresaModificada;
         private Empresa empresaACargar;
         private EmpresaDAO empresaDao;
@@ -28,7 +28,7 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             InitializeComponent();
 
-            this.utils = new Util();
+            this.utils = new Utils();
             this.empresaDao = new EmpresaDAO();
             this.empresaModificada = new Empresa();
         }
