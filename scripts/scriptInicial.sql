@@ -11,6 +11,7 @@ GO
 print 'Creando tablas...';
 CREATE TABLE [ROCKET_DATABASE].[CLIENTES](
 	id_cliente int IDENTITY(1,1) PRIMARY KEY,
+	dni int,
 	apellido varchar(255) NOT NULL,
 	nombre varchar(255) NOT NULL,
 	fecha_nac datetime,
@@ -23,37 +24,36 @@ CREATE TABLE [ROCKET_DATABASE].[CLIENTES](
 GO
 CREATE TABLE [ROCKET_DATABASE].[TIPO_DEVOLUCION](
 	id_tipo_devolucion int IDENTITY(1,1) primary key,
-	nombre varchar(255),
+	nombre varchar(255) not null,
 	descripcion varchar(255),
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[RUBROS](
 	id_rubro int IDENTITY(1,1) primary key,
-	nombre varchar(255),
+	nombre varchar(255) not null,
 	descripcion varchar(255)
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[SUCURSALES](
 	id_sucursal int IDENTITY(1,1) primary key,
-	nombre varchar(255),
+	nombre varchar(255) not null,
 	direccion varchar(255),
 	codigo_postal varchar(10),
-	activo binary(1)
+	activo binary(1) not null
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[FORMAS_PAGO](
 	id_forma_pago int IDENTITY(1,1) primary key,
-	nombre varchar(255),
+	nombre varchar(255) not null,
 	descripcion varchar(255)
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[PAGOS](
 	id_pago int IDENTITY(1,1) primary key,
 	fecha_cobro datetime,
-	importe decimal(8,2),
-	id_forma_pago int,
-	id_sucursal int,
-	fecha_vencimiento datetime,
+	importe decimal(8,2) not null,
+	id_forma_pago int not null,
+	id_sucursal int not null,
 	FOREIGN KEY (id_forma_pago) REFERENCES ROCKET_DATABASE.FORMAS_PAGO (id_forma_pago)
 	ON DELETE CASCADE  
     ON UPDATE CASCADE
@@ -62,25 +62,29 @@ GO
 CREATE TABLE [ROCKET_DATABASE].[EMPRESAS](
 	id_empresa int IDENTITY(1,1) primary key,
 	cuit varchar(13),
-	nombre varchar(255),
+	nombre varchar(255) not null,
 	direccion varchar(255),
 	id_rubro int,
-	activo binary(1),
+	activo binary(1) not null,
 	foreign key (id_rubro) references ROCKET_DATABASE.RUBROS(id_rubro)
 ) ON [PRIMARY]
 GO
 CREATE TABLE ROCKET_DATABASE.RENDICIONES(
 	id_rendicion int IDENTITY(1,1) primary key,
+	cantidad_facturas_rendidas int,
 	fecha datetime,
 	comision decimal(8,2),
-	id_empresa int,
+	valor_total decimal (8,2),
+	porcentaje int,
+	id_empresa int not null,
 	foreign key (id_empresa) references ROCKET_DATABASE.EMPRESAS(id_empresa)
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[FACTURAS](
-	nro_factura int IDENTITY(1,1) PRIMARY KEY,
+	id_factura int IDENTITY(1,1) primary key,
+	nro_factura int,
 	fecha_alta datetime,
-	total decimal (8,2),
+	total decimal (8,2) not null,
 	fecha_vencimiento datetime,
 	id_rendicion int,
 	id_cliente int,
@@ -94,32 +98,32 @@ CREATE TABLE [ROCKET_DATABASE].[CONCEPTOS](
 	id_concepto int IDENTITY(1,1) PRIMARY KEY,
 	monto decimal (8,2),
 	cantidad int,
-	nro_factura int,
-	foreign key (nro_factura) references ROCKET_DATABASE.FACTURAS(nro_factura)
+	id_factura int not null,
+	foreign key (id_factura) references ROCKET_DATABASE.FACTURAS(id_factura)
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[DEVOLUCIONES](
 	id_devolucion int IDENTITY(1,1) primary key,
 	fecha datetime,
-	id_tipo_devolucion int,
-	motivo_devolucion varchar(255),
+	id_tipo_devolucion int not null,
+	motivo_devolucion varchar(255) not null,
 	foreign key (id_tipo_devolucion) references ROCKET_DATABASE.tipo_devolucion(id_tipo_devolucion)
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[PAGO_FACTURA](
-	nro_factura int,
+	id_factura int,
 	id_pago int,
-	primary key (nro_factura, id_pago),
-	foreign key (nro_factura) references ROCKET_DATABASE.FACTURAS(nro_factura),
+	primary key (id_factura, id_pago),
+	foreign key (id_factura) references ROCKET_DATABASE.FACTURAS(id_factura),
 	foreign key (id_pago) references ROCKET_DATABASE.PAGOS(id_pago)
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[DEVOLUCION_FACTURA](
 	id_devolucion int,
-	nro_factura int,
-	primary key (id_devolucion, nro_factura),
+	id_factura int,
+	primary key (id_devolucion, id_factura),
 	foreign key (id_devolucion) references ROCKET_DATABASE.DEVOLUCIONES(id_devolucion),
-	foreign key (nro_factura) references ROCKET_DATABASE.FACTURAS(nro_factura)
+	foreign key (id_factura) references ROCKET_DATABASE.FACTURAS(id_factura)
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[DEVOLUCION_RENDICION](
@@ -132,7 +136,7 @@ CREATE TABLE [ROCKET_DATABASE].[DEVOLUCION_RENDICION](
 GO
 CREATE TABLE [ROCKET_DATABASE].[USUARIOS](
 	id_usuario int IDENTITY(1,1) primary key,
-	nombre varchar(255),
+	nombre varchar(255) not null,
 	apellido varchar(255),
 	id_sucursal int,
 	foreign key (id_sucursal) references ROCKET_DATABASE.SUCURSALES(id_sucursal)
@@ -140,7 +144,7 @@ CREATE TABLE [ROCKET_DATABASE].[USUARIOS](
 GO
 CREATE TABLE [ROCKET_DATABASE].[ROLES](
 	id_rol int IDENTITY(1,1) primary key,
-	nombre varchar(255),
+	nombre varchar(255) not null,
 	descripcion varchar(255)
 ) ON [PRIMARY]
 GO
@@ -154,7 +158,7 @@ CREATE TABLE [ROCKET_DATABASE].[USUARIO_ROLES](
 GO
 CREATE TABLE [ROCKET_DATABASE].[FUNCIONALIDADES](
 	id_funcionalidad int IDENTITY(1,1) primary key,
-	nombre varchar(255),
+	nombre varchar(255) not null,
 	descripcion varchar(255)
 ) ON [PRIMARY]
 GO
