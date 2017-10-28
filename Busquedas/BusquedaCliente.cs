@@ -22,6 +22,7 @@ namespace PagoAgilFrba.Busquedas
         private ClienteDAO clienteDao;
         private Util utils;
         private DataGridView resultadosGrid;
+        private Cliente clienteBuscado;
 
         // Constructores
         public BusquedaCliente(DataGridView resultadosGrid)
@@ -31,6 +32,11 @@ namespace PagoAgilFrba.Busquedas
             this.utils = new Util();
             this.clienteDao = new ClienteDAO();
             this.resultadosGrid = resultadosGrid;
+        }
+
+        public BusquedaCliente()
+        {
+            
         }
 
         // Metodos
@@ -91,6 +97,11 @@ namespace PagoAgilFrba.Busquedas
             else if (resultados.Count() > 0)
             {
                 cargarDataGridClientes(resultados);
+                using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda())
+                {
+                    resultadosForm.ShowDialog(this);
+                    clienteBuscado = resultadosForm.getSeleccion();
+                }
                 this.Close();
             }
 

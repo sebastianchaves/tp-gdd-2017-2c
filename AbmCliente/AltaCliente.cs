@@ -19,14 +19,17 @@ namespace PagoAgilFrba.AbmCliente
     {
 
         // Variables
-        private ClienteDAO clienteDAO = new ClienteDAO();
-        private Cliente nuevoCliente = new Cliente();
-        private Util utils = new Util();
+        private ClienteDAO clienteDAO;
+        private Cliente nuevoCliente;
+        private Util utils;
 
         // Constructores
         public AltaCliente()
         {
             InitializeComponent();
+            this.nuevoCliente = new Cliente();
+            this.clienteDAO = new ClienteDAO();
+            this.utils = new Util();
         }
 
         // Metodos
@@ -73,10 +76,11 @@ namespace PagoAgilFrba.AbmCliente
         {
             agregarCliente();
             utils.clearTextBoxes(this);
+            this.nuevoCliente = new Cliente();
         }
 
         // Boton Cancelar
-        private void botonCancelar_Click(object sender, EventArgs e)
+        private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Close();
         }
