@@ -36,7 +36,7 @@ namespace PagoAgilFrba.Modelo.DAOs
         // Adds
         public void agregarCliente(Cliente cliente)
         { 
-
+            // insert
         }
 
         // Exists
@@ -47,6 +47,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         public Boolean existeMail(String mail)
         {
+            //
             return false;
         }
 
