@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagoAgilFrba.AbmRol
+namespace PagoAgilFrba
 {
-    public partial class AltaRol : Form
+    public partial class FrmSeleccionRol : Form
     {
-        public AltaRol()
+        public FrmSeleccionRol()
         {
             InitializeComponent();
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //mostrar todas las funcionalidades existentes
         }
     }
 }

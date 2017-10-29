@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmRol
 {
-    public partial class AltaRol : Form
+    public partial class FrmBajaRol : Form
     {
-        public AltaRol()
+        public FrmBajaRol()
         {
             InitializeComponent();
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //mostrar todas las funcionalidades existentes
         }
     }
 }

@@ -71,6 +71,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         // Adds
         public void agregarCliente(Cliente cliente)
+<<<<<<< HEAD
         {
             List<String> valores = new List<String>();
             //Hay que agregar los valores de todas las columnas, respetando ese orden
@@ -87,6 +88,10 @@ namespace PagoAgilFrba.Modelo.DAOs
             valores.Add(cliente.habilitado.ToString());
 
             insert(TABLA, allColumnsInDB, tipos, valores);
+=======
+        { 
+            // insert
+>>>>>>> 0da59b4f1b82e56bf3b7546ba388b2002019734f
         }
 
         // Exists
@@ -97,6 +102,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         public Boolean existeMail(String mail)
         {
+            //
             return false;
         }
 
