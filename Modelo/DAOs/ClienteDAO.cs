@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,27 +12,44 @@ namespace PagoAgilFrba.Modelo.DAOs
 {
 
     // TODO agregarCliente, existeDni, existeMail
-    class ClienteDAO : Dao
+    class ClienteDAO<T> : Dao<T>
     {
 
         // Atributos
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.CLIENTES";
-        private List<String> mapaCliente;
+        private List<String> tipos;
+        private List<String> allColumns;
 
         public ClienteDAO()
         {
-            this.mapaCliente = new List<String>();
+            
+            this.tipos = new List<String>();
+            this.allColumns = new List<String>();
 
-            mapaCliente.Add(Utils.Utils.INT_TYPE);
-            mapaCliente.Add(Utils.Utils.INT_TYPE);
-            mapaCliente.Add(Utils.Utils.STRING_TYPE);
-            mapaCliente.Add(Utils.Utils.STRING_TYPE);
-            mapaCliente.Add(Utils.Utils.DATETIME_TYPE);
-            mapaCliente.Add(Utils.Utils.STRING_TYPE);
-            mapaCliente.Add(Utils.Utils.STRING_TYPE);
-            mapaCliente.Add(Utils.Utils.STRING_TYPE);
-            mapaCliente.Add(Utils.Utils.STRING_TYPE);
-            mapaCliente.Add(Utils.Utils.BINARY_TYPE);
+            //Tipos de columnas en la tabla de la base de datos
+            tipos.Add(Utils.Utils.INT_TYPE);
+            tipos.Add(Utils.Utils.INT_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.DATETIME_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.BINARY_TYPE);
+
+            //Nombres de fields de la entity Cliente.cs. Deben coincidir uno a uno con los tipos y estar ordenado
+            allColumns.Add("id");
+            allColumns.Add("dni");
+            allColumns.Add("apellido");
+            allColumns.Add("nombre");
+            allColumns.Add("fechaDeNacimiento");
+            allColumns.Add("mail");
+            allColumns.Add("direccion");
+            allColumns.Add("codigoPostal");
+            allColumns.Add("telefono");
+            allColumns.Add("habilitado");
+
         }
 
         // Adds
@@ -51,24 +70,15 @@ namespace PagoAgilFrba.Modelo.DAOs
         }
 
         // Finds
-        public List<Cliente> findCliente(string nombreCliente, string apellidoCliente, int dni)
+        public List<T> findCliente(string nombreCliente, string apellidoCliente, int dni)
         {
-            List<String> columns = new List<String>();
-            List<String> conditions = new List<String>();
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("nombre", nombreCliente);
+            condicion.agregarCondicion("apellido", apellidoCliente);
+            condicion.agregarCondicion("dni", dni);
 
-            columns.Add("nombre");
-            columns.Add("apellido");
-            columns.Add("dni");
-            
-            conditions.Add(nombreCliente);
-            conditions.Add(nombreCliente);
-            conditions.Add(dni.ToString());
-
-            List<List<String>> resultSet = this.select(TABLA, ALL, this.mapaCliente, this.armarWhere(columns, conditions));
-
-
-
-            return null;
+            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
         }
 
         // Updates

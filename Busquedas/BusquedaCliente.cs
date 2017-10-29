@@ -18,7 +18,7 @@ namespace PagoAgilFrba.Busquedas
     {
 
         // Atributos
-        private ClienteDAO clienteDao;
+        private ClienteDAO<Cliente> clienteDao;
         private Cliente clienteBuscado;
 
         // Constructores
@@ -26,7 +26,7 @@ namespace PagoAgilFrba.Busquedas
         {
             InitializeComponent();
 
-            this.clienteDao = new ClienteDAO();
+            this.clienteDao = new ClienteDAO<Cliente>();
             this.clienteBuscado = new Cliente();
         }
 

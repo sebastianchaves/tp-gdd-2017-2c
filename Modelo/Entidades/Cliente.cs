@@ -10,18 +10,15 @@ namespace PagoAgilFrba.Model
     public class Cliente
     {
         // Atributos
-        public String nombre;
-        public String apellido;
+        public int id;
         public int dni;
+        public String apellido;
+        public String nombre;
         public DateTime fechaDeNacimiento;
-        public String telefono;
         public String mail;
-        public String calle;
-        public int numero;
-        public String localidad;
-        public int codigoPostal;
-        public int piso;
-        public String departamento;
+        public String direccion;
+        public String codigoPostal;
+        public String telefono;
         public Boolean habilitado;
 
         // Constructores
