@@ -68,5 +68,10 @@ namespace PagoAgilFrba
         {
             this.Dispose();
         }
+
+        private void lblPerfil_Click(object sender, EventArgs e)
+        {
+        
+        }
     }
 }
