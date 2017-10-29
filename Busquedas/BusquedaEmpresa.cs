@@ -116,7 +116,7 @@ namespace PagoAgilFrba.Busquedas
             }
             catch (Exception ex)
             {
-                util.catchearErrorFormato(ex, cuitTooltip, cuitInput);
+                Utils.catchearErrorFormato(ex, cuitTooltip, cuitInput);
             }
         }
 

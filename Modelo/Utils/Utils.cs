@@ -19,11 +19,11 @@ namespace PagoAgilFrba.Modelo.Utils
         public const String DATETIME_TYPE = "DATETIME";
         public const String BINARY_TYPE = "BINARY";
 
-        public DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
-        public DateTime minTime = new DateTime(1890, 1, 1);
+        public static DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
+        public static DateTime minTime = new DateTime(1890, 1, 1);
 
         // Metodo para borrar contenido de inputs
-        public void clearTextBoxes(Control control)
+        public static void clearTextBoxes(Control control)
         {
             foreach (Control c in control.Controls)
             {
@@ -61,7 +61,7 @@ namespace PagoAgilFrba.Modelo.Utils
         }
 
         // Metodo para validar fecha
-        public Boolean fechaValida(DateTime fecha)
+        public static Boolean fechaValida(DateTime fecha)
         {
             return fecha.Date > minTime.Date && fecha.Date <= appDate.Date;
         }
@@ -77,7 +77,7 @@ namespace PagoAgilFrba.Modelo.Utils
         }
 
         // Metodo para iniciar grillas
-        public void iniciarGrids(DataGridView resultadosGrid)
+        public static void iniciarGrids(DataGridView resultadosGrid)
         {
             resultadosGrid.BackgroundColor = Color.LightGray;
             resultadosGrid.BorderStyle = BorderStyle.Fixed3D;

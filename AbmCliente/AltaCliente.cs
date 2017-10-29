@@ -21,7 +21,6 @@ namespace PagoAgilFrba.AbmCliente
         // Variables
         private ClienteDAO clienteDAO;
         private Cliente nuevoCliente;
-        private Utils utils;
 
         // Constructores
         public AltaCliente()
@@ -29,7 +28,6 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
             this.nuevoCliente = new Cliente();
             this.clienteDAO = new ClienteDAO();
-            this.utils = new Utils();
         }
 
         // Metodos
@@ -40,7 +38,7 @@ namespace PagoAgilFrba.AbmCliente
 
             if (camposCompletos())
             {
-                if (utils.fechaValida(nuevoCliente.fechaDeNacimiento))
+                if (Utils.fechaValida(nuevoCliente.fechaDeNacimiento))
                 {
                     clienteDAO.agregarCliente(nuevoCliente);
                     MessageBox.Show("Cliente agregado!");
@@ -75,7 +73,7 @@ namespace PagoAgilFrba.AbmCliente
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             agregarCliente();
-            utils.clearTextBoxes(this);
+            Utils.clearTextBoxes(this);
             this.nuevoCliente = new Cliente();
         }
 
@@ -128,7 +126,7 @@ namespace PagoAgilFrba.AbmCliente
         // Fecha de Nacimiento
         private void fechaDeNacimientoInput_Leave(object sender, EventArgs e)
         {
-            if (fechaDeNacimientoInput.Value.Date <= utils.appDate.Date)
+            if (fechaDeNacimientoInput.Value.Date <= Utils.appDate.Date)
             {
                 nuevoCliente.fechaDeNacimiento = fechaDeNacimientoInput.Value;
             }
@@ -175,7 +173,7 @@ namespace PagoAgilFrba.AbmCliente
             }
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, numeroDomicilioTooltip, numeroDomicilioInput);
+                Utils.catchearErrorFormato(ex, numeroDomicilioTooltip, numeroDomicilioInput);
             }
         }
 
@@ -194,7 +192,7 @@ namespace PagoAgilFrba.AbmCliente
             }
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, codigoPostalTooltip, codigoPostalInput);
+                Utils.catchearErrorFormato(ex, codigoPostalTooltip, codigoPostalInput);
             }
         }
 
@@ -214,7 +212,7 @@ namespace PagoAgilFrba.AbmCliente
             }
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, pisoDomicilioTooltip, pisoInput);
+                Utils.catchearErrorFormato(ex, pisoDomicilioTooltip, pisoInput);
             }
         }
 

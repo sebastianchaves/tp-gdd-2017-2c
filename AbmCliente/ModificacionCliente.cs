@@ -19,7 +19,6 @@ namespace PagoAgilFrba.AbmCliente
     {
 
         // Atributos
-        private Utils utils;
         private Cliente clienteACargar;
         private Cliente clienteModificado;
         private ClienteDAO clienteDao;
@@ -28,7 +27,6 @@ namespace PagoAgilFrba.AbmCliente
         public ModificacionCliente()
         {
             InitializeComponent();
-            this.utils = new Utils();
             this.clienteModificado = new Cliente();
             this.clienteACargar = new Cliente();
             this.clienteDao = new ClienteDAO();
@@ -97,7 +95,7 @@ namespace PagoAgilFrba.AbmCliente
         {
             if (camposCompletos())
             {
-                if (this.utils.fechaValida(this.clienteModificado.fechaDeNacimiento))
+                if (Utils.fechaValida(this.clienteModificado.fechaDeNacimiento))
                 {
                     clienteDao.updateCliente(clienteModificado);
                     MessageBox.Show("Datos actualizados!");
@@ -133,7 +131,7 @@ namespace PagoAgilFrba.AbmCliente
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            utils.iniciarGrids(resultadosGrid);
+            Utils.iniciarGrids(resultadosGrid);
 
             using (BusquedaCliente busquedaForm = new BusquedaCliente())
             {
@@ -155,7 +153,7 @@ namespace PagoAgilFrba.AbmCliente
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             this.modificarCliente();
-            utils.clearTextBoxes(this);
+            Utils.clearTextBoxes(this);
             this.clienteModificado = new Cliente();
             this.clienteACargar = new Cliente();
         }
