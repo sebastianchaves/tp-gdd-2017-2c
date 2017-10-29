@@ -19,7 +19,6 @@ namespace PagoAgilFrba.AbmEmpresa
         // Atributos
         private Empresa nuevaEmpresa;
         private EmpresaDAO empresaDao;
-        private Utils utils;
 
         // Constructores
         public AltaEmpresa()
@@ -28,7 +27,6 @@ namespace PagoAgilFrba.AbmEmpresa
 
             this.nuevaEmpresa = new Empresa();
             this.empresaDao = new EmpresaDAO();
-            this.utils = new Utils();
             this.cargarRubros();
         }
 
@@ -41,7 +39,7 @@ namespace PagoAgilFrba.AbmEmpresa
             {
                 this.empresaDao.agregarEmpresa(this.nuevaEmpresa);
                 MessageBox.Show("Empresa agregada!");
-                utils.clearTextBoxes(this);
+                Utils.clearTextBoxes(this);
             }
             else
             {
@@ -100,7 +98,7 @@ namespace PagoAgilFrba.AbmEmpresa
             }
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, cuitTooltip, cuitInput);
+                Utils.catchearErrorFormato(ex, cuitTooltip, cuitInput);
             }
         }
 

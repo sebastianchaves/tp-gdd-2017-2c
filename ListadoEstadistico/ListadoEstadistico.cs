@@ -16,16 +16,14 @@ namespace PagoAgilFrba.ListadoEstadistico
 
         // Atributos
         private Dictionary<int, String> tiposListados;
-        private Utils utils;
 
         // Constructores
         public ListadoEstadistico()
         {
             InitializeComponent();
 
-            this.utils = new Utils();
             this.tiposListados = new Dictionary<int, String>();
-            this.utils.iniciarGrids(resultadosGrid);
+            Utils.iniciarGrids(resultadosGrid);
             this.cargarTipos();
         }
 

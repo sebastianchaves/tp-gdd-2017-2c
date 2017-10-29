@@ -89,7 +89,7 @@
             this.calleInput.Name = "calleInput";
             this.calleInput.Size = new System.Drawing.Size(107, 20);
             this.calleInput.TabIndex = 6;
-            this.calleInput.TextChanged += new System.EventHandler(this.calleInput_Leave);
+//            this.calleInput.TextChanged += new System.EventHandler(this.calleInput_Leave);
             // 
             // localidadInput
             // 
@@ -97,7 +97,7 @@
             this.localidadInput.Name = "localidadInput";
             this.localidadInput.Size = new System.Drawing.Size(107, 20);
             this.localidadInput.TabIndex = 8;
-            this.localidadInput.TextChanged += new System.EventHandler(this.localidadInput_Leave);
+//            this.localidadInput.TextChanged += new System.EventHandler(this.localidadInput_Leave);
             // 
             // apellidoInput
             // 
@@ -266,7 +266,7 @@
             this.pisoInput.Name = "pisoInput";
             this.pisoInput.Size = new System.Drawing.Size(37, 20);
             this.pisoInput.TabIndex = 10;
-            this.pisoInput.TextChanged += new System.EventHandler(this.pisoInput_Leave);
+//            this.pisoInput.TextChanged += new System.EventHandler(this.pisoInput_Leave);
             // 
             // departamentoInput
             // 
@@ -274,7 +274,7 @@
             this.departamentoInput.Name = "departamentoInput";
             this.departamentoInput.Size = new System.Drawing.Size(31, 20);
             this.departamentoInput.TabIndex = 11;
-            this.departamentoInput.TextChanged += new System.EventHandler(this.departamentoInput_Leave);
+//            this.departamentoInput.TextChanged += new System.EventHandler(this.departamentoInput_Leave);
             // 
             // botonAceptar
             // 
@@ -310,7 +310,7 @@
             this.numeroDomicilioInput.Name = "numeroDomicilioInput";
             this.numeroDomicilioInput.Size = new System.Drawing.Size(100, 20);
             this.numeroDomicilioInput.TabIndex = 7;
-            this.numeroDomicilioInput.TextChanged += new System.EventHandler(this.numeroDomicilioInput_Leave);
+//            this.numeroDomicilioInput.TextChanged += new System.EventHandler(this.numeroDomicilioInput_Leave);
             // 
             // numeroDomicilioLabel
             // 

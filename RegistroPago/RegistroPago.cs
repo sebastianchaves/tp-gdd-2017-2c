@@ -16,21 +16,19 @@ namespace PagoAgilFrba.RegistroPago
     {
 
         // Atributos
-        private Utils utils;
         private DataTable tablaFacturas;
 
         // Constructores
         public RegistroPago()
         {
             InitializeComponent();
-            this.utils = new Utils();
             this.iniciarFacturasGrid();
         }
 
         // Metodos
         private void iniciarFacturasGrid()
         {
-            this.utils.iniciarGrids(facturasGrid);
+            Utils.iniciarGrids(facturasGrid);
             this.tablaFacturas = new DataTable();
             this.tablaFacturas.Columns.Add("Numero");
         }
