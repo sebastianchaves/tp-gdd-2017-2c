@@ -41,7 +41,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             using (this.connection = new SqlConnection(connectionString))
             {
                 String selectQuery = "SELECT " + select + " FROM " + tabla;
-                String condicionString = armarWhere(condicion.getColumns(), condicion.getConditions());
+                String condicionString = armarWhere(condicion.getColumns(), condicion.getConditions(), condicion.getTipos());
 
                 if (condicionString != null && !condicionString.Equals(""))
                 {
@@ -108,7 +108,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             if (this.connection != null) { this.connection.Close(); }
         }
 
-        private String armarWhere(List<String> columns, List<String> conditions)
+        private String armarWhere(List<String> columns, List<String> conditions, List<String> tipos)
         {
             String where = "";
 
@@ -118,7 +118,14 @@ namespace PagoAgilFrba.Modelo.DAOs
 
                 if (valor != null && !valor.Equals(""))
                 {
-                    where += columns.ElementAt(i) + " = " + valor;
+                    if (tipos.ElementAt(i).Equals(Utils.Utils.STRING_TYPE))
+                    {
+                        where += columns.ElementAt(i) + " = '" + valor + "'";
+                    }
+                    else
+                    {
+                        where += columns.ElementAt(i) + " = " + valor;
+                    }
                     if (conditions.Count > i + 1 && conditions.ElementAt(i + 1) != null && !conditions.ElementAt(i + 1).Equals("")) 
                     { 
                         where += " AND "; 

@@ -73,9 +73,9 @@ namespace PagoAgilFrba.Modelo.DAOs
         public List<T> findCliente(string nombreCliente, string apellidoCliente, int dni)
         {
             Condicion condicion = new Condicion();
-            condicion.agregarCondicion("nombre", nombreCliente);
-            condicion.agregarCondicion("apellido", apellidoCliente);
-            condicion.agregarCondicion("dni", dni);
+            condicion.agregarCondicion("nombre", nombreCliente, Utils.Utils.STRING_TYPE);
+            condicion.agregarCondicion("apellido", apellidoCliente, Utils.Utils.STRING_TYPE);
+            condicion.agregarCondicion("dni", dni, Utils.Utils.INT_TYPE);
 
             List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
             return getEntities(resultSet, allColumns, tipos);
