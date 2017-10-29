@@ -18,7 +18,6 @@ namespace PagoAgilFrba.AbmSucursal
     {
 
         // Atributos
-        private Util utils;
         private SucursalDAO sucursalDao;
         private Sucursal sucursalSeleccionada;
 
@@ -27,9 +26,8 @@ namespace PagoAgilFrba.AbmSucursal
         {
             InitializeComponent();
 
-            this.utils = new Util();
             this.sucursalDao = new SucursalDAO();
-            this.utils.iniciarGrids(this.resultadosGrid);
+            Utils.iniciarGrids(this.resultadosGrid);
         }
 
         // Metodos
@@ -45,7 +43,7 @@ namespace PagoAgilFrba.AbmSucursal
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            this.utils.iniciarGrids(this.resultadosGrid);
+            Utils.iniciarGrids(this.resultadosGrid);
 
             using (BusquedaSucursal busquedaForm = new BusquedaSucursal(resultadosGrid))
             {

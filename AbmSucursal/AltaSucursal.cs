@@ -19,7 +19,7 @@ namespace PagoAgilFrba.AbmSucursal
         // Atributos
         private Sucursal nuevaSucursal;
         private SucursalDAO sucursalDao;
-        private Util utils;
+        private Utils utils;
 
         // Constructores
         public AltaSucursal()
@@ -28,7 +28,6 @@ namespace PagoAgilFrba.AbmSucursal
 
             this.nuevaSucursal = new Sucursal();
             this.sucursalDao = new SucursalDAO();
-            this.utils = new Util();
         }
 
         // Metodos
@@ -40,7 +39,7 @@ namespace PagoAgilFrba.AbmSucursal
             {
                 this.sucursalDao.agregarSucursal(this.nuevaSucursal);
                 MessageBox.Show("Sucursal agregada!");
-                utils.clearTextBoxes(this);
+                Utils.clearTextBoxes(this);
             }
             else
             {
@@ -90,7 +89,7 @@ namespace PagoAgilFrba.AbmSucursal
             }
             catch (Exception ex)
             {
-                this.utils.catchearErrorFormato(ex, this.codigoPostalTooltip, this.codigoPostalInput);
+                Utils.catchearErrorFormato(ex, this.codigoPostalTooltip, this.codigoPostalInput);
             }
         }
 

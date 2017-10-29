@@ -7,22 +7,21 @@ using System.Threading.Tasks;
 namespace PagoAgilFrba.Model
 {
    
-    class Cliente
+    public class Cliente
     {
-        public String nombre;
-        public String apellido;
+        // Atributos
+        public int id;
         public int dni;
+        public String apellido;
+        public String nombre;
         public DateTime fechaDeNacimiento;
-        public String telefono;
         public String mail;
-        public String calle;
-        public int numero;
-        public String localidad;
-        public int codigoPostal;
-        public int piso;
-        public String departamento;
+        public String direccion;
+        public String codigoPostal;
+        public String telefono;
         public Boolean habilitado;
 
+        // Constructores
         public Cliente()
         {
         }

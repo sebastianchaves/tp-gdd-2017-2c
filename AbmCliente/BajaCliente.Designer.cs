@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.botonDeshabilitar = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.resultadosGrid = new System.Windows.Forms.DataGridView();
             this.datosClienteGroupBox = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.domicilioInput = new System.Windows.Forms.TextBox();
@@ -47,36 +45,20 @@
             this.mailLabel = new System.Windows.Forms.Label();
             this.mailInput = new System.Windows.Forms.TextBox();
             this.bajaClienteLabel = new System.Windows.Forms.Label();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.botonBuscar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.resultadosGrid)).BeginInit();
             this.datosClienteGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // botonDeshabilitar
             // 
-            this.botonDeshabilitar.Location = new System.Drawing.Point(385, 274);
+            this.botonDeshabilitar.Location = new System.Drawing.Point(142, 258);
             this.botonDeshabilitar.Name = "botonDeshabilitar";
-            this.botonDeshabilitar.Size = new System.Drawing.Size(110, 40);
+            this.botonDeshabilitar.Size = new System.Drawing.Size(90, 30);
             this.botonDeshabilitar.TabIndex = 1;
             this.botonDeshabilitar.Text = "Deshabilitar";
             this.botonDeshabilitar.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Clientes Encontrados:";
-            // 
-            // resultadosGrid
-            // 
-            this.resultadosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.resultadosGrid.Location = new System.Drawing.Point(12, 67);
-            this.resultadosGrid.Name = "resultadosGrid";
-            this.resultadosGrid.Size = new System.Drawing.Size(231, 201);
-            this.resultadosGrid.TabIndex = 10;
+            this.botonDeshabilitar.Click += new System.EventHandler(this.botonDeshabilitar_Click);
             // 
             // datosClienteGroupBox
             // 
@@ -94,7 +76,7 @@
             this.datosClienteGroupBox.Controls.Add(this.telefonoInput);
             this.datosClienteGroupBox.Controls.Add(this.mailLabel);
             this.datosClienteGroupBox.Controls.Add(this.mailInput);
-            this.datosClienteGroupBox.Location = new System.Drawing.Point(264, 51);
+            this.datosClienteGroupBox.Location = new System.Drawing.Point(12, 36);
             this.datosClienteGroupBox.Name = "datosClienteGroupBox";
             this.datosClienteGroupBox.Size = new System.Drawing.Size(353, 217);
             this.datosClienteGroupBox.TabIndex = 12;
@@ -224,18 +206,28 @@
             // 
             this.bajaClienteLabel.AutoSize = true;
             this.bajaClienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bajaClienteLabel.Location = new System.Drawing.Point(254, 9);
+            this.bajaClienteLabel.Location = new System.Drawing.Point(137, 9);
             this.bajaClienteLabel.Name = "bajaClienteLabel";
             this.bajaClienteLabel.Size = new System.Drawing.Size(109, 24);
             this.bajaClienteLabel.TabIndex = 13;
             this.bajaClienteLabel.Text = "Baja Cliente";
             // 
+            // botonVolver
+            // 
+            this.botonVolver.Location = new System.Drawing.Point(252, 258);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(90, 30);
+            this.botonVolver.TabIndex = 14;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            // 
             // botonBuscar
             // 
-            this.botonBuscar.Location = new System.Drawing.Point(72, 274);
+            this.botonBuscar.Location = new System.Drawing.Point(32, 258);
             this.botonBuscar.Name = "botonBuscar";
-            this.botonBuscar.Size = new System.Drawing.Size(110, 40);
-            this.botonBuscar.TabIndex = 0;
+            this.botonBuscar.Size = new System.Drawing.Size(90, 30);
+            this.botonBuscar.TabIndex = 15;
             this.botonBuscar.Text = "Buscar";
             this.botonBuscar.UseVisualStyleBackColor = true;
             this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
@@ -244,16 +236,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 326);
+            this.ClientSize = new System.Drawing.Size(377, 304);
             this.Controls.Add(this.botonBuscar);
+            this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.bajaClienteLabel);
             this.Controls.Add(this.datosClienteGroupBox);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.resultadosGrid);
             this.Controls.Add(this.botonDeshabilitar);
             this.Name = "BajaCliente";
             this.Text = "Deshabilitar Cliente";
-            ((System.ComponentModel.ISupportInitialize)(this.resultadosGrid)).EndInit();
             this.datosClienteGroupBox.ResumeLayout(false);
             this.datosClienteGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -264,8 +254,6 @@
         #endregion
 
         private System.Windows.Forms.Button botonDeshabilitar;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView resultadosGrid;
         private System.Windows.Forms.GroupBox datosClienteGroupBox;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox domicilioInput;
@@ -282,6 +270,7 @@
         private System.Windows.Forms.Label mailLabel;
         private System.Windows.Forms.TextBox mailInput;
         private System.Windows.Forms.Label bajaClienteLabel;
+        private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Button botonBuscar;
     }
 }

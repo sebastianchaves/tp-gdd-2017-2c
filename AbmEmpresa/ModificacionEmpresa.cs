@@ -18,7 +18,6 @@ namespace PagoAgilFrba.AbmEmpresa
     {
 
         // Atributos
-        private Util utils;
         private Empresa empresaModificada;
         private Empresa empresaACargar;
         private EmpresaDAO empresaDao;
@@ -27,8 +26,6 @@ namespace PagoAgilFrba.AbmEmpresa
         public ModificacionEmpresa()
         {
             InitializeComponent();
-
-            this.utils = new Util();
             this.empresaDao = new EmpresaDAO();
             this.empresaModificada = new Empresa();
         }
@@ -107,7 +104,7 @@ namespace PagoAgilFrba.AbmEmpresa
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {    
-            utils.iniciarGrids(resultadosGrid);
+            Utils.iniciarGrids(resultadosGrid);
 
             using (BusquedaEmpresa busquedaForm = new BusquedaEmpresa(resultadosGrid))
             {
@@ -120,7 +117,7 @@ namespace PagoAgilFrba.AbmEmpresa
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             this.updateEmpresa();
-            utils.clearTextBoxes(this);
+            Utils.clearTextBoxes(this);
             this.empresaModificada = new Empresa();
             this.empresaACargar = new Empresa();
         }

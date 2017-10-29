@@ -19,14 +19,15 @@ namespace PagoAgilFrba.AbmCliente
     {
 
         // Variables
-        private ClienteDAO clienteDAO = new ClienteDAO();
-        private Cliente nuevoCliente = new Cliente();
-        private Util utils = new Util();
+        private ClienteDAO<Cliente> clienteDAO;
+        private Cliente nuevoCliente;
 
         // Constructores
         public AltaCliente()
         {
             InitializeComponent();
+            this.nuevoCliente = new Cliente();
+            this.clienteDAO = new ClienteDAO<Cliente>();
         }
 
         // Metodos
@@ -37,7 +38,7 @@ namespace PagoAgilFrba.AbmCliente
 
             if (camposCompletos())
             {
-                if (utils.fechaValida(nuevoCliente.fechaDeNacimiento))
+                if (Utils.fechaValida(nuevoCliente.fechaDeNacimiento))
                 {
                     clienteDAO.agregarCliente(nuevoCliente);
                     MessageBox.Show("Cliente agregado!");
@@ -72,11 +73,12 @@ namespace PagoAgilFrba.AbmCliente
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             agregarCliente();
-            utils.clearTextBoxes(this);
+            Utils.clearTextBoxes(this);
+            this.nuevoCliente = new Cliente();
         }
 
         // Boton Cancelar
-        private void botonCancelar_Click(object sender, EventArgs e)
+        private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -104,7 +106,7 @@ namespace PagoAgilFrba.AbmCliente
 
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, dniTooltip, dniInput);
+                Utils.catchearErrorFormato(ex, dniTooltip, dniInput);
             }
         }
 
@@ -124,7 +126,7 @@ namespace PagoAgilFrba.AbmCliente
         // Fecha de Nacimiento
         private void fechaDeNacimientoInput_Leave(object sender, EventArgs e)
         {
-            if (fechaDeNacimientoInput.Value.Date <= utils.appDate.Date)
+            if (fechaDeNacimientoInput.Value.Date <= Utils.appDate.Date)
             {
                 nuevoCliente.fechaDeNacimiento = fechaDeNacimientoInput.Value;
             }
@@ -155,78 +157,17 @@ namespace PagoAgilFrba.AbmCliente
             }
         }
 
-        // Domicilio
-        // Calle
-        private void calleInput_Leave(object sender, EventArgs e)
-        {
-            nuevoCliente.calle = calleInput.Text;
-        }
-
-        // Numero
-        private void numeroDomicilioInput_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                nuevoCliente.numero = Int32.Parse(numeroDomicilioInput.Text);
-            }
-            catch (Exception ex)
-            {
-                utils.catchearErrorFormato(ex, numeroDomicilioTooltip, numeroDomicilioInput);
-            }
-        }
-
-        // Localidad
-        private void localidadInput_Leave(object sender, EventArgs e)
-        {
-            nuevoCliente.localidad = localidadInput.Text;
-        }
-
         // Codigo Postal
         private void codigoPostalInput_Leave(object sender, EventArgs e)
         {
             try
             {
-                nuevoCliente.codigoPostal = Int32.Parse(codigoPostalInput.Text);
+                nuevoCliente.codigoPostal = codigoPostalInput.Text;
             }
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, codigoPostalTooltip, codigoPostalInput);
+                Utils.catchearErrorFormato(ex, codigoPostalTooltip, codigoPostalInput);
             }
-        }
-
-        // Piso
-        private void pisoInput_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                if (pisoInput.Text == "")
-                {
-                    nuevoCliente.piso = 0;
-                }
-                else
-                {
-                    nuevoCliente.piso = Int32.Parse(pisoInput.Text);
-                }
-            }
-            catch (Exception ex)
-            {
-                utils.catchearErrorFormato(ex, pisoDomicilioTooltip, pisoInput);
-            }
-        }
-
-        // Departamento
-        private void departamentoInput_Leave(object sender, EventArgs e)
-        {
-
-            if (departamentoInput.Text == "")
-            {
-                nuevoCliente.departamento = null;
-            }
-            else
-            {
-                nuevoCliente.departamento = departamentoInput.Text;
-            }
-
         }
 
     }

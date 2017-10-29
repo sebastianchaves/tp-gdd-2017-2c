@@ -9,17 +9,21 @@ using System.Drawing;
 
 namespace PagoAgilFrba.Modelo.Utils
 {
-    class Util
+    public class Utils
     {
 
         // Atributos
-        public DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
-        public DateTime minTime = new DateTime(1890, 1, 1);
+        public const String INT_TYPE = "INT";
+        public const String STRING_TYPE = "VARCHAR";
+        public const String DECIMAL_TYPE = "DECIMAL";
+        public const String DATETIME_TYPE = "DATETIME";
+        public const String BINARY_TYPE = "BINARY";
 
-        public static string connectionString = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
+        public static DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
+        public static DateTime minTime = new DateTime(1890, 1, 1);
 
         // Metodo para borrar contenido de inputs
-        public void clearTextBoxes(Control control)
+        public static void clearTextBoxes(Control control)
         {
             foreach (Control c in control.Controls)
             {
@@ -57,13 +61,13 @@ namespace PagoAgilFrba.Modelo.Utils
         }
 
         // Metodo para validar fecha
-        public Boolean fechaValida(DateTime fecha)
+        public static Boolean fechaValida(DateTime fecha)
         {
             return fecha.Date > minTime.Date && fecha.Date <= appDate.Date;
         }
 
         // Metodo para mostrar formatos invalidos
-        public void catchearErrorFormato(Exception ex, ToolTip toolTip, TextBox textBox)
+        public static void catchearErrorFormato(Exception ex, ToolTip toolTip, TextBox textBox)
         {
             if (ex is FormatException || ex is OverflowException)
             {
@@ -73,7 +77,7 @@ namespace PagoAgilFrba.Modelo.Utils
         }
 
         // Metodo para iniciar grillas
-        public void iniciarGrids(DataGridView resultadosGrid)
+        public static void iniciarGrids(DataGridView resultadosGrid)
         {
             resultadosGrid.BackgroundColor = Color.LightGray;
             resultadosGrid.BorderStyle = BorderStyle.Fixed3D;

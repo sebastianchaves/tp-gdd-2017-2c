@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,19 +19,17 @@ namespace PagoAgilFrba.AbmCliente
     {
 
         // Atributos
-        private Util utils;
         private Cliente clienteACargar;
         private Cliente clienteModificado;
-        private ClienteDAO clienteDao;
+        private ClienteDAO<Cliente> clienteDao;
 
         // Constructores
         public ModificacionCliente()
         {
             InitializeComponent();
-            this.utils = new Util();
             this.clienteModificado = new Cliente();
             this.clienteACargar = new Cliente();
-            this.clienteDao = new ClienteDAO();
+            this.clienteDao = new ClienteDAO<Cliente>();
         }
 
         // Metodos
@@ -54,23 +53,8 @@ namespace PagoAgilFrba.AbmCliente
             this.telefonoInput.Text = this.clienteACargar.telefono;
             this.clienteModificado.telefono = this.clienteACargar.telefono;
 
-            this.calleInput.Text = this.clienteACargar.calle;
-            this.clienteModificado.calle = this.clienteACargar.calle;
-
-            this.numeroDomicilioInput.Text = this.clienteACargar.numero.ToString();
-            this.clienteModificado.numero = this.clienteACargar.numero;
-
-            this.localidadInput.Text = this.clienteACargar.localidad;
-            this.clienteModificado.localidad = this.clienteACargar.localidad;
-
             this.codigoPostalInput.Text = this.clienteACargar.codigoPostal.ToString();
             this.clienteModificado.codigoPostal = this.clienteACargar.codigoPostal;
-
-            this.pisoInput.Text = this.clienteACargar.piso.ToString();
-            this.clienteModificado.piso = this.clienteACargar.piso;
-
-            this.departamentoInput.Text = this.clienteACargar.departamento;
-            this.clienteModificado.departamento = this.clienteACargar.departamento;
 
             this.habilitarDeshabilitar();
         }
@@ -96,7 +80,7 @@ namespace PagoAgilFrba.AbmCliente
         {
             if (camposCompletos())
             {
-                if (this.utils.fechaValida(this.clienteModificado.fechaDeNacimiento))
+                if (Utils.fechaValida(this.clienteModificado.fechaDeNacimiento))
                 {
                     clienteDao.updateCliente(clienteModificado);
                     MessageBox.Show("Datos actualizados!");
@@ -132,9 +116,9 @@ namespace PagoAgilFrba.AbmCliente
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            utils.iniciarGrids(resultadosGrid);
+            Utils.iniciarGrids(resultadosGrid);
 
-            using (BusquedaCliente busquedaForm = new BusquedaCliente(resultadosGrid))
+            using (BusquedaCliente busquedaForm = new BusquedaCliente())
             {
                 busquedaForm.ShowDialog(this);
             }
@@ -146,7 +130,7 @@ namespace PagoAgilFrba.AbmCliente
             var cliente = resultadosGrid.SelectedCells[0].RowIndex;
             this.clienteACargar = new Cliente();
             int dniSeleccionado = Int32.Parse(resultadosGrid.Rows[cliente].Cells[2].Value.ToString());
-            this.clienteACargar = this.clienteDao.findCliente("", "", dniSeleccionado).First();
+            List<Cliente> clientes = this.clienteDao.findCliente("", "", dniSeleccionado);
             this.cargarDatos();
         }
 
@@ -154,7 +138,7 @@ namespace PagoAgilFrba.AbmCliente
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             this.modificarCliente();
-            utils.clearTextBoxes(this);
+            Utils.clearTextBoxes(this);
             this.clienteModificado = new Cliente();
             this.clienteACargar = new Cliente();
         }

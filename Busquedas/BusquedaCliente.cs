@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,20 +18,16 @@ namespace PagoAgilFrba.Busquedas
     {
 
         // Atributos
-        private IList<Cliente> resultados;
-        private IList<Cliente> clientes;
-        private ClienteDAO clienteDao;
-        private Util utils;
-        private DataGridView resultadosGrid;
+        private ClienteDAO<Cliente> clienteDao;
+        private Cliente clienteBuscado;
 
         // Constructores
-        public BusquedaCliente(DataGridView resultadosGrid)
+        public BusquedaCliente()
         {
             InitializeComponent();
 
-            this.utils = new Util();
-            this.clienteDao = new ClienteDAO();
-            this.resultadosGrid = resultadosGrid;
+            this.clienteDao = new ClienteDAO<Cliente>();
+            this.clienteBuscado = new Cliente();
         }
 
         // Metodos
@@ -48,49 +45,38 @@ namespace PagoAgilFrba.Busquedas
         {
             try
             {
-                int dni = Int32.Parse(dniInput.Text);
-                return dni;
+                return Int32.Parse(dniInput.Text);
             }
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, dniTooltip, dniInput);
                 return 0;
             }
         }
 
-        private void cargarDataGridClientes(IList<Cliente> clientes)
+        public int getIdClienteEncontrado()
         {
-            this.clientes = clientes;
-
-            DataTable resultadosClientes = new DataTable();
-
-            resultadosClientes.Columns.Add("Nombre");
-            resultadosClientes.Columns.Add("Apellido");
-            resultadosClientes.Columns.Add("DNI");
-            resultadosClientes.Columns.Add("Mail");
-
-            foreach (Cliente cliente in clientes)
-            {
-                resultadosClientes.Rows.Add(cliente.nombre, cliente.apellido, cliente.dni, cliente.mail);
-            }
-            resultadosGrid.DataSource = resultadosClientes;
+            return clienteBuscado.dni;
         }
 
         // Eventos
         // Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            resultados = this.clienteDao.findCliente(this.cargarNombre(), 
+            List<Cliente> resultados = this.clienteDao.findCliente(this.cargarNombre(), 
                                                         this.cargarApellido(), 
                                                         this.cargarDni());
-
-            if (resultados.Count() == 0)
+            if (resultados.Count == 0)
             {
                 MessageBox.Show("No existe ningún cliente que concuerde con esos parámetros.");
             }
-            else if (resultados.Count() > 0)
+            else
             {
-                cargarDataGridClientes(resultados);
+                using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda())
+                {
+                    resultadosForm.ShowDialog(this);
+                    resultadosForm.cargarDataGridClientes(resultados);
+                    this.clienteBuscado = resultadosForm.getClienteSeleccionado();
+                }
                 this.Close();
             }
 

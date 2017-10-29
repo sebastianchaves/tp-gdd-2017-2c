@@ -19,18 +19,23 @@ namespace PagoAgilFrba.Busquedas
         // Atributos
         private IList<Empresa> empresasEncontradas;
         private EmpresaDAO empresaDao;
-        private Util util;
+        private Utils util;
         private DataGridView resultadosGrid;
         private String nombreABuscar;
         private int cuitABuscar;
         private String rubroABuscar;
 
         // Constructores
+        public BusquedaEmpresa()
+        {
+
+        }
+
         public BusquedaEmpresa(DataGridView resultadosGrid)
         {
             InitializeComponent();
 
-            this.util = new Util();
+            this.util = new Utils();
             this.empresaDao = new EmpresaDAO();
             this.cargarRubrosDisponibles();
             this.resultadosGrid = resultadosGrid;
@@ -64,6 +69,11 @@ namespace PagoAgilFrba.Busquedas
                 resultadosEmpresas.Rows.Add(empresa.nombre, empresa.cuit, empresa.rubro);
             }
             resultadosGrid.DataSource = resultadosEmpresas;
+        }
+
+        public int getIdEmpresaEncontrada()
+        {
+            return 1;
         }
 
         // Eventos
@@ -106,7 +116,7 @@ namespace PagoAgilFrba.Busquedas
             }
             catch (Exception ex)
             {
-                util.catchearErrorFormato(ex, cuitTooltip, cuitInput);
+                Utils.catchearErrorFormato(ex, cuitTooltip, cuitInput);
             }
         }
 

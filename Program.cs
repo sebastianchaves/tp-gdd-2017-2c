@@ -2,6 +2,8 @@
 using PagoAgilFrba.AbmEmpresa;
 using PagoAgilFrba.AbmRol;
 using PagoAgilFrba.AbmSucursal;
+using PagoAgilFrba.Busquedas;
+using PagoAgilFrba.Modelo.DAOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace PagoAgilFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BajaSucursal());
+            Application.Run(new BusquedaCliente());
         }
     }
 }
