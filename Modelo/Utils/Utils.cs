@@ -14,10 +14,11 @@ namespace PagoAgilFrba.Modelo.Utils
 
         // Atributos
         public const String INT_TYPE = "INT";
+        public const String INT_ID_NOT_INSERTABLE_TYPE = "INT_NOT_INSERTABLE";
         public const String STRING_TYPE = "VARCHAR";
         public const String DECIMAL_TYPE = "DECIMAL";
         public const String DATETIME_TYPE = "DATETIME";
-        public const String BINARY_TYPE = "BINARY";
+        public const String BIT_TYPE = "BIT";
 
         public static DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
         public static DateTime minTime = new DateTime(1890, 1, 1);
