@@ -86,16 +86,18 @@ Nro_Factura, Factura_Fecha, Factura_Total, Factura_Fecha_Vencimiento, Rendicion_
 print 'Eliminando facturas que figuran sin rendicion pero tienen en una carga posterior...'
 delete from GD2C2017.ROCKET_DATABASE.FACTURAS
 where id_rendicion is null and nro_factura in
-(select nro_factura from GD2C2017.ROCKET_DATABASE.FACTURAS where id_rendicion is not null)
+(select nro_factura from GD2C2017.ROCKET_DATABASE.FACTURAS where id_rendicion is not null);
 
-select Pago_nro, Pago_Fecha, total, 
+/*** insertando pagos ***/
+print 'Insertando pagos...'
+set identity_insert GD2C2017.ROCKET_DATABASE.PAGOS ON;
+insert into GD2C2017.ROCKET_DATABASE.PAGOS
+(id_pago, fecha_cobro, importe, id_forma_pago, id_sucursal)
+select distinct Pago_nro, Pago_Fecha, total, 
 (select id_forma_pago from GD2C2017.ROCKET_DATABASE.FORMAS_PAGO 
 where descripcion = FormaPagoDescripcion) as forma_pago,
 (select id_sucursal from GD2C2017.ROCKET_DATABASE.SUCURSALES
 where Sucursal_Nombre = nombre) as sucursal
 from GD2C2017.gd_esquema.Maestra
 where Pago_nro is not null
-order by Pago_nro
-
-select * from GD2C2017.gd_esquema.Maestra where FormaPagoDescripcion is not null
-select * from GD2C2017.ROCKET_DATABASE.FORMAS_PAGO 
+set identity_insert GD2C2017.ROCKET_DATABASE.PAGOS OFF;
