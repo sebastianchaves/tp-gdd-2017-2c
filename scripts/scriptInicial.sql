@@ -62,7 +62,7 @@ CREATE TABLE [ROCKET_DATABASE].[PAGOS](
 GO
 CREATE TABLE [ROCKET_DATABASE].[EMPRESAS](
 	id_empresa int IDENTITY(1,1) primary key,
-	cuit varchar(13),
+	cuit varchar(13) not null unique,
 	nombre varchar(255) not null,
 	direccion varchar(255),
 	id_rubro int,
