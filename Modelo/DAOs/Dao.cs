@@ -16,12 +16,6 @@ namespace PagoAgilFrba.Modelo.DAOs
         public const String ALL = "*";
         private SqlConnection connection;
 
-        public Dao()
-        {
-            this.connection = new SqlConnection(CONNECTION_STRING);
-            this.connection.Open();
-        }
-
         public SqlDataReader select(String tabla, String[] parametros, String conditions)
         {
             String aplanados = "";
@@ -35,20 +29,62 @@ namespace PagoAgilFrba.Modelo.DAOs
                     aplanados += ", ";
                 }
             }
-            return select(tabla, aplanados, conditions);
+            //select(tabla, aplanados, conditions)
+            return null;
         }
 
-        public SqlDataReader select(String tabla, String parametros, String conditions) {
+        protected List<List<String>> select(String tabla, String select, List<String> tipos, String conditions) {
 
-            using (this.connection = new SqlConnection(CONNECTION_STRING))
+            String connectionString = "Data Source=DESKTOP-PD7Q1R0\\SQLSERVER2012;Initial Catalog=GD2C2017;User ID=gd;Password=gd2017;";
+
+            using (this.connection = new SqlConnection(connectionString))
             {
-                String selectQuery = "SELECT " + parametros + " FROM " + tabla + " WHERE " + conditions;
+                String selectQuery = "SELECT " + select + " FROM " + tabla;
 
-                SqlCommand command = new SqlCommand(selectQuery, connection);
-                
+                if (conditions != null && !conditions.Equals(""))
+                {
+                    selectQuery += " WHERE " + conditions;
+                }
+
                 this.connection.Open();
 
-                return command.ExecuteReader();
+                SqlCommand command = new SqlCommand(selectQuery, connection);
+
+                SqlDataReader reader = command.ExecuteReader();
+                List<List<String>> resultSet = new List<List<String>>();
+
+                while (reader.Read())
+                {
+                    List<String> registro = new List<string>();
+
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        String valor="";
+                        switch (tipos.ElementAt(i))
+                        {
+                            case Utils.Utils.STRING_TYPE:
+                                valor = reader.GetString(i);
+                                break;
+                            case Utils.Utils.INT_TYPE:
+                                valor = reader.GetInt32(i).ToString();
+                                break;
+                            case Utils.Utils.DATETIME_TYPE:
+                                valor = reader.GetDateTime(i).ToString();
+                                break;
+                            case Utils.Utils.DECIMAL_TYPE:
+                                valor = reader.GetDecimal(i).ToString();
+                                break;
+                            case Utils.Utils.BINARY_TYPE:
+                                valor = reader.GetSqlBinary(i).ToString();
+                                break;
+                        }
+                        registro.Add(valor);
+                    }
+                    resultSet.Add(registro);
+                }
+
+                return resultSet;
+
             }
 
         }
@@ -63,14 +99,17 @@ namespace PagoAgilFrba.Modelo.DAOs
         {
             String where = "";
 
-            for(int i = 0; i < columns.Count; i++)
+            for (int i = 0; i < conditions.Count; i++)
             {
-                String column = columns.ElementAt(i);
+                String valor = conditions.ElementAt(i);
 
-                if (column != null)
+                if (valor != null && !valor.Equals(""))
                 {
-                    where += column + " = " + conditions.ElementAt(i);
-                    if (columns.Count > i + 1 && columns.ElementAt(i + 1) != null) { where += " AND "; }
+                    where += columns.ElementAt(i) + " = " + valor;
+                    if (conditions.Count > i + 1 && conditions.ElementAt(i + 1) != null && !conditions.ElementAt(i + 1).Equals("")) 
+                    { 
+                        where += " AND "; 
+                    }
                 }
             }
 

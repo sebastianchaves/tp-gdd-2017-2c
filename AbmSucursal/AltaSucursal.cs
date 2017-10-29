@@ -90,7 +90,7 @@ namespace PagoAgilFrba.AbmSucursal
             }
             catch (Exception ex)
             {
-                this.utils.catchearErrorFormato(ex, this.codigoPostalTooltip, this.codigoPostalInput);
+                Utils.catchearErrorFormato(ex, this.codigoPostalTooltip, this.codigoPostalInput);
             }
         }
 

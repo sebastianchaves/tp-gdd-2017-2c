@@ -96,7 +96,7 @@ namespace PagoAgilFrba.Busquedas
             }
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, codigoPostalTooltip, codigoPostalInput);
+                Utils.catchearErrorFormato(ex, codigoPostalTooltip, codigoPostalInput);
             }
         }
     }

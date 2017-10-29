@@ -147,14 +147,7 @@ namespace PagoAgilFrba.AbmCliente
             var cliente = resultadosGrid.SelectedCells[0].RowIndex;
             this.clienteACargar = new Cliente();
             int dniSeleccionado = Int32.Parse(resultadosGrid.Rows[cliente].Cells[2].Value.ToString());
-            SqlDataReader reader = this.clienteDao.findCliente("", "", dniSeleccionado);
-
-            while (reader.Read())
-            {
-                this.clienteACargar = new Cliente();
-                clienteACargar.nombre = reader.GetString(0);
-            }
-
+            List<Cliente> clientes = this.clienteDao.findCliente("", "", dniSeleccionado);
             this.cargarDatos();
         }
 

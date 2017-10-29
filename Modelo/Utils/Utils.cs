@@ -9,10 +9,16 @@ using System.Drawing;
 
 namespace PagoAgilFrba.Modelo.Utils
 {
-    class Utils
+    public class Utils
     {
 
         // Atributos
+        public const String INT_TYPE = "INT";
+        public const String STRING_TYPE = "VARCHAR";
+        public const String DECIMAL_TYPE = "DECIMAL";
+        public const String DATETIME_TYPE = "DATETIME";
+        public const String BINARY_TYPE = "BINARY";
+
         public DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
         public DateTime minTime = new DateTime(1890, 1, 1);
 
@@ -61,7 +67,7 @@ namespace PagoAgilFrba.Modelo.Utils
         }
 
         // Metodo para mostrar formatos invalidos
-        public void catchearErrorFormato(Exception ex, ToolTip toolTip, TextBox textBox)
+        public static void catchearErrorFormato(Exception ex, ToolTip toolTip, TextBox textBox)
         {
             if (ex is FormatException || ex is OverflowException)
             {

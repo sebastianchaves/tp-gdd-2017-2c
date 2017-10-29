@@ -108,7 +108,7 @@ namespace PagoAgilFrba.AbmCliente
 
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, dniTooltip, dniInput);
+                Utils.catchearErrorFormato(ex, dniTooltip, dniInput);
             }
         }
 

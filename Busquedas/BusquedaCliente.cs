@@ -19,7 +19,6 @@ namespace PagoAgilFrba.Busquedas
 
         // Atributos
         private ClienteDAO clienteDao;
-        private Utils utils;
         private Cliente clienteBuscado;
 
         // Constructores
@@ -27,7 +26,6 @@ namespace PagoAgilFrba.Busquedas
         {
             InitializeComponent();
 
-            this.utils = new Utils();
             this.clienteDao = new ClienteDAO();
             this.clienteBuscado = new Cliente();
         }
@@ -52,7 +50,7 @@ namespace PagoAgilFrba.Busquedas
             }
             catch (Exception ex)
             {
-                utils.catchearErrorFormato(ex, dniTooltip, dniInput);
+                Utils.catchearErrorFormato(ex, dniTooltip, dniInput);
                 return 0;
             }
         }
@@ -66,10 +64,10 @@ namespace PagoAgilFrba.Busquedas
         // Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            SqlDataReader resultados = this.clienteDao.findCliente(this.cargarNombre(), 
+            List<Cliente> resultados = this.clienteDao.findCliente(this.cargarNombre(), 
                                                         this.cargarApellido(), 
                                                         this.cargarDni());
-            if (!resultados.HasRows)
+            if (resultados.Count != 0)
             {
                 MessageBox.Show("No existe ningún cliente que concuerde con esos parámetros.");
             }

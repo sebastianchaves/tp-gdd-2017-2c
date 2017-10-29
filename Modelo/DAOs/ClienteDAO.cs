@@ -15,6 +15,23 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         // Atributos
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.CLIENTES";
+        private List<String> mapaCliente;
+
+        public ClienteDAO()
+        {
+            this.mapaCliente = new List<String>();
+
+            mapaCliente.Add(Utils.Utils.INT_TYPE);
+            mapaCliente.Add(Utils.Utils.INT_TYPE);
+            mapaCliente.Add(Utils.Utils.STRING_TYPE);
+            mapaCliente.Add(Utils.Utils.STRING_TYPE);
+            mapaCliente.Add(Utils.Utils.DATETIME_TYPE);
+            mapaCliente.Add(Utils.Utils.STRING_TYPE);
+            mapaCliente.Add(Utils.Utils.STRING_TYPE);
+            mapaCliente.Add(Utils.Utils.STRING_TYPE);
+            mapaCliente.Add(Utils.Utils.STRING_TYPE);
+            mapaCliente.Add(Utils.Utils.BINARY_TYPE);
+        }
 
         // Adds
         public void agregarCliente(Cliente cliente)
@@ -34,7 +51,7 @@ namespace PagoAgilFrba.Modelo.DAOs
         }
 
         // Finds
-        public SqlDataReader findCliente(string nombreCliente, string apellidoCliente, int dni)
+        public List<Cliente> findCliente(string nombreCliente, string apellidoCliente, int dni)
         {
             List<String> columns = new List<String>();
             List<String> conditions = new List<String>();
@@ -47,7 +64,11 @@ namespace PagoAgilFrba.Modelo.DAOs
             conditions.Add(nombreCliente);
             conditions.Add(dni.ToString());
 
-            return this.select(TABLA, ALL, this.armarWhere(columns, conditions));
+            List<List<String>> resultSet = this.select(TABLA, ALL, this.mapaCliente, this.armarWhere(columns, conditions));
+
+
+
+            return null;
         }
 
         // Updates

@@ -25,7 +25,7 @@ namespace PagoAgilFrba.Busquedas
         }
 
         // Metodos
-        public void cargarDataGridClientes(SqlDataReader clientes)
+        public void cargarDataGridClientes(List<Cliente> clientes)
         {
             DataTable resultadosClientes = new DataTable();
 
