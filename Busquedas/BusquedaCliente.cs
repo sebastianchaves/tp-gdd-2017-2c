@@ -45,12 +45,10 @@ namespace PagoAgilFrba.Busquedas
         {
             try
             {
-                int dni = Int32.Parse(dniInput.Text);
-                return dni;
+                return Int32.Parse(dniInput.Text);
             }
             catch (Exception ex)
             {
-                Utils.catchearErrorFormato(ex, dniTooltip, dniInput);
                 return 0;
             }
         }
@@ -67,7 +65,7 @@ namespace PagoAgilFrba.Busquedas
             List<Cliente> resultados = this.clienteDao.findCliente(this.cargarNombre(), 
                                                         this.cargarApellido(), 
                                                         this.cargarDni());
-            if (resultados.Count != 0)
+            if (resultados.Count == 0)
             {
                 MessageBox.Show("No existe ningún cliente que concuerde con esos parámetros.");
             }
