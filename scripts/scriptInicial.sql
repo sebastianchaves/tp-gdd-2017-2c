@@ -39,7 +39,7 @@ CREATE TABLE [ROCKET_DATABASE].[SUCURSALES](
 	id_sucursal int IDENTITY(1,1) primary key,
 	nombre varchar(255) not null,
 	direccion varchar(255),
-	codigo_postal varchar(10),
+	codigo_postal varchar(10) not null unique,
 	activo bit not null
 ) ON [PRIMARY]
 GO
