@@ -22,6 +22,7 @@ CREATE TABLE [ROCKET_DATABASE].[CLIENTES](
 	habilitado bit
 ) ON [PRIMARY]
 GO
+
 CREATE TABLE [ROCKET_DATABASE].[TIPO_DEVOLUCION](
 	id_tipo_devolucion int IDENTITY(1,1) primary key,
 	nombre varchar(255) not null,
@@ -145,7 +146,8 @@ GO
 CREATE TABLE [ROCKET_DATABASE].[ROLES](
 	id_rol int IDENTITY(1,1) primary key,
 	nombre varchar(255) not null,
-	descripcion varchar(255)
+	descripcion varchar(255),
+	habilitado bit not null
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[USUARIO_ROLES](

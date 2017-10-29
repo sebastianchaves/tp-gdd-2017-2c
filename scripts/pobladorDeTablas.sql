@@ -5,6 +5,21 @@ select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre],
 [Cliente-Fecha_Nac], Cliente_Mail, Cliente_Direccion, Cliente_Codigo_Postal, null, 1
 from GD2C2017.gd_esquema.Maestra;
 GO
+print 'Buscado clientes con el mail repetido...'
+update GD2C2017.rocket_database.clientes set mail = 'MAIL_INCORRECTO_' + CAST(dni AS varchar(20))
+where dni in (
+select min([Cliente-Dni]) as dniABorrar from
+(
+select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre],
+[Cliente-Fecha_Nac], Cliente_Mail, Cliente_Direccion, Cliente_Codigo_Postal, null as telefono, 1 as habilitado
+from GD2C2017.gd_esquema.Maestra) a
+group by a.Cliente_Mail
+having count(1)>1
+);
+print 'Aplicando constraint UNIQUE sobre el mail'
+ALTER TABLE GD2C2017.rocket_database.clientes
+ADD UNIQUE (mail);
+GO
 
 /*** insertando rubros ***/
 print 'Insertando rubros...'
