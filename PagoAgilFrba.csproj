@@ -267,11 +267,11 @@
       <DependentUpon>FrmSeleccionRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
+		<DependentUpon>FrmLogin.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="Busquedas\ResultadosBusqueda.resx">
       <DependentUpon>ResultadosBusqueda.cs</DependentUpon>
     </EmbeddedResource>
-	</EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\ListadoEstadistico.resx">
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </EmbeddedResource>

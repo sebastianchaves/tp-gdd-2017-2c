@@ -15,7 +15,7 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
 
         private String CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
-        private String connectionString = "Data Source=DANIEL-PC\\SQLSERVER2012;Initial Catalog=GD2C2017;User ID=sa;Password=gestiondedatos;";
+        private String connectionString = "Data Source=HP-G7\\SQLSERVER2012;Initial Catalog=GD2C2017;User ID=sa;Password=gestiondedatos;";
         public const String ALL = "*";
         private SqlConnection connection;
 
