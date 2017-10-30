@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagoAgilFrba.Modelo.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,27 +31,39 @@ namespace PagoAgilFrba.Modelo.DAOs
             tipos.Add(Utils.Utils.INT_TYPE);
 
             allColumns.Add("id");
-            allColumns.Add("dni");
-            allColumns.Add("apellido");
-            allColumns.Add("nombre");
-            allColumns.Add("fechaDeNacimiento");
-            allColumns.Add("mail");
-            allColumns.Add("direccion");
-            allColumns.Add("codigoPostal");
-            allColumns.Add("telefono");
-            allColumns.Add("habilitado");
+            allColumns.Add("numero");
+            allColumns.Add("fechaAlta");
+            allColumns.Add("total");
+            allColumns.Add("fechaVencimiento");
+            allColumns.Add("idCliente");
+            allColumns.Add("idEmpresa");
+            allColumns.Add("idRendicion");
 
-            //Nombre de columnas en la tabla de base de datos. (no siempre coinciden con los fields de la clase)
             allColumnsInDB.Add("id");
-            allColumnsInDB.Add("dni");
-            allColumnsInDB.Add("apellido");
-            allColumnsInDB.Add("nombre");
-            allColumnsInDB.Add("fecha_nac");
-            allColumnsInDB.Add("mail");
-            allColumnsInDB.Add("direccion");
-            allColumnsInDB.Add("codigo_postal");
-            allColumnsInDB.Add("telefono");
-            allColumnsInDB.Add("habilitado");
+            allColumnsInDB.Add("nro_factura");
+            allColumnsInDB.Add("fecha_alta");
+            allColumnsInDB.Add("total");
+            allColumnsInDB.Add("fecha_vencimiento");
+            allColumnsInDB.Add("id_rendicion");
+            allColumnsInDB.Add("id_cliente");
+            allColumnsInDB.Add("id_empresa");
+        }
+
+        // Inserts
+        public void agregarFactura(Factura factura)
+        {
+            List<String> valores = new List<String>();
+
+            valores.Add("");
+            valores.Add(factura.numero.ToString());
+            valores.Add(factura.fechaAlta.ToString());
+            valores.Add(factura.total.ToString());
+            valores.Add(factura.fechaVencimiento.ToString());
+            valores.Add(factura.idRendicion.ToString());
+            valores.Add(factura.idCliente.ToString());
+            valores.Add(factura.idEmpresa.ToString());
+
+            insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
     }
