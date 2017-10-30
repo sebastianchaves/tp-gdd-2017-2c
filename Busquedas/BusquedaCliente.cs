@@ -27,6 +27,7 @@ namespace PagoAgilFrba.Busquedas
             InitializeComponent();
 
             this.clienteDao = new ClienteDAO<Cliente>();
+            this.clienteDao.findCliente(null, "Palma", 0);
             this.clienteBuscado = new Cliente();
         }
 

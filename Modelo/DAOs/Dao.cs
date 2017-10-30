@@ -19,23 +19,6 @@ namespace PagoAgilFrba.Modelo.DAOs
         public const String ALL = "*";
         private SqlConnection connection;
 
-        private SqlDataReader select(String tabla, String[] parametros, String conditions)
-        {
-            String aplanados = "";
-            for (int i = 0; i < parametros.LongLength; i++)
-            {
-                String parametro = parametros[i];
-                aplanados += parametros[i];
-
-                if (i < parametros.LongLength - 1)
-                {
-                    aplanados += ", ";
-                }
-            }
-            //select(tabla, aplanados, conditions)
-            return null;
-        }
-
         protected List<List<String>> select(String tabla, String select, List<String> tipos, Condicion condicion) {
 
             using (this.connection = new SqlConnection(CONNECTION_STRING))
@@ -77,17 +60,17 @@ namespace PagoAgilFrba.Modelo.DAOs
                             case Utils.Utils.INT_TYPE:
                                 valor = reader.GetInt32(i).ToString();
                                 break;
+                            case Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE:
+                                valor = reader.GetInt32(i).ToString();
+                                break;
                             case Utils.Utils.DATETIME_TYPE:
                                 valor = reader.GetDateTime(i).ToString();
                                 break;
                             case Utils.Utils.DECIMAL_TYPE:
                                 valor = reader.GetDecimal(i).ToString();
                                 break;
-                            case Utils.Utils.BINARY_TYPE:
-                                SqlBinary binary = reader.GetSqlBinary(i);
-                                byte[] bb = binary.Value;
-                                byte bbb = bb[0];
-                                Boolean boolean = Convert.ToBoolean(bbb);
+                            case Utils.Utils.BIT_TYPE:
+                                Boolean boolean = reader.GetBoolean(i);
                                 valor = boolean.ToString();
                                 break;
                         }
@@ -108,6 +91,11 @@ namespace PagoAgilFrba.Modelo.DAOs
             if (this.connection != null) { this.connection.Close(); }
         }
 
+        private void closeConnections()
+        {
+            if (this.connection != null) { this.connection.Close(); }
+        }
+
         private String armarWhere(List<String> columns, List<String> conditions, List<String> tipos)
         {
             String where = "";
@@ -122,7 +110,11 @@ namespace PagoAgilFrba.Modelo.DAOs
                     {
                         where += columns.ElementAt(i) + " = '" + valor + "'";
                     }
-                    else
+                    else if (tipos.ElementAt(i).Equals(Utils.Utils.BIT_TYPE))
+                    {
+                        where += columns.ElementAt(i) + " = " + valor;
+                    }
+                    else 
                     {
                         where += columns.ElementAt(i) + " = " + valor;
                     }
@@ -158,7 +150,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             {
                 myFieldInfo.SetValue(entidad, Decimal.Parse(valor));
             }
-            if (tipo.Equals(Utils.Utils.INT_TYPE))
+            if (tipo.Equals(Utils.Utils.INT_TYPE) || tipo.Equals(Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE))
             {
                 myFieldInfo.SetValue(entidad, Int32.Parse(valor));
             }
@@ -166,7 +158,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             {
                 myFieldInfo.SetValue(entidad, DateTime.Parse(valor));
             }
-            if (tipo.Equals(Utils.Utils.BINARY_TYPE))
+            if (tipo.Equals(Utils.Utils.BIT_TYPE))
             {
                 myFieldInfo.SetValue(entidad, Boolean.Parse(valor));
             }
@@ -200,6 +192,65 @@ namespace PagoAgilFrba.Modelo.DAOs
                 }
             }
             return entities;
+        }
+
+        protected int insert(String tabla, List<String> columnas, List<String> tipos, List<String> valores) {
+            String insert = "INSERT INTO " + tabla + "(";
+            for (int i = 0; i < columnas.Count; i++)
+            {
+                if (!tipos.ElementAt(i).Equals(Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE))
+                {
+                    insert += columnas.ElementAt(i);
+                    if (i + 1 < columnas.Count && !tipos.ElementAt(i + 1).Equals(Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE))
+                    {
+                        insert += ", ";
+                    }
+                }
+            }
+            insert += ") VALUES (";
+
+            for (int i = 0; i < columnas.Count; i++)
+            {
+                if (!tipos.ElementAt(i).Equals(Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE))
+                {
+                    if (tipos.ElementAt(i).Equals(Utils.Utils.STRING_TYPE))
+                    {
+                        insert += "'" + valores.ElementAt(i) + "'";
+                    }
+                    else if (tipos.ElementAt(i).Equals(Utils.Utils.DATETIME_TYPE))
+                    {
+                        insert += "convert(datetime, '" + DateTime.Parse(valores.ElementAt(i)).ToString() + "')";
+                    }
+                    else if (tipos.ElementAt(i).Equals(Utils.Utils.BIT_TYPE))
+                    {
+                        Boolean b = Boolean.Parse(valores.ElementAt(i));
+                        if (b)
+                        {
+                            insert += "1";
+                        }
+                        else
+                        {
+                            insert += "0";
+                        }
+                    }
+                    else {
+                        insert += valores.ElementAt(i);
+                    }
+                    if (i + 1 < columnas.Count && !tipos.ElementAt(i + 1).Equals(Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE))
+                    {
+                        insert += ", ";
+                    }
+                }
+            }
+            insert += ") ";
+            using (this.connection = new SqlConnection(connectionString))
+            {
+                this.connection.Open();
+                SqlCommand command = new SqlCommand(insert, connection);
+                int result = command.ExecuteNonQuery();
+                closeConnections();
+                return result;
+            }
         }
 
     }
