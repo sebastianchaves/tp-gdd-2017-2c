@@ -1,4 +1,5 @@
 ﻿using PagoAgilFrba.Busquedas;
+using PagoAgilFrba.Model;
 using PagoAgilFrba.Modelo.Entidades;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace PagoAgilFrba.RegistroPago
         public CargaFactura()
         {
             InitializeComponent();
+            this.nuevaFactura = new Factura();
         }
 
         // Metodos
@@ -37,7 +39,10 @@ namespace PagoAgilFrba.RegistroPago
             using (BusquedaCliente busquedaClienteForm = new BusquedaCliente())
             {
                 busquedaClienteForm.ShowDialog(this);
-                nuevaFactura.idCliente = busquedaClienteForm.getIdClienteEncontrado();
+
+                Cliente clienteEncontrado = busquedaClienteForm.getClienteEncontrado();
+                this.nuevaFactura.idCliente = clienteEncontrado.id;
+                this.clienteInput.Text = clienteEncontrado.nombre;
             }
         }
 

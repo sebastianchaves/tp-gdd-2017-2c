@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.RegistroPago
 {
-    public partial class RegistroPago : Form
+    public partial class RegistroPagoForm : Form
     {
 
         // Atributos
         private DataTable tablaFacturas;
 
         // Constructores
-        public RegistroPago()
+        public RegistroPagoForm()
         {
             InitializeComponent();
             this.iniciarFacturasGrid();

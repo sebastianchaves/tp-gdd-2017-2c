@@ -4,11 +4,13 @@ using PagoAgilFrba.AbmRol;
 using PagoAgilFrba.AbmSucursal;
 using PagoAgilFrba.Busquedas;
 using PagoAgilFrba.Modelo.DAOs;
+using PagoAgilFrba;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PagoAgilFrba.RegistroPago;
 
 namespace PagoAgilFrba
 {
@@ -22,7 +24,7 @@ namespace PagoAgilFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BusquedaCliente());
+            Application.Run(new RegistroPagoForm());
         }
     }
 }

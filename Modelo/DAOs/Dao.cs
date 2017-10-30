@@ -38,7 +38,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         protected List<List<String>> select(String tabla, String select, List<String> tipos, Condicion condicion) {
 
-            using (this.connection = new SqlConnection(connectionString))
+            using (this.connection = new SqlConnection(CONNECTION_STRING))
             {
                 String selectQuery = "SELECT " + select + " FROM " + tabla;
                 String condicionString = armarWhere(condicion.getColumns(), condicion.getConditions(), condicion.getTipos());

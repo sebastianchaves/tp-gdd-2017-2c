@@ -53,7 +53,8 @@ namespace PagoAgilFrba.Busquedas
             var clienteIndex = resultadosGrid.SelectedCells[0].RowIndex;
             this.clienteSeleccionado = new Cliente();
 
-            this.clienteSeleccionado.dni = Int32.Parse(resultadosGrid.Rows[clienteIndex].Cells[0].Value.ToString());
+            this.clienteSeleccionado = ()resultadosGrid.Rows[clienteIndex];
+            this.Close();
         }
 
         // Boton Volver

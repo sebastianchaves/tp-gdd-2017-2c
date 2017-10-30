@@ -103,6 +103,7 @@
             // 
             // clienteInput
             // 
+            this.clienteInput.Enabled = false;
             this.clienteInput.Location = new System.Drawing.Point(6, 25);
             this.clienteInput.Name = "clienteInput";
             this.clienteInput.Size = new System.Drawing.Size(227, 20);
@@ -110,6 +111,7 @@
             // 
             // empresaInput
             // 
+            this.empresaInput.Enabled = false;
             this.empresaInput.Location = new System.Drawing.Point(6, 25);
             this.empresaInput.Name = "empresaInput";
             this.empresaInput.Size = new System.Drawing.Size(227, 20);
@@ -131,6 +133,7 @@
             // 
             // sucursalInput
             // 
+            this.sucursalInput.Enabled = false;
             this.sucursalInput.Location = new System.Drawing.Point(127, 193);
             this.sucursalInput.Name = "sucursalInput";
             this.sucursalInput.Size = new System.Drawing.Size(214, 20);

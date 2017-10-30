@@ -53,9 +53,9 @@ namespace PagoAgilFrba.Busquedas
             }
         }
 
-        public int getIdClienteEncontrado()
+        public Cliente getClienteEncontrado()
         {
-            return clienteBuscado.dni;
+            return this.clienteBuscado;
         }
 
         // Eventos
@@ -73,8 +73,8 @@ namespace PagoAgilFrba.Busquedas
             {
                 using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda())
                 {
-                    resultadosForm.ShowDialog(this);
                     resultadosForm.cargarDataGridClientes(resultados);
+                    resultadosForm.ShowDialog(this);
                     this.clienteBuscado = resultadosForm.getClienteSeleccionado();
                 }
                 this.Close();
