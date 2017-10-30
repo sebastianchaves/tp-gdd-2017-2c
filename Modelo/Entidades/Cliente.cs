@@ -9,7 +9,7 @@ namespace PagoAgilFrba.Model
    
     public class Cliente
     {
-        // Atributos
+
         public int id;
         public int dni;
         public String apellido;
@@ -20,11 +20,6 @@ namespace PagoAgilFrba.Model
         public String codigoPostal;
         public String telefono;
         public Boolean habilitado;
-
-        // Constructores
-        public Cliente()
-        {
-        }
 
     }
 

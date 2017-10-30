@@ -8,51 +8,75 @@ using System.Threading.Tasks;
 namespace PagoAgilFrba.Modelo.DAOs
 {
 
-    class EmpresaDAO
+    class EmpresaDAO<T>: Dao<T>
     {
-        // Adds
+
+        private const String TABLA = "GD2C2017.ROCKET_DATABASE.EMPRESAS";
+        private List<String> tipos;
+        private List<String> allColumns;
+        private List<String> allColumnsInDB;
+
+        public EmpresaDAO()
+        {
+            this.tipos = new List<String>();
+            this.allColumns = new List<String>();
+            this.allColumnsInDB = new List<String>();
+
+            tipos.Add(Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.INT_TYPE);
+            tipos.Add(Utils.Utils.BIT_TYPE);
+
+            allColumns.Add("id");
+            allColumns.Add("cuit");
+            allColumns.Add("nombre");
+            allColumns.Add("direccion");
+            allColumns.Add("idRubro");
+            allColumns.Add("activo");
+
+            allColumnsInDB.Add("id");
+            allColumnsInDB.Add("cuit");
+            allColumnsInDB.Add("nombre");
+            allColumnsInDB.Add("direccion");
+            allColumnsInDB.Add("id_rubro");
+            allColumnsInDB.Add("activo");
+        }
+
+        // Inserts
         public void agregarEmpresa(Empresa empresa)
         {
+            List<String> valores = new List<String>();
 
+            valores.Add("");
+            valores.Add(empresa.cuit);
+            valores.Add(empresa.nombre);
+            valores.Add(empresa.direccion);
+            valores.Add(empresa.idRubro.ToString());
+            valores.Add(empresa.activo.ToString());
+
+            insert(TABLA, allColumnsInDB, tipos, valores);
+        }
+
+        // Selects
+        public List<T> findEmpresa(String nombreEmpresa, String cuitEmpresa, String rubroEmpresa)
+        {
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("nombre", nombreEmpresa, Utils.Utils.STRING_TYPE);
+            condicion.agregarCondicion("cuit", cuitEmpresa, Utils.Utils.STRING_TYPE);
+            
+            // TODO, problemassssssss
+            // condicion.agregarCondicion("rubro_empresa", rubroEmpresa, Utils.Utils.STRING_TYPE);
+
+            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
         }
 
         // Updates
         public void updateEmpresa(Empresa empresaUpdate)
         {
 
-        }
-
-        // Exists
-        public Boolean existeCuit(int cuit)
-        {
-            return false;
-        }
-
-        // Finds
-        public List<String> findRubrosDisponibles()
-        {
-            List<String> rubros = new List<String>();
-            
-            // TODO es para probar
-            rubros.Add("RUBRO_PRUEBA_1");
-            rubros.Add("RUBRO_PRUEBA_2");
-            rubros.Add("RUBRO_PRUEBA_3");
-            rubros.Add("RUBRO_PRUEBA_4");
-
-            return rubros;
-        }
-
-        public IList<Empresa> findEmpresa(String nombreEmpresa, int cuitEmpresa, String rubroEmpresa)
-        {
-            IList<Empresa> resultados = new List<Empresa>();
-
-            // TODO para probar
-            resultados.Add(new Empresa("NOMBRE_PRUEBA_1", cuitEmpresa, "RUBRO_PRUEBA_1", "DIRECCION_PRUEBA_1", true));
-            resultados.Add(new Empresa("NOMBRE_PRUEBA_2", cuitEmpresa, "RUBRO_PRUEBA_2", "DIRECCION_PRUEBA_2", false));
-            resultados.Add(new Empresa("NOMBRE_PRUEBA_3", cuitEmpresa, "RUBRO_PRUEBA_3", "DIRECCION_PRUEBA_3", true));
-            resultados.Add(new Empresa("NOMBRE_PRUEBA_4", cuitEmpresa, "RUBRO_PRUEBA_4", "DIRECCION_PRUEBA_4", false));
-
-            return resultados;
         }
 
     }

@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    class Empresa
+    class Rubro
     {
 
         public int id;
-        public String cuit;
         public String nombre;
-        public String direccion;
-        public int idRubro;
-        public Boolean activo;
+        public String descripcion;
 
     }
-
 }
