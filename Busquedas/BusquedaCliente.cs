@@ -17,55 +17,31 @@ namespace PagoAgilFrba.Busquedas
     public partial class BusquedaCliente : Form
     {
 
-        // Atributos
         private ClienteDAO<Cliente> clienteDao;
         private Cliente clienteBuscado;
+        private Cliente clienteEncontrado;
 
-        // Constructores
         public BusquedaCliente()
         {
-            InitializeComponent();
-
+            InitializeComponent();         
             this.clienteDao = new ClienteDAO<Cliente>();
-
             this.clienteBuscado = new Cliente();
+            this.clienteEncontrado = new Cliente();
         }
 
-        // Metodos
-        private String cargarNombre()
+        public Cliente getClienteEncontrado()
         {
-            return nombreInput.Text;
-        }
-
-        private String cargarApellido()
-        {
-            return apellidoInput.Text;
-        }
-
-        private int cargarDni()
-        {
-            try
-            {
-                return Int32.Parse(dniInput.Text);
-            }
-            catch (Exception ex)
-            {
-                return 0;
-            }
-        }
-
-        public int getIdClienteEncontrado()
-        {
-            return clienteBuscado.dni;
+            return this.clienteEncontrado;
         }
 
         // Eventos
         // Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            List<Cliente> resultados = this.clienteDao.findCliente(this.cargarNombre(), 
-                                                        this.cargarApellido(), 
-                                                        this.cargarDni());
+            List<Cliente> resultados = this.clienteDao.findCliente(this.clienteBuscado.nombre, 
+                                                        this.clienteBuscado.apellido, 
+                                                        this.clienteBuscado.dni);
+
             if (resultados.Count == 0)
             {
                 MessageBox.Show("No existe ningún cliente que concuerde con esos parámetros.");
@@ -74,9 +50,9 @@ namespace PagoAgilFrba.Busquedas
             {
                 using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda())
                 {
-                    resultadosForm.ShowDialog(this);
                     resultadosForm.cargarDataGridClientes(resultados);
-                    this.clienteBuscado = resultadosForm.getClienteSeleccionado();
+                    resultadosForm.ShowDialog(this);
+                    this.clienteEncontrado = resultadosForm.getClienteSeleccionado();
                 }
                 this.Close();
             }
@@ -87,6 +63,32 @@ namespace PagoAgilFrba.Busquedas
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // Carga Cliente
+        // Nombre
+        private void nombreInput_Leave(object sender, EventArgs e)
+        {
+            this.clienteBuscado.nombre = this.nombreInput.Text;
+        }
+
+        // Apellido
+        private void apellidoInput_Leave(object sender, EventArgs e)
+        {
+            this.clienteBuscado.apellido = this.apellidoInput.Text;
+        }
+
+        // DNI
+        private void dniInput_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                this.clienteBuscado.dni = Int32.Parse(dniInput.Text);
+            }
+            catch (Exception ex)
+            {
+                Utils.catchearErrorFormato(ex, dniTooltip, dniInput);
+            }
         }
     
     }

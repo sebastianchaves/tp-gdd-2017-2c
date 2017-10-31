@@ -18,7 +18,7 @@ namespace PagoAgilFrba.Busquedas
 
         // Atributos
         private IList<Sucursal> sucursalesEncontradas;
-        private SucursalDAO sucursalDao;
+        private SucursalDAO<Sucursal> sucursalDao;
         private Utils utils;
         private DataGridView resultadosGrid;
         private String nombreABuscar;
@@ -31,7 +31,7 @@ namespace PagoAgilFrba.Busquedas
             InitializeComponent();
 
             this.utils = new Utils();
-            this.sucursalDao = new SucursalDAO();
+            this.sucursalDao = new SucursalDAO<Sucursal>();
             this.resultadosGrid = resultadosGrid;
         }
 
@@ -57,7 +57,7 @@ namespace PagoAgilFrba.Busquedas
         {
             this.sucursalesEncontradas = this.sucursalDao.findSucursal(this.nombreABuscar,
                                                     this.direccionABuscar,
-                                                    this.codigoPostalABuscar);
+                                                    this.codigoPostalABuscar.ToString());
             if (sucursalesEncontradas.Count() == 0)
             {
                 MessageBox.Show("No existe ninguna sucursal que concuerde con esos parámetros.");

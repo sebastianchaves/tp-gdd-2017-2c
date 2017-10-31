@@ -7,41 +7,69 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.DAOs
 {
-    class SucursalDAO
+    class SucursalDAO<T> : Dao<T>
     {
 
-        // Adds
-        public void agregarSucursal(Sucursal nuevaSucursal)
-        {
+        private const String TABLA = "GD2C2017.ROCKET_DATABASE.SUCURSALES";
+        private List<String> tipos;
+        private List<String> allColumns;
+        private List<String> allColumnsInDB;
 
+        public SucursalDAO()
+        {
+            this.tipos = new List<String>();
+            this.allColumns = new List<String>();
+            this.allColumnsInDB = new List<String>();
+
+            tipos.Add(Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.BIT_TYPE);
+
+            allColumns.Add("id");
+            allColumns.Add("nombre");
+            allColumns.Add("direccion");
+            allColumns.Add("codigoPostal");
+            allColumns.Add("activo");
+
+            allColumnsInDB.Add("id");
+            allColumnsInDB.Add("nombre");
+            allColumnsInDB.Add("direccion");
+            allColumnsInDB.Add("codigo_postal");
+            allColumnsInDB.Add("activo");
+        }
+
+        // Inserts
+        public void agregarSucursal(Sucursal sucursal)
+        {
+            List<String> valores = new List<String>();
+
+            valores.Add("");
+            valores.Add(sucursal.nombre);
+            valores.Add(sucursal.direccion);
+            valores.Add(sucursal.codigoPostal);
+            valores.Add(sucursal.activo.ToString());
+
+            insert(TABLA, allColumnsInDB, tipos, valores);
+        }
+
+        // Selects
+        public List<T> findSucursal(String nombreSucursal, String direccionSucursal, String codigoPostalSucursal)
+        {
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("nombre", nombreSucursal, Utils.Utils.STRING_TYPE);
+            condicion.agregarCondicion("direccion", direccionSucursal, Utils.Utils.STRING_TYPE);
+            condicion.agregarCondicion("codigo_postal", codigoPostalSucursal, Utils.Utils.STRING_TYPE);
+
+            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
         }
 
         // Updates
         public void updateSucursal(Sucursal sucursalModificada)
         {
 
-        }
-
-        // Exists
-        public Boolean existeCodigoPostal(int codigoPostal)
-        {
-            return false;
-        }
-
-        // Finds
-        public IList<Sucursal> findSucursal(String nombreSucursal, 
-                                            String direccionSucursal, 
-                                            int codigoPostalSucursal)
-        {
-            IList<Sucursal> resultados = new List<Sucursal>();
-
-            // TODO para probar
-            resultados.Add(new Sucursal("NOMBRE_PRUEBA_1", "DIRECCION_PRUEBA_1", 1, true));
-            resultados.Add(new Sucursal("NOMBRE_PRUEBA_2", "DIRECCION_PRUEBA_2", 2, false));
-            resultados.Add(new Sucursal("NOMBRE_PRUEBA_3", "DIRECCION_PRUEBA_3", 3, true));
-            resultados.Add(new Sucursal("NOMBRE_PRUEBA_4", "DIRECCION_PRUEBA_4", 4, false));
-
-            return resultados;
         }
 
     }

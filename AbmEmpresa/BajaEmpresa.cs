@@ -18,20 +18,20 @@ namespace PagoAgilFrba.AbmEmpresa
     {
 
         // Atributos
-        private EmpresaDAO empresaDao;
+        private EmpresaDAO<Empresa> empresaDao;
         private Empresa empresaSeleccionada;
 
         // Constructores
         public BajaEmpresa()
         {
             InitializeComponent();
-            this.empresaDao = new EmpresaDAO();
+            this.empresaDao = new EmpresaDAO<Empresa>();
         }
 
         // Metodos
         private void deshabilitarEmpresa()
         {
-            this.empresaSeleccionada.habilitada = false;
+            this.empresaSeleccionada.activo = false;
             this.empresaDao.updateEmpresa(this.empresaSeleccionada);
             this.empresaSeleccionada = new Empresa();
         }
@@ -55,7 +55,7 @@ namespace PagoAgilFrba.AbmEmpresa
             var empresaIndex = resultadosGrid.SelectedCells[0].RowIndex;
             this.empresaSeleccionada = new Empresa();
             int cuitSeleccionado = Int32.Parse(resultadosGrid.Rows[empresaIndex].Cells[1].Value.ToString());
-            this.empresaSeleccionada = this.empresaDao.findEmpresa("", cuitSeleccionado, "").ElementAt(empresaIndex);
+            this.empresaSeleccionada = this.empresaDao.findEmpresa("", cuitSeleccionado.ToString(), "").ElementAt(empresaIndex);
             this.deshabilitarEmpresa();
         }
 

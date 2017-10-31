@@ -193,12 +193,19 @@
     <Compile Include="Modelo\DAOs\ClienteDAO.cs" />
     <Compile Include="Modelo\DAOs\Dao.cs" />
     <Compile Include="Modelo\DAOs\EmpresaDAO.cs" />
+    <Compile Include="Modelo\DAOs\FacturaDAO.cs" />
+    <Compile Include="Modelo\DAOs\FuncionalidadDAO.cs" />
+    <Compile Include="Modelo\DAOs\RolDAO.cs" />
+    <Compile Include="Modelo\DAOs\RubroDAO.cs" />
     <Compile Include="Modelo\DAOs\SucursalDAO.cs" />
     <Compile Include="Modelo\Entidades\Cliente.cs" />
     <Compile Include="Modelo\Entidades\Empresa.cs" />
     <Compile Include="Modelo\Entidades\Factura.cs" />
+    <Compile Include="Modelo\Entidades\Funcionalidad.cs" />
     <Compile Include="Modelo\Entidades\ItemFactura.cs" />
     <Compile Include="Modelo\Entidades\Pago.cs" />
+    <Compile Include="Modelo\Entidades\Rol.cs" />
+    <Compile Include="Modelo\Entidades\Rubro.cs" />
     <Compile Include="Modelo\Entidades\Sucursal.cs" />
     <Compile Include="Modelo\Utils\Utils.cs" />
     <Compile Include="Program.cs" />
@@ -209,11 +216,11 @@
     <Compile Include="RegistroPago\CargaFactura.Designer.cs">
       <DependentUpon>CargaFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistroPago\RegistroPago.cs">
+    <Compile Include="RegistroPago\RegistroPagoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistroPago\RegistroPago.Designer.cs">
-      <DependentUpon>RegistroPago.cs</DependentUpon>
+    <Compile Include="RegistroPago\RegistroPagoForm.Designer.cs">
+      <DependentUpon>RegistroPagoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Rendicion\Rendicion.cs">
       <SubType>Form</SubType>
@@ -305,8 +312,8 @@
     <EmbeddedResource Include="RegistroPago\CargaFactura.resx">
       <DependentUpon>CargaFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistroPago\RegistroPago.resx">
-      <DependentUpon>RegistroPago.cs</DependentUpon>
+    <EmbeddedResource Include="RegistroPago\RegistroPagoForm.resx">
+      <DependentUpon>RegistroPagoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rendicion\Rendicion.resx">
       <DependentUpon>Rendicion.cs</DependentUpon>

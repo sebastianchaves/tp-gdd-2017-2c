@@ -18,7 +18,7 @@ namespace PagoAgilFrba.AbmSucursal
     {
 
         // Atributos
-        private SucursalDAO sucursalDao;
+        private SucursalDAO<Sucursal> sucursalDao;
         private Sucursal sucursalSeleccionada;
 
         // Constructores
@@ -26,14 +26,14 @@ namespace PagoAgilFrba.AbmSucursal
         {
             InitializeComponent();
 
-            this.sucursalDao = new SucursalDAO();
+            this.sucursalDao = new SucursalDAO<Sucursal>();
             Utils.iniciarGrids(this.resultadosGrid);
         }
 
         // Metodos
         private void deshabilitarSucursal()
         {
-            this.sucursalSeleccionada.habilitada = false;
+            this.sucursalSeleccionada.activo = false;
             this.sucursalDao.updateSucursal(this.sucursalSeleccionada);
             this.sucursalSeleccionada = new Sucursal();
             MessageBox.Show("Sucursal deshabilitada!");
@@ -58,7 +58,7 @@ namespace PagoAgilFrba.AbmSucursal
             var sucursalIndex = resultadosGrid.SelectedCells[0].RowIndex;
             this.sucursalSeleccionada = new Sucursal();
             int codigoPostalSeleccionado = Int32.Parse(resultadosGrid.Rows[sucursalIndex].Cells[2].Value.ToString());
-            this.sucursalSeleccionada = this.sucursalDao.findSucursal("", "", codigoPostalSeleccionado).ElementAt(sucursalIndex);
+            this.sucursalSeleccionada = this.sucursalDao.findSucursal("", "", codigoPostalSeleccionado.ToString()).ElementAt(sucursalIndex);
             this.deshabilitarSucursal();
         }
 

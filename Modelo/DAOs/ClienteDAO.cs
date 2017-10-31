@@ -11,11 +11,9 @@ using System.Threading.Tasks;
 namespace PagoAgilFrba.Modelo.DAOs
 {
 
-    // TODO agregarCliente, existeDni, existeMail
     class ClienteDAO<T> : Dao<T>
     {
 
-        // Atributos
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.CLIENTES";
         private List<String> tipos;
         private List<String> allColumns;
@@ -23,7 +21,6 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         public ClienteDAO()
         {
-            
             this.tipos = new List<String>();
             this.allColumns = new List<String>();
             this.allColumnsInDB = new List<String>();
@@ -66,10 +63,9 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumnsInDB.Add("codigo_postal");
             allColumnsInDB.Add("telefono");
             allColumnsInDB.Add("habilitado");
-
         }
 
-        // Adds
+        // Inserts
         public void agregarCliente(Cliente cliente)
         {
             List<String> valores = new List<String>();
@@ -89,19 +85,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
-        // Exists
-        public Boolean existeDni(int dni)
-        {
-            return false;
-        }
-
-        public Boolean existeMail(String mail)
-        {
-            //
-            return false;
-        }
-
-        // Finds
+        // Selects
         public List<T> findCliente(string nombreCliente, string apellidoCliente, int dni)
         {
             Condicion condicion = new Condicion();
@@ -119,7 +103,16 @@ namespace PagoAgilFrba.Modelo.DAOs
         // Updates
         public void updateCliente(Cliente clienteUpdate)
         {
+            Condicion actualizacion = new Condicion();
+            actualizacion.agregarCondicion("apellido", "nuevoApellido", Utils.Utils.STRING_TYPE);
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("dni", 1231, Utils.Utils.INT_TYPE);
+            update(TABLA, actualizacion, condicion);
+        }
 
+        public List<T> obtenerCLientesPorTelefono(String telefono)
+        {
+            return this.obtenerPorQueryGenerica("select * from " + TABLA + " where codigo_postal = " + telefono, allColumns, tipos);
         }
 
     }

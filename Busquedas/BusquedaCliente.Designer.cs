@@ -123,6 +123,7 @@
             this.dniInput.Name = "dniInput";
             this.dniInput.Size = new System.Drawing.Size(187, 20);
             this.dniInput.TabIndex = 2;
+            this.dniInput.Leave += new System.EventHandler(this.dniInput_Leave);
             // 
             // apellidoInput
             // 
@@ -130,6 +131,7 @@
             this.apellidoInput.Name = "apellidoInput";
             this.apellidoInput.Size = new System.Drawing.Size(187, 20);
             this.apellidoInput.TabIndex = 1;
+            this.apellidoInput.Leave += new System.EventHandler(this.apellidoInput_Leave);
             // 
             // nombreInput
             // 
@@ -137,6 +139,7 @@
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(187, 20);
             this.nombreInput.TabIndex = 0;
+            this.nombreInput.Leave += new System.EventHandler(this.nombreInput_Leave);
             // 
             // BusquedaCliente
             // 

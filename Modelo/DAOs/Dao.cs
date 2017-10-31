@@ -15,13 +15,13 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
 
         private String CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
-        private String connectionString = "Data Source=HP-G7\\SQLSERVER2012;Initial Catalog=GD2C2017;User ID=sa;Password=gestiondedatos;";
+        private String connectionString = "Data Source=DANIEL-PC\\SQLSERVER2012;Initial Catalog=GD2C2017;User ID=sa;Password=gestiondedatos;";
         public const String ALL = "*";
         private SqlConnection connection;
 
         protected List<List<String>> select(String tabla, String select, List<String> tipos, Condicion condicion) {
 
-            using (this.connection = new SqlConnection(connectionString))
+            using (this.connection = new SqlConnection(CONNECTION_STRING))
             {
                 String selectQuery = "SELECT " + select + " FROM " + tabla;
                 String condicionString = armarWhere(condicion.getColumns(), condicion.getConditions(), condicion.getTipos());
@@ -70,8 +70,7 @@ namespace PagoAgilFrba.Modelo.DAOs
                                 valor = reader.GetDecimal(i).ToString();
                                 break;
                             case Utils.Utils.BIT_TYPE:
-                                byte binary = reader.GetByte(i);
-                                Boolean boolean = Convert.ToBoolean(binary);
+                                Boolean boolean = reader.GetBoolean(i);
                                 valor = boolean.ToString();
                                 break;
                         }
@@ -244,7 +243,7 @@ namespace PagoAgilFrba.Modelo.DAOs
                 }
             }
             insert += ") ";
-            using (this.connection = new SqlConnection(connectionString))
+            using (this.connection = new SqlConnection(CONNECTION_STRING))
             {
                 this.connection.Open();
                 SqlCommand command = new SqlCommand(insert, connection);
@@ -253,6 +252,107 @@ namespace PagoAgilFrba.Modelo.DAOs
                 return result;
             }
         }
+        public int update(String tabla, Condicion actualizacion, Condicion condicion)
+        {
+            if (hayMasElementosNoNulos(actualizacion.getConditions(), -1))
+            {
+                String updateString = "update " + tabla + " set ";
+                for (int i = 0; i < actualizacion.getColumns().Count; i++)
+                {
+                    String columna = actualizacion.getColumns().ElementAt(i);
+                    String valor = actualizacion.getConditions().ElementAt(i);
+                    String tipo = actualizacion.getTipos().ElementAt(i);
+                    if (valor != null && !valor.Equals(""))
+                    {
+                        if (tipo.Equals(Utils.Utils.STRING_TYPE))
+                        {
+                            updateString += columna + " = '" + valor + "'";
+                        }
+                        else if (tipo.Equals(Utils.Utils.DATETIME_TYPE))
+                        {
+                            updateString += columna + " = convert(datetime, '" + valor + "')";
+                        }
+                        else
+                        {
+                            updateString += columna + " = " + valor;
+                        }
+                    }
+                    if (hayMasElementosNoNulos(actualizacion.getConditions(), i))
+                    {
+                        updateString += ", ";
+                    }
+                }
+                if (hayMasElementosNoNulos(condicion.getConditions(), -1))
+                {
+                    updateString += " where " + armarWhere(condicion.getColumns(), condicion.getConditions(), condicion.getTipos());
+                }
+                using (this.connection = new SqlConnection(connectionString))
+                {
+                    this.connection.Open();
+                    SqlCommand command = new SqlCommand(updateString, connection);
+                    int result = command.ExecuteNonQuery();
+                    closeConnections();
+                    return result;
+                }
+            }
+            return -1;
+        }
 
+        protected List<T> obtenerPorQueryGenerica(String query, List<String> allColumns, List<String> tipos)
+        {
+            using (this.connection = new SqlConnection(connectionString))
+            {
+
+                this.connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                SqlDataReader reader = command.ExecuteReader();
+                List<List<String>> resultSet = new List<List<String>>();
+
+                while (reader.Read())
+                {
+                    List<String> registro = new List<string>();
+
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        String valor = "";
+                        switch (tipos.ElementAt(i))
+                        {
+                            case Utils.Utils.STRING_TYPE:
+                                if (!reader.IsDBNull(i))
+                                {
+                                    valor = reader.GetString(i);
+                                }
+                                else
+                                {
+                                    valor = "";
+                                }
+                                break;
+                            case Utils.Utils.INT_TYPE:
+                                valor = reader.GetInt32(i).ToString();
+                                break;
+                            case Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE:
+                                valor = reader.GetInt32(i).ToString();
+                                break;
+                            case Utils.Utils.DATETIME_TYPE:
+                                valor = reader.GetDateTime(i).ToString();
+                                break;
+                            case Utils.Utils.DECIMAL_TYPE:
+                                valor = reader.GetDecimal(i).ToString();
+                                break;
+                            case Utils.Utils.BIT_TYPE:
+                                Boolean boolean = reader.GetBoolean(i);
+                                valor = boolean.ToString();
+                                break;
+                        }
+                        registro.Add(valor);
+                    }
+                    resultSet.Add(registro);
+                }
+                closeConnections(reader);
+                return getEntities(resultSet, allColumns, tipos);
+            }
+        }
     }
 }

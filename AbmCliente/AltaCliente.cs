@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,15 +15,12 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmCliente
 {
-
     public partial class AltaCliente : Form
     {
 
-        // Variables
         private ClienteDAO<Cliente> clienteDAO;
         private Cliente nuevoCliente;
 
-        // Constructores
         public AltaCliente()
         {
             InitializeComponent();
@@ -30,29 +28,34 @@ namespace PagoAgilFrba.AbmCliente
             this.clienteDAO = new ClienteDAO<Cliente>();
         }
 
-        // Metodos
         private void agregarCliente()
         {
-
-            nuevoCliente.habilitado = true;
-
-            if (camposCompletos())
+            try
             {
-                if (Utils.fechaValida(nuevoCliente.fechaDeNacimiento))
+                this.nuevoCliente.habilitado = true;
+
+                if (camposCompletos())
                 {
-                    clienteDAO.agregarCliente(nuevoCliente);
-                    MessageBox.Show("Cliente agregado!");
+                    if (Utils.fechaValida(nuevoCliente.fechaDeNacimiento))
+                    {
+                        this.cargarDireccion();
+                        clienteDAO.agregarCliente(nuevoCliente);
+                        MessageBox.Show("Cliente agregado!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fecha incorrecta.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Fecha incorrecta.");
+                    MessageBox.Show("Complete los campos faltantes.");
                 }
             }
-            else
+            catch (SqlException)
             {
-                MessageBox.Show("Complete los campos faltantes.");
+                MessageBox.Show("Ya existe ese mail.");
             }
-
         }
 
         private Boolean camposCompletos()
@@ -68,11 +71,30 @@ namespace PagoAgilFrba.AbmCliente
                    (codigoPostalInput.Text != "");
         }
 
-        // Eventos
+        private void cargarDireccion()
+        {
+            String direccion = "";
+
+            direccion += this.calleInput.Text + " " + this.numeroDomicilioInput.Text
+                            + " " + this.localidadInput.Text;
+
+            if (this.pisoInput.Text != "")
+            {
+                direccion += " Piso: " + this.pisoInput.Text;
+            }
+
+            if (this.departamentoInput.Text != "")
+            {
+                direccion += " Dto: " + this.departamentoInput.Text;
+            }
+
+            this.nuevoCliente.direccion = direccion;
+        }
+
         // Boton Aceptar
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            agregarCliente();
+            this.agregarCliente();
             Utils.clearTextBoxes(this);
             this.nuevoCliente = new Cliente();
         }
@@ -101,25 +123,11 @@ namespace PagoAgilFrba.AbmCliente
         {
             try
             {
-                tryCargarDni(dniInput.Text);
+                this.nuevoCliente.dni = Int32.Parse(dniInput.Text);
             }
-
             catch (Exception ex)
             {
                 Utils.catchearErrorFormato(ex, dniTooltip, dniInput);
-            }
-        }
-
-        private void tryCargarDni(String dni)
-        {
-            if (clienteDAO.existeDni(Int32.Parse(dni)))
-            {
-                dniTooltip.Show("Ya existe el DNI.", dniInput, 1500);
-                dniInput.Clear();
-            }
-            else
-            {
-                nuevoCliente.dni = Int32.Parse(dni);
             }
         }
 
@@ -146,15 +154,7 @@ namespace PagoAgilFrba.AbmCliente
         // Mail
         private void mailInput_Leave(object sender, EventArgs e)
         {
-            if (clienteDAO.existeMail(mailInput.Text))
-            {
-                mailTooltip.Show("Ya existe ese mail.", mailInput, 1500);
-                mailInput.Clear();
-            }
-            else
-            {
-                nuevoCliente.mail = mailInput.Text;
-            }
+            nuevoCliente.mail = mailInput.Text;
         }
 
         // Codigo Postal

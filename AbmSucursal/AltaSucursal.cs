@@ -18,7 +18,7 @@ namespace PagoAgilFrba.AbmSucursal
 
         // Atributos
         private Sucursal nuevaSucursal;
-        private SucursalDAO sucursalDao;
+        private SucursalDAO<Sucursal> sucursalDao;
         private Utils utils;
 
         // Constructores
@@ -27,13 +27,13 @@ namespace PagoAgilFrba.AbmSucursal
             InitializeComponent();
 
             this.nuevaSucursal = new Sucursal();
-            this.sucursalDao = new SucursalDAO();
+            this.sucursalDao = new SucursalDAO<Sucursal>();
         }
 
         // Metodos
         private void agregarSucursal()
         {
-            this.nuevaSucursal.habilitada = true;
+            this.nuevaSucursal.activo = true;
 
             if (this.camposCompletos())
             {
@@ -85,24 +85,11 @@ namespace PagoAgilFrba.AbmSucursal
         {
             try
             {
-                this.tryCargarCodigoPostal(this.codigoPostalInput.Text);
+                this.nuevaSucursal.codigoPostal = this.codigoPostalInput.Text;
             }
             catch (Exception ex)
             {
                 Utils.catchearErrorFormato(ex, this.codigoPostalTooltip, this.codigoPostalInput);
-            }
-        }
-
-        private void tryCargarCodigoPostal(String codigoPostal)
-        {
-            if (this.sucursalDao.existeCodigoPostal(Int32.Parse(codigoPostal)))
-            {
-                codigoPostalTooltip.Show("Ya existe una sucursal con ese Codigo Postal.", codigoPostalInput, 1500);
-                codigoPostalInput.Clear();
-            }
-            else
-            {
-                this.nuevaSucursal.codigoPostal = Int32.Parse(codigoPostal);
             }
         }
 
