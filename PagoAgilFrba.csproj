@@ -99,6 +99,12 @@
     <Compile Include="AbmFactura\ModificacionFactura.Designer.cs">
       <DependentUpon>ModificacionFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmFactura\PagoFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\PagoFactura.Designer.cs">
+      <DependentUpon>PagoFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmRol\AltaRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,12 +159,18 @@
     <Compile Include="Busquedas\BusquedaSucursal.Designer.cs">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSeleccionRol.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmSeleccionRol.Designer.cs">
       <DependentUpon>FrmSeleccionRol.cs</DependentUpon>
-	</Compile> 
+    </Compile>
     <Compile Include="Busquedas\ResultadosBusqueda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +248,9 @@
     <EmbeddedResource Include="AbmFactura\ModificacionFactura.resx">
       <DependentUpon>ModificacionFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\PagoFactura.resx">
+      <DependentUpon>PagoFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,12 +278,15 @@
     <EmbeddedResource Include="Busquedas\BusquedaSucursal.resx">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSeleccionRol.resx">
       <DependentUpon>FrmSeleccionRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
-	</EmbeddedResource>  
+    </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\ResultadosBusqueda.resx">
       <DependentUpon>ResultadosBusqueda.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroPago\RegistroPago.resx">
       <DependentUpon>RegistroPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rendicion\Rendicion.resx">
+      <DependentUpon>Rendicion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
