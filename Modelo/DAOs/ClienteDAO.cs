@@ -103,7 +103,16 @@ namespace PagoAgilFrba.Modelo.DAOs
         // Updates
         public void updateCliente(Cliente clienteUpdate)
         {
+            Condicion actualizacion = new Condicion();
+            actualizacion.agregarCondicion("apellido", "nuevoApellido", Utils.Utils.STRING_TYPE);
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("dni", 1231, Utils.Utils.INT_TYPE);
+            update(TABLA, actualizacion, condicion);
+        }
 
+        public List<T> obtenerCLientesPorTelefono(String telefono)
+        {
+            return this.obtenerPorQueryGenerica("select * from " + TABLA + " where codigo_postal = " + telefono, allColumns, tipos);
         }
 
     }
