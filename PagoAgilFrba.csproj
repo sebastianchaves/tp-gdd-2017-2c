@@ -158,7 +158,7 @@
     </Compile>
     <Compile Include="FrmSeleccionRol.Designer.cs">
       <DependentUpon>FrmSeleccionRol.cs</DependentUpon>
-	</Compile> 
+    </Compile>
     <Compile Include="Busquedas\ResultadosBusqueda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,12 +181,19 @@
     <Compile Include="Modelo\DAOs\ClienteDAO.cs" />
     <Compile Include="Modelo\DAOs\Dao.cs" />
     <Compile Include="Modelo\DAOs\EmpresaDAO.cs" />
+    <Compile Include="Modelo\DAOs\FacturaDAO.cs" />
+    <Compile Include="Modelo\DAOs\FuncionalidadDAO.cs" />
+    <Compile Include="Modelo\DAOs\RolDAO.cs" />
+    <Compile Include="Modelo\DAOs\RubroDAO.cs" />
     <Compile Include="Modelo\DAOs\SucursalDAO.cs" />
     <Compile Include="Modelo\Entidades\Cliente.cs" />
     <Compile Include="Modelo\Entidades\Empresa.cs" />
     <Compile Include="Modelo\Entidades\Factura.cs" />
+    <Compile Include="Modelo\Entidades\Funcionalidad.cs" />
     <Compile Include="Modelo\Entidades\ItemFactura.cs" />
     <Compile Include="Modelo\Entidades\Pago.cs" />
+    <Compile Include="Modelo\Entidades\Rol.cs" />
+    <Compile Include="Modelo\Entidades\Rubro.cs" />
     <Compile Include="Modelo\Entidades\Sucursal.cs" />
     <Compile Include="Modelo\Utils\Utils.cs" />
     <Compile Include="Program.cs" />
@@ -268,7 +275,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
-	</EmbeddedResource>  
+    </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\ResultadosBusqueda.resx">
       <DependentUpon>ResultadosBusqueda.cs</DependentUpon>
     </EmbeddedResource>

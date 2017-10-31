@@ -16,24 +16,25 @@ namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class AltaEmpresa : Form
     {
-        // Atributos
-        private Empresa nuevaEmpresa;
-        private EmpresaDAO empresaDao;
 
-        // Constructores
+        private Empresa nuevaEmpresa;
+        private EmpresaDAO<Empresa> empresaDao;
+        private RubroDAO<Rubro> rubroDao;
+        private List<Rubro> rubrosEncontrados;
+
         public AltaEmpresa()
         {
             InitializeComponent();
 
             this.nuevaEmpresa = new Empresa();
-            this.empresaDao = new EmpresaDAO();
+            this.empresaDao = new EmpresaDAO<Empresa>();
+            this.rubroDao = new RubroDAO<Rubro>();
             this.cargarRubros();
         }
 
-        // Metodos
         private void agregarEmpresa()
         {
-            this.nuevaEmpresa.habilitada = true;
+            this.nuevaEmpresa.activo = true;
 
             if (this.camposCompletos())
             {
@@ -56,17 +57,22 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void cargarRubros()
         {
-            List<String> rubros = this.empresaDao.findRubrosDisponibles();
+            this.rubrosEncontrados = this.rubroDao.findRubros();
 
             var dataSource = new List<String>();
 
-            foreach (String rubro in rubros)
+            for (int i = 0; i < this.rubrosEncontrados.Count; i++)
             {
-                dataSource.Add(rubro);
+                this.rubrosEncontrados.ElementAt(i).indexCombo = i;
+                dataSource.Add(this.rubrosEncontrados.ElementAt(i).nombre);
             }
 
             rubroCombo.DataSource = dataSource;
+        }
 
+        private Rubro rubroByIndex(int index)
+        {
+            return this.rubrosEncontrados.Find(rubro => rubro.indexCombo.Equals(index));
         }
 
         // Eventos
@@ -104,15 +110,7 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void tryCargarCuit(String cuit)
         {
-            if (this.empresaDao.existeCuit(Int32.Parse(cuit)))
-            {
-                cuitTooltip.Show("Ya existe ese CUIT.", cuitInput, 1500);
-                cuitInput.Clear();
-            }
-            else
-            {
-                this.nuevaEmpresa.cuit = Int32.Parse(cuit);
-            }
+            this.nuevaEmpresa.cuit = cuitInput.Text;
         }
 
         // Direccion
@@ -124,17 +122,7 @@ namespace PagoAgilFrba.AbmEmpresa
         // Rubro
         private void rubroCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.nuevaEmpresa.rubro = rubroCombo.SelectedItem.ToString();
-        }
-
-        private void direccionInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nombreInput_TextChanged(object sender, EventArgs e)
-        {
-
+            this.nuevaEmpresa.idRubro = this.rubroByIndex(this.rubroCombo.SelectedIndex).id;
         }
 
     }

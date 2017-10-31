@@ -243,7 +243,7 @@ namespace PagoAgilFrba.Modelo.DAOs
                 }
             }
             insert += ") ";
-            using (this.connection = new SqlConnection(connectionString))
+            using (this.connection = new SqlConnection(CONNECTION_STRING))
             {
                 this.connection.Open();
                 SqlCommand command = new SqlCommand(insert, connection);

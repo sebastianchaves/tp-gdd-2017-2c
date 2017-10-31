@@ -16,16 +16,15 @@ namespace PagoAgilFrba.Busquedas
     public partial class BusquedaEmpresa : Form
     {
 
-        // Atributos
         private IList<Empresa> empresasEncontradas;
-        private EmpresaDAO empresaDao;
+        private EmpresaDAO<Empresa> empresaDao;
+        private RubroDAO<Rubro> rubroDao;
         private Utils util;
         private DataGridView resultadosGrid;
         private String nombreABuscar;
-        private int cuitABuscar;
+        private String cuitABuscar;
         private String rubroABuscar;
 
-        // Constructores
         public BusquedaEmpresa()
         {
 
@@ -36,21 +35,21 @@ namespace PagoAgilFrba.Busquedas
             InitializeComponent();
 
             this.util = new Utils();
-            this.empresaDao = new EmpresaDAO();
+            this.empresaDao = new EmpresaDAO<Empresa>();
+            this.rubroDao = new RubroDAO<Rubro>();
             this.cargarRubrosDisponibles();
             this.resultadosGrid = resultadosGrid;
         }
 
-        // Metodos
         private void cargarRubrosDisponibles()
         {
-            List<String> rubros = this.empresaDao.findRubrosDisponibles();
+            List<Rubro> rubros = this.rubroDao.findRubros();
 
             var dataSource = new List<String>();
 
-            foreach (String rubro in rubros)
+            foreach (Rubro rubro in rubros)
             {
-                dataSource.Add(rubro);
+                dataSource.Add(rubro.nombre);
             }
 
             rubroCombo.DataSource = dataSource;
@@ -66,7 +65,7 @@ namespace PagoAgilFrba.Busquedas
 
             foreach (Empresa empresa in empresas)
             {
-                resultadosEmpresas.Rows.Add(empresa.nombre, empresa.cuit, empresa.rubro);
+                resultadosEmpresas.Rows.Add(empresa.nombre, empresa.cuit, empresa.idRubro);
             }
             resultadosGrid.DataSource = resultadosEmpresas;
         }
@@ -110,14 +109,7 @@ namespace PagoAgilFrba.Busquedas
         // Carga Cuit
         private void cuitInput_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                this.cuitABuscar = Int32.Parse(cuitInput.Text);
-            }
-            catch (Exception ex)
-            {
-                Utils.catchearErrorFormato(ex, cuitTooltip, cuitInput);
-            }
+            this.cuitABuscar = cuitInput.Text;
         }
 
         // Carga Rubro

@@ -17,20 +17,20 @@ namespace PagoAgilFrba.AbmEmpresa
     public partial class ModificacionEmpresa : Form
     {
 
-        // Atributos
         private Empresa empresaModificada;
         private Empresa empresaACargar;
-        private EmpresaDAO empresaDao;
+        private EmpresaDAO<Empresa> empresaDao;
+        private RubroDAO<Rubro> rubroDao;
+        private List<Rubro> rubrosEncontrados;
 
-        // Constructores
         public ModificacionEmpresa()
         {
             InitializeComponent();
-            this.empresaDao = new EmpresaDAO();
+            this.empresaDao = new EmpresaDAO<Empresa>();
+            this.rubroDao = new RubroDAO<Rubro>();
             this.empresaModificada = new Empresa();
         }
 
-        // Metodos
         private void cargarDatos()
         {
             this.nombreInput.Text = this.empresaACargar.nombre;
@@ -42,10 +42,20 @@ namespace PagoAgilFrba.AbmEmpresa
             this.direccionInput.Text = this.empresaACargar.direccion;
             this.empresaModificada.direccion = this.empresaACargar.direccion;
 
-            this.rubroCombo.SelectedIndex = this.rubroCombo.FindString(this.empresaACargar.rubro);
-            this.empresaModificada.rubro = this.empresaACargar.rubro;
+            this.rubroCombo.SelectedIndex = this.rubroCombo.FindString(rubroPorId().nombre);
+            this.empresaModificada.idRubro = this.rubrosEncontrados.ElementAt(this.rubroCombo.SelectedIndex).id;
 
             this.habilitarDeshabilitar();
+        }
+
+        private Rubro rubroPorId()
+        {
+            return this.rubrosEncontrados.Find(rubro => rubro.id.Equals(this.empresaACargar.idRubro));
+        }
+
+        private Rubro rubroPorNombre()
+        {
+            return this.rubrosEncontrados.Find(rubro => rubro.id.Equals(this.empresaACargar.nombre));
         }
 
         private void habilitarDeshabilitar()
@@ -54,15 +64,15 @@ namespace PagoAgilFrba.AbmEmpresa
             this.habilitadaRadioButton.Enabled = true;
             this.deshabilitadaRadioButton.Enabled = true;
 
-            if (this.empresaACargar.habilitada)
+            if (this.empresaACargar.activo)
             {
                 this.habilitadaRadioButton.PerformClick();
-                this.empresaModificada.habilitada = true;
+                this.empresaModificada.activo = true;
             }
             else
             {
                 this.deshabilitadaRadioButton.PerformClick();
-                this.empresaModificada.habilitada = false;
+                this.empresaModificada.activo = false;
             }
         }
 
@@ -88,13 +98,14 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void cargarRubros()
         {
-            List<String> rubros = this.empresaDao.findRubrosDisponibles();
+            this.rubrosEncontrados = this.rubroDao.findRubros();
 
             var dataSource = new List<String>();
 
-            foreach (String rubro in rubros)
+            for (int i = 0; i < this.rubrosEncontrados.Count; i++)
             {
-                dataSource.Add(rubro);
+                this.rubrosEncontrados.ElementAt(i).indexCombo = i;
+                dataSource.Add(this.rubrosEncontrados.ElementAt(i).nombre);
             }
 
             this.rubroCombo.DataSource = dataSource;
@@ -134,7 +145,7 @@ namespace PagoAgilFrba.AbmEmpresa
             var empresaIndex = resultadosGrid.SelectedCells[0].RowIndex;
             this.empresaACargar = new Empresa();
             int cuitSeleccionado = Int32.Parse(resultadosGrid.Rows[empresaIndex].Cells[1].Value.ToString());
-            this.empresaACargar = this.empresaDao.findEmpresa("", cuitSeleccionado, "").ElementAt(empresaIndex);
+            this.empresaACargar = this.empresaDao.findEmpresa("", cuitSeleccionado.ToString(), "").ElementAt(empresaIndex);
             this.cargarRubros();
             this.cargarDatos();
         }
@@ -142,13 +153,13 @@ namespace PagoAgilFrba.AbmEmpresa
         // Habilitar
         private void habilitadaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            this.empresaModificada.habilitada = true;
+            this.empresaModificada.activo = true;
         }
 
         // Deshabilitar
         private void deshabilitadaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            this.empresaModificada.habilitada = false;
+            this.empresaModificada.activo = false;
         }
 
     }
