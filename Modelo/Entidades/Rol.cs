@@ -16,5 +16,10 @@ namespace PagoAgilFrba.Modelo.Entidades
 
         public List<Funcionalidad> funcionalidades;
 
+        public Rol()
+        {
+            this.funcionalidades = new List<Funcionalidad>();
+        }
+
     }
 }

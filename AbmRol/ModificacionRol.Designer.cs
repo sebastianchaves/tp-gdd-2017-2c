@@ -36,8 +36,11 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBoxFuncionalidades = new System.Windows.Forms.GroupBox();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBoxFuncionalidades.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +100,10 @@
             // 
             // groupBoxFuncionalidades
             // 
+            this.groupBoxFuncionalidades.Controls.Add(this.radioButton2);
+            this.groupBoxFuncionalidades.Controls.Add(this.radioButton1);
             this.groupBoxFuncionalidades.Controls.Add(this.checkedListBox1);
+            this.groupBoxFuncionalidades.Controls.Add(this.label4);
             this.groupBoxFuncionalidades.Controls.Add(this.btnActualizar);
             this.groupBoxFuncionalidades.Location = new System.Drawing.Point(12, 106);
             this.groupBoxFuncionalidades.Name = "groupBoxFuncionalidades";
@@ -105,15 +111,6 @@
             this.groupBoxFuncionalidades.TabIndex = 4;
             this.groupBoxFuncionalidades.TabStop = false;
             this.groupBoxFuncionalidades.Text = "Funcionalidades";
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Location = new System.Drawing.Point(274, 32);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnActualizar.TabIndex = 5;
-            this.btnActualizar.Text = "&Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
             // 
             // checkedListBox1
             // 
@@ -140,7 +137,47 @@
             this.checkedListBox1.Size = new System.Drawing.Size(243, 139);
             this.checkedListBox1.TabIndex = 7;
             // 
-            // ModificarRol
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(274, 32);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 5;
+            this.btnActualizar.Text = "&Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(260, 187);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(89, 17);
+            this.radioButton2.TabIndex = 9;
+            this.radioButton2.Text = "Deshabilitado";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(136, 185);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(72, 17);
+            this.radioButton1.TabIndex = 8;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Habilitado";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(29, 185);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Estado:";
+            // 
+            // ModificacionRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,10 +192,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ModificarRol";
+            this.Name = "ModificacionRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Rol";
             this.groupBoxFuncionalidades.ResumeLayout(false);
+            this.groupBoxFuncionalidades.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +213,8 @@
         private System.Windows.Forms.GroupBox groupBoxFuncionalidades;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label4;
     }
 }

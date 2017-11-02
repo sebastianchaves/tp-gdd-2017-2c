@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,17 +35,24 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void agregarEmpresa()
         {
-            this.nuevaEmpresa.activo = true;
+            try
+            {
+                this.nuevaEmpresa.activo = true;
 
-            if (this.camposCompletos())
-            {
-                this.empresaDao.agregarEmpresa(this.nuevaEmpresa);
-                MessageBox.Show("Empresa agregada!");
-                Utils.clearTextBoxes(this);
+                if (this.camposCompletos())
+                {
+                    this.empresaDao.agregarEmpresa(this.nuevaEmpresa);
+                    MessageBox.Show("Empresa agregada!");
+                    Utils.clearTextBoxes(this);
+                }
+                else
+                {
+                    MessageBox.Show("Complete los campos faltantes.");
+                }
             }
-            else
+            catch(SqlException)
             {
-                MessageBox.Show("Complete los campos faltantes.");
+                MessageBox.Show("Ya existe una empresa con ese CUIT.");
             }
         }
 
@@ -80,6 +88,8 @@ namespace PagoAgilFrba.AbmEmpresa
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             agregarEmpresa();
+            Utils.clearTextBoxes(this);
+            this.nuevaEmpresa = new Empresa();
         }
 
         // Boton Cancelar
@@ -97,18 +107,6 @@ namespace PagoAgilFrba.AbmEmpresa
 
         // Cuit
         private void cuitInput_Leave_1(object sender, EventArgs e)
-        {
-            try
-            {
-                tryCargarCuit(cuitInput.Text);
-            }
-            catch (Exception ex)
-            {
-                Utils.catchearErrorFormato(ex, cuitTooltip, cuitInput);
-            }
-        }
-
-        private void tryCargarCuit(String cuit)
         {
             this.nuevaEmpresa.cuit = cuitInput.Text;
         }
