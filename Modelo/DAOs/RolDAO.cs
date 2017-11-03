@@ -50,5 +50,34 @@ namespace PagoAgilFrba.Modelo.DAOs
             insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
+        // Selects
+        public List<T> findRol()
+        {
+            Condicion condicion = new Condicion();
+
+            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
+        }
+
+        // Updates
+        public void updateRol(Rol rolUpdate)
+        {
+            Condicion actualizacion = new Condicion();
+
+            int valor = 0;
+            if (rolUpdate.habilitado)
+            {
+                valor = 1;
+            }
+
+            actualizacion.agregarCondicion("habilitado", valor, Utils.Utils.BIT_TYPE);
+
+            Condicion condicion = new Condicion();
+
+            condicion.agregarCondicion("id_rol", rolUpdate.id, Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE);
+
+            update(TABLA, actualizacion, condicion);
+        }
+
     }
 }

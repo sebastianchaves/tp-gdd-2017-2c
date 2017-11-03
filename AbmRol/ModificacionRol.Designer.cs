@@ -29,93 +29,95 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionRol));
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.modificacionRolLabel = new System.Windows.Forms.Label();
+            this.botonBuscar = new System.Windows.Forms.Button();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.groupBoxFuncionalidades = new System.Windows.Forms.GroupBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
+            this.deshabilitadoRadio = new System.Windows.Forms.RadioButton();
+            this.habilitadoRadio = new System.Windows.Forms.RadioButton();
+            this.funcionalidadesChecklist = new System.Windows.Forms.CheckedListBox();
+            this.estadoLabel = new System.Windows.Forms.Label();
+            this.botonActualizar = new System.Windows.Forms.Button();
+            this.rolSeleccionadoInput = new System.Windows.Forms.TextBox();
+            this.rolSeleccionadoLabel = new System.Windows.Forms.Label();
+            this.funcionalidadesLabel = new System.Windows.Forms.Label();
+            this.nombreLabel = new System.Windows.Forms.Label();
+            this.nombreInput = new System.Windows.Forms.TextBox();
             this.groupBoxFuncionalidades.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // modificacionRolLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(134, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Modificar Rol";
+            this.modificacionRolLabel.AutoSize = true;
+            this.modificacionRolLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modificacionRolLabel.Location = new System.Drawing.Point(96, 9);
+            this.modificacionRolLabel.Name = "modificacionRolLabel";
+            this.modificacionRolLabel.Size = new System.Drawing.Size(141, 20);
+            this.modificacionRolLabel.TabIndex = 0;
+            this.modificacionRolLabel.Text = "Modificacion Rol";
             // 
-            // textBox1
+            // botonBuscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(100, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 20);
-            this.textBox1.TabIndex = 2;
+            this.botonBuscar.Location = new System.Drawing.Point(229, 41);
+            this.botonBuscar.Name = "botonBuscar";
+            this.botonBuscar.Size = new System.Drawing.Size(90, 30);
+            this.botonBuscar.TabIndex = 1;
+            this.botonBuscar.Text = "&Buscar";
+            this.botonBuscar.UseVisualStyleBackColor = true;
+            this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
-            // button1
+            // botonVolver
             // 
-            this.button1.Location = new System.Drawing.Point(286, 62);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "&Buscar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Nombre de rol:";
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(246, 339);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(132, 23);
-            this.btnAceptar.TabIndex = 6;
-            this.btnAceptar.Text = "&Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(12, 339);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(136, 23);
-            this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.botonVolver.Location = new System.Drawing.Point(229, 384);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(90, 30);
+            this.botonVolver.TabIndex = 7;
+            this.botonVolver.Text = "&Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // groupBoxFuncionalidades
             // 
-            this.groupBoxFuncionalidades.Controls.Add(this.radioButton2);
-            this.groupBoxFuncionalidades.Controls.Add(this.radioButton1);
-            this.groupBoxFuncionalidades.Controls.Add(this.checkedListBox1);
-            this.groupBoxFuncionalidades.Controls.Add(this.label4);
-            this.groupBoxFuncionalidades.Controls.Add(this.btnActualizar);
-            this.groupBoxFuncionalidades.Location = new System.Drawing.Point(12, 106);
+            this.groupBoxFuncionalidades.Controls.Add(this.nombreInput);
+            this.groupBoxFuncionalidades.Controls.Add(this.nombreLabel);
+            this.groupBoxFuncionalidades.Controls.Add(this.funcionalidadesLabel);
+            this.groupBoxFuncionalidades.Controls.Add(this.deshabilitadoRadio);
+            this.groupBoxFuncionalidades.Controls.Add(this.habilitadoRadio);
+            this.groupBoxFuncionalidades.Controls.Add(this.funcionalidadesChecklist);
+            this.groupBoxFuncionalidades.Controls.Add(this.estadoLabel);
+            this.groupBoxFuncionalidades.Location = new System.Drawing.Point(28, 77);
             this.groupBoxFuncionalidades.Name = "groupBoxFuncionalidades";
-            this.groupBoxFuncionalidades.Size = new System.Drawing.Size(366, 210);
+            this.groupBoxFuncionalidades.Size = new System.Drawing.Size(280, 291);
             this.groupBoxFuncionalidades.TabIndex = 4;
             this.groupBoxFuncionalidades.TabStop = false;
-            this.groupBoxFuncionalidades.Text = "Funcionalidades";
+            this.groupBoxFuncionalidades.Text = "Datos del Rol";
             // 
-            // checkedListBox1
+            // deshabilitadoRadio
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.deshabilitadoRadio.AutoSize = true;
+            this.deshabilitadoRadio.Location = new System.Drawing.Point(172, 251);
+            this.deshabilitadoRadio.Name = "deshabilitadoRadio";
+            this.deshabilitadoRadio.Size = new System.Drawing.Size(89, 17);
+            this.deshabilitadoRadio.TabIndex = 9;
+            this.deshabilitadoRadio.Text = "Deshabilitado";
+            this.deshabilitadoRadio.UseVisualStyleBackColor = true;
+            // 
+            // habilitadoRadio
+            // 
+            this.habilitadoRadio.AutoSize = true;
+            this.habilitadoRadio.Checked = true;
+            this.habilitadoRadio.Location = new System.Drawing.Point(82, 251);
+            this.habilitadoRadio.Name = "habilitadoRadio";
+            this.habilitadoRadio.Size = new System.Drawing.Size(72, 17);
+            this.habilitadoRadio.TabIndex = 8;
+            this.habilitadoRadio.TabStop = true;
+            this.habilitadoRadio.Text = "Habilitado";
+            this.habilitadoRadio.UseVisualStyleBackColor = true;
+            // 
+            // funcionalidadesChecklist
+            // 
+            this.funcionalidadesChecklist.FormattingEnabled = true;
+            this.funcionalidadesChecklist.Items.AddRange(new object[] {
             "Alta usuario",
             "Alta empresa",
             "Alta cliente",
@@ -132,69 +134,90 @@
             "Modifica factura",
             "Modificar rol",
             "Emitir estadísticas"});
-            this.checkedListBox1.Location = new System.Drawing.Point(14, 32);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(243, 139);
-            this.checkedListBox1.TabIndex = 7;
+            this.funcionalidadesChecklist.Location = new System.Drawing.Point(18, 85);
+            this.funcionalidadesChecklist.Name = "funcionalidadesChecklist";
+            this.funcionalidadesChecklist.Size = new System.Drawing.Size(243, 139);
+            this.funcionalidadesChecklist.TabIndex = 7;
             // 
-            // btnActualizar
+            // estadoLabel
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(274, 32);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnActualizar.TabIndex = 5;
-            this.btnActualizar.Text = "&Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.estadoLabel.AutoSize = true;
+            this.estadoLabel.Location = new System.Drawing.Point(15, 253);
+            this.estadoLabel.Name = "estadoLabel";
+            this.estadoLabel.Size = new System.Drawing.Size(43, 13);
+            this.estadoLabel.TabIndex = 10;
+            this.estadoLabel.Text = "Estado:";
             // 
-            // radioButton2
+            // botonActualizar
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(260, 187);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(89, 17);
-            this.radioButton2.TabIndex = 9;
-            this.radioButton2.Text = "Deshabilitado";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.botonActualizar.Location = new System.Drawing.Point(133, 384);
+            this.botonActualizar.Name = "botonActualizar";
+            this.botonActualizar.Size = new System.Drawing.Size(90, 30);
+            this.botonActualizar.TabIndex = 5;
+            this.botonActualizar.Text = "&Actualizar";
+            this.botonActualizar.UseVisualStyleBackColor = true;
+            this.botonActualizar.Click += new System.EventHandler(this.botonActualizar_Click);
             // 
-            // radioButton1
+            // rolSeleccionadoInput
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(136, 185);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(72, 17);
-            this.radioButton1.TabIndex = 8;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Habilitado";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rolSeleccionadoInput.Location = new System.Drawing.Point(110, 47);
+            this.rolSeleccionadoInput.Name = "rolSeleccionadoInput";
+            this.rolSeleccionadoInput.ReadOnly = true;
+            this.rolSeleccionadoInput.Size = new System.Drawing.Size(113, 20);
+            this.rolSeleccionadoInput.TabIndex = 9;
             // 
-            // label4
+            // rolSeleccionadoLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 185);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Estado:";
+            this.rolSeleccionadoLabel.AutoSize = true;
+            this.rolSeleccionadoLabel.Location = new System.Drawing.Point(12, 50);
+            this.rolSeleccionadoLabel.Name = "rolSeleccionadoLabel";
+            this.rolSeleccionadoLabel.Size = new System.Drawing.Size(92, 13);
+            this.rolSeleccionadoLabel.TabIndex = 8;
+            this.rolSeleccionadoLabel.Text = "Rol seleccionado:";
+            // 
+            // funcionalidadesLabel
+            // 
+            this.funcionalidadesLabel.AutoSize = true;
+            this.funcionalidadesLabel.Location = new System.Drawing.Point(15, 69);
+            this.funcionalidadesLabel.Name = "funcionalidadesLabel";
+            this.funcionalidadesLabel.Size = new System.Drawing.Size(87, 13);
+            this.funcionalidadesLabel.TabIndex = 11;
+            this.funcionalidadesLabel.Text = "Funcionalidades:";
+            // 
+            // nombreLabel
+            // 
+            this.nombreLabel.AutoSize = true;
+            this.nombreLabel.Location = new System.Drawing.Point(15, 32);
+            this.nombreLabel.Name = "nombreLabel";
+            this.nombreLabel.Size = new System.Drawing.Size(47, 13);
+            this.nombreLabel.TabIndex = 12;
+            this.nombreLabel.Text = "Nombre:";
+            // 
+            // nombreInput
+            // 
+            this.nombreInput.Location = new System.Drawing.Point(96, 29);
+            this.nombreInput.Name = "nombreInput";
+            this.nombreInput.Size = new System.Drawing.Size(165, 20);
+            this.nombreInput.TabIndex = 13;
             // 
             // ModificacionRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 390);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnAceptar);
+            this.ClientSize = new System.Drawing.Size(330, 426);
+            this.Controls.Add(this.rolSeleccionadoInput);
+            this.Controls.Add(this.botonVolver);
+            this.Controls.Add(this.rolSeleccionadoLabel);
+            this.Controls.Add(this.modificacionRolLabel);
+            this.Controls.Add(this.botonActualizar);
             this.Controls.Add(this.groupBoxFuncionalidades);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.botonBuscar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModificacionRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Modificar Rol";
+            this.Text = "Modificacion Rol";
             this.groupBoxFuncionalidades.ResumeLayout(false);
             this.groupBoxFuncionalidades.PerformLayout();
             this.ResumeLayout(false);
@@ -204,17 +227,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label modificacionRolLabel;
+        private System.Windows.Forms.Button botonBuscar;
+        private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.GroupBox groupBoxFuncionalidades;
-        private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button botonActualizar;
+        private System.Windows.Forms.CheckedListBox funcionalidadesChecklist;
+        private System.Windows.Forms.RadioButton deshabilitadoRadio;
+        private System.Windows.Forms.RadioButton habilitadoRadio;
+        private System.Windows.Forms.Label estadoLabel;
+        private System.Windows.Forms.TextBox rolSeleccionadoInput;
+        private System.Windows.Forms.Label rolSeleccionadoLabel;
+        private System.Windows.Forms.TextBox nombreInput;
+        private System.Windows.Forms.Label nombreLabel;
+        private System.Windows.Forms.Label funcionalidadesLabel;
     }
 }

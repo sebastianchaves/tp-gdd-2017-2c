@@ -48,7 +48,7 @@ namespace PagoAgilFrba.Busquedas
             }
             else
             {
-                using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda())
+                using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda(resultados))
                 {
                     resultadosForm.cargarDataGridClientes(resultados);
                     resultadosForm.ShowDialog(this);
