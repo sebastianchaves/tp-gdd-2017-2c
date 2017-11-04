@@ -13,6 +13,9 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         private const String EMPRESAS = "GD2C2017.ROCKET_DATABASE.EMPRESAS";
         private const String RUBROS = "GD2C2017.ROCKET_DATABASE.RUBROS";
+        private const String PUEDE_DESHABILITAR = "select count(1) from rocket_database.facturas f, "+
+            "rocket_database.pago_factura pf where pf.id_factura = f.id_Factura and f.id_rendicion is null "+
+            "AND id_empresa = ";
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
@@ -75,7 +78,20 @@ namespace PagoAgilFrba.Modelo.DAOs
         // Updates
         public void updateEmpresa(Empresa empresaUpdate)
         {
+            
+        }
 
+        public Boolean puedeDeshabilitar(Empresa empresaUpdate)
+        {
+            int count = obtenerCountQueryGenerica(PUEDE_DESHABILITAR + empresaUpdate.id);
+            if (count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

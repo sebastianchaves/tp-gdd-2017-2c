@@ -375,5 +375,15 @@ namespace PagoAgilFrba.Modelo.DAOs
                 return getEntities(resultSet, allColumns, tipos);
             }
         }
+        protected int obtenerCountQueryGenerica(String query)
+        {
+            using (this.connection = new SqlConnection(CONNECTION_STRING))
+            {
+
+                this.connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                return (Int32)command.ExecuteScalar();
+            }
+        }
     }
 }
