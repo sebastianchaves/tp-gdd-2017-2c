@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.ListadoEstadistico
 {
-    public partial class ListadoEstadistico : Form
+    public partial class ListadoEstadisticoForm : Form
     {
 
         // Atributos
         private Dictionary<int, String> tiposListados;
 
         // Constructores
-        public ListadoEstadistico()
+        public ListadoEstadisticoForm()
         {
             InitializeComponent();
 
