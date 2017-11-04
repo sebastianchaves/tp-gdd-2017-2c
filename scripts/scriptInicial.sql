@@ -137,15 +137,16 @@ CREATE TABLE [ROCKET_DATABASE].[DEVOLUCION_RENDICION](
 GO
 CREATE TABLE [ROCKET_DATABASE].[USUARIOS](
 	id_usuario int IDENTITY(1,1) primary key,
-	nombre varchar(255) not null,
+	nombre varchar(255) unique not null,
 	apellido varchar(255),
+	contrasenia varchar(255),
 	id_sucursal int,
 	foreign key (id_sucursal) references ROCKET_DATABASE.SUCURSALES(id_sucursal)
 ) ON [PRIMARY]
 GO
 CREATE TABLE [ROCKET_DATABASE].[ROLES](
 	id_rol int IDENTITY(1,1) primary key,
-	nombre varchar(255) not null,
+	nombre varchar(255) unique not null,
 	descripcion varchar(255),
 	habilitado bit not null
 ) ON [PRIMARY]

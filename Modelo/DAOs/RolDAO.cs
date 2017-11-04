@@ -11,6 +11,7 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
 
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.ROLES";
+        private const String ROLES_X_USUARIO = "select r.* from ROCKET_DATABASE.ROLES r, ROCKET_DATABASE.USUARIOS u, ROCKET_DATABASE.USUARIO_ROLES ur where r.id_rol = ur.id_rol and ur.id_usuario = u.id_usuario and u.nombre = ";
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
@@ -57,6 +58,11 @@ namespace PagoAgilFrba.Modelo.DAOs
 
             List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
             return getEntities(resultSet, allColumns, tipos);
+        }
+
+        public List<T> obtenerRolesPorUsuario(String usuario)
+        {
+            return obtenerPorQueryGenerica(ROLES_X_USUARIO + "'" + usuario + "'", allColumns, tipos);
         }
 
         // Updates

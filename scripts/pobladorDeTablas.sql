@@ -74,7 +74,7 @@ insert into GD2C2017.rocket_database.SUCURSALES
 select distinct Sucursal_Nombre, Sucursal_Dirección, Sucursal_Codigo_Postal, 1
 from GD2C2017.gd_esquema.Maestra m
 where Sucursal_Nombre is not null
-
+GO
 /*** insertando facturas ***/
 print 'Insertando facturas...'
 insert into GD2C2017.ROCKET_DATABASE.FACTURAS
@@ -97,12 +97,12 @@ group by
 Nro_Factura, Factura_Fecha, Factura_Total, Factura_Fecha_Vencimiento, Rendicion_Nro
 , [Cliente-Dni], Empresa_Cuit
 ) mm
-
+GO
 print 'Eliminando facturas que figuran sin rendicion pero tienen en una carga posterior...'
 delete from GD2C2017.ROCKET_DATABASE.FACTURAS
 where id_rendicion is null and nro_factura in
 (select nro_factura from GD2C2017.ROCKET_DATABASE.FACTURAS where id_rendicion is not null);
-
+GO
 /*** insertando pagos ***/
 print 'Insertando pagos...'
 set identity_insert GD2C2017.ROCKET_DATABASE.PAGOS ON;
@@ -116,3 +116,37 @@ where Sucursal_Nombre = nombre) as sucursal
 from GD2C2017.gd_esquema.Maestra
 where Pago_nro is not null
 set identity_insert GD2C2017.ROCKET_DATABASE.PAGOS OFF;
+GO
+/*** insertando roles y funcionalidades ***/
+print 'insertando funcionalidades...'
+
+insert into ROCKET_DATABASE.ROLES values ('admin', 'Rol con permisos administrativos', 1);
+insert into ROCKET_DATABASE.ROLES values ('cobrador', 'Rol de cobrador', 1);
+
+insert into ROCKET_DATABASE.USUARIOS values ('admin', '', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', null);
+insert into ROCKET_DATABASE.USUARIOS values ('cobrador', '', 'fda9be620062a617156c1c6dbc788a6a204f85fe06e8ead0e3a43817b0e382db', 1);
+
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_rol', 'abm_rol')
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_cliente', 'abm_cliente');
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_empresa', 'abm_empresa');
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_sucursal', 'abm_sucursal');
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_factura', 'abm_factura');
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_pago', 'abm_pago');
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_rendicion', 'abm_rendicion');
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_estadisticas', 'abm_estadisticas');
+
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (1, 1);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (2, 1);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (3, 1);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (4, 1);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (5, 1);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (6, 1);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (7, 1);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (8, 1);
+
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (5, 2);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (6, 2);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (7, 2);
+
+insert into ROCKET_DATABASE.USUARIO_ROLES values (1, 1);
+insert into ROCKET_DATABASE.USUARIO_ROLES values (2, 2);
