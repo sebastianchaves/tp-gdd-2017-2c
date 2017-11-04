@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Security.Cryptography;
 
 namespace PagoAgilFrba.Modelo.Utils
 {
@@ -91,6 +92,19 @@ namespace PagoAgilFrba.Modelo.Utils
 
             resultadosGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
             resultadosGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.LightGray;
+        }
+
+        public static String getSha256(String password)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(password);
+            SHA256Managed hashstring = new SHA256Managed();
+            byte[] hash = hashstring.ComputeHash(bytes);
+            string hashString = string.Empty;
+            foreach (byte x in hash)
+            {
+                hashString += String.Format("{0:x2}", x);
+            }
+            return hashString;
         }
 
     }
