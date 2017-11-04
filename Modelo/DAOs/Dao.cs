@@ -41,7 +41,7 @@ namespace PagoAgilFrba.Modelo.DAOs
                 {
                     List<String> registro = new List<string>();
 
-                    for (int i = 0; i < reader.FieldCount; i++)
+                    for (int i = 0; i < tipos.Count; i++)
                     {
                         String valor="";
                         switch (tipos.ElementAt(i))

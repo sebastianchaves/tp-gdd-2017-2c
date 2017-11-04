@@ -11,7 +11,8 @@ namespace PagoAgilFrba.Modelo.DAOs
     class EmpresaDAO<T>: Dao<T>
     {
 
-        private const String TABLA = "GD2C2017.ROCKET_DATABASE.EMPRESAS";
+        private const String EMPRESAS = "GD2C2017.ROCKET_DATABASE.EMPRESAS";
+        private const String RUBROS = "GD2C2017.ROCKET_DATABASE.RUBROS";
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
@@ -56,20 +57,18 @@ namespace PagoAgilFrba.Modelo.DAOs
             valores.Add(empresa.idRubro.ToString());
             valores.Add(empresa.activo.ToString());
 
-            insert(TABLA, allColumnsInDB, tipos, valores);
+            insert(EMPRESAS, allColumnsInDB, tipos, valores);
         }
 
         // Selects
         public List<T> findEmpresa(String nombreEmpresa, String cuitEmpresa, String rubroEmpresa)
         {
             Condicion condicion = new Condicion();
-            condicion.agregarCondicion("nombre", nombreEmpresa, Utils.Utils.STRING_TYPE);
-            condicion.agregarCondicion("cuit", cuitEmpresa, Utils.Utils.STRING_TYPE);
-            
-            // TODO, problemassssssss
-            // condicion.agregarCondicion("rubro_empresa", rubroEmpresa, Utils.Utils.STRING_TYPE);
+            condicion.agregarCondicion("e.nombre", nombreEmpresa, Utils.Utils.STRING_TYPE);
+            condicion.agregarCondicion("e.cuit", cuitEmpresa, Utils.Utils.STRING_TYPE);
+            condicion.agregarCondicion("r.nombre", rubroEmpresa, Utils.Utils.STRING_TYPE);
 
-            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            List<List<String>> resultSet = this.select(EMPRESAS + " e, " + RUBROS + " r", ALL, tipos, condicion);
             return getEntities(resultSet, allColumns, tipos);
         }
 
