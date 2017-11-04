@@ -15,7 +15,6 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
 
         private String CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
-        private String connectionString = "Data Source=DANIEL-PC\\SQLSERVER2012;Initial Catalog=GD2C2017;User ID=sa;Password=gestiondedatos;";
         public const String ALL = "*";
         private SqlConnection connection;
 
@@ -312,7 +311,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         protected List<T> obtenerPorQueryGenerica(String query, List<String> allColumns, List<String> tipos)
         {
-            using (this.connection = new SqlConnection(connectionString))
+            using (this.connection = new SqlConnection(CONNECTION_STRING))
             {
 
                 this.connection.Open();
