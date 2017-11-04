@@ -44,7 +44,7 @@ namespace PagoAgilFrba.Modelo.DAOs
         public void agregarCondicion(String columna, DateTime condicion, String tipo)
         {
             columns.Add(columna);
-            conditions.Add(condicion.ToString());
+            conditions.Add(String.Format("{0:yyyy-MM-dd HH:mm:ss}", condicion));
             tipos.Add(tipo);
         }
 

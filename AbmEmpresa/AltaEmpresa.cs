@@ -44,6 +44,7 @@ namespace PagoAgilFrba.AbmEmpresa
                     this.empresaDao.agregarEmpresa(this.nuevaEmpresa);
                     MessageBox.Show("Empresa agregada!");
                     Utils.clearTextBoxes(this);
+                    this.nuevaEmpresa = new Empresa();
                 }
                 else
                 {

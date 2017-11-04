@@ -252,6 +252,7 @@ namespace PagoAgilFrba.Modelo.DAOs
                 return result;
             }
         }
+
         public int update(String tabla, Condicion actualizacion, Condicion condicion)
         {
             if (hayMasElementosNoNulos(actualizacion.getConditions(), -1))
@@ -272,12 +273,23 @@ namespace PagoAgilFrba.Modelo.DAOs
                         {
                             updateString += columna + " = convert(datetime, '" + valor + "')";
                         }
+                        else if (tipo.Equals(Utils.Utils.BIT_TYPE))
+                        {
+                            if (Boolean.TrueString.Equals(valor))
+                            {
+                                updateString += columna + " = 1";
+                            }
+                            else
+                            {
+                                updateString += columna + " = 0";
+                            }
+                        }
                         else
                         {
                             updateString += columna + " = " + valor;
                         }
                     }
-                    if (hayMasElementosNoNulos(actualizacion.getConditions(), i))
+                    if (valor != null && !valor.Equals("") && hayMasElementosNoNulos(actualizacion.getConditions(), i))
                     {
                         updateString += ", ";
                     }

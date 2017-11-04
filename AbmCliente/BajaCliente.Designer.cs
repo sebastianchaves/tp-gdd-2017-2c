@@ -30,8 +30,7 @@
         {
             this.botonDeshabilitar = new System.Windows.Forms.Button();
             this.datosClienteGroupBox = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.domicilioInput = new System.Windows.Forms.TextBox();
+            this.direccionInput = new System.Windows.Forms.TextBox();
             this.domicilioLabel = new System.Windows.Forms.Label();
             this.dniInput = new System.Windows.Forms.TextBox();
             this.nombreInput = new System.Windows.Forms.TextBox();
@@ -47,11 +46,13 @@
             this.bajaClienteLabel = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
             this.botonBuscar = new System.Windows.Forms.Button();
+            this.fechaNacimientoInput = new System.Windows.Forms.DateTimePicker();
             this.datosClienteGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // botonDeshabilitar
             // 
+            this.botonDeshabilitar.Enabled = false;
             this.botonDeshabilitar.Location = new System.Drawing.Point(142, 258);
             this.botonDeshabilitar.Name = "botonDeshabilitar";
             this.botonDeshabilitar.Size = new System.Drawing.Size(90, 30);
@@ -62,8 +63,8 @@
             // 
             // datosClienteGroupBox
             // 
-            this.datosClienteGroupBox.Controls.Add(this.textBox4);
-            this.datosClienteGroupBox.Controls.Add(this.domicilioInput);
+            this.datosClienteGroupBox.Controls.Add(this.fechaNacimientoInput);
+            this.datosClienteGroupBox.Controls.Add(this.direccionInput);
             this.datosClienteGroupBox.Controls.Add(this.domicilioLabel);
             this.datosClienteGroupBox.Controls.Add(this.dniInput);
             this.datosClienteGroupBox.Controls.Add(this.nombreInput);
@@ -83,30 +84,22 @@
             this.datosClienteGroupBox.TabStop = false;
             this.datosClienteGroupBox.Text = "Datos Cliente";
             // 
-            // textBox4
+            // direccionInput
             // 
-            this.textBox4.Location = new System.Drawing.Point(104, 127);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(235, 20);
-            this.textBox4.TabIndex = 61;
-            // 
-            // domicilioInput
-            // 
-            this.domicilioInput.Location = new System.Drawing.Point(104, 179);
-            this.domicilioInput.Name = "domicilioInput";
-            this.domicilioInput.ReadOnly = true;
-            this.domicilioInput.Size = new System.Drawing.Size(235, 20);
-            this.domicilioInput.TabIndex = 60;
+            this.direccionInput.Location = new System.Drawing.Point(104, 179);
+            this.direccionInput.Name = "direccionInput";
+            this.direccionInput.ReadOnly = true;
+            this.direccionInput.Size = new System.Drawing.Size(235, 20);
+            this.direccionInput.TabIndex = 60;
             // 
             // domicilioLabel
             // 
             this.domicilioLabel.AutoSize = true;
             this.domicilioLabel.Location = new System.Drawing.Point(18, 182);
             this.domicilioLabel.Name = "domicilioLabel";
-            this.domicilioLabel.Size = new System.Drawing.Size(52, 13);
+            this.domicilioLabel.Size = new System.Drawing.Size(55, 13);
             this.domicilioLabel.TabIndex = 59;
-            this.domicilioLabel.Text = "Domicilio:";
+            this.domicilioLabel.Text = "Direccion:";
             // 
             // dniInput
             // 
@@ -232,6 +225,14 @@
             this.botonBuscar.UseVisualStyleBackColor = true;
             this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
+            // fechaNacimientoInput
+            // 
+            this.fechaNacimientoInput.Enabled = false;
+            this.fechaNacimientoInput.Location = new System.Drawing.Point(104, 127);
+            this.fechaNacimientoInput.Name = "fechaNacimientoInput";
+            this.fechaNacimientoInput.Size = new System.Drawing.Size(235, 20);
+            this.fechaNacimientoInput.TabIndex = 62;
+            // 
             // BajaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,8 +256,7 @@
 
         private System.Windows.Forms.Button botonDeshabilitar;
         private System.Windows.Forms.GroupBox datosClienteGroupBox;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox domicilioInput;
+        private System.Windows.Forms.TextBox direccionInput;
         private System.Windows.Forms.Label domicilioLabel;
         private System.Windows.Forms.TextBox dniInput;
         private System.Windows.Forms.TextBox nombreInput;
@@ -272,5 +272,6 @@
         private System.Windows.Forms.Label bajaClienteLabel;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Button botonBuscar;
+        private System.Windows.Forms.DateTimePicker fechaNacimientoInput;
     }
 }

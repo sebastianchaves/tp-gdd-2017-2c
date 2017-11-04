@@ -175,10 +175,7 @@ namespace PagoAgilFrba.AbmCliente
             (this.calleInput.Text != "") &&
             (this.numeroDomicilioInput.Text != "") &&
             (this.localidadInput.Text != "") &&
-            (this.codigoPostalInput.Text != "") &&
-            (this.pisoInput.Text != "") &&
-            (this.departamentoInput.Text != "");
-
+            (this.codigoPostalInput.Text != "");
         }
 
         private void armarDireccion()
