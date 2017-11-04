@@ -75,23 +75,34 @@ namespace PagoAgilFrba.Busquedas
             return 1;
         }
 
+        private Boolean algunFiltroCompleto()
+        {
+            return this.nombreInput.Text != "" || this.cuitInput.Text != "" || this.rubroCombo.Text != "";
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            this.empresasEncontradas = this.empresaDao.findEmpresa(this.nombreABuscar,
-                                                                this.cuitABuscar,
-                                                                this.rubroABuscar);
-            if (empresasEncontradas.Count() == 0)
+            if (this.algunFiltroCompleto())
             {
-                MessageBox.Show("No existe ninguna empresa que concuerde con esos parámetros.");
+                this.empresasEncontradas = this.empresaDao.findEmpresa(this.nombreABuscar,
+                                                    this.cuitABuscar,
+                                                    this.rubroABuscar);
+                if (empresasEncontradas.Count() == 0)
+                {
+                    MessageBox.Show("No existe ninguna empresa que concuerde con esos parámetros.");
+                }
+                else if (empresasEncontradas.Count() > 0)
+                {
+                    this.cargarDataGridEmpresas(empresasEncontradas);
+                    this.Close();
+                }
             }
-            else if (empresasEncontradas.Count() > 0)
+            else
             {
-                this.cargarDataGridEmpresas(empresasEncontradas);
-                this.Close();
+                MessageBox.Show("Complete alguno de los filtros disponibles");
             }
-
         }
 
         // Boton Volver

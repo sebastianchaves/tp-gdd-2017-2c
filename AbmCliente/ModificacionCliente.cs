@@ -18,12 +18,10 @@ namespace PagoAgilFrba.AbmCliente
     public partial class ModificacionCliente : Form
     {
 
-        // Atributos
         private Cliente clienteACargar;
         private Cliente clienteModificado;
         private ClienteDAO<Cliente> clienteDao;
 
-        // Constructores
         public ModificacionCliente()
         {
             InitializeComponent();
@@ -140,23 +138,31 @@ namespace PagoAgilFrba.AbmCliente
 
         private void modificarCliente()
         {
-            if (camposCompletos())
+            try
             {
-                if (Utils.fechaValida(this.clienteModificado.fechaDeNacimiento))
+                if (camposCompletos())
                 {
-                    this.armarDireccion();
-                    this.clienteDao.updateCliente(clienteModificado);
-                    MessageBox.Show("Datos actualizados!");
+                    if (Utils.fechaValida(this.clienteModificado.fechaDeNacimiento))
+                    {
+                        this.armarDireccion();
+                        this.clienteDao.updateCliente(clienteModificado);
+                        MessageBox.Show("Datos actualizados!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fecha fuera de rango.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Fecha fuera de rango.");
+                    MessageBox.Show("Complete los campos obligatorios.");
                 }
             }
-            else
+            catch (SqlException)
             {
-                MessageBox.Show("Complete los campos obligatorios.");
+                MessageBox.Show("Ya existe ese mail.");
             }
+
         }
 
         private Boolean camposCompletos()
@@ -303,11 +309,6 @@ namespace PagoAgilFrba.AbmCliente
         {
             this.clienteModificado.telefono = this.telefonoInput.Text;
         }
-
-
-
-
-
 
     }
 }

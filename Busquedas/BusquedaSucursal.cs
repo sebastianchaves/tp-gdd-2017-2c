@@ -16,7 +16,6 @@ namespace PagoAgilFrba.Busquedas
     public partial class BusquedaSucursal : Form
     {
 
-        // Atributos
         private IList<Sucursal> sucursalesEncontradas;
         private SucursalDAO<Sucursal> sucursalDao;
         private Utils utils;
@@ -25,7 +24,6 @@ namespace PagoAgilFrba.Busquedas
         private String direccionABuscar;
         private int codigoPostalABuscar;
 
-        // Constructores
         public BusquedaSucursal(DataGridView resultadosGrid)
         {
             InitializeComponent();
@@ -51,21 +49,33 @@ namespace PagoAgilFrba.Busquedas
             resultadosGrid.DataSource = resultadosSucursales;
         }
 
+        private Boolean algunFiltroCompleto()
+        {
+            return this.nombreInput.Text != "" || this.direccionInput.Text != "" || this.codigoPostalInput.Text != "";
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            this.sucursalesEncontradas = this.sucursalDao.findSucursal(this.nombreABuscar,
-                                                    this.direccionABuscar,
-                                                    this.codigoPostalABuscar.ToString());
-            if (sucursalesEncontradas.Count() == 0)
+            if (this.algunFiltroCompleto())
             {
-                MessageBox.Show("No existe ninguna sucursal que concuerde con esos parámetros.");
+                this.sucursalesEncontradas = this.sucursalDao.findSucursal(this.nombreABuscar,
+                                        this.direccionABuscar,
+                                        this.codigoPostalABuscar.ToString());
+                if (sucursalesEncontradas.Count() == 0)
+                {
+                    MessageBox.Show("No existe ninguna sucursal que concuerde con esos parámetros.");
+                }
+                else if (sucursalesEncontradas.Count() > 0)
+                {
+                    this.cargarDataGridSucursales(sucursalesEncontradas);
+                    this.Close();
+                }
             }
-            else if (sucursalesEncontradas.Count() > 0)
+            else
             {
-                this.cargarDataGridSucursales(sucursalesEncontradas);
-                this.Close();
+                MessageBox.Show("Complete alguno de los filtros disponibles");
             }
         }
 

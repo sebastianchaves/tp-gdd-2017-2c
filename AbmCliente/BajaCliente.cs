@@ -15,15 +15,17 @@ namespace PagoAgilFrba.AbmCliente
     public partial class BajaCliente : Form
     {
 
-        // Atributos
         private Cliente clienteSeleccionado;
 
-        // Constructores
         public BajaCliente()
         {
             InitializeComponent();
 
-            this.clienteSeleccionado = new Cliente();
+        }
+
+        private void cargarDatos()
+        {
+            this.nombreInput.Text = this.clienteSeleccionado.nombre;
         }
 
         // Eventos
@@ -33,7 +35,8 @@ namespace PagoAgilFrba.AbmCliente
             using (BusquedaCliente busquedaForm = new BusquedaCliente())
             {
                 busquedaForm.ShowDialog(this);
-
+                this.clienteSeleccionado = busquedaForm.getClienteEncontrado();
+                this.cargarDatos();
             }
         }
 
@@ -46,6 +49,7 @@ namespace PagoAgilFrba.AbmCliente
         // Boton Deshabilitar
         private void botonDeshabilitar_Click(object sender, EventArgs e)
         {
+
 
         }
 

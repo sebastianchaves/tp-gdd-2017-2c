@@ -34,29 +34,40 @@ namespace PagoAgilFrba.Busquedas
             return this.clienteEncontrado;
         }
 
+        private Boolean algunFiltroCompleto()
+        {
+            return this.nombreInput.Text != "" || this.apellidoInput.Text != "" || this.dniInput.Text != "";
+        }
+
         // Eventos
         // Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            List<Cliente> resultados = this.clienteDao.findCliente(this.clienteBuscado.nombre, 
-                                                        this.clienteBuscado.apellido, 
-                                                        this.clienteBuscado.dni);
-
-            if (resultados.Count == 0)
+            if (this.algunFiltroCompleto())
             {
-                MessageBox.Show("No existe ningún cliente que concuerde con esos parámetros.");
+                List<Cliente> resultados = this.clienteDao.findCliente(this.clienteBuscado.nombre,
+                                            this.clienteBuscado.apellido,
+                                            this.clienteBuscado.dni);
+
+                if (resultados.Count == 0)
+                {
+                    MessageBox.Show("No existe ningún cliente que concuerde con esos parámetros.");
+                }
+                else
+                {
+                    using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda(resultados))
+                    {
+                        resultadosForm.cargarDataGridClientes(resultados);
+                        resultadosForm.ShowDialog(this);
+                        this.clienteEncontrado = resultadosForm.getClienteSeleccionado();
+                    }
+                    this.Close();
+                }
             }
             else
             {
-                using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda(resultados))
-                {
-                    resultadosForm.cargarDataGridClientes(resultados);
-                    resultadosForm.ShowDialog(this);
-                    this.clienteEncontrado = resultadosForm.getClienteSeleccionado();
-                }
-                this.Close();
+                MessageBox.Show("Complete alguno de los filtros disponibles");
             }
-
         }
 
         // Volver

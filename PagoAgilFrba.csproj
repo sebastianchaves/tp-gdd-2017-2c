@@ -192,6 +192,7 @@
     <Compile Include="Modelo\DAOs\RolDAO.cs" />
     <Compile Include="Modelo\DAOs\RubroDAO.cs" />
     <Compile Include="Modelo\DAOs\SucursalDAO.cs" />
+    <Compile Include="Modelo\DAOs\UsuarioDAO.cs" />
     <Compile Include="Modelo\Entidades\Cliente.cs" />
     <Compile Include="Modelo\Entidades\Empresa.cs" />
     <Compile Include="Modelo\Entidades\Factura.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="Modelo\Entidades\Rol.cs" />
     <Compile Include="Modelo\Entidades\Rubro.cs" />
     <Compile Include="Modelo\Entidades\Sucursal.cs" />
+    <Compile Include="Modelo\Entidades\Usuario.cs" />
     <Compile Include="Modelo\Utils\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
