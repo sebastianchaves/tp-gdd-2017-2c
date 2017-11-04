@@ -35,6 +35,8 @@ namespace PagoAgilFrba.AbmCliente
         // Metodos
         private void cargarDatos()
         {
+            this.clienteModificado.id = this.clienteACargar.id;
+
             this.nombreInput.Text = this.clienteACargar.nombre;
             this.clienteModificado.nombre = this.clienteACargar.nombre;
 
@@ -56,7 +58,67 @@ namespace PagoAgilFrba.AbmCliente
             this.codigoPostalInput.Text = this.clienteACargar.codigoPostal.ToString();
             this.clienteModificado.codigoPostal = this.clienteACargar.codigoPostal;
 
+            this.cargarDireccion();
+
             this.habilitarDeshabilitar();
+        }
+
+        private void cargarDireccion()
+        {
+            String direccion = this.clienteACargar.direccion;
+
+            String[] partes = direccion.Split(' ');
+
+            String calle = partes[0];
+            String numero = partes[1];
+            String localidad = partes[2];
+            String piso = null;
+            String departamento = null;
+
+            if(direccion.Contains("Piso:") || direccion.Contains("Dto:"))
+            {
+                if (direccion.Contains("Piso:") && !direccion.Contains("Dto:"))
+                {
+                    String pisoDepartamento = direccion.Substring(direccion.IndexOf("Piso:"));
+
+                    String[] partesPiso = pisoDepartamento.Split(' ');
+
+                    piso = partesPiso[1];
+                }
+                else if (direccion.Contains("Dto:") && !direccion.Contains("Piso:"))
+                {
+                    String pisoDepartamento = direccion.Substring(direccion.IndexOf("Dto:"));
+
+                    String[] partesDepartamento = pisoDepartamento.Split(' ');
+
+                    departamento = partesDepartamento[1];
+                }
+                else if (direccion.Contains("Dto:") && direccion.Contains("Piso:"))
+                {
+                    String pisoDepartamento = direccion.Substring(direccion.IndexOf("Piso:"));
+
+                    String[] partesPisoDepartamento = pisoDepartamento.Split(' ');
+
+                    piso = partesPisoDepartamento[1];
+                    departamento = partesPisoDepartamento[3];
+                }
+
+            }
+
+            this.calleInput.Text = calle;
+
+            this.numeroDomicilioInput.Text = numero;
+            this.localidadInput.Text = localidad;
+
+            if (departamento != null)
+            {
+                this.departamentoInput.Text = departamento.ToString();
+            }
+
+            if (piso != null)
+            {
+                this.pisoInput.Text = piso.ToString();
+            }
         }
 
         private void habilitarDeshabilitar()
@@ -76,13 +138,14 @@ namespace PagoAgilFrba.AbmCliente
             }
         }
 
-        public void modificarCliente()
+        private void modificarCliente()
         {
             if (camposCompletos())
             {
                 if (Utils.fechaValida(this.clienteModificado.fechaDeNacimiento))
                 {
-                    clienteDao.updateCliente(clienteModificado);
+                    this.armarDireccion();
+                    this.clienteDao.updateCliente(clienteModificado);
                     MessageBox.Show("Datos actualizados!");
                 }
                 else
@@ -96,7 +159,7 @@ namespace PagoAgilFrba.AbmCliente
             }
         }
 
-        public Boolean camposCompletos()
+        private Boolean camposCompletos()
         {
             return (this.nombreInput.Text != "") &&
             (this.apellidoInput.Text != "") &&
@@ -109,33 +172,60 @@ namespace PagoAgilFrba.AbmCliente
             (this.codigoPostalInput.Text != "") &&
             (this.pisoInput.Text != "") &&
             (this.departamentoInput.Text != "");
-   
+
+        }
+
+        private void armarDireccion()
+        {
+            String direccion = "";
+
+            direccion += this.calleInput.Text + " " + this.numeroDomicilioInput.Text
+                            + " " + this.localidadInput.Text;
+
+            if (this.pisoInput.Text != "")
+            {
+                direccion += " Piso: " + this.pisoInput.Text;
+            }
+
+            if (this.departamentoInput.Text != "")
+            {
+                direccion += " Dto: " + this.departamentoInput.Text;
+            }
+
+            this.clienteModificado.direccion = direccion;
+        }
+
+        private void habilitarCampos()
+        {
+            this.nombreInput.Enabled = true;
+            this.apellidoInput.Enabled = true;
+            this.dniInput.Enabled = true;
+            this.mailInput.Enabled = true;
+            this.fechaDeNacimientoInput.Enabled = true;
+            this.telefonoInput.Enabled = true;
+            this.calleInput.Enabled = true;
+            this.numeroDomicilioInput.Enabled = true;
+            this.localidadInput.Enabled = true;
+            this.codigoPostalInput.Enabled = true;
+            this.pisoInput.Enabled = true;
+            this.departamentoInput.Enabled = true;
         }
 
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            Utils.iniciarGrids(resultadosGrid);
-
             using (BusquedaCliente busquedaForm = new BusquedaCliente())
             {
                 busquedaForm.ShowDialog(this);
+                this.clienteACargar = busquedaForm.getClienteEncontrado();
+                this.cargarDatos();
+                this.habilitarCampos();
             }
         }
 
-        // Boton Seleccionar
-        private void botonSeleccionar_Click(object sender, EventArgs e)
-        {
-            var cliente = resultadosGrid.SelectedCells[0].RowIndex;
-            this.clienteACargar = new Cliente();
-            int dniSeleccionado = Int32.Parse(resultadosGrid.Rows[cliente].Cells[2].Value.ToString());
-            List<Cliente> clientes = this.clienteDao.findCliente("", "", dniSeleccionado);
-            this.cargarDatos();
-        }
-
         // Boton Aceptar
-        private void botonAceptar_Click(object sender, EventArgs e)
+        private void botonActualizar_Click(object sender, EventArgs e)
         {
             this.modificarCliente();
             Utils.clearTextBoxes(this);
@@ -160,6 +250,64 @@ namespace PagoAgilFrba.AbmCliente
         {
             this.clienteModificado.habilitado = false;
         }
+
+        // Cargando datos nuevos
+        // Nombre
+        private void nombreInput_Leave(object sender, EventArgs e)
+        {
+            this.clienteModificado.nombre = this.nombreInput.Text;
+        }
+
+        // Apellido
+        private void apellidoInput_Leave(object sender, EventArgs e)
+        {
+            this.clienteModificado.apellido = this.apellidoInput.Text;
+        }
+
+        // DNI
+        private void dniInput_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                this.clienteModificado.dni = Int32.Parse(this.dniInput.Text);
+            }
+            catch (Exception ex)
+            {
+                Utils.catchearErrorFormato(ex, dniTooltip, dniInput);
+            }
+        
+        }
+
+        // Mail
+        private void mailInput_Leave(object sender, EventArgs e)
+        {
+            this.clienteModificado.mail = this.mailInput.Text;
+        }
+
+        // Fecha Nacimiento
+        private void fechaDeNacimientoInput_Leave(object sender, EventArgs e)
+        {
+            if (fechaDeNacimientoInput.Value.Date <= Utils.appDate.Date)
+            {
+                this.clienteModificado.fechaDeNacimiento = this.fechaDeNacimientoInput.Value;
+            }
+            else
+            {
+                fechaNacimientoTooltip.Show("Fecha invalida", fechaDeNacimientoInput, 1500);
+                fechaDeNacimientoInput.ResetText();
+            }
+        }
+
+        // Telefono
+        private void telefonoInput_Leave(object sender, EventArgs e)
+        {
+            this.clienteModificado.telefono = this.telefonoInput.Text;
+        }
+
+
+
+
+
 
     }
 }

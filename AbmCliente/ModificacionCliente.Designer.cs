@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.datosClienteGroupBox = new System.Windows.Forms.GroupBox();
             this.habilitacionLabel = new System.Windows.Forms.Label();
             this.deshabilitadoRadioButton = new System.Windows.Forms.RadioButton();
@@ -57,16 +58,14 @@
             this.telefonoInput = new System.Windows.Forms.TextBox();
             this.mailLabel = new System.Windows.Forms.Label();
             this.mailInput = new System.Windows.Forms.TextBox();
-            this.resultadosGrid = new System.Windows.Forms.DataGridView();
-            this.clientesEncontradosLabel = new System.Windows.Forms.Label();
             this.modificacionClienteLabel = new System.Windows.Forms.Label();
             this.botonBuscar = new System.Windows.Forms.Button();
-            this.botonAceptar = new System.Windows.Forms.Button();
-            this.botonCancelar = new System.Windows.Forms.Button();
-            this.botonSeleccionar = new System.Windows.Forms.Button();
+            this.botonActualizar = new System.Windows.Forms.Button();
+            this.botonVolver = new System.Windows.Forms.Button();
+            this.dniTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.fechaNacimientoTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.datosClienteGroupBox.SuspendLayout();
             this.domicilioGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.resultadosGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // datosClienteGroupBox
@@ -87,7 +86,7 @@
             this.datosClienteGroupBox.Controls.Add(this.telefonoInput);
             this.datosClienteGroupBox.Controls.Add(this.mailLabel);
             this.datosClienteGroupBox.Controls.Add(this.mailInput);
-            this.datosClienteGroupBox.Location = new System.Drawing.Point(264, 58);
+            this.datosClienteGroupBox.Location = new System.Drawing.Point(12, 36);
             this.datosClienteGroupBox.Name = "datosClienteGroupBox";
             this.datosClienteGroupBox.Size = new System.Drawing.Size(360, 337);
             this.datosClienteGroupBox.TabIndex = 6;
@@ -161,6 +160,7 @@
             // 
             // departamentoInput
             // 
+            this.departamentoInput.Enabled = false;
             this.departamentoInput.Location = new System.Drawing.Point(281, 73);
             this.departamentoInput.Name = "departamentoInput";
             this.departamentoInput.Size = new System.Drawing.Size(37, 20);
@@ -168,6 +168,7 @@
             // 
             // localidadInput
             // 
+            this.localidadInput.Enabled = false;
             this.localidadInput.Location = new System.Drawing.Point(83, 73);
             this.localidadInput.Name = "localidadInput";
             this.localidadInput.Size = new System.Drawing.Size(100, 20);
@@ -175,6 +176,7 @@
             // 
             // pisoInput
             // 
+            this.pisoInput.Enabled = false;
             this.pisoInput.Location = new System.Drawing.Point(281, 47);
             this.pisoInput.Name = "pisoInput";
             this.pisoInput.Size = new System.Drawing.Size(37, 20);
@@ -182,6 +184,7 @@
             // 
             // numeroDomicilioInput
             // 
+            this.numeroDomicilioInput.Enabled = false;
             this.numeroDomicilioInput.Location = new System.Drawing.Point(83, 47);
             this.numeroDomicilioInput.Name = "numeroDomicilioInput";
             this.numeroDomicilioInput.Size = new System.Drawing.Size(100, 20);
@@ -207,6 +210,7 @@
             // 
             // codigoPostalInput
             // 
+            this.codigoPostalInput.Enabled = false;
             this.codigoPostalInput.Location = new System.Drawing.Point(281, 21);
             this.codigoPostalInput.Name = "codigoPostalInput";
             this.codigoPostalInput.Size = new System.Drawing.Size(37, 20);
@@ -241,6 +245,7 @@
             // 
             // calleInput
             // 
+            this.calleInput.Enabled = false;
             this.calleInput.Location = new System.Drawing.Point(83, 21);
             this.calleInput.Name = "calleInput";
             this.calleInput.Size = new System.Drawing.Size(100, 20);
@@ -248,24 +253,30 @@
             // 
             // fechaDeNacimientoInput
             // 
+            this.fechaDeNacimientoInput.Enabled = false;
             this.fechaDeNacimientoInput.Location = new System.Drawing.Point(104, 127);
             this.fechaDeNacimientoInput.Name = "fechaDeNacimientoInput";
             this.fechaDeNacimientoInput.Size = new System.Drawing.Size(235, 20);
             this.fechaDeNacimientoInput.TabIndex = 7;
+            this.fechaDeNacimientoInput.Leave += new System.EventHandler(this.fechaDeNacimientoInput_Leave);
             // 
             // dniInput
             // 
+            this.dniInput.Enabled = false;
             this.dniInput.Location = new System.Drawing.Point(104, 75);
             this.dniInput.Name = "dniInput";
             this.dniInput.Size = new System.Drawing.Size(235, 20);
             this.dniInput.TabIndex = 5;
+            this.dniInput.Leave += new System.EventHandler(this.dniInput_Leave);
             // 
             // nombreInput
             // 
+            this.nombreInput.Enabled = false;
             this.nombreInput.Location = new System.Drawing.Point(104, 23);
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(235, 20);
             this.nombreInput.TabIndex = 3;
+            this.nombreInput.Leave += new System.EventHandler(this.nombreInput_Leave);
             // 
             // label3
             // 
@@ -287,10 +298,12 @@
             // 
             // apellidoInput
             // 
+            this.apellidoInput.Enabled = false;
             this.apellidoInput.Location = new System.Drawing.Point(104, 49);
             this.apellidoInput.Name = "apellidoInput";
             this.apellidoInput.Size = new System.Drawing.Size(235, 20);
             this.apellidoInput.TabIndex = 4;
+            this.apellidoInput.Leave += new System.EventHandler(this.apellidoInput_Leave);
             // 
             // telefonoLabel
             // 
@@ -321,10 +334,12 @@
             // 
             // telefonoInput
             // 
+            this.telefonoInput.Enabled = false;
             this.telefonoInput.Location = new System.Drawing.Point(104, 153);
             this.telefonoInput.Name = "telefonoInput";
             this.telefonoInput.Size = new System.Drawing.Size(235, 20);
             this.telefonoInput.TabIndex = 8;
+            this.telefonoInput.Leave += new System.EventHandler(this.telefonoInput_Leave);
             // 
             // mailLabel
             // 
@@ -337,33 +352,18 @@
             // 
             // mailInput
             // 
+            this.mailInput.Enabled = false;
             this.mailInput.Location = new System.Drawing.Point(104, 101);
             this.mailInput.Name = "mailInput";
             this.mailInput.Size = new System.Drawing.Size(235, 20);
             this.mailInput.TabIndex = 6;
-            // 
-            // resultadosGrid
-            // 
-            this.resultadosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.resultadosGrid.Location = new System.Drawing.Point(15, 74);
-            this.resultadosGrid.Name = "resultadosGrid";
-            this.resultadosGrid.Size = new System.Drawing.Size(231, 321);
-            this.resultadosGrid.TabIndex = 8;
-            // 
-            // clientesEncontradosLabel
-            // 
-            this.clientesEncontradosLabel.AutoSize = true;
-            this.clientesEncontradosLabel.Location = new System.Drawing.Point(12, 58);
-            this.clientesEncontradosLabel.Name = "clientesEncontradosLabel";
-            this.clientesEncontradosLabel.Size = new System.Drawing.Size(110, 13);
-            this.clientesEncontradosLabel.TabIndex = 9;
-            this.clientesEncontradosLabel.Text = "Clientes Encontrados:";
+            this.mailInput.Leave += new System.EventHandler(this.mailInput_Leave);
             // 
             // modificacionClienteLabel
             // 
             this.modificacionClienteLabel.AutoSize = true;
             this.modificacionClienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modificacionClienteLabel.Location = new System.Drawing.Point(244, 18);
+            this.modificacionClienteLabel.Location = new System.Drawing.Point(112, 9);
             this.modificacionClienteLabel.Name = "modificacionClienteLabel";
             this.modificacionClienteLabel.Size = new System.Drawing.Size(149, 24);
             this.modificacionClienteLabel.TabIndex = 14;
@@ -371,57 +371,43 @@
             // 
             // botonBuscar
             // 
-            this.botonBuscar.Location = new System.Drawing.Point(39, 401);
+            this.botonBuscar.Location = new System.Drawing.Point(53, 379);
             this.botonBuscar.Name = "botonBuscar";
             this.botonBuscar.Size = new System.Drawing.Size(90, 30);
             this.botonBuscar.TabIndex = 0;
-            this.botonBuscar.Text = "Buscar";
+            this.botonBuscar.Text = "&Buscar";
             this.botonBuscar.UseVisualStyleBackColor = true;
             this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
-            // botonAceptar
+            // botonActualizar
             // 
-            this.botonAceptar.Location = new System.Drawing.Point(343, 407);
-            this.botonAceptar.Name = "botonAceptar";
-            this.botonAceptar.Size = new System.Drawing.Size(97, 28);
-            this.botonAceptar.TabIndex = 1;
-            this.botonAceptar.Text = "Aceptar";
-            this.botonAceptar.UseVisualStyleBackColor = true;
-            this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
+            this.botonActualizar.Location = new System.Drawing.Point(149, 379);
+            this.botonActualizar.Name = "botonActualizar";
+            this.botonActualizar.Size = new System.Drawing.Size(90, 30);
+            this.botonActualizar.TabIndex = 1;
+            this.botonActualizar.Text = "&Actualizar";
+            this.botonActualizar.UseVisualStyleBackColor = true;
+            this.botonActualizar.Click += new System.EventHandler(this.botonActualizar_Click);
             // 
-            // botonCancelar
+            // botonVolver
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(461, 407);
-            this.botonCancelar.Name = "botonCancelar";
-            this.botonCancelar.Size = new System.Drawing.Size(97, 28);
-            this.botonCancelar.TabIndex = 2;
-            this.botonCancelar.Text = "Cancelar";
-            this.botonCancelar.UseVisualStyleBackColor = true;
-            this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
-            // 
-            // botonSeleccionar
-            // 
-            this.botonSeleccionar.Enabled = false;
-            this.botonSeleccionar.Location = new System.Drawing.Point(135, 401);
-            this.botonSeleccionar.Name = "botonSeleccionar";
-            this.botonSeleccionar.Size = new System.Drawing.Size(90, 30);
-            this.botonSeleccionar.TabIndex = 15;
-            this.botonSeleccionar.Text = "Seleccionar";
-            this.botonSeleccionar.UseVisualStyleBackColor = true;
-            this.botonSeleccionar.Click += new System.EventHandler(this.botonSeleccionar_Click);
+            this.botonVolver.Location = new System.Drawing.Point(245, 379);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(90, 30);
+            this.botonVolver.TabIndex = 2;
+            this.botonVolver.Text = "&Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
             // ModificacionCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 460);
-            this.Controls.Add(this.botonSeleccionar);
-            this.Controls.Add(this.botonCancelar);
-            this.Controls.Add(this.botonAceptar);
+            this.ClientSize = new System.Drawing.Size(385, 419);
+            this.Controls.Add(this.botonVolver);
+            this.Controls.Add(this.botonActualizar);
             this.Controls.Add(this.botonBuscar);
             this.Controls.Add(this.modificacionClienteLabel);
-            this.Controls.Add(this.clientesEncontradosLabel);
-            this.Controls.Add(this.resultadosGrid);
             this.Controls.Add(this.datosClienteGroupBox);
             this.Name = "ModificacionCliente";
             this.Text = "Modificar Cliente";
@@ -429,7 +415,6 @@
             this.datosClienteGroupBox.PerformLayout();
             this.domicilioGroupBox.ResumeLayout(false);
             this.domicilioGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.resultadosGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,8 +434,6 @@
         private System.Windows.Forms.TextBox telefonoInput;
         private System.Windows.Forms.Label mailLabel;
         private System.Windows.Forms.TextBox mailInput;
-        private System.Windows.Forms.DataGridView resultadosGrid;
-        private System.Windows.Forms.Label clientesEncontradosLabel;
         private System.Windows.Forms.Label modificacionClienteLabel;
         private System.Windows.Forms.DateTimePicker fechaDeNacimientoInput;
         private System.Windows.Forms.Label numeroDomicilioLabel;
@@ -470,8 +453,9 @@
         private System.Windows.Forms.RadioButton deshabilitadoRadioButton;
         private System.Windows.Forms.RadioButton habilitadoRadioButton;
         private System.Windows.Forms.Button botonBuscar;
-        private System.Windows.Forms.Button botonAceptar;
-        private System.Windows.Forms.Button botonCancelar;
-        private System.Windows.Forms.Button botonSeleccionar;
+        private System.Windows.Forms.Button botonActualizar;
+        private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.ToolTip dniTooltip;
+        private System.Windows.Forms.ToolTip fechaNacimientoTooltip;
     }
 }

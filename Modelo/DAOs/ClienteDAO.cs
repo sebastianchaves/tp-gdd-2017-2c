@@ -104,9 +104,11 @@ namespace PagoAgilFrba.Modelo.DAOs
         public void updateCliente(Cliente clienteUpdate)
         {
             Condicion actualizacion = new Condicion();
-            actualizacion.agregarCondicion("apellido", "nuevoApellido", Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("nombre", clienteUpdate.nombre, Utils.Utils.STRING_TYPE);
             Condicion condicion = new Condicion();
-            condicion.agregarCondicion("dni", 1231, Utils.Utils.INT_TYPE);
+
+            condicion.agregarCondicion("id_cliente", clienteUpdate.id, Utils.Utils.INT_TYPE);
+           
             update(TABLA, actualizacion, condicion);
         }
 

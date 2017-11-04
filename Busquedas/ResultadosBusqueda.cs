@@ -19,6 +19,8 @@ namespace PagoAgilFrba.Busquedas
 
         // Atributos
         private Cliente clienteSeleccionado;
+        private List<Cliente> clientesEncontrados;
+        private ClienteDAO<Cliente> clienteDao;
 
         private Rol rolSeleccionado;
         private List<Rol> rolesEncontrados;
@@ -36,6 +38,9 @@ namespace PagoAgilFrba.Busquedas
         public ResultadosBusqueda(List<Cliente> clientesACargar)
         {
             InitializeComponent();
+
+            this.clienteDao = new ClienteDAO<Cliente>();
+            this.cargarDataGridClientes(clientesACargar);
         }
 
         private void cargarDataGridRoles()
@@ -58,6 +63,8 @@ namespace PagoAgilFrba.Busquedas
 
         public void cargarDataGridClientes(List<Cliente> clientes)
         {
+            this.clientesEncontrados = clientes;
+
             DataTable resultadosClientes = new DataTable();
 
             resultadosClientes.Columns.Add("DNI");
@@ -87,11 +94,23 @@ namespace PagoAgilFrba.Busquedas
         private void aceptarButton_Click(object sender, EventArgs e)
         {
             int index = this.resultadosGrid.SelectedCells[0].RowIndex;
-            this.rolSeleccionado = new Rol();
 
-            String nombreRol = this.resultadosGrid.Rows[index].Cells[0].Value.ToString();
+            if (this.rolesEncontrados != null)
+            {
+                this.rolSeleccionado = new Rol();
 
-            this.rolSeleccionado = this.rolesEncontrados.Find(x => x.nombre.Equals(nombreRol));
+                String nombreRol = this.resultadosGrid.Rows[index].Cells[0].Value.ToString();
+
+                this.rolSeleccionado = this.rolesEncontrados.Find(rol => rol.nombre.Equals(nombreRol));
+            }
+            else if (this.clientesEncontrados != null)
+            {
+                this.clienteSeleccionado = new Cliente();
+
+                String mailCliente = this.resultadosGrid.Rows[index].Cells[3].Value.ToString();
+
+                this.clienteSeleccionado = this.clientesEncontrados.Find(cliente => cliente.mail.Equals(mailCliente));
+            }
 
             this.Close();
         }
