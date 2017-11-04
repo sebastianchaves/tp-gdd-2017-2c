@@ -15,6 +15,7 @@ namespace PagoAgilFrba.Modelo.Entidades
         public Boolean habilitado;
 
         public List<Funcionalidad> funcionalidades;
+        public int indexCombo;
 
         public Rol()
         {

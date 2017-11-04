@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    class Usuario
+    public class Usuario
     {
 
         public int id;
         public String nombre;
         public String apellido;
+        public String contrasenia;
         public int idSucursal;
-
+       
     }
 }

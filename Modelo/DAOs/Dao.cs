@@ -18,7 +18,8 @@ namespace PagoAgilFrba.Modelo.DAOs
         public const String ALL = "*";
         private SqlConnection connection;
 
-        protected List<List<String>> select(String tabla, String select, List<String> tipos, Condicion condicion) {
+        protected List<List<String>> select(String tabla, String select, List<String> tipos, Condicion condicion)
+        {
 
             using (this.connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -43,7 +44,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        String valor="";
+                        String valor = "";
                         switch (tipos.ElementAt(i))
                         {
                             case Utils.Utils.STRING_TYPE:
@@ -57,7 +58,14 @@ namespace PagoAgilFrba.Modelo.DAOs
                                 }
                                 break;
                             case Utils.Utils.INT_TYPE:
-                                valor = reader.GetInt32(i).ToString();
+                                if (!reader.IsDBNull(i))
+                                {
+                                    valor = reader.GetInt32(i).ToString();
+                                }
+                                else
+                                {
+                                    valor = "0";
+                                }
                                 break;
                             case Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE:
                                 valor = reader.GetInt32(i).ToString();
@@ -113,13 +121,13 @@ namespace PagoAgilFrba.Modelo.DAOs
                     {
                         where += columns.ElementAt(i) + " = " + valor;
                     }
-                    else 
+                    else
                     {
                         where += columns.ElementAt(i) + " = " + valor;
                     }
-                    if (hayMasElementosNoNulos(conditions, i)) 
-                    { 
-                        where += " AND "; 
+                    if (hayMasElementosNoNulos(conditions, i))
+                    {
+                        where += " AND ";
                     }
                 }
             }
@@ -193,7 +201,8 @@ namespace PagoAgilFrba.Modelo.DAOs
             return entities;
         }
 
-        protected int insert(String tabla, List<String> columnas, List<String> tipos, List<String> valores) {
+        protected int insert(String tabla, List<String> columnas, List<String> tipos, List<String> valores)
+        {
             String insert = "INSERT INTO " + tabla + "(";
             for (int i = 0; i < columnas.Count; i++)
             {
@@ -232,7 +241,8 @@ namespace PagoAgilFrba.Modelo.DAOs
                             insert += "0";
                         }
                     }
-                    else {
+                    else
+                    {
                         insert += valores.ElementAt(i);
                     }
                     if (i + 1 < columnas.Count && !tipos.ElementAt(i + 1).Equals(Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE))

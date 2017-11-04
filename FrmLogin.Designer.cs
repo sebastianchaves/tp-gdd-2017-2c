@@ -104,6 +104,7 @@
             this.usuarioInput.Name = "usuarioInput";
             this.usuarioInput.Size = new System.Drawing.Size(142, 20);
             this.usuarioInput.TabIndex = 6;
+            this.usuarioInput.Leave += new System.EventHandler(this.usuarioInput_Leave);
             // 
             // contraseniaInput
             // 
@@ -111,6 +112,7 @@
             this.contraseniaInput.Name = "contraseniaInput";
             this.contraseniaInput.Size = new System.Drawing.Size(142, 20);
             this.contraseniaInput.TabIndex = 7;
+            this.contraseniaInput.Leave += new System.EventHandler(this.contraseniaInput_Leave);
             // 
             // FrmLogin
             // 

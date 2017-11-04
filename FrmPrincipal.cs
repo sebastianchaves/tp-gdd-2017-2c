@@ -14,24 +14,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PagoAgilFrba.Modelo.Entidades;
+using PagoAgilFrba.Modelo.DAOs;
 
 namespace PagoAgilFrba
 {
     public partial class FrmPrincipal : Form
     {
+
+        private Usuario usuarioLogeado;
+        private List<Rol> rolesUsuario;
+        private RolDAO<Rol> rolDao;
+        private Rol rolSeleccionado;
+
         public FrmPrincipal()
         {
             InitializeComponent();
+
+            this.rolDao = new RolDAO<Rol>();
         }
 
-        // Load
-        private void FrmPrincipal_Load(object sender, EventArgs e)
+        private void logeoUsuario()
         {
             using (FrmLogin login = new FrmLogin())
             {
                 login.ShowDialog();
+                this.usuarioLogeado = login.getUsuarioLogin();
             }
 
+            this.rolesUsuario = this.rolDao.obtenerRolesPorUsuario(this.usuarioLogeado.nombre);
+
+            if (this.rolesUsuario.Count == 1)
+            {
+                this.rolSeleccionado = this.rolesUsuario.ElementAt(0);
+            }
+            else if (this.rolesUsuario.Count > 1)
+            {
+                using (FrmSeleccionRol seleccionRol = new FrmSeleccionRol(this.rolesUsuario))
+                {
+                    seleccionRol.ShowDialog();
+                    this.rolSeleccionado = seleccionRol.getRolSeleccionado();
+                }
+            }
+
+        }
+
+        // Eventos
+        // Load
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            this.logeoUsuario();
         }
 
         // Archivo
@@ -127,8 +159,6 @@ namespace PagoAgilFrba
         {
             new ListadoEstadisticoForm().ShowDialog();
         }
-
-
 
     }
 }
