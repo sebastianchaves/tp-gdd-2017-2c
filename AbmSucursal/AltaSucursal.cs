@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -35,16 +36,24 @@ namespace PagoAgilFrba.AbmSucursal
         {
             this.nuevaSucursal.activo = true;
 
-            if (this.camposCompletos())
+            try
             {
-                this.sucursalDao.agregarSucursal(this.nuevaSucursal);
-                MessageBox.Show("Sucursal agregada!");
-                Utils.clearTextBoxes(this);
+                if (this.camposCompletos())
+                {
+                    this.sucursalDao.agregarSucursal(this.nuevaSucursal);
+                    MessageBox.Show("Sucursal agregada!");
+                    Utils.clearTextBoxes(this);
+                }
+                else
+                {
+                    MessageBox.Show("Complete los campos faltantes.");
+                }
             }
-            else
+            catch (SqlException)
             {
-                MessageBox.Show("Complete los campos faltantes.");
+                MessageBox.Show("Ya existe sucursal con ese codigo postal.");
             }
+
         }
 
         private Boolean camposCompletos()
@@ -60,6 +69,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             this.agregarSucursal();
             this.nuevaSucursal = new Sucursal();
+            Utils.clearTextBoxes(this);
         }
 
         // Boton Volver
@@ -83,14 +93,7 @@ namespace PagoAgilFrba.AbmSucursal
         // Cargar Codigo Postal
         private void codigoPostalInput_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                this.nuevaSucursal.codigoPostal = this.codigoPostalInput.Text;
-            }
-            catch (Exception ex)
-            {
-                Utils.catchearErrorFormato(ex, this.codigoPostalTooltip, this.codigoPostalInput);
-            }
+            this.nuevaSucursal.codigoPostal = this.codigoPostalInput.Text;
         }
 
     }

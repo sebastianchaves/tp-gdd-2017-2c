@@ -16,37 +16,22 @@ namespace PagoAgilFrba.Busquedas
     public partial class BusquedaSucursal : Form
     {
 
-        private IList<Sucursal> sucursalesEncontradas;
         private SucursalDAO<Sucursal> sucursalDao;
-        private Utils utils;
-        private DataGridView resultadosGrid;
-        private String nombreABuscar;
-        private String direccionABuscar;
-        private int codigoPostalABuscar;
+        private Sucursal sucursalBuscada;
+        private Sucursal sucursalEncontrada;
 
-        public BusquedaSucursal(DataGridView resultadosGrid)
+        public BusquedaSucursal()
         {
             InitializeComponent();
 
-            this.utils = new Utils();
             this.sucursalDao = new SucursalDAO<Sucursal>();
-            this.resultadosGrid = resultadosGrid;
+            this.sucursalBuscada = new Sucursal();
+            this.sucursalEncontrada = new Sucursal();
         }
 
-        // Metodos
-        private void cargarDataGridSucursales(IList<Sucursal> sucursales)
+        public Sucursal getSucursalEncontrada()
         {
-            DataTable resultadosSucursales = new DataTable();
-
-            resultadosSucursales.Columns.Add("Nombre");
-            resultadosSucursales.Columns.Add("Direccion");
-            resultadosSucursales.Columns.Add("Codigo Postal");
-
-            foreach (Sucursal sucursal in sucursales)
-            {
-                resultadosSucursales.Rows.Add(sucursal.nombre, sucursal.direccion, sucursal.codigoPostal);
-            }
-            resultadosGrid.DataSource = resultadosSucursales;
+            return this.sucursalEncontrada;
         }
 
         private Boolean algunFiltroCompleto()
@@ -60,16 +45,22 @@ namespace PagoAgilFrba.Busquedas
         {
             if (this.algunFiltroCompleto())
             {
-                this.sucursalesEncontradas = this.sucursalDao.findSucursal(this.nombreABuscar,
-                                        this.direccionABuscar,
-                                        this.codigoPostalABuscar.ToString());
-                if (sucursalesEncontradas.Count() == 0)
+
+                List<Sucursal> resultados = this.sucursalDao.findSucursal(this.sucursalBuscada.nombre,
+                                        this.sucursalBuscada.direccion,
+                                        this.sucursalBuscada.codigoPostal);
+
+                if (resultados.Count() == 0)
                 {
                     MessageBox.Show("No existe ninguna sucursal que concuerde con esos parámetros.");
                 }
-                else if (sucursalesEncontradas.Count() > 0)
+                else if (resultados.Count() > 0)
                 {
-                    this.cargarDataGridSucursales(sucursalesEncontradas);
+                    using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda(resultados))
+                    {
+                        resultadosForm.ShowDialog(this);
+                        this.sucursalEncontrada = resultadosForm.getSucursalSeleccionada();
+                    }
                     this.Close();
                 }
             }
@@ -88,26 +79,20 @@ namespace PagoAgilFrba.Busquedas
         // Carga Nombre
         private void nombreInput_Leave(object sender, EventArgs e)
         {
-            this.nombreABuscar = this.nombreInput.Text;
+            this.sucursalBuscada.nombre = this.nombreInput.Text;
         }
 
         // Carga Direccion
         private void direccionInput_Leave(object sender, EventArgs e)
         {
-            this.direccionABuscar = this.direccionInput.Text;
+            this.sucursalBuscada.direccion = this.direccionInput.Text;
         }
 
         // Carga Codigo Postal
         private void codigoPostalInput_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                this.codigoPostalABuscar = Int32.Parse(this.codigoPostalInput.Text);
-            }
-            catch (Exception ex)
-            {
-                Utils.catchearErrorFormato(ex, codigoPostalTooltip, codigoPostalInput);
-            }
+            this.sucursalBuscada.codigoPostal = this.codigoPostalInput.Text;
         }
+
     }
 }

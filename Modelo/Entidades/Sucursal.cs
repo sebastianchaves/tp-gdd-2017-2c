@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    class Sucursal
+    public class Sucursal
     {
 
         public int id;      

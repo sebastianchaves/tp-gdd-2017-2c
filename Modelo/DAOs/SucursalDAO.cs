@@ -75,9 +75,19 @@ namespace PagoAgilFrba.Modelo.DAOs
         }
 
         // Updates
-        public void updateSucursal(Sucursal sucursalModificada)
+        public void updateSucursal(Sucursal sucursalUpdate)
         {
+            Condicion actualizacion = new Condicion();
+            actualizacion.agregarCondicion("nombre", sucursalUpdate.nombre, Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("direccion", sucursalUpdate.direccion, Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("codigo_postal", sucursalUpdate.codigoPostal, Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("activo", sucursalUpdate.activo.ToString(), Utils.Utils.BIT_TYPE);
 
+            Condicion condicion = new Condicion();
+
+            condicion.agregarCondicion("id_sucursal", sucursalUpdate.id, Utils.Utils.INT_TYPE);
+
+            update(TABLA, actualizacion, condicion);
         }
 
     }

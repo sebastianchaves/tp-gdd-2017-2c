@@ -31,19 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionSucursal));
             this.modificacionSucursalLabel = new System.Windows.Forms.Label();
             this.botonBuscar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.rbHabilitada = new System.Windows.Forms.RadioButton();
-            this.rbDeshabilitada = new System.Windows.Forms.RadioButton();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.txtCodigoPostal = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nombreLabel = new System.Windows.Forms.Label();
+            this.direccionLabel = new System.Windows.Forms.Label();
+            this.codigoPostalLabel = new System.Windows.Forms.Label();
+            this.estadoLabel = new System.Windows.Forms.Label();
+            this.habilitadaRadioButtion = new System.Windows.Forms.RadioButton();
+            this.deshabilitadaRadioButton = new System.Windows.Forms.RadioButton();
+            this.nombreInput = new System.Windows.Forms.TextBox();
+            this.direccionInput = new System.Windows.Forms.TextBox();
+            this.codigoPostalInput = new System.Windows.Forms.TextBox();
+            this.datosSucursalGroupbox = new System.Windows.Forms.GroupBox();
             this.botonVolver = new System.Windows.Forms.Button();
             this.botonActualizar = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.datosSucursalGroupbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // modificacionSucursalLabel
@@ -64,103 +64,114 @@
             this.botonBuscar.TabIndex = 5;
             this.botonBuscar.Text = "&Buscar";
             this.botonBuscar.UseVisualStyleBackColor = true;
+            this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
-            // label1
+            // nombreLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nombre:";
+            this.nombreLabel.AutoSize = true;
+            this.nombreLabel.Location = new System.Drawing.Point(14, 33);
+            this.nombreLabel.Name = "nombreLabel";
+            this.nombreLabel.Size = new System.Drawing.Size(47, 13);
+            this.nombreLabel.TabIndex = 6;
+            this.nombreLabel.Text = "Nombre:";
             // 
-            // label2
+            // direccionLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Dirección:";
+            this.direccionLabel.AutoSize = true;
+            this.direccionLabel.Location = new System.Drawing.Point(14, 74);
+            this.direccionLabel.Name = "direccionLabel";
+            this.direccionLabel.Size = new System.Drawing.Size(55, 13);
+            this.direccionLabel.TabIndex = 7;
+            this.direccionLabel.Text = "Dirección:";
             // 
-            // label3
+            // codigoPostalLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Código Postal:";
+            this.codigoPostalLabel.AutoSize = true;
+            this.codigoPostalLabel.Location = new System.Drawing.Point(14, 116);
+            this.codigoPostalLabel.Name = "codigoPostalLabel";
+            this.codigoPostalLabel.Size = new System.Drawing.Size(75, 13);
+            this.codigoPostalLabel.TabIndex = 8;
+            this.codigoPostalLabel.Text = "Código Postal:";
             // 
-            // label4
+            // estadoLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Estado:";
+            this.estadoLabel.AutoSize = true;
+            this.estadoLabel.Location = new System.Drawing.Point(14, 158);
+            this.estadoLabel.Name = "estadoLabel";
+            this.estadoLabel.Size = new System.Drawing.Size(43, 13);
+            this.estadoLabel.TabIndex = 9;
+            this.estadoLabel.Text = "Estado:";
             // 
-            // rbHabilitada
+            // habilitadaRadioButtion
             // 
-            this.rbHabilitada.AutoSize = true;
-            this.rbHabilitada.Location = new System.Drawing.Point(94, 156);
-            this.rbHabilitada.Name = "rbHabilitada";
-            this.rbHabilitada.Size = new System.Drawing.Size(72, 17);
-            this.rbHabilitada.TabIndex = 3;
-            this.rbHabilitada.TabStop = true;
-            this.rbHabilitada.Text = "Habilitada";
-            this.rbHabilitada.UseVisualStyleBackColor = true;
+            this.habilitadaRadioButtion.AutoSize = true;
+            this.habilitadaRadioButtion.Enabled = false;
+            this.habilitadaRadioButtion.Location = new System.Drawing.Point(94, 156);
+            this.habilitadaRadioButtion.Name = "habilitadaRadioButtion";
+            this.habilitadaRadioButtion.Size = new System.Drawing.Size(72, 17);
+            this.habilitadaRadioButtion.TabIndex = 3;
+            this.habilitadaRadioButtion.TabStop = true;
+            this.habilitadaRadioButtion.Text = "Habilitada";
+            this.habilitadaRadioButtion.UseVisualStyleBackColor = true;
+            this.habilitadaRadioButtion.CheckedChanged += new System.EventHandler(this.habilitadaRadioButtion_CheckedChanged);
             // 
-            // rbDeshabilitada
+            // deshabilitadaRadioButton
             // 
-            this.rbDeshabilitada.AutoSize = true;
-            this.rbDeshabilitada.Location = new System.Drawing.Point(211, 156);
-            this.rbDeshabilitada.Name = "rbDeshabilitada";
-            this.rbDeshabilitada.Size = new System.Drawing.Size(89, 17);
-            this.rbDeshabilitada.TabIndex = 4;
-            this.rbDeshabilitada.TabStop = true;
-            this.rbDeshabilitada.Text = "Deshabilitada";
-            this.rbDeshabilitada.UseVisualStyleBackColor = true;
+            this.deshabilitadaRadioButton.AutoSize = true;
+            this.deshabilitadaRadioButton.Enabled = false;
+            this.deshabilitadaRadioButton.Location = new System.Drawing.Point(211, 156);
+            this.deshabilitadaRadioButton.Name = "deshabilitadaRadioButton";
+            this.deshabilitadaRadioButton.Size = new System.Drawing.Size(89, 17);
+            this.deshabilitadaRadioButton.TabIndex = 4;
+            this.deshabilitadaRadioButton.TabStop = true;
+            this.deshabilitadaRadioButton.Text = "Deshabilitada";
+            this.deshabilitadaRadioButton.UseVisualStyleBackColor = true;
+            this.deshabilitadaRadioButton.CheckedChanged += new System.EventHandler(this.deshabilitadaRadioButton_CheckedChanged);
             // 
-            // txtNombre
+            // nombreInput
             // 
-            this.txtNombre.Location = new System.Drawing.Point(94, 30);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(206, 20);
-            this.txtNombre.TabIndex = 0;
+            this.nombreInput.Enabled = false;
+            this.nombreInput.Location = new System.Drawing.Point(94, 30);
+            this.nombreInput.Name = "nombreInput";
+            this.nombreInput.Size = new System.Drawing.Size(206, 20);
+            this.nombreInput.TabIndex = 0;
+            this.nombreInput.Leave += new System.EventHandler(this.nombreInput_Leave);
             // 
-            // txtDireccion
+            // direccionInput
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(93, 71);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(206, 20);
-            this.txtDireccion.TabIndex = 1;
+            this.direccionInput.Enabled = false;
+            this.direccionInput.Location = new System.Drawing.Point(93, 71);
+            this.direccionInput.Name = "direccionInput";
+            this.direccionInput.Size = new System.Drawing.Size(206, 20);
+            this.direccionInput.TabIndex = 1;
+            this.direccionInput.Leave += new System.EventHandler(this.direccionInput_Leave);
             // 
-            // txtCodigoPostal
+            // codigoPostalInput
             // 
-            this.txtCodigoPostal.Location = new System.Drawing.Point(94, 113);
-            this.txtCodigoPostal.Name = "txtCodigoPostal";
-            this.txtCodigoPostal.Size = new System.Drawing.Size(205, 20);
-            this.txtCodigoPostal.TabIndex = 2;
+            this.codigoPostalInput.Enabled = false;
+            this.codigoPostalInput.Location = new System.Drawing.Point(94, 113);
+            this.codigoPostalInput.Name = "codigoPostalInput";
+            this.codigoPostalInput.Size = new System.Drawing.Size(205, 20);
+            this.codigoPostalInput.TabIndex = 2;
+            this.codigoPostalInput.Leave += new System.EventHandler(this.codigoPostalInput_Leave);
             // 
-            // groupBox1
+            // datosSucursalGroupbox
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtCodigoPostal);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtDireccion);
-            this.groupBox1.Controls.Add(this.rbHabilitada);
-            this.groupBox1.Controls.Add(this.txtNombre);
-            this.groupBox1.Controls.Add(this.rbDeshabilitada);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 191);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos de la sucursal:";
+            this.datosSucursalGroupbox.Controls.Add(this.nombreLabel);
+            this.datosSucursalGroupbox.Controls.Add(this.direccionLabel);
+            this.datosSucursalGroupbox.Controls.Add(this.codigoPostalLabel);
+            this.datosSucursalGroupbox.Controls.Add(this.codigoPostalInput);
+            this.datosSucursalGroupbox.Controls.Add(this.estadoLabel);
+            this.datosSucursalGroupbox.Controls.Add(this.direccionInput);
+            this.datosSucursalGroupbox.Controls.Add(this.habilitadaRadioButtion);
+            this.datosSucursalGroupbox.Controls.Add(this.nombreInput);
+            this.datosSucursalGroupbox.Controls.Add(this.deshabilitadaRadioButton);
+            this.datosSucursalGroupbox.Location = new System.Drawing.Point(12, 40);
+            this.datosSucursalGroupbox.Name = "datosSucursalGroupbox";
+            this.datosSucursalGroupbox.Size = new System.Drawing.Size(315, 191);
+            this.datosSucursalGroupbox.TabIndex = 15;
+            this.datosSucursalGroupbox.TabStop = false;
+            this.datosSucursalGroupbox.Text = "Datos de la sucursal:";
             // 
             // botonVolver
             // 
@@ -170,15 +181,18 @@
             this.botonVolver.TabIndex = 7;
             this.botonVolver.Text = "&Volver";
             this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // botonActualizar
             // 
+            this.botonActualizar.Enabled = false;
             this.botonActualizar.Location = new System.Drawing.Point(125, 237);
             this.botonActualizar.Name = "botonActualizar";
             this.botonActualizar.Size = new System.Drawing.Size(90, 30);
             this.botonActualizar.TabIndex = 8;
             this.botonActualizar.Text = "&Actualizar";
             this.botonActualizar.UseVisualStyleBackColor = true;
+            this.botonActualizar.Click += new System.EventHandler(this.botonActualizar_Click);
             // 
             // ModificacionSucursal
             // 
@@ -189,15 +203,15 @@
             this.Controls.Add(this.botonActualizar);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.modificacionSucursalLabel);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.datosSucursalGroupbox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModificacionSucursal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion Sucursal";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.datosSucursalGroupbox.ResumeLayout(false);
+            this.datosSucursalGroupbox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,16 +221,16 @@
 
         private System.Windows.Forms.Label modificacionSucursalLabel;
         private System.Windows.Forms.Button botonBuscar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton rbHabilitada;
-        private System.Windows.Forms.RadioButton rbDeshabilitada;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtDireccion;
-        private System.Windows.Forms.TextBox txtCodigoPostal;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label nombreLabel;
+        private System.Windows.Forms.Label direccionLabel;
+        private System.Windows.Forms.Label codigoPostalLabel;
+        private System.Windows.Forms.Label estadoLabel;
+        private System.Windows.Forms.RadioButton habilitadaRadioButtion;
+        private System.Windows.Forms.RadioButton deshabilitadaRadioButton;
+        private System.Windows.Forms.TextBox nombreInput;
+        private System.Windows.Forms.TextBox direccionInput;
+        private System.Windows.Forms.TextBox codigoPostalInput;
+        private System.Windows.Forms.GroupBox datosSucursalGroupbox;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Button botonActualizar;
     }
