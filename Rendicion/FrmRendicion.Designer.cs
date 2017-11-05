@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.Rendicion
 {
-    partial class Rendicion
+    partial class FrmRendicion
     {
         /// <summary>
         /// Required designer variable.

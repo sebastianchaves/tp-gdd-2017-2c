@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo.Entidades;
 using PagoAgilFrba.Modelo.DAOs;
+using PagoAgilFrba.Rendicion;
 
 namespace PagoAgilFrba
 {
@@ -210,7 +211,7 @@ namespace PagoAgilFrba
         // Rendiciones
         private void rendicionTooltip_Click(object sender, EventArgs e)
         {
-            new Rendicion().ShowDialog();
+            new FrmRendicion().ShowDialog();
         }
 
         // Estadisticas
