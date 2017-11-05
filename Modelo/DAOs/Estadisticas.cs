@@ -54,7 +54,7 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
         private const String FECHA_INICIO = "#FECHA_INICIO#";
         private const String FECHA_FIN = "#FECHA_FIN#";
-        private const String PORCENTAJE_PAGADO =
+        private const String EMPRESA_CON_MONTOS =
             "select top 5 e.id_empresa, e.nombre, sum(r.valor_total) as rendicion_total from "+
             "rocket_Database.EMPRESAS e, rocket_database.RENDICIONES r "+
             "where r.id_empresa = e.id_empresa " +
@@ -85,7 +85,51 @@ namespace PagoAgilFrba.Modelo.DAOs
         {
             String fechaInicio = Utils.Utils.getInicioTrimestre(anio, trimestre);
             String fechaFin = Utils.Utils.getFinTrimestre(anio, trimestre);
-            String query = PORCENTAJE_PAGADO;
+            String query = EMPRESA_CON_MONTOS;
+            query = query.Replace(FECHA_INICIO, fechaInicio);
+            query = query.Replace(FECHA_FIN, fechaFin);
+            return obtenerPorQueryGenerica(query, allColumns, tipos);
+        }
+    }
+
+    class ClienteConPagosDAO<T> : Dao<T>
+    {
+        private const String FECHA_INICIO = "#FECHA_INICIO#";
+        private const String FECHA_FIN = "#FECHA_FIN#";
+        private const String CLIENTE_CON_PAGOS =
+            "select TOP 5 c.id_cliente, c.apellido, c.nombre, count(1) as pagos " +
+            "from rocket_database.clientes c, rocket_Database.pagos p " +
+            "where p.id_cliente = c.id_cliente " +
+            "and p.fecha_cobro > convert(datetime, '" + FECHA_INICIO + "') " +
+            "and p.fecha_cobro < convert(datetime, '" + FECHA_FIN + "') " +
+            "group by c.id_cliente, c.apellido, c.nombre order by pagos desc";
+
+        private List<String> tipos;
+        private List<String> allColumns;
+        private List<String> allColumnsInDB;
+
+        public ClienteConPagosDAO()
+        {
+            this.tipos = new List<String>();
+            this.allColumns = new List<String>();
+            this.allColumnsInDB = new List<String>();
+
+            tipos.Add(Utils.Utils.INT_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.INT_TYPE);
+
+            allColumns.Add("idCliente"); 
+            allColumns.Add("apellido");  
+            allColumns.Add("nombre");
+            allColumns.Add("pagos"); 
+        }
+
+        public List<T> obtenerClientesConMasPagos(int anio, int trimestre)
+        {
+            String fechaInicio = Utils.Utils.getInicioTrimestre(anio, trimestre);
+            String fechaFin = Utils.Utils.getFinTrimestre(anio, trimestre);
+            String query = CLIENTE_CON_PAGOS;
             query = query.Replace(FECHA_INICIO, fechaInicio);
             query = query.Replace(FECHA_FIN, fechaFin);
             return obtenerPorQueryGenerica(query, allColumns, tipos);
