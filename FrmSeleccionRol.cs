@@ -1,4 +1,5 @@
-﻿using PagoAgilFrba.Modelo.Entidades;
+﻿using PagoAgilFrba.Modelo.DAOs;
+using PagoAgilFrba.Modelo.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace PagoAgilFrba
     partial class FrmSeleccionRol : Form
     {
 
+        private RolDAO<Rol> rolDao;
         private List<Rol> rolesEncontrados;
         private Rol rolSeleccionado;
 
@@ -21,7 +23,10 @@ namespace PagoAgilFrba
         {
             InitializeComponent();
 
+            this.rolDao = new RolDAO<Rol>();
             this.cargarRoles(roles);
+            this.rolSeleccionado = new Rol();
+            this.rolSeleccionado.id = this.rolByIndex(this.rolesCombo.SelectedIndex).id;
         }
 
         private void cargarRoles(List<Rol> roles)
@@ -39,7 +44,7 @@ namespace PagoAgilFrba
             this.rolesCombo.DataSource = dataSource;
         }
 
-        private Rol rubroByIndex(int index)
+        private Rol rolByIndex(int index)
         {
             return this.rolesEncontrados.Find(rol => rol.indexCombo.Equals(index));
         }
@@ -53,7 +58,15 @@ namespace PagoAgilFrba
         // Boton Aceptar
         private void botonAceptar_Click(object sender, EventArgs e)
         {
+            this.rolSeleccionado = this.rolDao.findRol(this.rolSeleccionado).ElementAt(0);
+            this.Close();
+        }
 
+        // Combo Rol
+        private void rolesCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.rolSeleccionado = new Rol();
+            this.rolSeleccionado.id = this.rolByIndex(this.rolesCombo.SelectedIndex).id;
         }
 
     }

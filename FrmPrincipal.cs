@@ -24,14 +24,19 @@ namespace PagoAgilFrba
 
         private Usuario usuarioLogeado;
         private List<Rol> rolesUsuario;
+
         private RolDAO<Rol> rolDao;
         private Rol rolSeleccionado;
+
+        private FuncionalidadDAO<Funcionalidad> funcionalidadDAO;
+        private List<Funcionalidad> funcionalidadesEncontradas;
 
         public FrmPrincipal()
         {
             InitializeComponent();
 
             this.rolDao = new RolDAO<Rol>();
+            this.funcionalidadDAO = new FuncionalidadDAO<Funcionalidad>();
         }
 
         private void logeoUsuario()
@@ -57,6 +62,53 @@ namespace PagoAgilFrba
                 }
             }
 
+            this.funcionalidadesEncontradas = this.funcionalidadDAO.obtenerFuncionalidadesPorRol(this.rolSeleccionado.nombre);
+        }
+
+        private void habilitarFuncionalidades()
+        {
+            for (int i = 0; i < this.funcionalidadesEncontradas.Count; i++)
+            {
+                switch (this.funcionalidadesEncontradas.ElementAt(i).nombre)
+                {
+                    case "abm_rol":
+                        this.abmRolTooltip.Enabled = true;
+                        break;
+
+                    case "abm_cliente":
+                        this.abmClienteTooltip.Enabled = true;
+                        break;
+
+                    case "abm_empresa":
+                        this.abmEmpresaTooltip.Enabled = true;
+                        break;
+
+                    case "abm_sucursal":
+                        this.abmSucursalTooltip.Enabled = true;
+                        break;
+
+                    case "abm_factura":
+                        this.aFacturaTooltip.Enabled = true;
+                        this.bFacturaTooltip.Enabled = true;
+                        this.mFacturaTooltip.Enabled = true;
+                        break;
+
+                    case "abm_pago":
+                        this.pagoFacturaTooltip.Enabled = true;
+                        break;
+
+                    case "abm_rendicion":
+                        this.rendicionTooltip.Enabled = true;
+                        break;
+
+                    case "abm_estadisticas":
+                        this.estadisticasTooltip.Enabled = true;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
 
         // Eventos
@@ -64,6 +116,7 @@ namespace PagoAgilFrba
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             this.logeoUsuario();
+            this.habilitarFuncionalidades();
         }
 
         // Archivo
@@ -154,11 +207,19 @@ namespace PagoAgilFrba
             new BajaSucursal().ShowDialog();
         }
 
+        // Rendiciones
+        private void rendicionTooltip_Click(object sender, EventArgs e)
+        {
+            new Rendicion().ShowDialog();
+        }
+
         // Estadisticas
         private void listadoEstadisticoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ListadoEstadisticoForm().ShowDialog();
         }
+
+
 
     }
 }

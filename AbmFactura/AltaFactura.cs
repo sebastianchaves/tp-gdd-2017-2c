@@ -49,5 +49,10 @@ namespace PagoAgilFrba.AbmFactura
 
         }
 
+        private void botonAgregarItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

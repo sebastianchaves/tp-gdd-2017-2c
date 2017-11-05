@@ -60,6 +60,16 @@ namespace PagoAgilFrba.Modelo.DAOs
             return getEntities(resultSet, allColumns, tipos);
         }
 
+        public List<T> findRol(Rol rol)
+        {
+            Condicion condicion = new Condicion();
+
+            condicion.agregarCondicion("id_rol", rol.id, Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE);
+
+            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
+        }
+
         public List<T> obtenerRolesPorUsuario(String usuario)
         {
             return obtenerPorQueryGenerica(ROLES_X_USUARIO + "'" + usuario + "'", allColumns, tipos);

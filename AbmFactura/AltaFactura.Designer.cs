@@ -30,35 +30,35 @@
         {
             this.altaFacturaLabel = new System.Windows.Forms.Label();
             this.datosEmpresaGroupBox = new System.Windows.Forms.GroupBox();
-            this.datosFacturaGroupBox = new System.Windows.Forms.GroupBox();
-            this.datosClienteGroupBox = new System.Windows.Forms.GroupBox();
-            this.botonAceptar = new System.Windows.Forms.Button();
-            this.botonVolver = new System.Windows.Forms.Button();
-            this.botonBuscarEmpresa = new System.Windows.Forms.Button();
-            this.botonBuscarCliente = new System.Windows.Forms.Button();
+            this.empresaLabel = new System.Windows.Forms.Label();
             this.empresaInput = new System.Windows.Forms.TextBox();
+            this.botonBuscarEmpresa = new System.Windows.Forms.Button();
+            this.datosFacturaGroupBox = new System.Windows.Forms.GroupBox();
+            this.itemsAgregadosLabel = new System.Windows.Forms.Label();
+            this.itemsGrid = new System.Windows.Forms.DataGridView();
+            this.numeroInput = new System.Windows.Forms.TextBox();
+            this.fechaVencimientoLabel = new System.Windows.Forms.Label();
+            this.fechaAltaLabel = new System.Windows.Forms.Label();
+            this.fechaVencimientoInput = new System.Windows.Forms.DateTimePicker();
+            this.fechaAltaInput = new System.Windows.Forms.DateTimePicker();
+            this.numeroLabel = new System.Windows.Forms.Label();
+            this.datosClienteGroupBox = new System.Windows.Forms.GroupBox();
             this.clienteInput = new System.Windows.Forms.TextBox();
             this.clienteLabel = new System.Windows.Forms.Label();
-            this.empresaLabel = new System.Windows.Forms.Label();
-            this.numeroLabel = new System.Windows.Forms.Label();
-            this.fechaAltaInput = new System.Windows.Forms.DateTimePicker();
-            this.fechaVencimientoInput = new System.Windows.Forms.DateTimePicker();
-            this.fechaAltaLabel = new System.Windows.Forms.Label();
-            this.fechaVencimientoLabel = new System.Windows.Forms.Label();
-            this.numeroInput = new System.Windows.Forms.TextBox();
-            this.itemsGrid = new System.Windows.Forms.DataGridView();
+            this.botonBuscarCliente = new System.Windows.Forms.Button();
+            this.botonAceptar = new System.Windows.Forms.Button();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.datosItemGroupBox = new System.Windows.Forms.GroupBox();
+            this.botonAgregarItem = new System.Windows.Forms.Button();
+            this.cantidadLabel = new System.Windows.Forms.Label();
+            this.cantidadInput = new System.Windows.Forms.TextBox();
             this.montoLabel = new System.Windows.Forms.Label();
             this.montoInput = new System.Windows.Forms.TextBox();
             this.botonEliminarItem = new System.Windows.Forms.Button();
-            this.itemsAgregadosLabel = new System.Windows.Forms.Label();
-            this.cantidadInput = new System.Windows.Forms.TextBox();
-            this.cantidadLabel = new System.Windows.Forms.Label();
-            this.botonAgregarItem = new System.Windows.Forms.Button();
             this.datosEmpresaGroupBox.SuspendLayout();
             this.datosFacturaGroupBox.SuspendLayout();
-            this.datosClienteGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).BeginInit();
+            this.datosClienteGroupBox.SuspendLayout();
             this.datosItemGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +84,33 @@
             this.datosEmpresaGroupBox.TabStop = false;
             this.datosEmpresaGroupBox.Text = "Datos Empresa";
             // 
+            // empresaLabel
+            // 
+            this.empresaLabel.AutoSize = true;
+            this.empresaLabel.Location = new System.Drawing.Point(15, 23);
+            this.empresaLabel.Name = "empresaLabel";
+            this.empresaLabel.Size = new System.Drawing.Size(51, 13);
+            this.empresaLabel.TabIndex = 9;
+            this.empresaLabel.Text = "Empresa:";
+            // 
+            // empresaInput
+            // 
+            this.empresaInput.Enabled = false;
+            this.empresaInput.Location = new System.Drawing.Point(74, 20);
+            this.empresaInput.Name = "empresaInput";
+            this.empresaInput.Size = new System.Drawing.Size(151, 20);
+            this.empresaInput.TabIndex = 7;
+            // 
+            // botonBuscarEmpresa
+            // 
+            this.botonBuscarEmpresa.Location = new System.Drawing.Point(135, 44);
+            this.botonBuscarEmpresa.Name = "botonBuscarEmpresa";
+            this.botonBuscarEmpresa.Size = new System.Drawing.Size(90, 30);
+            this.botonBuscarEmpresa.TabIndex = 7;
+            this.botonBuscarEmpresa.Text = "Buscar";
+            this.botonBuscarEmpresa.UseVisualStyleBackColor = true;
+            this.botonBuscarEmpresa.Click += new System.EventHandler(this.botonBuscarEmpresa_Click);
+            // 
             // datosFacturaGroupBox
             // 
             this.datosFacturaGroupBox.Controls.Add(this.itemsAgregadosLabel);
@@ -101,6 +128,71 @@
             this.datosFacturaGroupBox.TabStop = false;
             this.datosFacturaGroupBox.Text = "Datos Factura";
             // 
+            // itemsAgregadosLabel
+            // 
+            this.itemsAgregadosLabel.AutoSize = true;
+            this.itemsAgregadosLabel.Location = new System.Drawing.Point(10, 122);
+            this.itemsAgregadosLabel.Name = "itemsAgregadosLabel";
+            this.itemsAgregadosLabel.Size = new System.Drawing.Size(88, 13);
+            this.itemsAgregadosLabel.TabIndex = 10;
+            this.itemsAgregadosLabel.Text = "Items agregados:";
+            // 
+            // itemsGrid
+            // 
+            this.itemsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemsGrid.Location = new System.Drawing.Point(13, 138);
+            this.itemsGrid.Name = "itemsGrid";
+            this.itemsGrid.Size = new System.Drawing.Size(334, 136);
+            this.itemsGrid.TabIndex = 9;
+            // 
+            // numeroInput
+            // 
+            this.numeroInput.Location = new System.Drawing.Point(136, 18);
+            this.numeroInput.Name = "numeroInput";
+            this.numeroInput.Size = new System.Drawing.Size(211, 20);
+            this.numeroInput.TabIndex = 8;
+            // 
+            // fechaVencimientoLabel
+            // 
+            this.fechaVencimientoLabel.AutoSize = true;
+            this.fechaVencimientoLabel.Location = new System.Drawing.Point(15, 92);
+            this.fechaVencimientoLabel.Name = "fechaVencimientoLabel";
+            this.fechaVencimientoLabel.Size = new System.Drawing.Size(115, 13);
+            this.fechaVencimientoLabel.TabIndex = 7;
+            this.fechaVencimientoLabel.Text = "Fecha de vencimiento:";
+            // 
+            // fechaAltaLabel
+            // 
+            this.fechaAltaLabel.AutoSize = true;
+            this.fechaAltaLabel.Location = new System.Drawing.Point(15, 59);
+            this.fechaAltaLabel.Name = "fechaAltaLabel";
+            this.fechaAltaLabel.Size = new System.Drawing.Size(75, 13);
+            this.fechaAltaLabel.TabIndex = 6;
+            this.fechaAltaLabel.Text = "Fecha de alta:";
+            // 
+            // fechaVencimientoInput
+            // 
+            this.fechaVencimientoInput.Location = new System.Drawing.Point(136, 85);
+            this.fechaVencimientoInput.Name = "fechaVencimientoInput";
+            this.fechaVencimientoInput.Size = new System.Drawing.Size(211, 20);
+            this.fechaVencimientoInput.TabIndex = 5;
+            // 
+            // fechaAltaInput
+            // 
+            this.fechaAltaInput.Location = new System.Drawing.Point(136, 52);
+            this.fechaAltaInput.Name = "fechaAltaInput";
+            this.fechaAltaInput.Size = new System.Drawing.Size(211, 20);
+            this.fechaAltaInput.TabIndex = 4;
+            // 
+            // numeroLabel
+            // 
+            this.numeroLabel.AutoSize = true;
+            this.numeroLabel.Location = new System.Drawing.Point(15, 25);
+            this.numeroLabel.Name = "numeroLabel";
+            this.numeroLabel.Size = new System.Drawing.Size(47, 13);
+            this.numeroLabel.TabIndex = 0;
+            this.numeroLabel.Text = "Número:";
+            // 
             // datosClienteGroupBox
             // 
             this.datosClienteGroupBox.Controls.Add(this.clienteInput);
@@ -112,6 +204,33 @@
             this.datosClienteGroupBox.TabIndex = 0;
             this.datosClienteGroupBox.TabStop = false;
             this.datosClienteGroupBox.Text = "Datos Cliente";
+            // 
+            // clienteInput
+            // 
+            this.clienteInput.Enabled = false;
+            this.clienteInput.Location = new System.Drawing.Point(74, 18);
+            this.clienteInput.Name = "clienteInput";
+            this.clienteInput.Size = new System.Drawing.Size(151, 20);
+            this.clienteInput.TabIndex = 8;
+            // 
+            // clienteLabel
+            // 
+            this.clienteLabel.AutoSize = true;
+            this.clienteLabel.Location = new System.Drawing.Point(15, 21);
+            this.clienteLabel.Name = "clienteLabel";
+            this.clienteLabel.Size = new System.Drawing.Size(42, 13);
+            this.clienteLabel.TabIndex = 8;
+            this.clienteLabel.Text = "Cliente:";
+            // 
+            // botonBuscarCliente
+            // 
+            this.botonBuscarCliente.Location = new System.Drawing.Point(135, 44);
+            this.botonBuscarCliente.Name = "botonBuscarCliente";
+            this.botonBuscarCliente.Size = new System.Drawing.Size(90, 30);
+            this.botonBuscarCliente.TabIndex = 8;
+            this.botonBuscarCliente.Text = "Buscar";
+            this.botonBuscarCliente.UseVisualStyleBackColor = true;
+            this.botonBuscarCliente.Click += new System.EventHandler(this.botonBuscarCliente_Click);
             // 
             // botonAceptar
             // 
@@ -133,116 +252,6 @@
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // botonBuscarEmpresa
-            // 
-            this.botonBuscarEmpresa.Location = new System.Drawing.Point(135, 44);
-            this.botonBuscarEmpresa.Name = "botonBuscarEmpresa";
-            this.botonBuscarEmpresa.Size = new System.Drawing.Size(90, 30);
-            this.botonBuscarEmpresa.TabIndex = 7;
-            this.botonBuscarEmpresa.Text = "Buscar";
-            this.botonBuscarEmpresa.UseVisualStyleBackColor = true;
-            this.botonBuscarEmpresa.Click += new System.EventHandler(this.botonBuscarEmpresa_Click);
-            // 
-            // botonBuscarCliente
-            // 
-            this.botonBuscarCliente.Location = new System.Drawing.Point(135, 44);
-            this.botonBuscarCliente.Name = "botonBuscarCliente";
-            this.botonBuscarCliente.Size = new System.Drawing.Size(90, 30);
-            this.botonBuscarCliente.TabIndex = 8;
-            this.botonBuscarCliente.Text = "Buscar";
-            this.botonBuscarCliente.UseVisualStyleBackColor = true;
-            this.botonBuscarCliente.Click += new System.EventHandler(this.botonBuscarCliente_Click);
-            // 
-            // empresaInput
-            // 
-            this.empresaInput.Enabled = false;
-            this.empresaInput.Location = new System.Drawing.Point(74, 20);
-            this.empresaInput.Name = "empresaInput";
-            this.empresaInput.Size = new System.Drawing.Size(151, 20);
-            this.empresaInput.TabIndex = 7;
-            // 
-            // clienteInput
-            // 
-            this.clienteInput.Enabled = false;
-            this.clienteInput.Location = new System.Drawing.Point(74, 18);
-            this.clienteInput.Name = "clienteInput";
-            this.clienteInput.Size = new System.Drawing.Size(151, 20);
-            this.clienteInput.TabIndex = 8;
-            // 
-            // clienteLabel
-            // 
-            this.clienteLabel.AutoSize = true;
-            this.clienteLabel.Location = new System.Drawing.Point(15, 21);
-            this.clienteLabel.Name = "clienteLabel";
-            this.clienteLabel.Size = new System.Drawing.Size(42, 13);
-            this.clienteLabel.TabIndex = 8;
-            this.clienteLabel.Text = "Cliente:";
-            // 
-            // empresaLabel
-            // 
-            this.empresaLabel.AutoSize = true;
-            this.empresaLabel.Location = new System.Drawing.Point(15, 23);
-            this.empresaLabel.Name = "empresaLabel";
-            this.empresaLabel.Size = new System.Drawing.Size(51, 13);
-            this.empresaLabel.TabIndex = 9;
-            this.empresaLabel.Text = "Empresa:";
-            // 
-            // numeroLabel
-            // 
-            this.numeroLabel.AutoSize = true;
-            this.numeroLabel.Location = new System.Drawing.Point(15, 25);
-            this.numeroLabel.Name = "numeroLabel";
-            this.numeroLabel.Size = new System.Drawing.Size(47, 13);
-            this.numeroLabel.TabIndex = 0;
-            this.numeroLabel.Text = "Número:";
-            // 
-            // fechaAltaInput
-            // 
-            this.fechaAltaInput.Location = new System.Drawing.Point(136, 52);
-            this.fechaAltaInput.Name = "fechaAltaInput";
-            this.fechaAltaInput.Size = new System.Drawing.Size(211, 20);
-            this.fechaAltaInput.TabIndex = 4;
-            // 
-            // fechaVencimientoInput
-            // 
-            this.fechaVencimientoInput.Location = new System.Drawing.Point(136, 85);
-            this.fechaVencimientoInput.Name = "fechaVencimientoInput";
-            this.fechaVencimientoInput.Size = new System.Drawing.Size(211, 20);
-            this.fechaVencimientoInput.TabIndex = 5;
-            // 
-            // fechaAltaLabel
-            // 
-            this.fechaAltaLabel.AutoSize = true;
-            this.fechaAltaLabel.Location = new System.Drawing.Point(15, 59);
-            this.fechaAltaLabel.Name = "fechaAltaLabel";
-            this.fechaAltaLabel.Size = new System.Drawing.Size(75, 13);
-            this.fechaAltaLabel.TabIndex = 6;
-            this.fechaAltaLabel.Text = "Fecha de alta:";
-            // 
-            // fechaVencimientoLabel
-            // 
-            this.fechaVencimientoLabel.AutoSize = true;
-            this.fechaVencimientoLabel.Location = new System.Drawing.Point(15, 92);
-            this.fechaVencimientoLabel.Name = "fechaVencimientoLabel";
-            this.fechaVencimientoLabel.Size = new System.Drawing.Size(115, 13);
-            this.fechaVencimientoLabel.TabIndex = 7;
-            this.fechaVencimientoLabel.Text = "Fecha de vencimiento:";
-            // 
-            // numeroInput
-            // 
-            this.numeroInput.Location = new System.Drawing.Point(136, 18);
-            this.numeroInput.Name = "numeroInput";
-            this.numeroInput.Size = new System.Drawing.Size(211, 20);
-            this.numeroInput.TabIndex = 8;
-            // 
-            // itemsGrid
-            // 
-            this.itemsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsGrid.Location = new System.Drawing.Point(13, 138);
-            this.itemsGrid.Name = "itemsGrid";
-            this.itemsGrid.Size = new System.Drawing.Size(334, 136);
-            this.itemsGrid.TabIndex = 9;
-            // 
             // datosItemGroupBox
             // 
             this.datosItemGroupBox.Controls.Add(this.botonAgregarItem);
@@ -257,6 +266,33 @@
             this.datosItemGroupBox.TabIndex = 10;
             this.datosItemGroupBox.TabStop = false;
             this.datosItemGroupBox.Text = "Datos Item";
+            // 
+            // botonAgregarItem
+            // 
+            this.botonAgregarItem.Location = new System.Drawing.Point(39, 72);
+            this.botonAgregarItem.Name = "botonAgregarItem";
+            this.botonAgregarItem.Size = new System.Drawing.Size(90, 30);
+            this.botonAgregarItem.TabIndex = 12;
+            this.botonAgregarItem.Text = "Agregar";
+            this.botonAgregarItem.UseVisualStyleBackColor = true;
+            this.botonAgregarItem.Click += new System.EventHandler(this.botonAgregarItem_Click);
+            // 
+            // cantidadLabel
+            // 
+            this.cantidadLabel.AutoSize = true;
+            this.cantidadLabel.Location = new System.Drawing.Point(15, 49);
+            this.cantidadLabel.Name = "cantidadLabel";
+            this.cantidadLabel.Size = new System.Drawing.Size(52, 13);
+            this.cantidadLabel.TabIndex = 11;
+            this.cantidadLabel.Text = "Cantidad:";
+            // 
+            // cantidadInput
+            // 
+            this.cantidadInput.Enabled = false;
+            this.cantidadInput.Location = new System.Drawing.Point(74, 46);
+            this.cantidadInput.Name = "cantidadInput";
+            this.cantidadInput.Size = new System.Drawing.Size(151, 20);
+            this.cantidadInput.TabIndex = 10;
             // 
             // montoLabel
             // 
@@ -284,41 +320,6 @@
             this.botonEliminarItem.Text = "Eliminar";
             this.botonEliminarItem.UseVisualStyleBackColor = true;
             // 
-            // itemsAgregadosLabel
-            // 
-            this.itemsAgregadosLabel.AutoSize = true;
-            this.itemsAgregadosLabel.Location = new System.Drawing.Point(10, 122);
-            this.itemsAgregadosLabel.Name = "itemsAgregadosLabel";
-            this.itemsAgregadosLabel.Size = new System.Drawing.Size(88, 13);
-            this.itemsAgregadosLabel.TabIndex = 10;
-            this.itemsAgregadosLabel.Text = "Items agregados:";
-            // 
-            // cantidadInput
-            // 
-            this.cantidadInput.Enabled = false;
-            this.cantidadInput.Location = new System.Drawing.Point(74, 46);
-            this.cantidadInput.Name = "cantidadInput";
-            this.cantidadInput.Size = new System.Drawing.Size(151, 20);
-            this.cantidadInput.TabIndex = 10;
-            // 
-            // cantidadLabel
-            // 
-            this.cantidadLabel.AutoSize = true;
-            this.cantidadLabel.Location = new System.Drawing.Point(15, 49);
-            this.cantidadLabel.Name = "cantidadLabel";
-            this.cantidadLabel.Size = new System.Drawing.Size(52, 13);
-            this.cantidadLabel.TabIndex = 11;
-            this.cantidadLabel.Text = "Cantidad:";
-            // 
-            // botonAgregarItem
-            // 
-            this.botonAgregarItem.Location = new System.Drawing.Point(39, 72);
-            this.botonAgregarItem.Name = "botonAgregarItem";
-            this.botonAgregarItem.Size = new System.Drawing.Size(90, 30);
-            this.botonAgregarItem.TabIndex = 12;
-            this.botonAgregarItem.Text = "Agregar";
-            this.botonAgregarItem.UseVisualStyleBackColor = true;
-            // 
             // AltaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,9 +338,9 @@
             this.datosEmpresaGroupBox.PerformLayout();
             this.datosFacturaGroupBox.ResumeLayout(false);
             this.datosFacturaGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).EndInit();
             this.datosClienteGroupBox.ResumeLayout(false);
             this.datosClienteGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).EndInit();
             this.datosItemGroupBox.ResumeLayout(false);
             this.datosItemGroupBox.PerformLayout();
             this.ResumeLayout(false);

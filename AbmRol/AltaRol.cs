@@ -45,7 +45,6 @@ namespace PagoAgilFrba.AbmRol
                 this.funcionalidadesCheckbox.Items.Insert(0, funcionalidad.nombre);
                 this.funcionalidadesIDs.Add(funcionalidad.id, funcionalidad.nombre);
             }
-
         }
 
         private void cargarRol()

@@ -86,6 +86,7 @@
             this.rolesCombo.Name = "rolesCombo";
             this.rolesCombo.Size = new System.Drawing.Size(141, 21);
             this.rolesCombo.TabIndex = 5;
+            this.rolesCombo.SelectedIndexChanged += new System.EventHandler(this.rolesCombo_SelectedIndexChanged);
             // 
             // FrmSeleccionRol
             // 

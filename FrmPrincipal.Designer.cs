@@ -33,31 +33,31 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abmClienteTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.altaClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificaciónClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abmEmpresaTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.altaEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificaciónEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificaciónFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaFacturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pagoDeFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abmFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.aFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.mFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.bFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagoFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.abmRolTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.altaRolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificaciónRolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaRolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abmSucursalTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.altaSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificaciónSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estadísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rendiciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.botonSalir = new System.Windows.Forms.Button();
+            this.estadisticasTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoEstadisticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rendicionTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.botonSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -76,13 +76,13 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.clienteToolStripMenuItem,
-            this.empresaToolStripMenuItem,
-            this.facturaToolStripMenuItem,
-            this.rolToolStripMenuItem,
-            this.sucursalToolStripMenuItem,
-            this.estadísticasToolStripMenuItem,
-            this.rendiciónToolStripMenuItem});
+            this.abmClienteTooltip,
+            this.abmEmpresaTooltip,
+            this.abmFacturaTooltip,
+            this.abmRolTooltip,
+            this.abmSucursalTooltip,
+            this.estadisticasTooltip,
+            this.rendicionTooltip});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(503, 24);
@@ -100,19 +100,20 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // clienteToolStripMenuItem
+            // abmClienteTooltip
             // 
-            this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abmClienteTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaClienteToolStripMenuItem,
             this.modificaciónClienteToolStripMenuItem,
             this.bajaClienteToolStripMenuItem});
-            this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.clienteToolStripMenuItem.Text = "&Cliente";
+            this.abmClienteTooltip.Enabled = false;
+            this.abmClienteTooltip.Name = "abmClienteTooltip";
+            this.abmClienteTooltip.Size = new System.Drawing.Size(56, 20);
+            this.abmClienteTooltip.Text = "&Cliente";
             // 
             // altaClienteToolStripMenuItem
             // 
@@ -135,15 +136,16 @@
             this.bajaClienteToolStripMenuItem.Text = "Baja cliente";
             this.bajaClienteToolStripMenuItem.Click += new System.EventHandler(this.bajaClienteToolStripMenuItem_Click);
             // 
-            // empresaToolStripMenuItem
+            // abmEmpresaTooltip
             // 
-            this.empresaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abmEmpresaTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaEmpresaToolStripMenuItem,
             this.modificaciónEmpresaToolStripMenuItem,
             this.bajaEmpresaToolStripMenuItem});
-            this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.empresaToolStripMenuItem.Text = "&Empresa";
+            this.abmEmpresaTooltip.Enabled = false;
+            this.abmEmpresaTooltip.Name = "abmEmpresaTooltip";
+            this.abmEmpresaTooltip.Size = new System.Drawing.Size(64, 20);
+            this.abmEmpresaTooltip.Text = "&Empresa";
             // 
             // altaEmpresaToolStripMenuItem
             // 
@@ -166,53 +168,58 @@
             this.bajaEmpresaToolStripMenuItem.Text = "Baja empresa";
             this.bajaEmpresaToolStripMenuItem.Click += new System.EventHandler(this.bajaEmpresaToolStripMenuItem_Click);
             // 
-            // facturaToolStripMenuItem
+            // abmFacturaTooltip
             // 
-            this.facturaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaFacturaToolStripMenuItem,
-            this.modificaciónFacturaToolStripMenuItem,
-            this.altaFacturaToolStripMenuItem1,
-            this.pagoDeFacturaToolStripMenuItem});
-            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
-            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.facturaToolStripMenuItem.Text = "&Factura";
+            this.abmFacturaTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aFacturaTooltip,
+            this.mFacturaTooltip,
+            this.bFacturaTooltip,
+            this.pagoFacturaTooltip});
+            this.abmFacturaTooltip.Name = "abmFacturaTooltip";
+            this.abmFacturaTooltip.Size = new System.Drawing.Size(58, 20);
+            this.abmFacturaTooltip.Text = "&Factura";
             // 
-            // altaFacturaToolStripMenuItem
+            // aFacturaTooltip
             // 
-            this.altaFacturaToolStripMenuItem.Name = "altaFacturaToolStripMenuItem";
-            this.altaFacturaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.altaFacturaToolStripMenuItem.Text = "Alta factura";
-            this.altaFacturaToolStripMenuItem.Click += new System.EventHandler(this.altaFacturaToolStripMenuItem_Click);
+            this.aFacturaTooltip.Enabled = false;
+            this.aFacturaTooltip.Name = "aFacturaTooltip";
+            this.aFacturaTooltip.Size = new System.Drawing.Size(184, 22);
+            this.aFacturaTooltip.Text = "Alta factura";
+            this.aFacturaTooltip.Click += new System.EventHandler(this.altaFacturaToolStripMenuItem_Click);
             // 
-            // modificaciónFacturaToolStripMenuItem
+            // mFacturaTooltip
             // 
-            this.modificaciónFacturaToolStripMenuItem.Name = "modificaciónFacturaToolStripMenuItem";
-            this.modificaciónFacturaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.modificaciónFacturaToolStripMenuItem.Text = "Modificación factura";
-            this.modificaciónFacturaToolStripMenuItem.Click += new System.EventHandler(this.modificaciónFacturaToolStripMenuItem_Click);
+            this.mFacturaTooltip.Enabled = false;
+            this.mFacturaTooltip.Name = "mFacturaTooltip";
+            this.mFacturaTooltip.Size = new System.Drawing.Size(184, 22);
+            this.mFacturaTooltip.Text = "Modificación factura";
+            this.mFacturaTooltip.Click += new System.EventHandler(this.modificaciónFacturaToolStripMenuItem_Click);
             // 
-            // altaFacturaToolStripMenuItem1
+            // bFacturaTooltip
             // 
-            this.altaFacturaToolStripMenuItem1.Name = "altaFacturaToolStripMenuItem1";
-            this.altaFacturaToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
-            this.altaFacturaToolStripMenuItem1.Text = "Alta factura";
+            this.bFacturaTooltip.Enabled = false;
+            this.bFacturaTooltip.Name = "bFacturaTooltip";
+            this.bFacturaTooltip.Size = new System.Drawing.Size(184, 22);
+            this.bFacturaTooltip.Text = "Alta factura";
             // 
-            // pagoDeFacturaToolStripMenuItem
+            // pagoFacturaTooltip
             // 
-            this.pagoDeFacturaToolStripMenuItem.Name = "pagoDeFacturaToolStripMenuItem";
-            this.pagoDeFacturaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.pagoDeFacturaToolStripMenuItem.Text = "Pago de factura";
-            this.pagoDeFacturaToolStripMenuItem.Click += new System.EventHandler(this.pagoDeFacturaToolStripMenuItem_Click);
+            this.pagoFacturaTooltip.Enabled = false;
+            this.pagoFacturaTooltip.Name = "pagoFacturaTooltip";
+            this.pagoFacturaTooltip.Size = new System.Drawing.Size(184, 22);
+            this.pagoFacturaTooltip.Text = "Pago de factura";
+            this.pagoFacturaTooltip.Click += new System.EventHandler(this.pagoDeFacturaToolStripMenuItem_Click);
             // 
-            // rolToolStripMenuItem
+            // abmRolTooltip
             // 
-            this.rolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abmRolTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaRolToolStripMenuItem,
             this.modificaciónRolToolStripMenuItem,
             this.bajaRolToolStripMenuItem});
-            this.rolToolStripMenuItem.Name = "rolToolStripMenuItem";
-            this.rolToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
-            this.rolToolStripMenuItem.Text = "&Rol";
+            this.abmRolTooltip.Enabled = false;
+            this.abmRolTooltip.Name = "abmRolTooltip";
+            this.abmRolTooltip.Size = new System.Drawing.Size(36, 20);
+            this.abmRolTooltip.Text = "&Rol";
             // 
             // altaRolToolStripMenuItem
             // 
@@ -235,15 +242,16 @@
             this.bajaRolToolStripMenuItem.Text = "Baja rol";
             this.bajaRolToolStripMenuItem.Click += new System.EventHandler(this.bajaRolToolStripMenuItem_Click);
             // 
-            // sucursalToolStripMenuItem
+            // abmSucursalTooltip
             // 
-            this.sucursalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abmSucursalTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaSucursalToolStripMenuItem,
             this.modificaciónSucursalToolStripMenuItem,
             this.bajaSucursalToolStripMenuItem});
-            this.sucursalToolStripMenuItem.Name = "sucursalToolStripMenuItem";
-            this.sucursalToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.sucursalToolStripMenuItem.Text = "&Sucursal";
+            this.abmSucursalTooltip.Enabled = false;
+            this.abmSucursalTooltip.Name = "abmSucursalTooltip";
+            this.abmSucursalTooltip.Size = new System.Drawing.Size(63, 20);
+            this.abmSucursalTooltip.Text = "&Sucursal";
             // 
             // altaSucursalToolStripMenuItem
             // 
@@ -266,19 +274,29 @@
             this.bajaSucursalToolStripMenuItem.Text = "Baja sucursal";
             this.bajaSucursalToolStripMenuItem.Click += new System.EventHandler(this.bajaSucursalToolStripMenuItem_Click);
             // 
-            // estadísticasToolStripMenuItem
+            // estadisticasTooltip
             // 
-            this.estadísticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.estadisticasTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listadoEstadisticoToolStripMenuItem});
-            this.estadísticasToolStripMenuItem.Name = "estadísticasToolStripMenuItem";
-            this.estadísticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.estadísticasToolStripMenuItem.Text = "E&stadísticas";
+            this.estadisticasTooltip.Enabled = false;
+            this.estadisticasTooltip.Name = "estadisticasTooltip";
+            this.estadisticasTooltip.Size = new System.Drawing.Size(79, 20);
+            this.estadisticasTooltip.Text = "E&stadísticas";
             // 
-            // rendiciónToolStripMenuItem
+            // listadoEstadisticoToolStripMenuItem
             // 
-            this.rendiciónToolStripMenuItem.Name = "rendiciónToolStripMenuItem";
-            this.rendiciónToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
-            this.rendiciónToolStripMenuItem.Text = "Re&ndición";
+            this.listadoEstadisticoToolStripMenuItem.Name = "listadoEstadisticoToolStripMenuItem";
+            this.listadoEstadisticoToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.listadoEstadisticoToolStripMenuItem.Text = "Listado Estadistico";
+            this.listadoEstadisticoToolStripMenuItem.Click += new System.EventHandler(this.listadoEstadisticoToolStripMenuItem_Click);
+            // 
+            // rendicionTooltip
+            // 
+            this.rendicionTooltip.Enabled = false;
+            this.rendicionTooltip.Name = "rendicionTooltip";
+            this.rendicionTooltip.Size = new System.Drawing.Size(72, 20);
+            this.rendicionTooltip.Text = "Re&ndición";
+            this.rendicionTooltip.Click += new System.EventHandler(this.rendicionTooltip_Click);
             // 
             // botonSalir
             // 
@@ -289,13 +307,6 @@
             this.botonSalir.Text = "&Salir";
             this.botonSalir.UseVisualStyleBackColor = true;
             this.botonSalir.Click += new System.EventHandler(this.botonSalir_Click);
-            // 
-            // listadoEstadisticoToolStripMenuItem
-            // 
-            this.listadoEstadisticoToolStripMenuItem.Name = "listadoEstadisticoToolStripMenuItem";
-            this.listadoEstadisticoToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.listadoEstadisticoToolStripMenuItem.Text = "Listado Estadistico";
-            this.listadoEstadisticoToolStripMenuItem.Click += new System.EventHandler(this.listadoEstadisticoToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -327,29 +338,29 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abmClienteTooltip;
         private System.Windows.Forms.ToolStripMenuItem altaClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificaciónClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bajaClienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem empresaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abmEmpresaTooltip;
         private System.Windows.Forms.ToolStripMenuItem altaEmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificaciónEmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bajaEmpresaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem altaFacturaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificaciónFacturaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem altaFacturaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem pagoDeFacturaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rolToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abmFacturaTooltip;
+        private System.Windows.Forms.ToolStripMenuItem aFacturaTooltip;
+        private System.Windows.Forms.ToolStripMenuItem mFacturaTooltip;
+        private System.Windows.Forms.ToolStripMenuItem bFacturaTooltip;
+        private System.Windows.Forms.ToolStripMenuItem pagoFacturaTooltip;
+        private System.Windows.Forms.ToolStripMenuItem abmRolTooltip;
         private System.Windows.Forms.ToolStripMenuItem altaRolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificaciónRolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bajaRolToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sucursalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abmSucursalTooltip;
         private System.Windows.Forms.ToolStripMenuItem altaSucursalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificaciónSucursalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bajaSucursalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem estadísticasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rendiciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadisticasTooltip;
+        private System.Windows.Forms.ToolStripMenuItem rendicionTooltip;
         private System.Windows.Forms.Button botonSalir;
         private System.Windows.Forms.ToolStripMenuItem listadoEstadisticoToolStripMenuItem;
     }

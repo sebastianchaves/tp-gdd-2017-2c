@@ -43,11 +43,10 @@ namespace PagoAgilFrba.Modelo.DAOs
             return getEntities(resultSet, allColumns, tipos);
         }
 
-        public List<T> obtenerFuncionalidadesPorUsuario(String usuario)
+        public List<T> obtenerFuncionalidadesPorRol(String rol)
         {
             return obtenerPorQueryGenerica(
-                FUNCIONALIDADES_POR_ROL + "'" + usuario + "'", allColumns, tipos);
-
+                FUNCIONALIDADES_POR_ROL + "'" + rol + "'", allColumns, tipos);
         }
 
     }
