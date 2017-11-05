@@ -66,7 +66,8 @@ CREATE TABLE [ROCKET_DATABASE].[EMPRESAS](
 	nombre varchar(255) not null,
 	direccion varchar(255),
 	id_rubro int,
-	activo bit not null
+	activo bit not null,
+	fecha_rendicion datetime,
 	foreign key (id_rubro) references ROCKET_DATABASE.RUBROS(id_rubro)
 ) ON [PRIMARY]
 GO
