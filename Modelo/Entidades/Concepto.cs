@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    public class ItemFactura
+    public class Concepto
     {
-        // Atributos
-        public int cantidad;
-        public decimal monto;
 
-        public ItemFactura()
-        {
-        }
+        public int id;
+        public decimal monto;
+        public int cantidad;
+        public int idFactura;
 
     }
 

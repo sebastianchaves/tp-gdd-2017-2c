@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.RegistroPago;
+using PagoAgilFrba.AbmFactura;
 
 namespace PagoAgilFrba
 {
@@ -24,7 +25,7 @@ namespace PagoAgilFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModificacionSucursal());
+            Application.Run(new AltaFactura());
         }
     }
 }

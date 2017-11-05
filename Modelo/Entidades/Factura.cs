@@ -19,5 +19,6 @@ namespace PagoAgilFrba.Modelo.Entidades
         public int idEmpresa;
         public int idRendicion;
         public Boolean pagada;
+
     }
 }

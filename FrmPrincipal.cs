@@ -23,7 +23,7 @@ namespace PagoAgilFrba
     public partial class FrmPrincipal : Form
     {
 
-        private Usuario usuarioLogeado;
+        public static Usuario usuarioLogeado;
         private List<Rol> rolesUsuario;
 
         private RolDAO<Rol> rolDao;
@@ -35,7 +35,7 @@ namespace PagoAgilFrba
         public FrmPrincipal(Usuario usuario)
         {
             InitializeComponent();
-            this.usuarioLogeado = usuario;
+            FrmPrincipal.usuarioLogeado = usuario;
             this.rolDao = new RolDAO<Rol>();
             this.funcionalidadDAO = new FuncionalidadDAO<Funcionalidad>();
             logeoUsuario();
@@ -44,7 +44,7 @@ namespace PagoAgilFrba
         private void logeoUsuario()
         {
 
-            this.rolesUsuario = this.rolDao.obtenerRolesPorUsuario(this.usuarioLogeado.nombre);
+            this.rolesUsuario = this.rolDao.obtenerRolesPorUsuario(FrmPrincipal.usuarioLogeado.nombre);
 
             if (this.rolesUsuario.Count == 1)
             {

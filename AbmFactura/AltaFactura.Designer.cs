@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.altaFacturaLabel = new System.Windows.Forms.Label();
             this.datosEmpresaGroupBox = new System.Windows.Forms.GroupBox();
             this.empresaLabel = new System.Windows.Forms.Label();
@@ -35,7 +36,7 @@
             this.botonBuscarEmpresa = new System.Windows.Forms.Button();
             this.datosFacturaGroupBox = new System.Windows.Forms.GroupBox();
             this.itemsAgregadosLabel = new System.Windows.Forms.Label();
-            this.itemsGrid = new System.Windows.Forms.DataGridView();
+            this.conceptosGrid = new System.Windows.Forms.DataGridView();
             this.numeroInput = new System.Windows.Forms.TextBox();
             this.fechaVencimientoLabel = new System.Windows.Forms.Label();
             this.fechaAltaLabel = new System.Windows.Forms.Label();
@@ -48,18 +49,21 @@
             this.botonBuscarCliente = new System.Windows.Forms.Button();
             this.botonAceptar = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
-            this.datosItemGroupBox = new System.Windows.Forms.GroupBox();
-            this.botonAgregarItem = new System.Windows.Forms.Button();
+            this.datosConceptoGroupBox = new System.Windows.Forms.GroupBox();
+            this.botonAgregarConcepto = new System.Windows.Forms.Button();
             this.cantidadLabel = new System.Windows.Forms.Label();
             this.cantidadInput = new System.Windows.Forms.TextBox();
             this.montoLabel = new System.Windows.Forms.Label();
             this.montoInput = new System.Windows.Forms.TextBox();
-            this.botonEliminarItem = new System.Windows.Forms.Button();
+            this.botonEliminarConcepto = new System.Windows.Forms.Button();
+            this.montoTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.cantidadTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.numeroTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.datosEmpresaGroupBox.SuspendLayout();
             this.datosFacturaGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conceptosGrid)).BeginInit();
             this.datosClienteGroupBox.SuspendLayout();
-            this.datosItemGroupBox.SuspendLayout();
+            this.datosConceptoGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // altaFacturaLabel
@@ -98,6 +102,7 @@
             this.empresaInput.Enabled = false;
             this.empresaInput.Location = new System.Drawing.Point(74, 20);
             this.empresaInput.Name = "empresaInput";
+            this.empresaInput.ReadOnly = true;
             this.empresaInput.Size = new System.Drawing.Size(151, 20);
             this.empresaInput.TabIndex = 7;
             // 
@@ -114,7 +119,7 @@
             // datosFacturaGroupBox
             // 
             this.datosFacturaGroupBox.Controls.Add(this.itemsAgregadosLabel);
-            this.datosFacturaGroupBox.Controls.Add(this.itemsGrid);
+            this.datosFacturaGroupBox.Controls.Add(this.conceptosGrid);
             this.datosFacturaGroupBox.Controls.Add(this.numeroInput);
             this.datosFacturaGroupBox.Controls.Add(this.fechaVencimientoLabel);
             this.datosFacturaGroupBox.Controls.Add(this.fechaAltaLabel);
@@ -137,13 +142,13 @@
             this.itemsAgregadosLabel.TabIndex = 10;
             this.itemsAgregadosLabel.Text = "Items agregados:";
             // 
-            // itemsGrid
+            // conceptosGrid
             // 
-            this.itemsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsGrid.Location = new System.Drawing.Point(13, 138);
-            this.itemsGrid.Name = "itemsGrid";
-            this.itemsGrid.Size = new System.Drawing.Size(334, 136);
-            this.itemsGrid.TabIndex = 9;
+            this.conceptosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.conceptosGrid.Location = new System.Drawing.Point(13, 138);
+            this.conceptosGrid.Name = "conceptosGrid";
+            this.conceptosGrid.Size = new System.Drawing.Size(334, 136);
+            this.conceptosGrid.TabIndex = 9;
             // 
             // numeroInput
             // 
@@ -151,6 +156,7 @@
             this.numeroInput.Name = "numeroInput";
             this.numeroInput.Size = new System.Drawing.Size(211, 20);
             this.numeroInput.TabIndex = 8;
+            this.numeroInput.Leave += new System.EventHandler(this.numeroInput_Leave);
             // 
             // fechaVencimientoLabel
             // 
@@ -176,6 +182,7 @@
             this.fechaVencimientoInput.Name = "fechaVencimientoInput";
             this.fechaVencimientoInput.Size = new System.Drawing.Size(211, 20);
             this.fechaVencimientoInput.TabIndex = 5;
+            this.fechaVencimientoInput.Leave += new System.EventHandler(this.fechaVencimientoInput_Leave);
             // 
             // fechaAltaInput
             // 
@@ -183,6 +190,7 @@
             this.fechaAltaInput.Name = "fechaAltaInput";
             this.fechaAltaInput.Size = new System.Drawing.Size(211, 20);
             this.fechaAltaInput.TabIndex = 4;
+            this.fechaAltaInput.Leave += new System.EventHandler(this.fechaAltaInput_Leave);
             // 
             // numeroLabel
             // 
@@ -210,6 +218,7 @@
             this.clienteInput.Enabled = false;
             this.clienteInput.Location = new System.Drawing.Point(74, 18);
             this.clienteInput.Name = "clienteInput";
+            this.clienteInput.ReadOnly = true;
             this.clienteInput.Size = new System.Drawing.Size(151, 20);
             this.clienteInput.TabIndex = 8;
             // 
@@ -252,30 +261,30 @@
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // datosItemGroupBox
+            // datosConceptoGroupBox
             // 
-            this.datosItemGroupBox.Controls.Add(this.botonAgregarItem);
-            this.datosItemGroupBox.Controls.Add(this.cantidadLabel);
-            this.datosItemGroupBox.Controls.Add(this.cantidadInput);
-            this.datosItemGroupBox.Controls.Add(this.montoLabel);
-            this.datosItemGroupBox.Controls.Add(this.montoInput);
-            this.datosItemGroupBox.Controls.Add(this.botonEliminarItem);
-            this.datosItemGroupBox.Location = new System.Drawing.Point(12, 206);
-            this.datosItemGroupBox.Name = "datosItemGroupBox";
-            this.datosItemGroupBox.Size = new System.Drawing.Size(231, 112);
-            this.datosItemGroupBox.TabIndex = 10;
-            this.datosItemGroupBox.TabStop = false;
-            this.datosItemGroupBox.Text = "Datos Item";
+            this.datosConceptoGroupBox.Controls.Add(this.botonAgregarConcepto);
+            this.datosConceptoGroupBox.Controls.Add(this.cantidadLabel);
+            this.datosConceptoGroupBox.Controls.Add(this.cantidadInput);
+            this.datosConceptoGroupBox.Controls.Add(this.montoLabel);
+            this.datosConceptoGroupBox.Controls.Add(this.montoInput);
+            this.datosConceptoGroupBox.Controls.Add(this.botonEliminarConcepto);
+            this.datosConceptoGroupBox.Location = new System.Drawing.Point(12, 206);
+            this.datosConceptoGroupBox.Name = "datosConceptoGroupBox";
+            this.datosConceptoGroupBox.Size = new System.Drawing.Size(231, 112);
+            this.datosConceptoGroupBox.TabIndex = 10;
+            this.datosConceptoGroupBox.TabStop = false;
+            this.datosConceptoGroupBox.Text = "Datos Item";
             // 
-            // botonAgregarItem
+            // botonAgregarConcepto
             // 
-            this.botonAgregarItem.Location = new System.Drawing.Point(39, 72);
-            this.botonAgregarItem.Name = "botonAgregarItem";
-            this.botonAgregarItem.Size = new System.Drawing.Size(90, 30);
-            this.botonAgregarItem.TabIndex = 12;
-            this.botonAgregarItem.Text = "Agregar";
-            this.botonAgregarItem.UseVisualStyleBackColor = true;
-            this.botonAgregarItem.Click += new System.EventHandler(this.botonAgregarItem_Click);
+            this.botonAgregarConcepto.Location = new System.Drawing.Point(39, 72);
+            this.botonAgregarConcepto.Name = "botonAgregarConcepto";
+            this.botonAgregarConcepto.Size = new System.Drawing.Size(90, 30);
+            this.botonAgregarConcepto.TabIndex = 12;
+            this.botonAgregarConcepto.Text = "Agregar";
+            this.botonAgregarConcepto.UseVisualStyleBackColor = true;
+            this.botonAgregarConcepto.Click += new System.EventHandler(this.botonAgregarConcepto_Click);
             // 
             // cantidadLabel
             // 
@@ -288,11 +297,11 @@
             // 
             // cantidadInput
             // 
-            this.cantidadInput.Enabled = false;
             this.cantidadInput.Location = new System.Drawing.Point(74, 46);
             this.cantidadInput.Name = "cantidadInput";
             this.cantidadInput.Size = new System.Drawing.Size(151, 20);
             this.cantidadInput.TabIndex = 10;
+            this.cantidadInput.TextChanged += new System.EventHandler(this.cantidadInput_TextChanged);
             // 
             // montoLabel
             // 
@@ -305,27 +314,28 @@
             // 
             // montoInput
             // 
-            this.montoInput.Enabled = false;
             this.montoInput.Location = new System.Drawing.Point(74, 19);
             this.montoInput.Name = "montoInput";
             this.montoInput.Size = new System.Drawing.Size(151, 20);
             this.montoInput.TabIndex = 7;
+            this.montoInput.TextChanged += new System.EventHandler(this.montoInput_TextChanged);
             // 
-            // botonEliminarItem
+            // botonEliminarConcepto
             // 
-            this.botonEliminarItem.Location = new System.Drawing.Point(135, 72);
-            this.botonEliminarItem.Name = "botonEliminarItem";
-            this.botonEliminarItem.Size = new System.Drawing.Size(90, 30);
-            this.botonEliminarItem.TabIndex = 7;
-            this.botonEliminarItem.Text = "Eliminar";
-            this.botonEliminarItem.UseVisualStyleBackColor = true;
+            this.botonEliminarConcepto.Location = new System.Drawing.Point(135, 72);
+            this.botonEliminarConcepto.Name = "botonEliminarConcepto";
+            this.botonEliminarConcepto.Size = new System.Drawing.Size(90, 30);
+            this.botonEliminarConcepto.TabIndex = 7;
+            this.botonEliminarConcepto.Text = "Eliminar";
+            this.botonEliminarConcepto.UseVisualStyleBackColor = true;
+            this.botonEliminarConcepto.Click += new System.EventHandler(this.botonEliminarConcepto_Click);
             // 
             // AltaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 364);
-            this.Controls.Add(this.datosItemGroupBox);
+            this.Controls.Add(this.datosConceptoGroupBox);
             this.Controls.Add(this.botonAceptar);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.datosEmpresaGroupBox);
@@ -338,11 +348,11 @@
             this.datosEmpresaGroupBox.PerformLayout();
             this.datosFacturaGroupBox.ResumeLayout(false);
             this.datosFacturaGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conceptosGrid)).EndInit();
             this.datosClienteGroupBox.ResumeLayout(false);
             this.datosClienteGroupBox.PerformLayout();
-            this.datosItemGroupBox.ResumeLayout(false);
-            this.datosItemGroupBox.PerformLayout();
+            this.datosConceptoGroupBox.ResumeLayout(false);
+            this.datosConceptoGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,14 +378,17 @@
         private System.Windows.Forms.Label fechaAltaLabel;
         private System.Windows.Forms.DateTimePicker fechaVencimientoInput;
         private System.Windows.Forms.DateTimePicker fechaAltaInput;
-        private System.Windows.Forms.DataGridView itemsGrid;
+        private System.Windows.Forms.DataGridView conceptosGrid;
         private System.Windows.Forms.Label itemsAgregadosLabel;
-        private System.Windows.Forms.GroupBox datosItemGroupBox;
+        private System.Windows.Forms.GroupBox datosConceptoGroupBox;
         private System.Windows.Forms.Label montoLabel;
         private System.Windows.Forms.TextBox montoInput;
-        private System.Windows.Forms.Button botonEliminarItem;
+        private System.Windows.Forms.Button botonEliminarConcepto;
         private System.Windows.Forms.TextBox cantidadInput;
         private System.Windows.Forms.Label cantidadLabel;
-        private System.Windows.Forms.Button botonAgregarItem;
+        private System.Windows.Forms.Button botonAgregarConcepto;
+        private System.Windows.Forms.ToolTip montoTooltip;
+        private System.Windows.Forms.ToolTip cantidadTooltip;
+        private System.Windows.Forms.ToolTip numeroTooltip;
     }
 }

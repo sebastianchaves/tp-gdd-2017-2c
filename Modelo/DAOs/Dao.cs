@@ -351,7 +351,14 @@ namespace PagoAgilFrba.Modelo.DAOs
                                 }
                                 break;
                             case Utils.Utils.INT_TYPE:
-                                valor = reader.GetInt32(i).ToString();
+                                if (!reader.IsDBNull(i))
+                                {
+                                    valor = reader.GetInt32(i).ToString();
+                                }
+                                else
+                                {
+                                    valor = "0";
+                                }
                                 break;
                             case Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE:
                                 valor = reader.GetInt32(i).ToString();

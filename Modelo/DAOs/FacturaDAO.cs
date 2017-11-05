@@ -50,11 +50,10 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumnsInDB.Add("id_rendicion");
             allColumnsInDB.Add("id_cliente");
             allColumnsInDB.Add("id_empresa");
-            allColumnsInDB.Add("pagada");
         }
 
         // Inserts
-        public void agregarFactura(Factura factura)
+        public int agregarFactura(Factura factura)
         {
             List<String> valores = new List<String>();
 
@@ -63,11 +62,11 @@ namespace PagoAgilFrba.Modelo.DAOs
             valores.Add(factura.fechaAlta.ToString());
             valores.Add(factura.total.ToString());
             valores.Add(factura.fechaVencimiento.ToString());
-            valores.Add(factura.idRendicion.ToString());
+            valores.Add("null");
             valores.Add(factura.idCliente.ToString());
             valores.Add(factura.idEmpresa.ToString());
 
-            insert(TABLA, allColumnsInDB, tipos, valores);
+            return insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
         // Selects
