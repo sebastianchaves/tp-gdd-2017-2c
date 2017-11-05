@@ -18,8 +18,6 @@ namespace PagoAgilFrba.Modelo.Entidades
         public int idCliente;
         public int idEmpresa;
         public int idRendicion;
-
-        public List<ItemFactura> items;
-
+        public Boolean pagada;
     }
 }
