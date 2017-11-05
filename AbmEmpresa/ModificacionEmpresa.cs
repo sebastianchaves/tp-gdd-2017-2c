@@ -80,8 +80,23 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             if (this.camposCompletos())
             {
-                this.empresaDao.updateEmpresa(this.empresaModificada);
-                MessageBox.Show("Datos actualizados!");
+                if (!this.empresaModificada.activo && this.empresaACargar.activo)
+                {
+                    if (this.empresaDao.puedeDeshabilitar(this.empresaModificada))
+                    {
+                        this.empresaDao.updateEmpresa(this.empresaModificada);
+                        MessageBox.Show("Datos actualizados!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Esta empresa posee facturas cobradas pendientes de rendicion");
+                    }
+                }
+                else
+                {
+                    this.empresaDao.updateEmpresa(this.empresaModificada);
+                    MessageBox.Show("Datos actualizados!");
+                }
             }
             else
             {
@@ -111,6 +126,14 @@ namespace PagoAgilFrba.AbmEmpresa
             this.rubroCombo.DataSource = dataSource;
         }
 
+        private void habilitarCampos()
+        {
+            this.nombreInput.Enabled = true;
+            this.cuitInput.Enabled = true;
+            this.direccionInput.Enabled = true;
+            this.rubroCombo.Enabled = true;
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -120,11 +143,14 @@ namespace PagoAgilFrba.AbmEmpresa
                 busquedaForm.ShowDialog(this);
                 this.botonActualizar.Enabled = true;
                 this.empresaACargar = busquedaForm.getEmpresaEncontrada();
+                this.cargarRubros();
+                this.cargarDatos();
+                this.habilitarCampos();
             }
         }
 
-        // Boton Aceptar
-        private void botonAceptar_Click(object sender, EventArgs e)
+        // Boton Actualizar
+        private void botonActualizar_Click(object sender, EventArgs e)
         {
             this.updateEmpresa();
             Utils.clearTextBoxes(this);
@@ -132,8 +158,8 @@ namespace PagoAgilFrba.AbmEmpresa
             this.empresaACargar = new Empresa();
         }
 
-        // Boton Cancelar
-        private void botonCancelar_Click(object sender, EventArgs e)
+        // Boton Volver
+        private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Close();
         }

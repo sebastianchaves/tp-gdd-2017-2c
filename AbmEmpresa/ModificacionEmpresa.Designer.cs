@@ -105,6 +105,7 @@
             // 
             // rubroCombo
             // 
+            this.rubroCombo.Enabled = false;
             this.rubroCombo.FormattingEnabled = true;
             this.rubroCombo.Location = new System.Drawing.Point(87, 144);
             this.rubroCombo.Name = "rubroCombo";
@@ -122,6 +123,7 @@
             // 
             // cuitInput
             // 
+            this.cuitInput.Enabled = false;
             this.cuitInput.Location = new System.Drawing.Point(87, 70);
             this.cuitInput.Name = "cuitInput";
             this.cuitInput.Size = new System.Drawing.Size(204, 20);
@@ -129,6 +131,7 @@
             // 
             // direccionInput
             // 
+            this.direccionInput.Enabled = false;
             this.direccionInput.Location = new System.Drawing.Point(87, 107);
             this.direccionInput.Name = "direccionInput";
             this.direccionInput.Size = new System.Drawing.Size(204, 20);
@@ -145,6 +148,7 @@
             // 
             // nombreInput
             // 
+            this.nombreInput.Enabled = false;
             this.nombreInput.Location = new System.Drawing.Point(87, 33);
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(204, 20);
@@ -195,17 +199,19 @@
             this.botonVolver.TabIndex = 8;
             this.botonVolver.Text = "&Volver";
             this.botonVolver.UseVisualStyleBackColor = true;
-            this.botonVolver.Click += new System.EventHandler(this.botonCancelar_Click);
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // botonActualizar
             // 
+            this.botonActualizar.Enabled = false;
             this.botonActualizar.Location = new System.Drawing.Point(117, 273);
             this.botonActualizar.Name = "botonActualizar";
             this.botonActualizar.Size = new System.Drawing.Size(90, 30);
             this.botonActualizar.TabIndex = 7;
             this.botonActualizar.Text = "&Actualizar";
+            this.botonActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.botonActualizar.UseVisualStyleBackColor = true;
-            this.botonActualizar.Click += new System.EventHandler(this.botonAceptar_Click);
+            this.botonActualizar.Click += new System.EventHandler(this.botonActualizar_Click);
             // 
             // ModificacionEmpresa
             // 
