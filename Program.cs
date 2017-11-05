@@ -24,7 +24,7 @@ namespace PagoAgilFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModificacionSucursal());
+            Application.Run(new FrmLogin());
         }
     }
 }

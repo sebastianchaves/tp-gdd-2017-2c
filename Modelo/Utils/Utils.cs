@@ -106,6 +106,45 @@ namespace PagoAgilFrba.Modelo.Utils
             }
             return hashString;
         }
-
+        public static String getInicioTrimestre(int anio, int trimestre)
+        {
+            String fechaInicio = anio.ToString();
+            switch (trimestre)
+            {
+                case 1:
+                    fechaInicio += "-01-01";
+                    break;
+                case 2:
+                    fechaInicio += "-04-01";
+                    break;
+                case 3:
+                    fechaInicio += "-07-01";
+                    break;
+                case 4:
+                    fechaInicio += "-10-01";
+                    break;
+            }
+            return fechaInicio;
+        }
+        public static String getFinTrimestre(int anio, int trimestre)
+        {
+            String fechaFin = anio.ToString();
+            switch (trimestre)
+            {
+                case 1:
+                    fechaFin += "-03-31";
+                    break;
+                case 2:
+                    fechaFin += "-06-30";
+                    break;
+                case 3:
+                    fechaFin += "-09-30";
+                    break;
+                case 4:
+                    fechaFin += "-12-31";
+                    break;
+            }
+            return fechaFin;
+        }
     }
 }

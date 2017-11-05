@@ -24,18 +24,21 @@ namespace PagoAgilFrba.Modelo.DAOs
             tipos.Add(Utils.Utils.DECIMAL_TYPE);
             tipos.Add(Utils.Utils.DECIMAL_TYPE);
             tipos.Add(Utils.Utils.DECIMAL_TYPE);
+            tipos.Add(Utils.Utils.INT_TYPE);
 
             allColumnsInDB.Add("id");
             allColumnsInDB.Add("fechaCobro");
             allColumnsInDB.Add("importe");
             allColumnsInDB.Add("idFormaPago");
             allColumnsInDB.Add("idSucursal");
+            allColumnsInDB.Add("idCliente");
 
             allColumnsInDB.Add("id_pago");
             allColumnsInDB.Add("fecha_cobro");
             allColumnsInDB.Add("importe");
             allColumnsInDB.Add("id_forma_pago");
             allColumnsInDB.Add("id_sucursal");
+            allColumnsInDB.Add("id_cliente");
         }
 
     }
