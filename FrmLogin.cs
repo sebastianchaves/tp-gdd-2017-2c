@@ -21,12 +21,14 @@ namespace PagoAgilFrba
         private String contrasenia;
         private Usuario usuarioLogin;
         private UsuarioDAO<Usuario> usuarioDao;
+        private SucursalDAO<Sucursal> sucursalDao;
 
         public FrmLogin()
         {
             InitializeComponent();
 
             this.usuarioDao = new UsuarioDAO<Usuario>();
+            this.sucursalDao = new SucursalDAO<Sucursal>();
         }
 
         private void login()
@@ -54,11 +56,19 @@ namespace PagoAgilFrba
 
                 if (contraseniaPosta.Equals(this.usuarioLogin.contrasenia) && this.usuarioLogin.habilitado)
                 {
-                    usuarioDao.reiniciarIntentos(this.usuarioLogin);
-                    using (FrmPrincipal frmP = new FrmPrincipal(this.usuarioLogin))
+                    int sucursalId = this.usuarioLogin.idSucursal;
+                    if (sucursalId == 0 || sucursalDao.sucursalPorId(this.usuarioLogin.idSucursal).ElementAt(0).activo)
                     {
-                        this.Hide();
-                        frmP.ShowDialog();
+                        usuarioDao.reiniciarIntentos(this.usuarioLogin);
+                        using (FrmPrincipal frmP = new FrmPrincipal(this.usuarioLogin))
+                        {
+                            this.Hide();
+                            frmP.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("La sucursal perteneciente al usuario esta inhabilitada");
                     }
                 }
                 else

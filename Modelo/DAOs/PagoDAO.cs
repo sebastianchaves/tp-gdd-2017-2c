@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.DAOs
 {
-    public class PagoDAO<T> : Dao<T>
+    class PagoDAO<T> : Dao<T>
     {
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.PAGOS";
         private List<String> tipos;

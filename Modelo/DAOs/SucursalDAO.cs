@@ -66,6 +66,14 @@ namespace PagoAgilFrba.Modelo.DAOs
             return getEntities(resultSet, allColumns, tipos);
         }
 
+        public List<T> sucursalPorId(int id)
+        {
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("id_sucursal", id, Utils.Utils.INT_TYPE);
+            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
+        }
+
         // Updates
         public void updateSucursal(Sucursal sucursalModificada)
         {
