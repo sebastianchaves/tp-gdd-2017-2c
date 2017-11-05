@@ -15,7 +15,7 @@ namespace PagoAgilFrba.Modelo.Entidades
         public String direccion;
         public int idRubro;
         public Boolean activo;
-        public DateTime fechaRendicion;
+        public int diaDeRendicion;
     }
 
 }
