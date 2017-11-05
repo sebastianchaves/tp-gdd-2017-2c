@@ -12,6 +12,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.ROLES";
         private const String ROLES_X_USUARIO = "select r.* from ROCKET_DATABASE.ROLES r, ROCKET_DATABASE.USUARIOS u, ROCKET_DATABASE.USUARIO_ROLES ur where r.id_rol = ur.id_rol and ur.id_usuario = u.id_usuario and u.nombre = ";
+        private const String INHABILITAR_ROLES_USUARIO = "delete from rocket_database.usuario_roles where id_rol = ";
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
@@ -85,5 +86,9 @@ namespace PagoAgilFrba.Modelo.DAOs
             update(TABLA, actualizacion, condicion);
         }
 
+        public void darDeBajaRolEnTodosLosUsuarios(Rol rol)
+        {
+            deleteQuery(INHABILITAR_ROLES_USUARIO + rol.id);
+        }
     }
 }
