@@ -33,6 +33,8 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void cargarDatos()
         {
+            this.empresaModificada.id = this.empresaACargar.id;
+
             this.nombreInput.Text = this.empresaACargar.nombre;
             this.empresaModificada.nombre = this.empresaACargar.nombre;
 

@@ -81,7 +81,18 @@ namespace PagoAgilFrba.Modelo.DAOs
         // Updates
         public void updateEmpresa(Empresa empresaUpdate)
         {
-            
+            Condicion actualizacion = new Condicion();
+            actualizacion.agregarCondicion("cuit", empresaUpdate.cuit, Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("nombre", empresaUpdate.nombre, Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("direccion", empresaUpdate.direccion, Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("id_rubro", empresaUpdate.idRubro, Utils.Utils.INT_TYPE);
+            actualizacion.agregarCondicion("activo", empresaUpdate.activo.ToString(), Utils.Utils.BIT_TYPE);
+
+            Condicion condicion = new Condicion();
+
+            condicion.agregarCondicion("id_empresa", empresaUpdate.id, Utils.Utils.INT_TYPE);
+
+            update(EMPRESAS, actualizacion, condicion);
         }
 
         public Boolean puedeDeshabilitar(Empresa empresaUpdate)
