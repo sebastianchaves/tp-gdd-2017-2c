@@ -362,10 +362,10 @@
             // modificacionClienteLabel
             // 
             this.modificacionClienteLabel.AutoSize = true;
-            this.modificacionClienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modificacionClienteLabel.Location = new System.Drawing.Point(112, 9);
+            this.modificacionClienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modificacionClienteLabel.Location = new System.Drawing.Point(135, 9);
             this.modificacionClienteLabel.Name = "modificacionClienteLabel";
-            this.modificacionClienteLabel.Size = new System.Drawing.Size(149, 24);
+            this.modificacionClienteLabel.Size = new System.Drawing.Size(126, 20);
             this.modificacionClienteLabel.TabIndex = 14;
             this.modificacionClienteLabel.Text = "Modificar Cliente";
             // 
@@ -381,6 +381,7 @@
             // 
             // botonActualizar
             // 
+            this.botonActualizar.Enabled = false;
             this.botonActualizar.Location = new System.Drawing.Point(149, 379);
             this.botonActualizar.Name = "botonActualizar";
             this.botonActualizar.Size = new System.Drawing.Size(90, 30);

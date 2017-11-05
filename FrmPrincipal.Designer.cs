@@ -36,11 +36,9 @@
             this.abmClienteTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.altaClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificaciónClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bajaClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abmEmpresaTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.altaEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificaciónEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bajaEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abmFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.aFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.mFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +51,6 @@
             this.abmSucursalTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.altaSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificaciónSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bajaSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoEstadisticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rendicionTooltip = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,8 +105,7 @@
             // 
             this.abmClienteTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaClienteToolStripMenuItem,
-            this.modificaciónClienteToolStripMenuItem,
-            this.bajaClienteToolStripMenuItem});
+            this.modificaciónClienteToolStripMenuItem});
             this.abmClienteTooltip.Enabled = false;
             this.abmClienteTooltip.Name = "abmClienteTooltip";
             this.abmClienteTooltip.Size = new System.Drawing.Size(56, 20);
@@ -129,19 +125,11 @@
             this.modificaciónClienteToolStripMenuItem.Text = "Modificación cliente";
             this.modificaciónClienteToolStripMenuItem.Click += new System.EventHandler(this.modificaciónClienteToolStripMenuItem_Click);
             // 
-            // bajaClienteToolStripMenuItem
-            // 
-            this.bajaClienteToolStripMenuItem.Name = "bajaClienteToolStripMenuItem";
-            this.bajaClienteToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.bajaClienteToolStripMenuItem.Text = "Baja cliente";
-            this.bajaClienteToolStripMenuItem.Click += new System.EventHandler(this.bajaClienteToolStripMenuItem_Click);
-            // 
             // abmEmpresaTooltip
             // 
             this.abmEmpresaTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaEmpresaToolStripMenuItem,
-            this.modificaciónEmpresaToolStripMenuItem,
-            this.bajaEmpresaToolStripMenuItem});
+            this.modificaciónEmpresaToolStripMenuItem});
             this.abmEmpresaTooltip.Enabled = false;
             this.abmEmpresaTooltip.Name = "abmEmpresaTooltip";
             this.abmEmpresaTooltip.Size = new System.Drawing.Size(64, 20);
@@ -160,13 +148,6 @@
             this.modificaciónEmpresaToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.modificaciónEmpresaToolStripMenuItem.Text = "Modificación empresa";
             this.modificaciónEmpresaToolStripMenuItem.Click += new System.EventHandler(this.modificaciónEmpresaToolStripMenuItem_Click);
-            // 
-            // bajaEmpresaToolStripMenuItem
-            // 
-            this.bajaEmpresaToolStripMenuItem.Name = "bajaEmpresaToolStripMenuItem";
-            this.bajaEmpresaToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.bajaEmpresaToolStripMenuItem.Text = "Baja empresa";
-            this.bajaEmpresaToolStripMenuItem.Click += new System.EventHandler(this.bajaEmpresaToolStripMenuItem_Click);
             // 
             // abmFacturaTooltip
             // 
@@ -201,6 +182,7 @@
             this.bFacturaTooltip.Name = "bFacturaTooltip";
             this.bFacturaTooltip.Size = new System.Drawing.Size(184, 22);
             this.bFacturaTooltip.Text = "Alta factura";
+            this.bFacturaTooltip.Click += new System.EventHandler(this.bFacturaTooltip_Click);
             // 
             // pagoFacturaTooltip
             // 
@@ -240,14 +222,12 @@
             this.bajaRolToolStripMenuItem.Name = "bajaRolToolStripMenuItem";
             this.bajaRolToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.bajaRolToolStripMenuItem.Text = "Baja rol";
-            this.bajaRolToolStripMenuItem.Click += new System.EventHandler(this.bajaRolToolStripMenuItem_Click);
             // 
             // abmSucursalTooltip
             // 
             this.abmSucursalTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaSucursalToolStripMenuItem,
-            this.modificaciónSucursalToolStripMenuItem,
-            this.bajaSucursalToolStripMenuItem});
+            this.modificaciónSucursalToolStripMenuItem});
             this.abmSucursalTooltip.Enabled = false;
             this.abmSucursalTooltip.Name = "abmSucursalTooltip";
             this.abmSucursalTooltip.Size = new System.Drawing.Size(63, 20);
@@ -266,13 +246,6 @@
             this.modificaciónSucursalToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.modificaciónSucursalToolStripMenuItem.Text = "Modificación sucursal";
             this.modificaciónSucursalToolStripMenuItem.Click += new System.EventHandler(this.modificaciónSucursalToolStripMenuItem_Click);
-            // 
-            // bajaSucursalToolStripMenuItem
-            // 
-            this.bajaSucursalToolStripMenuItem.Name = "bajaSucursalToolStripMenuItem";
-            this.bajaSucursalToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.bajaSucursalToolStripMenuItem.Text = "Baja sucursal";
-            this.bajaSucursalToolStripMenuItem.Click += new System.EventHandler(this.bajaSucursalToolStripMenuItem_Click);
             // 
             // estadisticasTooltip
             // 
@@ -341,11 +314,9 @@
         private System.Windows.Forms.ToolStripMenuItem abmClienteTooltip;
         private System.Windows.Forms.ToolStripMenuItem altaClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificaciónClienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bajaClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abmEmpresaTooltip;
         private System.Windows.Forms.ToolStripMenuItem altaEmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificaciónEmpresaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bajaEmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abmFacturaTooltip;
         private System.Windows.Forms.ToolStripMenuItem aFacturaTooltip;
         private System.Windows.Forms.ToolStripMenuItem mFacturaTooltip;
@@ -358,7 +329,6 @@
         private System.Windows.Forms.ToolStripMenuItem abmSucursalTooltip;
         private System.Windows.Forms.ToolStripMenuItem altaSucursalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificaciónSucursalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bajaSucursalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estadisticasTooltip;
         private System.Windows.Forms.ToolStripMenuItem rendicionTooltip;
         private System.Windows.Forms.Button botonSalir;

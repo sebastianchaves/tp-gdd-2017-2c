@@ -57,7 +57,6 @@ namespace PagoAgilFrba.Busquedas
                 {
                     using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda(resultados))
                     {
-                        resultadosForm.cargarDataGridClientes(resultados);
                         resultadosForm.ShowDialog(this);
                         this.clienteEncontrado = resultadosForm.getClienteSeleccionado();
                     }

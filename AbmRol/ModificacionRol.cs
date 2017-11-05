@@ -56,6 +56,12 @@ namespace PagoAgilFrba.AbmRol
             if (this.camposCompletos())
             {
                 this.cargarFuncionalidades();
+
+                if (!this.rolModificado.habilitado && this.rolSeleccionado.habilitado)
+                {
+                    this.rolDao.darDeBajaRolEnTodosLosUsuarios(this.rolModificado);
+                }
+                
                 this.rolDao.updateRol(this.rolModificado);
                 MessageBox.Show("Datos actualizados!");
             }
@@ -175,8 +181,6 @@ namespace PagoAgilFrba.AbmRol
         private void deshabilitadoRadio_CheckedChanged(object sender, EventArgs e)
         {
             this.rolModificado.habilitado = false;
-
-            // ACA VA LO DE DANI
         }
 
     }

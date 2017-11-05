@@ -30,10 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionSucursal));
             this.modificacionSucursalLabel = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
-            this.gbSucursal = new System.Windows.Forms.GroupBox();
+            this.botonBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,63 +41,34 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtCodigoPostal = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.gbSucursal.SuspendLayout();
+            this.botonVolver = new System.Windows.Forms.Button();
+            this.botonActualizar = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // modificacionSucursalLabel
             // 
             this.modificacionSucursalLabel.AutoSize = true;
             this.modificacionSucursalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modificacionSucursalLabel.Location = new System.Drawing.Point(182, 16);
+            this.modificacionSucursalLabel.Location = new System.Drawing.Point(89, 9);
             this.modificacionSucursalLabel.Name = "modificacionSucursalLabel";
             this.modificacionSucursalLabel.Size = new System.Drawing.Size(163, 20);
             this.modificacionSucursalLabel.TabIndex = 1;
             this.modificacionSucursalLabel.Text = "Modificacion Sucursal";
             // 
-            // dataGridView1
+            // botonBuscar
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 260);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(29, 284);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(84, 35);
-            this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.Text = "&Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(150, 284);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(84, 35);
-            this.btnSeleccionar.TabIndex = 6;
-            this.btnSeleccionar.Text = "&Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            // 
-            // gbSucursal
-            // 
-            this.gbSucursal.Controls.Add(this.btnBuscar);
-            this.gbSucursal.Controls.Add(this.btnSeleccionar);
-            this.gbSucursal.Location = new System.Drawing.Point(27, 44);
-            this.gbSucursal.Name = "gbSucursal";
-            this.gbSucursal.Size = new System.Drawing.Size(261, 336);
-            this.gbSucursal.TabIndex = 5;
-            this.gbSucursal.TabStop = false;
-            this.gbSucursal.Text = "Seleccione una sucursal:";
+            this.botonBuscar.Location = new System.Drawing.Point(29, 237);
+            this.botonBuscar.Name = "botonBuscar";
+            this.botonBuscar.Size = new System.Drawing.Size(90, 30);
+            this.botonBuscar.TabIndex = 5;
+            this.botonBuscar.Text = "&Buscar";
+            this.botonBuscar.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(330, 82);
+            this.label1.Location = new System.Drawing.Point(14, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 6;
@@ -109,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(322, 122);
+            this.label2.Location = new System.Drawing.Point(14, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 7;
@@ -118,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(309, 164);
+            this.label3.Location = new System.Drawing.Point(14, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 8;
@@ -127,7 +95,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(334, 202);
+            this.label4.Location = new System.Drawing.Point(14, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 9;
@@ -136,7 +104,7 @@
             // rbHabilitada
             // 
             this.rbHabilitada.AutoSize = true;
-            this.rbHabilitada.Location = new System.Drawing.Point(388, 200);
+            this.rbHabilitada.Location = new System.Drawing.Point(94, 156);
             this.rbHabilitada.Name = "rbHabilitada";
             this.rbHabilitada.Size = new System.Drawing.Size(72, 17);
             this.rbHabilitada.TabIndex = 3;
@@ -147,7 +115,7 @@
             // rbDeshabilitada
             // 
             this.rbDeshabilitada.AutoSize = true;
-            this.rbDeshabilitada.Location = new System.Drawing.Point(466, 200);
+            this.rbDeshabilitada.Location = new System.Drawing.Point(211, 156);
             this.rbDeshabilitada.Name = "rbDeshabilitada";
             this.rbDeshabilitada.Size = new System.Drawing.Size(89, 17);
             this.rbDeshabilitada.TabIndex = 4;
@@ -157,71 +125,70 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(384, 74);
+            this.txtNombre.Location = new System.Drawing.Point(94, 30);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(171, 20);
+            this.txtNombre.Size = new System.Drawing.Size(206, 20);
             this.txtNombre.TabIndex = 0;
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(383, 115);
+            this.txtDireccion.Location = new System.Drawing.Point(93, 71);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(171, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(206, 20);
             this.txtDireccion.TabIndex = 1;
             // 
             // txtCodigoPostal
             // 
-            this.txtCodigoPostal.Location = new System.Drawing.Point(384, 157);
+            this.txtCodigoPostal.Location = new System.Drawing.Point(94, 113);
             this.txtCodigoPostal.Name = "txtCodigoPostal";
-            this.txtCodigoPostal.Size = new System.Drawing.Size(170, 20);
+            this.txtCodigoPostal.Size = new System.Drawing.Size(205, 20);
             this.txtCodigoPostal.TabIndex = 2;
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(294, 45);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtCodigoPostal);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtDireccion);
+            this.groupBox1.Controls.Add(this.rbHabilitada);
+            this.groupBox1.Controls.Add(this.txtNombre);
+            this.groupBox1.Controls.Add(this.rbDeshabilitada);
+            this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(280, 202);
+            this.groupBox1.Size = new System.Drawing.Size(315, 191);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de la sucursal:";
             // 
-            // btnAceptar
+            // botonVolver
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(466, 272);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(84, 35);
-            this.btnAceptar.TabIndex = 7;
-            this.btnAceptar.Text = "&Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.botonVolver.Location = new System.Drawing.Point(221, 237);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(90, 30);
+            this.botonVolver.TabIndex = 7;
+            this.botonVolver.Text = "&Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
             // 
-            // btnCancelar
+            // botonActualizar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(333, 272);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(84, 35);
-            this.btnCancelar.TabIndex = 8;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.botonActualizar.Location = new System.Drawing.Point(125, 237);
+            this.botonActualizar.Name = "botonActualizar";
+            this.botonActualizar.Size = new System.Drawing.Size(90, 30);
+            this.botonActualizar.TabIndex = 8;
+            this.botonActualizar.Text = "&Actualizar";
+            this.botonActualizar.UseVisualStyleBackColor = true;
             // 
             // ModificacionSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 392);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.txtCodigoPostal);
-            this.Controls.Add(this.txtDireccion);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.rbDeshabilitada);
-            this.Controls.Add(this.rbHabilitada);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(338, 281);
+            this.Controls.Add(this.botonBuscar);
+            this.Controls.Add(this.botonActualizar);
+            this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.modificacionSucursalLabel);
-            this.Controls.Add(this.gbSucursal);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -229,8 +196,8 @@
             this.Name = "ModificacionSucursal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion Sucursal";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.gbSucursal.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,10 +206,7 @@
         #endregion
 
         private System.Windows.Forms.Label modificacionSucursalLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnSeleccionar;
-        private System.Windows.Forms.GroupBox gbSucursal;
+        private System.Windows.Forms.Button botonBuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -253,7 +217,7 @@
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtCodigoPostal;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.Button botonActualizar;
     }
 }

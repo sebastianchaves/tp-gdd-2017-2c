@@ -115,12 +115,11 @@ namespace PagoAgilFrba.AbmEmpresa
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {    
-            Utils.iniciarGrids(resultadosGrid);
-
-            using (BusquedaEmpresa busquedaForm = new BusquedaEmpresa(resultadosGrid))
+            using (BusquedaEmpresa busquedaForm = new BusquedaEmpresa())
             {
                 busquedaForm.ShowDialog(this);
-                this.botonSeleccionar.Enabled = true;
+                this.botonActualizar.Enabled = true;
+                this.empresaACargar = busquedaForm.getEmpresaEncontrada();
             }
         }
 
@@ -137,17 +136,6 @@ namespace PagoAgilFrba.AbmEmpresa
         private void botonCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        // Boton Seleccionar
-        private void botonSeleccionar_Click(object sender, EventArgs e)
-        {
-            var empresaIndex = resultadosGrid.SelectedCells[0].RowIndex;
-            this.empresaACargar = new Empresa();
-            int cuitSeleccionado = Int32.Parse(resultadosGrid.Rows[empresaIndex].Cells[1].Value.ToString());
-            this.empresaACargar = this.empresaDao.findEmpresa("", cuitSeleccionado.ToString(), "").ElementAt(empresaIndex);
-            this.cargarRubros();
-            this.cargarDatos();
         }
 
         // Habilitar

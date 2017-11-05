@@ -26,6 +26,18 @@ namespace PagoAgilFrba.Busquedas
         private List<Rol> rolesEncontrados;
         private RolDAO<Rol> rolDao;
 
+        private Empresa empresaSeleccionada;
+        private List<Empresa> empresasEncontradas;
+        private EmpresaDAO<Empresa> empresaDao;
+
+        private Sucursal sucursalSeleccionada;
+        private List<Sucursal> sucursalesEncontradas;
+        private SucursalDAO<Sucursal> sucursalDao;
+
+        private Factura facturaSeleccionada;
+        private List<Factura> facturasEncontradas;
+        private FacturaDAO<Factura> facturaDao;
+
         // Constructores
         public ResultadosBusqueda(Rol rol)
         {
@@ -41,6 +53,30 @@ namespace PagoAgilFrba.Busquedas
 
             this.clienteDao = new ClienteDAO<Cliente>();
             this.cargarDataGridClientes(clientesACargar);
+        }
+
+        public ResultadosBusqueda(List<Empresa> empresasACargar)
+        {
+            InitializeComponent();
+
+            this.empresaDao = new EmpresaDAO<Empresa>();
+            this.cargarDataGridEmpresas(empresasACargar);
+        }
+
+        public ResultadosBusqueda(List<Sucursal> sucursalesACargar)
+        {
+            InitializeComponent();
+
+            this.sucursalDao = new SucursalDAO<Sucursal>();
+            this.cargarDataGridSucursales(sucursalesACargar);
+        }
+
+        public ResultadosBusqueda(List<Factura> facturasACargar)
+        {
+            InitializeComponent();
+
+            this.facturaDao = new FacturaDAO<Factura>();
+            this.cargarDataGridFacturas(facturasACargar);
         }
 
         private void cargarDataGridRoles()
@@ -61,7 +97,7 @@ namespace PagoAgilFrba.Busquedas
             resultadosGrid.DataSource = resultadosRoles;
         }
 
-        public void cargarDataGridClientes(List<Cliente> clientes)
+        private void cargarDataGridClientes(List<Cliente> clientes)
         {
             this.clientesEncontrados = clientes;
 
@@ -76,7 +112,65 @@ namespace PagoAgilFrba.Busquedas
             {
                 resultadosClientes.Rows.Add(cliente.dni, cliente.apellido, cliente.nombre, cliente.mail);
             }
+
             resultadosGrid.DataSource = resultadosClientes;
+        }
+
+        private void cargarDataGridEmpresas(List<Empresa> empresas)
+        {
+            this.empresasEncontradas = empresas;
+
+            DataTable resultadosEmpresas = new DataTable();
+
+            resultadosEmpresas.Columns.Add("CUIT");
+            resultadosEmpresas.Columns.Add("Nombre");
+            resultadosEmpresas.Columns.Add("Direccion");
+            resultadosEmpresas.Columns.Add("Activa");
+
+            foreach (Empresa empresa in empresas)
+            {
+                resultadosEmpresas.Rows.Add(empresa.cuit, empresa.nombre, empresa.direccion, empresa.activo);
+            }
+
+            resultadosGrid.DataSource = resultadosEmpresas;
+        }
+
+        private void cargarDataGridSucursales(List<Sucursal> sucursales)
+        {
+            this.sucursalesEncontradas = sucursales;
+
+            DataTable resultadosSucursales = new DataTable();
+
+            resultadosSucursales.Columns.Add("Nombre");
+            resultadosSucursales.Columns.Add("Direccion");
+            resultadosSucursales.Columns.Add("Codigo Postal");
+            resultadosSucursales.Columns.Add("Activa");
+
+            foreach (Sucursal sucursal in sucursales)
+            {
+                resultadosSucursales.Rows.Add(sucursal.nombre, sucursal.direccion, sucursal.codigoPostal, sucursal.activo);
+            }
+
+            resultadosGrid.DataSource = resultadosSucursales;
+        }
+
+        private void cargarDataGridFacturas(List<Factura> facturas)
+        {
+            this.facturasEncontradas = facturas;
+
+            DataTable resultadosFacturas = new DataTable();
+
+            resultadosFacturas.Columns.Add("Numero");
+            resultadosFacturas.Columns.Add("Fecha Alta");
+            resultadosFacturas.Columns.Add("Total");
+            resultadosFacturas.Columns.Add("Fecha Vencimiento");
+
+            foreach (Factura factura in facturas)
+            {
+                resultadosFacturas.Rows.Add(factura.numero, factura.fechaAlta, factura.total, factura.fechaVencimiento);
+            }
+
+            resultadosGrid.DataSource = resultadosFacturas;
         }
 
         public Rol getRolSeleccionado()
@@ -87,6 +181,21 @@ namespace PagoAgilFrba.Busquedas
         public Cliente getClienteSeleccionado()
         {
             return this.clienteSeleccionado;
+        }
+
+        public Empresa getEmpresaSeleccionada()
+        {
+            return this.empresaSeleccionada;
+        }
+
+        public Sucursal getSucursalSeleccionada()
+        {
+            return this.sucursalSeleccionada;
+        }
+
+        public Factura getFacturaSeleccionada()
+        {
+            return this.facturaSeleccionada;
         }
 
         // Eventos
@@ -110,6 +219,30 @@ namespace PagoAgilFrba.Busquedas
                 String mailCliente = this.resultadosGrid.Rows[index].Cells[3].Value.ToString();
 
                 this.clienteSeleccionado = this.clientesEncontrados.Find(cliente => cliente.mail.Equals(mailCliente));
+            }
+            else if (this.empresasEncontradas != null)
+            {
+                this.empresaSeleccionada = new Empresa();
+
+                String cuitEmpresa = this.resultadosGrid.Rows[index].Cells[0].Value.ToString();
+
+                this.empresaSeleccionada = this.empresasEncontradas.Find(empresa => empresa.cuit.Equals(cuitEmpresa));
+            }
+            else if (this.sucursalesEncontradas != null)
+            {
+                this.sucursalSeleccionada = new Sucursal();
+
+                String codigoPostalSucursal = this.resultadosGrid.Rows[index].Cells[2].Value.ToString();
+
+                this.sucursalSeleccionada = this.sucursalesEncontradas.Find(sucursal => sucursal.codigoPostal.Equals(codigoPostalSucursal));
+            }
+            else if (this.facturasEncontradas != null)
+            {
+                this.facturaSeleccionada = new Factura();
+
+                String numeroFactura = this.resultadosGrid.Rows[index].Cells[0].Value.ToString();
+
+                this.facturaSeleccionada = this.facturasEncontradas.Find(factura => factura.numero.Equals(numeroFactura));
             }
 
             this.Close();

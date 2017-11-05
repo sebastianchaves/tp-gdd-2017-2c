@@ -222,6 +222,7 @@ namespace PagoAgilFrba.AbmCliente
             {
                 busquedaForm.ShowDialog(this);
                 this.clienteACargar = busquedaForm.getClienteEncontrado();
+                this.botonActualizar.Enabled = true;
                 this.cargarDatos();
                 this.habilitarCampos();
             }

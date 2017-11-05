@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PagoAgilFrba.Busquedas;
+using PagoAgilFrba.Modelo.DAOs;
+using PagoAgilFrba.Modelo.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,29 +15,61 @@ namespace PagoAgilFrba.AbmFactura
 {
     public partial class ModificacionFactura : Form
     {
+
+        private Factura facturaACargar;
+        private Factura facturaModificada;
+        private FacturaDAO<Factura> facturaDao;
+
         public ModificacionFactura()
         {
             InitializeComponent();
+
+            this.facturaDao = new FacturaDAO<Factura>();
+            this.facturaModificada = new Factura();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void actualizarFactura()
         {
 
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void cargarDatos()
         {
 
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void habilitarCampos()
         {
 
         }
 
-        private void ModificacionFactura_Load(object sender, EventArgs e)
+        // Eventos
+        // Boton Buscar
+        private void botonBuscar_Click(object sender, EventArgs e)
         {
-
+            using (BusquedaFactura busquedaForm = new BusquedaFactura())
+            {
+                busquedaForm.ShowDialog(this);
+                this.facturaACargar = busquedaForm.getFacturaEncontrada();
+                this.botonActualizar.Enabled = true;
+                this.cargarDatos();
+                this.habilitarCampos();
+            }
         }
+
+        // Boton Actualizar
+        private void botonActualizar_Click(object sender, EventArgs e)
+        {
+            this.actualizarFactura();
+        }
+
+        // Boton Volver
+        private void botonVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
     }
 }

@@ -51,12 +51,6 @@
     <Compile Include="AbmCliente\AltaCliente.Designer.cs">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmCliente\BajaCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmCliente\BajaCliente.Designer.cs">
-      <DependentUpon>BajaCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmCliente\ModificacionCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,12 +62,6 @@
     </Compile>
     <Compile Include="AbmEmpresa\AltaEmpresa.Designer.cs">
       <DependentUpon>AltaEmpresa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbmEmpresa\BajaEmpresa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmEmpresa\BajaEmpresa.Designer.cs">
-      <DependentUpon>BajaEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmEmpresa\ModificacionEmpresa.cs">
       <SubType>Form</SubType>
@@ -105,12 +93,6 @@
     <Compile Include="AbmRol\AltaRol.Designer.cs">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\BajaRol.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRol\BajaRol.Designer.cs">
-      <DependentUpon>BajaRol.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmRol\ModificacionRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,12 +104,6 @@
     </Compile>
     <Compile Include="AbmSucursal\AltaSucursal.Designer.cs">
       <DependentUpon>AltaSucursal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbmSucursal\BajaSucursal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmSucursal\BajaSucursal.Designer.cs">
-      <DependentUpon>BajaSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmSucursal\ModificacionSucursal.cs">
       <SubType>Form</SubType>
@@ -146,6 +122,12 @@
     </Compile>
     <Compile Include="Busquedas\BusquedaEmpresa.Designer.cs">
       <DependentUpon>BusquedaEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\BusquedaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\BusquedaFactura.Designer.cs">
+      <DependentUpon>BusquedaFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="Busquedas\BusquedaSucursal.cs">
       <SubType>Form</SubType>
@@ -227,17 +209,11 @@
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmCliente\BajaCliente.resx">
-      <DependentUpon>BajaCliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\ModificacionCliente.resx">
       <DependentUpon>ModificacionCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmEmpresa\AltaEmpresa.resx">
       <DependentUpon>AltaEmpresa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmEmpresa\BajaEmpresa.resx">
-      <DependentUpon>BajaEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmEmpresa\ModificacionEmpresa.resx">
       <DependentUpon>ModificacionEmpresa.cs</DependentUpon>
@@ -254,17 +230,11 @@
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRol\BajaRol.resx">
-      <DependentUpon>BajaRol.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\ModificacionRol.resx">
       <DependentUpon>ModificacionRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\AltaSucursal.resx">
       <DependentUpon>AltaSucursal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmSucursal\BajaSucursal.resx">
-      <DependentUpon>BajaSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\ModificacionSucursal.resx">
       <DependentUpon>ModificacionSucursal.cs</DependentUpon>
@@ -274,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\BusquedaEmpresa.resx">
       <DependentUpon>BusquedaEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\BusquedaFactura.resx">
+      <DependentUpon>BusquedaFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\BusquedaSucursal.resx">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>

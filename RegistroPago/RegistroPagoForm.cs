@@ -66,6 +66,11 @@ namespace PagoAgilFrba.RegistroPago
         {
             this.Close();
         }
+
+        private void botonRegistrar_Click(object sender, EventArgs e)
+        {
+
+        }
     
     }
 }

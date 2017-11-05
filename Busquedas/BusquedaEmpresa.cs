@@ -16,29 +16,20 @@ namespace PagoAgilFrba.Busquedas
     public partial class BusquedaEmpresa : Form
     {
 
-        private IList<Empresa> empresasEncontradas;
+        private Empresa empresaEncontrada;
         private EmpresaDAO<Empresa> empresaDao;
         private RubroDAO<Rubro> rubroDao;
-        private Utils util;
-        private DataGridView resultadosGrid;
         private String nombreABuscar;
         private String cuitABuscar;
         private String rubroABuscar;
 
         public BusquedaEmpresa()
         {
-
-        }
-
-        public BusquedaEmpresa(DataGridView resultadosGrid)
-        {
             InitializeComponent();
 
-            this.util = new Utils();
             this.empresaDao = new EmpresaDAO<Empresa>();
             this.rubroDao = new RubroDAO<Rubro>();
             this.cargarRubrosDisponibles();
-            this.resultadosGrid = resultadosGrid;
         }
 
         private void cargarRubrosDisponibles()
@@ -55,29 +46,14 @@ namespace PagoAgilFrba.Busquedas
             rubroCombo.DataSource = dataSource;
         }
 
-        private void cargarDataGridEmpresas(IList<Empresa> empresas)
-        {
-            DataTable resultadosEmpresas = new DataTable();
-
-            resultadosEmpresas.Columns.Add("Nombre");
-            resultadosEmpresas.Columns.Add("Cuit");
-            resultadosEmpresas.Columns.Add("Rubro");
-
-            foreach (Empresa empresa in empresas)
-            {
-                resultadosEmpresas.Rows.Add(empresa.nombre, empresa.cuit, empresa.idRubro);
-            }
-            resultadosGrid.DataSource = resultadosEmpresas;
-        }
-
-        public int getIdEmpresaEncontrada()
-        {
-            return 1;
-        }
-
         private Boolean algunFiltroCompleto()
         {
             return this.nombreInput.Text != "" || this.cuitInput.Text != "" || this.rubroCombo.Text != "";
+        }
+
+        public Empresa getEmpresaEncontrada()
+        {
+            return this.empresaEncontrada;
         }
 
         // Eventos
@@ -86,16 +62,21 @@ namespace PagoAgilFrba.Busquedas
         {
             if (this.algunFiltroCompleto())
             {
-                this.empresasEncontradas = this.empresaDao.findEmpresa(this.nombreABuscar,
+                List<Empresa> resultados = this.empresaDao.findEmpresa(this.nombreABuscar,
                                                     this.cuitABuscar,
                                                     this.rubroABuscar);
-                if (empresasEncontradas.Count() == 0)
+
+                if (resultados.Count() == 0)
                 {
                     MessageBox.Show("No existe ninguna empresa que concuerde con esos parámetros.");
                 }
-                else if (empresasEncontradas.Count() > 0)
+                else if (resultados.Count() > 0)
                 {
-                    this.cargarDataGridEmpresas(empresasEncontradas);
+                    using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda(resultados))
+                    {
+                        resultadosForm.ShowDialog(this);
+                        this.empresaEncontrada = resultadosForm.getEmpresaSeleccionada();
+                    }
                     this.Close();
                 }
             }

@@ -135,10 +135,6 @@ namespace PagoAgilFrba
         {
             new ModificacionCliente().ShowDialog();
         }
-        private void bajaClienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new BajaCliente().ShowDialog();
-        }
 
         // Boton Salir
         private void botonSalir_Click(object sender, EventArgs e)
@@ -155,25 +151,23 @@ namespace PagoAgilFrba
         {
             new ModificacionEmpresa().ShowDialog();
         }
-        private void bajaEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new BajaEmpresa().ShowDialog();
-        }
 
         // Factura
         private void altaFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AltaFactura().ShowDialog();
         }
-
         private void modificaciónFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ModificacionFactura().ShowDialog();
         }
-
         private void pagoDeFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new RegistroPagoForm().ShowDialog();
+        }
+        private void bFacturaTooltip_Click(object sender, EventArgs e)
+        {
+            new BajaFactura().ShowDialog();
         }
 
         // Rol
@@ -181,15 +175,9 @@ namespace PagoAgilFrba
         {
             new AltaRol().ShowDialog();
         }
-
         private void modificaciónRolToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ModificacionRol().ShowDialog();
-        }
-
-        private void bajaRolToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new BajaRol().ShowDialog();
         }
 
         // Sucursal
@@ -197,15 +185,9 @@ namespace PagoAgilFrba
         {
             new AltaSucursal().ShowDialog();
         }
-
         private void modificaciónSucursalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ModificacionSucursal().ShowDialog();
-        }
-
-        private void bajaSucursalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new BajaSucursal().ShowDialog();
         }
 
         // Rendiciones

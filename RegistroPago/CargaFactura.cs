@@ -52,7 +52,7 @@ namespace PagoAgilFrba.RegistroPago
             using (BusquedaEmpresa busquedaEmpresaForm = new BusquedaEmpresa())
             {
                 busquedaEmpresaForm.ShowDialog(this);
-                nuevaFactura.idEmpresa = busquedaEmpresaForm.getIdEmpresaEncontrada();
+                nuevaFactura.idEmpresa = busquedaEmpresaForm.getEmpresaEncontrada().id;
             }
         }
 

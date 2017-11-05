@@ -66,5 +66,15 @@ namespace PagoAgilFrba.Modelo.DAOs
             insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
+        // Selects
+        public List<T> findFactura(int numeroFactura)
+        {
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("nro_factura", numeroFactura, Utils.Utils.INT_TYPE);
+
+            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
+        }
+
     }
 }

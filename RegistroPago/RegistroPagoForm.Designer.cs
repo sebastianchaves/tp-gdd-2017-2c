@@ -78,6 +78,7 @@
             this.botonRegistrar.TabIndex = 2;
             this.botonRegistrar.Text = "Registrar";
             this.botonRegistrar.UseVisualStyleBackColor = true;
+            this.botonRegistrar.Click += new System.EventHandler(this.botonRegistrar_Click);
             // 
             // botonEliminar
             // 
@@ -108,7 +109,7 @@
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // RegistroPago
+            // RegistroPagoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -116,7 +117,7 @@
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.agregeFacturasGroupBox);
             this.Controls.Add(this.registroPagoLabel);
-            this.Name = "RegistroPago";
+            this.Name = "RegistroPagoForm";
             this.Text = "Registro de Pago de Facturas";
             ((System.ComponentModel.ISupportInitialize)(this.facturasGrid)).EndInit();
             this.agregeFacturasGroupBox.ResumeLayout(false);
