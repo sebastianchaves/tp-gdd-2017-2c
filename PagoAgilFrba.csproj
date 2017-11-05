@@ -165,6 +165,7 @@
     <Compile Include="ListadoEstadistico\ListadoEstadisticoForm.Designer.cs">
       <DependentUpon>ListadoEstadisticoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\DAOs\PagoDAO.cs" />
     <Compile Include="Modelo\DAOs\Condicion.cs" />
     <Compile Include="Modelo\DAOs\ClienteDAO.cs" />
     <Compile Include="Modelo\DAOs\Dao.cs" />

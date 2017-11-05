@@ -44,7 +44,7 @@ namespace PagoAgilFrba.Busquedas
         {
             if (this.algunFiltroCompleto())
             {
-                List<Factura> resultados = this.facturaDao.findFactura(this.numeroABuscar);
+                List<Factura> resultados = this.facturaDao.obtenerFacturas(this.numeroABuscar);
 
                 if (resultados.Count() == 0)
                 {

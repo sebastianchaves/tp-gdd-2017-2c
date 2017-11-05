@@ -32,21 +32,17 @@ namespace PagoAgilFrba
         private FuncionalidadDAO<Funcionalidad> funcionalidadDAO;
         private List<Funcionalidad> funcionalidadesEncontradas;
 
-        public FrmPrincipal()
+        public FrmPrincipal(Usuario usuario)
         {
             InitializeComponent();
-
+            this.usuarioLogeado = usuario;
             this.rolDao = new RolDAO<Rol>();
             this.funcionalidadDAO = new FuncionalidadDAO<Funcionalidad>();
+            logeoUsuario();
         }
 
         private void logeoUsuario()
         {
-            using (FrmLogin login = new FrmLogin())
-            {
-                login.ShowDialog();
-                this.usuarioLogeado = login.getUsuarioLogin();
-            }
 
             this.rolesUsuario = this.rolDao.obtenerRolesPorUsuario(this.usuarioLogeado.nombre);
 
@@ -64,6 +60,7 @@ namespace PagoAgilFrba
             }
 
             this.funcionalidadesEncontradas = this.funcionalidadDAO.obtenerFuncionalidadesPorRol(this.rolSeleccionado.nombre);
+            this.habilitarFuncionalidades();
         }
 
         private void habilitarFuncionalidades()
@@ -110,14 +107,6 @@ namespace PagoAgilFrba
                         break;
                 }
             }
-        }
-
-        // Eventos
-        // Load
-        private void FrmPrincipal_Load(object sender, EventArgs e)
-        {
-            this.logeoUsuario();
-            this.habilitarFuncionalidades();
         }
 
         // Archivo

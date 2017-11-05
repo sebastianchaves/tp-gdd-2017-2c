@@ -21,12 +21,14 @@ namespace PagoAgilFrba
         private String contrasenia;
         private Usuario usuarioLogin;
         private UsuarioDAO<Usuario> usuarioDao;
+        private SucursalDAO<Sucursal> sucursalDao;
 
         public FrmLogin()
         {
             InitializeComponent();
 
             this.usuarioDao = new UsuarioDAO<Usuario>();
+            this.sucursalDao = new SucursalDAO<Sucursal>();
         }
 
         private void login()
@@ -44,20 +46,51 @@ namespace PagoAgilFrba
         private void logearse()
         {
             List<Usuario> usuarios = this.usuarioDao.findUsuario(usuario);
-            this.usuarioLogin = usuarios.ElementAt(0);
 
-            String contraseniaPosta = Utils.getSha256(this.contrasenia);
-
-            if (contraseniaPosta.Equals(this.usuarioLogin.contrasenia))
+            if (usuarios.Count > 0)
             {
-                this.Close();
+
+                this.usuarioLogin = usuarios.ElementAt(0);
+
+                String contraseniaPosta = Utils.getSha256(this.contrasenia);
+
+                if (contraseniaPosta.Equals(this.usuarioLogin.contrasenia) && this.usuarioLogin.habilitado)
+                {
+                    int sucursalId = this.usuarioLogin.idSucursal;
+                    if (sucursalId == 0 || sucursalDao.sucursalPorId(this.usuarioLogin.idSucursal).ElementAt(0).activo)
+                    {
+                        usuarioDao.reiniciarIntentos(this.usuarioLogin);
+                        using (FrmPrincipal frmP = new FrmPrincipal(this.usuarioLogin))
+                        {
+                            this.Hide();
+                            frmP.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("La sucursal perteneciente al usuario esta inhabilitada");
+                    }
+                }
+                else
+                {
+                    this.contrasenia = "";
+                    this.usuario = "";
+                    int intentos = usuarioDao.sumarIntentos(this.usuarioLogin);
+                    this.usuarioLogin = new Usuario();
+                    if (intentos > 2)
+                    {
+                        MessageBox.Show("Usuario inhabilitado por intentos fallidos");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Contraseña incorrecta!");
+                    }
+                }
             }
             else
             {
-                this.contrasenia = "";
-                this.usuario = "";
-                this.usuarioLogin = new Usuario();
-                MessageBox.Show("Contraseña incorrecta!");
+                MessageBox.Show("Usuario inexistente");
+                Utils.clearTextBoxes(this);
             }
         }
 
