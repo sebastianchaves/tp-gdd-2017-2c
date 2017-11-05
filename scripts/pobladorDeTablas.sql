@@ -98,10 +98,11 @@ Nro_Factura, Factura_Fecha, Factura_Total, Factura_Fecha_Vencimiento, Rendicion_
 , [Cliente-Dni], Empresa_Cuit
 ) mm
 GO
-print 'Eliminando facturas que figuran sin rendicion pero tienen en una carga posterior...'
+print 'Eliminando facturas duplicadas que figuran una vez con rendicion y luego sin rendicion'
 delete from GD2C2017.ROCKET_DATABASE.FACTURAS
 where id_rendicion is null and nro_factura in
 (select nro_factura from GD2C2017.ROCKET_DATABASE.FACTURAS where id_rendicion is not null);
+alter table GD2C2017.ROCKET_DATABASE.FACTURAS add unique(nro_factura);
 GO
 /*** insertando pagos ***/
 print 'Insertando pagos...'
@@ -117,6 +118,14 @@ from GD2C2017.gd_esquema.Maestra
 where Pago_nro is not null
 set identity_insert GD2C2017.ROCKET_DATABASE.PAGOS OFF;
 GO
+
+/*** insertando relaciones de pagos y facturas ***/
+print 'Insertando relaciones entre pagos y facturas';
+insert into rocket_database.pago_factura
+select distinct id_factura, pago_nro from gd_esquema.maestra m, rocket_database.FACTURAS f
+where m.nro_factura = f.nro_factura and pago_nro is not null;
+
+
 /*** insertando roles y funcionalidades ***/
 print 'insertando funcionalidades...'
 
