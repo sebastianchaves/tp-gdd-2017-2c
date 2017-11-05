@@ -44,29 +44,43 @@ namespace PagoAgilFrba
         private void logearse()
         {
             List<Usuario> usuarios = this.usuarioDao.findUsuario(usuario);
-            this.usuarioLogin = usuarios.ElementAt(0);
 
-            String contraseniaPosta = Utils.getSha256(this.contrasenia);
+            if (usuarios.Count > 0)
+            {
 
-            if (contraseniaPosta.Equals(this.usuarioLogin.contrasenia))
-            {
-                usuarioDao.reiniciarIntentos(this.usuarioLogin);
-                this.Close();
-            }
-            else
-            {
-                this.contrasenia = "";
-                this.usuario = "";
-                int intentos = usuarioDao.sumarIntentos(this.usuarioLogin);
-                this.usuarioLogin = new Usuario();
-                if (intentos > 3)
+                this.usuarioLogin = usuarios.ElementAt(0);
+
+                String contraseniaPosta = Utils.getSha256(this.contrasenia);
+
+                if (contraseniaPosta.Equals(this.usuarioLogin.contrasenia) && this.usuarioLogin.habilitado)
                 {
-                    MessageBox.Show("Usuario inhabilitado por intentos fallidos");
+                    usuarioDao.reiniciarIntentos(this.usuarioLogin);
+                    using (FrmPrincipal frmP = new FrmPrincipal(this.usuarioLogin))
+                    {
+                        this.Hide();
+                        frmP.ShowDialog();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Contraseña incorrecta!");
+                    this.contrasenia = "";
+                    this.usuario = "";
+                    int intentos = usuarioDao.sumarIntentos(this.usuarioLogin);
+                    this.usuarioLogin = new Usuario();
+                    if (intentos > 2)
+                    {
+                        MessageBox.Show("Usuario inhabilitado por intentos fallidos");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Contraseña incorrecta!");
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Usuario inexistente");
+                Utils.clearTextBoxes(this);
             }
         }
 
