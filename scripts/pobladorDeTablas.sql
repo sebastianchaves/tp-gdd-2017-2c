@@ -123,8 +123,8 @@ print 'insertando funcionalidades...'
 insert into ROCKET_DATABASE.ROLES values ('admin', 'Rol con permisos administrativos', 1);
 insert into ROCKET_DATABASE.ROLES values ('cobrador', 'Rol de cobrador', 1);
 
-insert into ROCKET_DATABASE.USUARIOS values ('admin', '', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', null);
-insert into ROCKET_DATABASE.USUARIOS values ('cobrador', '', 'fda9be620062a617156c1c6dbc788a6a204f85fe06e8ead0e3a43817b0e382db', 1);
+insert into ROCKET_DATABASE.USUARIOS values ('admin', '', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', null, 0, 1);
+insert into ROCKET_DATABASE.USUARIOS values ('cobrador', '', 'fda9be620062a617156c1c6dbc788a6a204f85fe06e8ead0e3a43817b0e382db', 1, 0, 1);
 
 insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_rol', 'abm_rol')
 insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_cliente', 'abm_cliente');

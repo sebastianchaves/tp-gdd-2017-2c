@@ -50,14 +50,23 @@ namespace PagoAgilFrba
 
             if (contraseniaPosta.Equals(this.usuarioLogin.contrasenia))
             {
+                usuarioDao.reiniciarIntentos(this.usuarioLogin);
                 this.Close();
             }
             else
             {
                 this.contrasenia = "";
                 this.usuario = "";
+                int intentos = usuarioDao.sumarIntentos(this.usuarioLogin);
                 this.usuarioLogin = new Usuario();
-                MessageBox.Show("Contraseña incorrecta!");
+                if (intentos > 3)
+                {
+                    MessageBox.Show("Usuario inhabilitado por intentos fallidos");
+                }
+                else
+                {
+                    MessageBox.Show("Contraseña incorrecta!");
+                }
             }
         }
 

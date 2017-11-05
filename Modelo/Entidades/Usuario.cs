@@ -14,6 +14,7 @@ namespace PagoAgilFrba.Modelo.Entidades
         public String apellido;
         public String contrasenia;
         public int idSucursal;
-       
+        public int intentos;
+        public Boolean habilitado;
     }
 }

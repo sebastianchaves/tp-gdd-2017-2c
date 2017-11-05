@@ -141,6 +141,8 @@ CREATE TABLE [ROCKET_DATABASE].[USUARIOS](
 	apellido varchar(255),
 	contrasenia varchar(255),
 	id_sucursal int,
+	intentos int not null,
+	habilitado bit not null,
 	foreign key (id_sucursal) references ROCKET_DATABASE.SUCURSALES(id_sucursal)
 ) ON [PRIMARY]
 GO
