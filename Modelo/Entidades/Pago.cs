@@ -8,12 +8,11 @@ namespace PagoAgilFrba.Modelo.Entidades
 {
     class Pago
     {
-        public List<Factura> facturas;
+        public int id;
         public DateTime fechaCobro;
-        public int sucursal;
-
-
-
+        public int importe;
+        public int idFormaPago;
+        public int idSucursal;
     }
 
 }
