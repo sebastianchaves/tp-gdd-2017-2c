@@ -16,6 +16,7 @@ namespace PagoAgilFrba.Modelo.DAOs
         private const String PUEDE_DESHABILITAR = "select count(1) from rocket_database.facturas f, "+
             "rocket_database.pago_factura pf where pf.id_factura = f.id_Factura and f.id_rendicion is null "+
             "AND id_empresa = ";
+        private const String EMPRESAS_POR_DIA_DE_RENDICION = "select * from rocket_Database.empresas where dia_de_rendicion = ";
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
@@ -107,6 +108,9 @@ namespace PagoAgilFrba.Modelo.DAOs
                 return false;
             }
         }
-
+        public List<T> obtenerEmpresasPorDiaDeRendicion(int dia)
+        {
+            return obtenerPorQueryGenerica(EMPRESAS_POR_DIA_DE_RENDICION + dia.ToString(), allColumns, tipos);
+        }
     }
 }
