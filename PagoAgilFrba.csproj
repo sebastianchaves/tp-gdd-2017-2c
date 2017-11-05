@@ -166,6 +166,7 @@
       <DependentUpon>ListadoEstadisticoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\DAOs\ConceptoDAO.cs" />
+    <Compile Include="Modelo\DAOs\Estadisticas.cs" />
     <Compile Include="Modelo\DAOs\PagoDAO.cs" />
     <Compile Include="Modelo\DAOs\Condicion.cs" />
     <Compile Include="Modelo\DAOs\ClienteDAO.cs" />
@@ -179,11 +180,14 @@
     <Compile Include="Modelo\DAOs\SucursalDAO.cs" />
     <Compile Include="Modelo\DAOs\UsuarioDAO.cs" />
     <Compile Include="Modelo\Entidades\Cliente.cs" />
+    <Compile Include="Modelo\Entidades\ClienteConPagos.cs" />
+    <Compile Include="Modelo\Entidades\EmpresaConMontoRendido.cs" />
     <Compile Include="Modelo\Entidades\Empresa.cs" />
     <Compile Include="Modelo\Entidades\Factura.cs" />
     <Compile Include="Modelo\Entidades\Funcionalidad.cs" />
     <Compile Include="Modelo\Entidades\Concepto.cs" />
     <Compile Include="Modelo\Entidades\Pago.cs" />
+    <Compile Include="Modelo\Entidades\PorcentajePagadoEstadistico.cs" />
     <Compile Include="Modelo\Entidades\Rendicion.cs" />
     <Compile Include="Modelo\Entidades\Rol.cs" />
     <Compile Include="Modelo\Entidades\Rubro.cs" />

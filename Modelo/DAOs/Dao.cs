@@ -367,7 +367,8 @@ namespace PagoAgilFrba.Modelo.DAOs
                                 valor = reader.GetDateTime(i).ToString();
                                 break;
                             case Utils.Utils.DECIMAL_TYPE:
-                                valor = reader.GetDecimal(i).ToString();
+                                decimal d = reader.GetDecimal(i);
+                                valor = d.ToString();
                                 break;
                             case Utils.Utils.BIT_TYPE:
                                 Boolean boolean = reader.GetBoolean(i);

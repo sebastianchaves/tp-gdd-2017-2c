@@ -105,15 +105,17 @@ where id_rendicion is null and nro_factura in
 alter table GD2C2017.ROCKET_DATABASE.FACTURAS add unique(nro_factura);
 GO
 /*** insertando pagos ***/
-print 'Insertando pagos...'
+print 'Insertando pagos...';
 set identity_insert GD2C2017.ROCKET_DATABASE.PAGOS ON;
 insert into GD2C2017.ROCKET_DATABASE.PAGOS
-(id_pago, fecha_cobro, importe, id_forma_pago, id_sucursal)
+(id_pago, fecha_cobro, importe, id_forma_pago, id_sucursal, id_cliente)
 select distinct Pago_nro, Pago_Fecha, total, 
 (select id_forma_pago from GD2C2017.ROCKET_DATABASE.FORMAS_PAGO 
 where descripcion = FormaPagoDescripcion) as forma_pago,
 (select id_sucursal from GD2C2017.ROCKET_DATABASE.SUCURSALES
-where Sucursal_Nombre = nombre) as sucursal
+where Sucursal_Nombre = nombre) as sucursal,
+(select id_cliente from GD2C2017.ROCKET_DATABASE.CLIENTES 
+where mail = cliente_mail) as id_cliente
 from GD2C2017.gd_esquema.Maestra
 where Pago_nro is not null
 set identity_insert GD2C2017.ROCKET_DATABASE.PAGOS OFF;

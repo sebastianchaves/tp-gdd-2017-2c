@@ -55,7 +55,9 @@ CREATE TABLE [ROCKET_DATABASE].[PAGOS](
 	importe decimal(8,2) not null,
 	id_forma_pago int not null,
 	id_sucursal int not null,
-	FOREIGN KEY (id_forma_pago) REFERENCES ROCKET_DATABASE.FORMAS_PAGO (id_forma_pago)
+	id_cliente int,
+	FOREIGN KEY (id_forma_pago) REFERENCES ROCKET_DATABASE.FORMAS_PAGO (id_forma_pago),
+	FOREIGN KEY (id_cliente) REFERENCES ROCKET_DATABASE.CLIENTES (id_cliente)
 	ON DELETE CASCADE  
     ON UPDATE CASCADE
 ) ON [PRIMARY]
