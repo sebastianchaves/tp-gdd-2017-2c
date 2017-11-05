@@ -68,7 +68,8 @@ CREATE TABLE [ROCKET_DATABASE].[EMPRESAS](
 	id_rubro int,
 	activo bit not null,
 	dia_de_rendicion int,
-	foreign key (id_rubro) references ROCKET_DATABASE.RUBROS(id_rubro)
+	foreign key (id_rubro) references ROCKET_DATABASE.RUBROS(id_rubro),
+	check (dia_de_rendicion > 0 and dia_de_rendicion < 29)
 ) ON [PRIMARY]
 GO
 CREATE TABLE ROCKET_DATABASE.RENDICIONES(

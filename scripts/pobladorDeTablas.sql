@@ -39,7 +39,7 @@ where FormaPagoDescripcion is not null;
 /*** insertando empresas ***/
 print 'Insertando empresas...'
 insert into GD2C2017.rocket_database.empresas
-select distinct Empresa_Cuit, Empresa_Nombre, Empresa_Direccion, Empresa_Rubro, 1
+select distinct Empresa_Cuit, Empresa_Nombre, Empresa_Direccion, Empresa_Rubro, 1, 1
 from GD2C2017.gd_esquema.Maestra;
 GO
 
