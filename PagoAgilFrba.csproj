@@ -172,6 +172,7 @@
     <Compile Include="Modelo\DAOs\EmpresaDAO.cs" />
     <Compile Include="Modelo\DAOs\FacturaDAO.cs" />
     <Compile Include="Modelo\DAOs\FuncionalidadDAO.cs" />
+    <Compile Include="Modelo\DAOs\RendicionDAO.cs" />
     <Compile Include="Modelo\DAOs\RolDAO.cs" />
     <Compile Include="Modelo\DAOs\RubroDAO.cs" />
     <Compile Include="Modelo\DAOs\SucursalDAO.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Modelo\Entidades\Funcionalidad.cs" />
     <Compile Include="Modelo\Entidades\ItemFactura.cs" />
     <Compile Include="Modelo\Entidades\Pago.cs" />
+    <Compile Include="Modelo\Entidades\Rendicion.cs" />
     <Compile Include="Modelo\Entidades\Rol.cs" />
     <Compile Include="Modelo\Entidades\Rubro.cs" />
     <Compile Include="Modelo\Entidades\Sucursal.cs" />

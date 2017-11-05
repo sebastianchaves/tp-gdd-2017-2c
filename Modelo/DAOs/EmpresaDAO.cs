@@ -32,6 +32,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             tipos.Add(Utils.Utils.STRING_TYPE);
             tipos.Add(Utils.Utils.INT_TYPE);
             tipos.Add(Utils.Utils.BIT_TYPE);
+            tipos.Add(Utils.Utils.INT_TYPE);
 
             allColumns.Add("id");
             allColumns.Add("cuit");
@@ -39,6 +40,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumns.Add("direccion");
             allColumns.Add("idRubro");
             allColumns.Add("activo");
+            allColumns.Add("diaDeRendicion");
 
             allColumnsInDB.Add("id");
             allColumnsInDB.Add("cuit");
@@ -46,6 +48,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumnsInDB.Add("direccion");
             allColumnsInDB.Add("id_rubro");
             allColumnsInDB.Add("activo");
+            allColumnsInDB.Add("dia_de_rendicion");
         }
 
         // Inserts
