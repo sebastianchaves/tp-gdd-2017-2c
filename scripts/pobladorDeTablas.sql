@@ -43,14 +43,6 @@ select distinct Empresa_Cuit, Empresa_Nombre, Empresa_Direccion, Empresa_Rubro, 
 from GD2C2017.gd_esquema.Maestra;
 GO
 
-/*** insertando tipo_devolucion ***/
-print 'Insertando tipo_devolucion...'
-insert into GD2C2017.ROCKET_DATABASE.TIPO_DEVOLUCION
-values ('Rendicion', 'Se devuelve una rendicion');
-insert into GD2C2017.ROCKET_DATABASE.TIPO_DEVOLUCION
-values ('Factura', 'Se devuelve la factura de un cliente');
-GO
-
 /*** insertando rendiciones ***/
 print 'Insertando rendiciones...'
 set identity_insert GD2C2017.rocket_database.rendiciones  ON;
@@ -169,3 +161,4 @@ insert into ROCKET_DATABASE.USUARIO_ROLES values (2, 2);
 /*** insertando tipos de devoluciones ***/
 insert into ROCKET_DATABASE.TIPO_DEVOLUCION values ('devolucion_factura', 'Devolucion de factura');
 insert into ROCKET_DATABASE.TIPO_DEVOLUCION values ('devolucion_rendicion', 'Devolucion de rendicion');
+GO

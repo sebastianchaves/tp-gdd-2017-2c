@@ -59,6 +59,11 @@ namespace PagoAgilFrba.Modelo.Utils
                 {
                     ((RadioButton)c).Checked = false;
                 }
+
+                if (c is RichTextBox)
+                {
+                    ((RichTextBox)c).ResetText();
+                }
             }
         }
 

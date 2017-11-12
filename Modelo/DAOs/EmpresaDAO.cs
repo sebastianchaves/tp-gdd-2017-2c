@@ -68,6 +68,14 @@ namespace PagoAgilFrba.Modelo.DAOs
         }
 
         // Selects
+        public List<T> findEmpresas()
+        {
+            Condicion condicion = new Condicion();
+
+            List<List<String>> resultSet = this.select(EMPRESAS, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
+        }
+
         public List<T> findEmpresa(String nombreEmpresa, String cuitEmpresa, String rubroEmpresa)
         {
             Condicion condicion = new Condicion();

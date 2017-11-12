@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Modelo.Entidades;
 using PagoAgilFrba.Modelo.DAOs;
-using PagoAgilFrba.Rendicion;
+using PagoAgilFrba.Rendiciones;
 using PagoAgilFrba.Devoluciones;
 
 namespace PagoAgilFrba

@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    class Rendicion
+    public class Rendicion
     {
         public int id;
         public int cantidadFacturas;
         public DateTime fecha;
         public decimal comision;
         public decimal valorTotal;
-        public decimal porcentaje;
+        public int porcentaje;
         public int idEmpresa;
+
+        public String nombreEmpresa;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PagoAgilFrba.Rendicion
+﻿namespace PagoAgilFrba.Rendiciones
 {
     partial class FrmRendicion
     {

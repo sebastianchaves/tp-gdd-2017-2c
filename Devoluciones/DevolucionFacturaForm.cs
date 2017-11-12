@@ -31,6 +31,7 @@ namespace PagoAgilFrba.Devoluciones
 
             this.devolucionDao = new DevolucionDAO<Devolucion>();
             this.tipoDevolucionDao = new TipoDevolucionDAO<TipoDevolucion>();
+            this.devolucionFacturaDao = new DevolucionFacturaDAO<DevolucionFactura>();
 
             this.nuevaDevolucion = new Devolucion();
             this.nuevaDevolucionFactura = new DevolucionFactura();
@@ -39,18 +40,23 @@ namespace PagoAgilFrba.Devoluciones
 
         private void devolverFactura()
         {
-            if (camposCompletos())
+            if (hayFactura())
             {
-                this.devolucionDao.agregarDevolucion(this.nuevaDevolucion);
-                
-                //this.devolucionFacturaDao.agregarDevolucionFactura(this.nuevaDevolucionFactura);
-                
+                this.nuevaDevolucionFactura.idFactura = facturaACargar.id;
+                this.nuevaDevolucionFactura.idDevolucion = nuevaDevolucion.id;
+                this.devolucionFacturaDao.agregarDevolucionFactura(this.nuevaDevolucionFactura);
+
                 MessageBox.Show("Devolucion agregada!");
             }
             else
             {
-                MessageBox.Show("Complete los campos obligatorios.");
+                MessageBox.Show("No cargo ninguna factura.");
             }
+        }
+
+        private Boolean hayFactura()
+        {
+            return this.facturaACargar.id != 0;
         }
 
         private Boolean camposCompletos()
@@ -58,17 +64,23 @@ namespace PagoAgilFrba.Devoluciones
             return this.motivoInput.Text != "";
         }
 
-        private void habilitarCampos()
+        private void habilitarCamposFactura()
         {
             this.facturaInput.Enabled = true;
-            this.fechaInput.Enabled = true;
+        }
+
+        private void deshabilitarCamposFactura()
+        {
+            this.facturaInput.Enabled = false;
+        }
+
+        private void habilitarCamposDevolucion()
+        {
             this.motivoInput.Enabled = true;
         }
 
-        private void deshabilitarCampos()
+        private void deshabilitarCamposDevolucion()
         {
-            this.facturaInput.Enabled = false;
-            this.fechaInput.Enabled = false;
             this.motivoInput.Enabled = false;
         }
 
@@ -79,6 +91,22 @@ namespace PagoAgilFrba.Devoluciones
             this.nuevaDevolucion.fecha = this.fechaInput.Value;
             this.nuevaDevolucion.motivo = this.motivoInput.Text;
             this.nuevaDevolucion.idTipoDevolucion = this.tipoDevolucionDao.findTipoDevolucion("devolucion_factura").ElementAt(0).id;
+        }
+
+        private void crearNuevaDevolucion()
+        {
+            if (this.camposCompletos())
+            {
+                this.deshabilitarCamposDevolucion();
+                this.habilitarCamposFactura();
+                this.botonBuscar.Enabled = true;
+                this.cargarDatos();
+                this.nuevaDevolucion.id = this.devolucionDao.agregarDevolucion(this.nuevaDevolucion);
+            }
+            else
+            {
+                MessageBox.Show("Complete los campos obligatorios.");
+            }
         }
 
         // Eventos
@@ -96,7 +124,6 @@ namespace PagoAgilFrba.Devoluciones
                     {
                         this.botonDevolver.Enabled = true;
                         this.cargarDatos();
-                        this.habilitarCampos();
                     }
                     else
                     {
@@ -117,13 +144,8 @@ namespace PagoAgilFrba.Devoluciones
         private void botonDevolver_Click(object sender, EventArgs e)
         {
             this.devolverFactura();
-            Utils.clearTextBoxes(this);
-
-            this.nuevaDevolucion = new Devolucion();
             this.nuevaDevolucionFactura = new DevolucionFactura();
-            this.deshabilitarCampos();
             this.botonDevolver.Enabled = false;
-
         }
 
         // Boton Volver
@@ -143,6 +165,22 @@ namespace PagoAgilFrba.Devoluciones
         private void motivoInput_Leave(object sender, EventArgs e)
         {
             this.nuevaDevolucion.motivo = this.motivoInput.Text;
+        }
+
+        // Crear Devolucion
+        private void botonCrearDevolucion_Click(object sender, EventArgs e)
+        {
+            this.botonCrearDevolucion.Enabled = false;
+            this.crearNuevaDevolucion();
+        }
+
+        // Nueva Devolucion
+        private void botonNueva_Click(object sender, EventArgs e)
+        {
+            this.motivoInput.Clear();
+            this.habilitarCamposDevolucion();
+            this.botonCrearDevolucion.Enabled = true;
+            this.nuevaDevolucion = new Devolucion();
         }
 
     }

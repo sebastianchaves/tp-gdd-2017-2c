@@ -38,6 +38,10 @@ namespace PagoAgilFrba.Busquedas
         private List<Factura> facturasEncontradas;
         private FacturaDAO<Factura> facturaDao;
 
+        private Rendicion rendicionSeleccionada;
+        private List<Rendicion> rendicionesEncontradas;
+        private RendicionDAO<Rendicion> rendicionDao;
+
         // Constructores
         public ResultadosBusqueda(Rol rol)
         {
@@ -77,6 +81,14 @@ namespace PagoAgilFrba.Busquedas
 
             this.facturaDao = new FacturaDAO<Factura>();
             this.cargarDataGridFacturas(facturasACargar);
+        }
+
+        public ResultadosBusqueda(List<Rendicion> rendicionesACargar)
+        {
+            InitializeComponent();
+
+            this.rendicionDao = new RendicionDAO<Rendicion>();
+            this.cargarDataGridRendiciones(rendicionesACargar);
         }
 
         private void cargarDataGridRoles()
@@ -173,6 +185,34 @@ namespace PagoAgilFrba.Busquedas
             resultadosGrid.DataSource = resultadosFacturas;
         }
 
+        private void cargarDataGridRendiciones(List<Rendicion> rendiciones)
+        {
+            this.rendicionesEncontradas = rendiciones;
+
+            DataTable resultadosRendiciones = new DataTable();
+
+            resultadosRendiciones.Columns.Add("ID");
+            resultadosRendiciones.Columns.Add("Empresa");
+            resultadosRendiciones.Columns.Add("Cantidad de facturas rendidas");
+            resultadosRendiciones.Columns.Add("Fecha");
+            resultadosRendiciones.Columns.Add("Comision");
+            resultadosRendiciones.Columns.Add("Total");
+            resultadosRendiciones.Columns.Add("Porcentaje");
+
+            foreach (Rendicion rendicion in rendiciones)
+            {
+                resultadosRendiciones.Rows.Add(rendicion.id,
+                                            rendicion.idEmpresa,
+                                            rendicion.cantidadFacturas,
+                                            rendicion.fecha,
+                                            rendicion.comision,
+                                            rendicion.valorTotal,
+                                            rendicion.porcentaje);
+            }
+
+            resultadosGrid.DataSource = resultadosRendiciones;
+        }
+
         public Rol getRolSeleccionado()
         {
             return this.rolSeleccionado;
@@ -196,6 +236,11 @@ namespace PagoAgilFrba.Busquedas
         public Factura getFacturaSeleccionada()
         {
             return this.facturaSeleccionada;
+        }
+
+        public Rendicion getRendicionSeleccionada()
+        {
+            return this.rendicionSeleccionada;
         }
 
         // Eventos
@@ -243,6 +288,14 @@ namespace PagoAgilFrba.Busquedas
                 int numeroFactura = Int32.Parse(this.resultadosGrid.Rows[index].Cells[0].Value.ToString());
 
                 this.facturaSeleccionada = this.facturasEncontradas.Find(factura => factura.numero == numeroFactura);
+            }
+            else if (this.rendicionesEncontradas != null)
+            {
+                this.rendicionSeleccionada = new Rendicion();
+
+                int id = Int32.Parse(this.resultadosGrid.Rows[index].Cells[0].Value.ToString());
+
+                this.rendicionSeleccionada = this.rendicionesEncontradas.Find(rendicion => rendicion.id == id);
             }
 
             this.Close();

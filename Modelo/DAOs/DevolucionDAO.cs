@@ -39,7 +39,7 @@ namespace PagoAgilFrba.Modelo.DAOs
         }
 
         // Inserts
-        public void agregarDevolucion(Devolucion devolucion)
+        public int agregarDevolucion(Devolucion devolucion)
         {
             List<String> valores = new List<String>();
 
@@ -48,7 +48,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             valores.Add(devolucion.idTipoDevolucion.ToString());
             valores.Add(devolucion.motivo);
 
-            insert(TABLA, allColumnsInDB, tipos, valores, true);
+            return insert(TABLA, allColumnsInDB, tipos, valores, true);
         }
 
     }

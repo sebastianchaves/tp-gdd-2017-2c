@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagoAgilFrba.Rendicion
+namespace PagoAgilFrba.Rendiciones
 {
     public partial class FrmRendicion : Form
     {

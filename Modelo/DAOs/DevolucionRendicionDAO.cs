@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagoAgilFrba.Modelo.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,17 @@ namespace PagoAgilFrba.Modelo.DAOs
 
             allColumnsInDB.Add("id_devolucion");
             allColumnsInDB.Add("id_rendicion");
+        }
+
+        // Inserts
+        public void agregarDevolucionRendicion(DevolucionRendicion devolucionRendicion)
+        {
+            List<String> valores = new List<String>();
+
+            valores.Add(devolucionRendicion.idDevolucion.ToString());
+            valores.Add(devolucionRendicion.idRendicion.ToString());
+
+            insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
     }
