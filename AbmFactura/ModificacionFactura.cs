@@ -43,6 +43,11 @@ namespace PagoAgilFrba.AbmFactura
 
         }
 
+        private void deshabilitarCampos()
+        {
+
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -51,9 +56,14 @@ namespace PagoAgilFrba.AbmFactura
             {
                 busquedaForm.ShowDialog(this);
                 this.facturaACargar = busquedaForm.getFacturaEncontrada();
-                this.botonActualizar.Enabled = true;
-                this.cargarDatos();
-                this.habilitarCampos();
+
+                if (this.facturaACargar.id != 0)
+                {
+                    this.botonActualizar.Enabled = true;
+                    this.cargarDatos();
+                    this.habilitarCampos();
+                }
+
             }
         }
 
@@ -61,6 +71,9 @@ namespace PagoAgilFrba.AbmFactura
         private void botonActualizar_Click(object sender, EventArgs e)
         {
             this.actualizarFactura();
+
+            this.deshabilitarCampos();
+            this.botonActualizar.Enabled = false;
         }
 
         // Boton Volver

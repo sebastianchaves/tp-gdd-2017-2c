@@ -71,6 +71,13 @@ namespace PagoAgilFrba.AbmSucursal
             this.codigoPostalInput.Enabled = true;
         }
 
+        private void deshabilitarCampos()
+        {
+            this.nombreInput.Enabled = false;
+            this.direccionInput.Enabled = false;
+            this.codigoPostalInput.Enabled = false;
+        }
+
         private void modificarSucursal()
         {
             try
@@ -106,9 +113,14 @@ namespace PagoAgilFrba.AbmSucursal
             {
                 busquedaForm.ShowDialog(this);
                 this.sucursalACargar = busquedaForm.getSucursalEncontrada();
-                this.botonActualizar.Enabled = true;
-                this.cargarDatos();
-                this.habilitarCampos();
+
+                if (this.sucursalACargar.id != 0)
+                {
+                    this.botonActualizar.Enabled = true;
+                    this.cargarDatos();
+                    this.habilitarCampos();
+                }
+
             }
         }
 
@@ -119,6 +131,8 @@ namespace PagoAgilFrba.AbmSucursal
             Utils.clearTextBoxes(this);
             this.sucursalModificada = new Sucursal();
             this.sucursalACargar = new Sucursal();
+            this.deshabilitarCampos();
+            this.botonActualizar.Enabled = false;
         }
 
         // Boton Volver

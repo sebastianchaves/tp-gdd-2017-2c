@@ -30,230 +30,235 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionFactura));
             this.modificacionFacturaLabel = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtCliente = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtEmpresa = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.datosClienteGroupbox = new System.Windows.Forms.GroupBox();
+            this.clienteInput = new System.Windows.Forms.TextBox();
+            this.clienteLabel = new System.Windows.Forms.Label();
+            this.datosEmpresaGroupbox = new System.Windows.Forms.GroupBox();
+            this.empresaInput = new System.Windows.Forms.TextBox();
+            this.empresaLabel = new System.Windows.Forms.Label();
+            this.datosItemGroupbox = new System.Windows.Forms.GroupBox();
+            this.cantidadInput = new System.Windows.Forms.TextBox();
+            this.montoInput = new System.Windows.Forms.TextBox();
+            this.cantidadLabel = new System.Windows.Forms.Label();
+            this.montoLabel = new System.Windows.Forms.Label();
+            this.datosFacturaGroupbox = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.itemsGrid = new System.Windows.Forms.DataGridView();
+            this.fechaVencimientoInput = new System.Windows.Forms.DateTimePicker();
+            this.fechaAltaInput = new System.Windows.Forms.DateTimePicker();
+            this.numeroInput = new System.Windows.Forms.TextBox();
+            this.fechaVencimientoLabel = new System.Windows.Forms.Label();
+            this.fechaAltaLabel = new System.Windows.Forms.Label();
+            this.numeroLabel = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
             this.botonActualizar = new System.Windows.Forms.Button();
             this.botonBuscar = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.datosClienteGroupbox.SuspendLayout();
+            this.datosEmpresaGroupbox.SuspendLayout();
+            this.datosItemGroupbox.SuspendLayout();
+            this.datosFacturaGroupbox.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // modificacionFacturaLabel
             // 
             this.modificacionFacturaLabel.AutoSize = true;
             this.modificacionFacturaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modificacionFacturaLabel.Location = new System.Drawing.Point(227, 9);
+            this.modificacionFacturaLabel.Location = new System.Drawing.Point(216, 9);
             this.modificacionFacturaLabel.Name = "modificacionFacturaLabel";
             this.modificacionFacturaLabel.Size = new System.Drawing.Size(156, 20);
             this.modificacionFacturaLabel.TabIndex = 1;
             this.modificacionFacturaLabel.Text = "Modificacion Factura";
             // 
-            // groupBox1
+            // datosClienteGroupbox
             // 
-            this.groupBox1.Controls.Add(this.txtCliente);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(213, 100);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos Cliente:";
+            this.datosClienteGroupbox.Controls.Add(this.clienteInput);
+            this.datosClienteGroupbox.Controls.Add(this.clienteLabel);
+            this.datosClienteGroupbox.Location = new System.Drawing.Point(12, 40);
+            this.datosClienteGroupbox.Name = "datosClienteGroupbox";
+            this.datosClienteGroupbox.Size = new System.Drawing.Size(213, 100);
+            this.datosClienteGroupbox.TabIndex = 4;
+            this.datosClienteGroupbox.TabStop = false;
+            this.datosClienteGroupbox.Text = "Datos Cliente:";
             // 
-            // txtCliente
+            // clienteInput
             // 
-            this.txtCliente.Location = new System.Drawing.Point(10, 55);
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(197, 20);
-            this.txtCliente.TabIndex = 1;
+            this.clienteInput.Location = new System.Drawing.Point(10, 55);
+            this.clienteInput.Name = "clienteInput";
+            this.clienteInput.ReadOnly = true;
+            this.clienteInput.Size = new System.Drawing.Size(197, 20);
+            this.clienteInput.TabIndex = 1;
             // 
-            // label1
+            // clienteLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Cliente:";
+            this.clienteLabel.AutoSize = true;
+            this.clienteLabel.Location = new System.Drawing.Point(7, 29);
+            this.clienteLabel.Name = "clienteLabel";
+            this.clienteLabel.Size = new System.Drawing.Size(42, 13);
+            this.clienteLabel.TabIndex = 0;
+            this.clienteLabel.Text = "Cliente:";
             // 
-            // groupBox2
+            // datosEmpresaGroupbox
             // 
-            this.groupBox2.Controls.Add(this.txtEmpresa);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 146);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(211, 100);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Datos Empresa:";
+            this.datosEmpresaGroupbox.Controls.Add(this.empresaInput);
+            this.datosEmpresaGroupbox.Controls.Add(this.empresaLabel);
+            this.datosEmpresaGroupbox.Location = new System.Drawing.Point(12, 146);
+            this.datosEmpresaGroupbox.Name = "datosEmpresaGroupbox";
+            this.datosEmpresaGroupbox.Size = new System.Drawing.Size(211, 100);
+            this.datosEmpresaGroupbox.TabIndex = 5;
+            this.datosEmpresaGroupbox.TabStop = false;
+            this.datosEmpresaGroupbox.Text = "Datos Empresa:";
             // 
-            // txtEmpresa
+            // empresaInput
             // 
-            this.txtEmpresa.Location = new System.Drawing.Point(8, 57);
-            this.txtEmpresa.Name = "txtEmpresa";
-            this.txtEmpresa.Size = new System.Drawing.Size(197, 20);
-            this.txtEmpresa.TabIndex = 2;
+            this.empresaInput.Location = new System.Drawing.Point(8, 57);
+            this.empresaInput.Name = "empresaInput";
+            this.empresaInput.ReadOnly = true;
+            this.empresaInput.Size = new System.Drawing.Size(197, 20);
+            this.empresaInput.TabIndex = 2;
             // 
-            // label2
+            // empresaLabel
             // 
-            this.label2.Location = new System.Drawing.Point(10, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Empresa:";
+            this.empresaLabel.Location = new System.Drawing.Point(10, 31);
+            this.empresaLabel.Name = "empresaLabel";
+            this.empresaLabel.Size = new System.Drawing.Size(100, 23);
+            this.empresaLabel.TabIndex = 0;
+            this.empresaLabel.Text = "Empresa:";
             // 
-            // groupBox3
+            // datosItemGroupbox
             // 
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(12, 263);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(213, 100);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Datos Items:";
+            this.datosItemGroupbox.Controls.Add(this.cantidadInput);
+            this.datosItemGroupbox.Controls.Add(this.montoInput);
+            this.datosItemGroupbox.Controls.Add(this.cantidadLabel);
+            this.datosItemGroupbox.Controls.Add(this.montoLabel);
+            this.datosItemGroupbox.Location = new System.Drawing.Point(12, 252);
+            this.datosItemGroupbox.Name = "datosItemGroupbox";
+            this.datosItemGroupbox.Size = new System.Drawing.Size(213, 100);
+            this.datosItemGroupbox.TabIndex = 6;
+            this.datosItemGroupbox.TabStop = false;
+            this.datosItemGroupbox.Text = "Datos Items:";
             // 
-            // textBox2
+            // cantidadInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(67, 62);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(138, 20);
-            this.textBox2.TabIndex = 3;
+            this.cantidadInput.Location = new System.Drawing.Point(67, 65);
+            this.cantidadInput.Name = "cantidadInput";
+            this.cantidadInput.ReadOnly = true;
+            this.cantidadInput.Size = new System.Drawing.Size(138, 20);
+            this.cantidadInput.TabIndex = 3;
             // 
-            // textBox1
+            // montoInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 20);
-            this.textBox1.TabIndex = 2;
+            this.montoInput.Location = new System.Drawing.Point(67, 27);
+            this.montoInput.Name = "montoInput";
+            this.montoInput.ReadOnly = true;
+            this.montoInput.Size = new System.Drawing.Size(138, 20);
+            this.montoInput.TabIndex = 2;
             // 
-            // label4
+            // cantidadLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 65);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Cantidad:";
+            this.cantidadLabel.AutoSize = true;
+            this.cantidadLabel.Location = new System.Drawing.Point(10, 68);
+            this.cantidadLabel.Name = "cantidadLabel";
+            this.cantidadLabel.Size = new System.Drawing.Size(52, 13);
+            this.cantidadLabel.TabIndex = 1;
+            this.cantidadLabel.Text = "Cantidad:";
             // 
-            // label3
+            // montoLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Monto:";
+            this.montoLabel.AutoSize = true;
+            this.montoLabel.Location = new System.Drawing.Point(10, 30);
+            this.montoLabel.Name = "montoLabel";
+            this.montoLabel.Size = new System.Drawing.Size(40, 13);
+            this.montoLabel.TabIndex = 0;
+            this.montoLabel.Text = "Monto:";
             // 
-            // groupBox4
+            // datosFacturaGroupbox
             // 
-            this.groupBox4.Controls.Add(this.groupBox5);
-            this.groupBox4.Controls.Add(this.dateTimePicker2);
-            this.groupBox4.Controls.Add(this.dateTimePicker1);
-            this.groupBox4.Controls.Add(this.txtNumero);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Location = new System.Drawing.Point(231, 40);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(363, 323);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Datos Factura:";
+            this.datosFacturaGroupbox.Controls.Add(this.groupBox5);
+            this.datosFacturaGroupbox.Controls.Add(this.fechaVencimientoInput);
+            this.datosFacturaGroupbox.Controls.Add(this.fechaAltaInput);
+            this.datosFacturaGroupbox.Controls.Add(this.numeroInput);
+            this.datosFacturaGroupbox.Controls.Add(this.fechaVencimientoLabel);
+            this.datosFacturaGroupbox.Controls.Add(this.fechaAltaLabel);
+            this.datosFacturaGroupbox.Controls.Add(this.numeroLabel);
+            this.datosFacturaGroupbox.Location = new System.Drawing.Point(231, 40);
+            this.datosFacturaGroupbox.Name = "datosFacturaGroupbox";
+            this.datosFacturaGroupbox.Size = new System.Drawing.Size(363, 312);
+            this.datosFacturaGroupbox.TabIndex = 7;
+            this.datosFacturaGroupbox.TabStop = false;
+            this.datosFacturaGroupbox.Text = "Datos Factura:";
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.dataGridView2);
-            this.groupBox5.Location = new System.Drawing.Point(24, 137);
+            this.groupBox5.Controls.Add(this.itemsGrid);
+            this.groupBox5.Location = new System.Drawing.Point(6, 105);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(322, 168);
+            this.groupBox5.Size = new System.Drawing.Size(351, 199);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Items:";
             // 
-            // dataGridView2
+            // itemsGrid
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(310, 143);
-            this.dataGridView2.TabIndex = 8;
+            this.itemsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemsGrid.Location = new System.Drawing.Point(6, 19);
+            this.itemsGrid.Name = "itemsGrid";
+            this.itemsGrid.Size = new System.Drawing.Size(339, 174);
+            this.itemsGrid.TabIndex = 8;
             // 
-            // dateTimePicker2
+            // fechaVencimientoInput
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(133, 79);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(224, 20);
-            this.dateTimePicker2.TabIndex = 5;
+            this.fechaVencimientoInput.Location = new System.Drawing.Point(133, 79);
+            this.fechaVencimientoInput.Name = "fechaVencimientoInput";
+            this.fechaVencimientoInput.Size = new System.Drawing.Size(224, 20);
+            this.fechaVencimientoInput.TabIndex = 5;
             // 
-            // dateTimePicker1
+            // fechaAltaInput
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(133, 49);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(224, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.fechaAltaInput.Location = new System.Drawing.Point(133, 49);
+            this.fechaAltaInput.Name = "fechaAltaInput";
+            this.fechaAltaInput.Size = new System.Drawing.Size(224, 20);
+            this.fechaAltaInput.TabIndex = 4;
             // 
-            // txtNumero
+            // numeroInput
             // 
-            this.txtNumero.Location = new System.Drawing.Point(133, 22);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(224, 20);
-            this.txtNumero.TabIndex = 3;
+            this.numeroInput.Location = new System.Drawing.Point(133, 22);
+            this.numeroInput.Name = "numeroInput";
+            this.numeroInput.ReadOnly = true;
+            this.numeroInput.Size = new System.Drawing.Size(224, 20);
+            this.numeroInput.TabIndex = 3;
             // 
-            // label7
+            // fechaVencimientoLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 87);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Fecha de vencimiento:";
+            this.fechaVencimientoLabel.AutoSize = true;
+            this.fechaVencimientoLabel.Location = new System.Drawing.Point(11, 85);
+            this.fechaVencimientoLabel.Name = "fechaVencimientoLabel";
+            this.fechaVencimientoLabel.Size = new System.Drawing.Size(115, 13);
+            this.fechaVencimientoLabel.TabIndex = 2;
+            this.fechaVencimientoLabel.Text = "Fecha de vencimiento:";
             // 
-            // label6
+            // fechaAltaLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(51, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Fecha de alta:";
+            this.fechaAltaLabel.AutoSize = true;
+            this.fechaAltaLabel.Location = new System.Drawing.Point(51, 55);
+            this.fechaAltaLabel.Name = "fechaAltaLabel";
+            this.fechaAltaLabel.Size = new System.Drawing.Size(75, 13);
+            this.fechaAltaLabel.TabIndex = 1;
+            this.fechaAltaLabel.Text = "Fecha de alta:";
             // 
-            // label5
+            // numeroLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(79, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Número:";
+            this.numeroLabel.AutoSize = true;
+            this.numeroLabel.Location = new System.Drawing.Point(79, 25);
+            this.numeroLabel.Name = "numeroLabel";
+            this.numeroLabel.Size = new System.Drawing.Size(47, 13);
+            this.numeroLabel.TabIndex = 0;
+            this.numeroLabel.Text = "Número:";
             // 
             // botonVolver
             // 
-            this.botonVolver.Location = new System.Drawing.Point(364, 369);
+            this.botonVolver.Location = new System.Drawing.Point(352, 358);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(90, 30);
             this.botonVolver.TabIndex = 8;
@@ -264,7 +269,7 @@
             // botonActualizar
             // 
             this.botonActualizar.Enabled = false;
-            this.botonActualizar.Location = new System.Drawing.Point(268, 369);
+            this.botonActualizar.Location = new System.Drawing.Point(256, 358);
             this.botonActualizar.Name = "botonActualizar";
             this.botonActualizar.Size = new System.Drawing.Size(90, 30);
             this.botonActualizar.TabIndex = 9;
@@ -274,7 +279,7 @@
             // 
             // botonBuscar
             // 
-            this.botonBuscar.Location = new System.Drawing.Point(172, 369);
+            this.botonBuscar.Location = new System.Drawing.Point(160, 358);
             this.botonBuscar.Name = "botonBuscar";
             this.botonBuscar.Size = new System.Drawing.Size(90, 30);
             this.botonBuscar.TabIndex = 10;
@@ -286,14 +291,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 411);
+            this.ClientSize = new System.Drawing.Size(606, 397);
             this.Controls.Add(this.botonBuscar);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.botonActualizar);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.datosItemGroupbox);
+            this.Controls.Add(this.datosFacturaGroupbox);
+            this.Controls.Add(this.datosEmpresaGroupbox);
+            this.Controls.Add(this.datosClienteGroupbox);
             this.Controls.Add(this.modificacionFacturaLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -301,16 +306,16 @@
             this.Name = "ModificacionFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion Factura";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.datosClienteGroupbox.ResumeLayout(false);
+            this.datosClienteGroupbox.PerformLayout();
+            this.datosEmpresaGroupbox.ResumeLayout(false);
+            this.datosEmpresaGroupbox.PerformLayout();
+            this.datosItemGroupbox.ResumeLayout(false);
+            this.datosItemGroupbox.PerformLayout();
+            this.datosFacturaGroupbox.ResumeLayout(false);
+            this.datosFacturaGroupbox.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,26 +324,26 @@
         #endregion
 
         private System.Windows.Forms.Label modificacionFacturaLabel;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCliente;
-        private System.Windows.Forms.TextBox txtEmpresa;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.GroupBox datosClienteGroupbox;
+        private System.Windows.Forms.GroupBox datosEmpresaGroupbox;
+        private System.Windows.Forms.GroupBox datosItemGroupbox;
+        private System.Windows.Forms.GroupBox datosFacturaGroupbox;
+        private System.Windows.Forms.Label clienteLabel;
+        private System.Windows.Forms.TextBox clienteInput;
+        private System.Windows.Forms.TextBox empresaInput;
+        private System.Windows.Forms.Label empresaLabel;
+        private System.Windows.Forms.TextBox cantidadInput;
+        private System.Windows.Forms.TextBox montoInput;
+        private System.Windows.Forms.Label cantidadLabel;
+        private System.Windows.Forms.Label montoLabel;
+        private System.Windows.Forms.Label fechaVencimientoLabel;
+        private System.Windows.Forms.Label fechaAltaLabel;
+        private System.Windows.Forms.Label numeroLabel;
+        private System.Windows.Forms.DateTimePicker fechaVencimientoInput;
+        private System.Windows.Forms.DateTimePicker fechaAltaInput;
+        private System.Windows.Forms.TextBox numeroInput;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView itemsGrid;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Button botonActualizar;
         private System.Windows.Forms.Button botonBuscar;

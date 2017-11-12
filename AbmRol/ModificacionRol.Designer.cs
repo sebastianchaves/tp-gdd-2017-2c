@@ -94,6 +94,7 @@
             // 
             // nombreInput
             // 
+            this.nombreInput.Enabled = false;
             this.nombreInput.Location = new System.Drawing.Point(96, 29);
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(165, 20);
@@ -120,6 +121,7 @@
             // deshabilitadoRadioButton
             // 
             this.deshabilitadoRadioButton.AutoSize = true;
+            this.deshabilitadoRadioButton.Enabled = false;
             this.deshabilitadoRadioButton.Location = new System.Drawing.Point(172, 251);
             this.deshabilitadoRadioButton.Name = "deshabilitadoRadioButton";
             this.deshabilitadoRadioButton.Size = new System.Drawing.Size(89, 17);
@@ -131,6 +133,7 @@
             // 
             this.habilitadoRadioButton.AutoSize = true;
             this.habilitadoRadioButton.Checked = true;
+            this.habilitadoRadioButton.Enabled = false;
             this.habilitadoRadioButton.Location = new System.Drawing.Point(82, 251);
             this.habilitadoRadioButton.Name = "habilitadoRadioButton";
             this.habilitadoRadioButton.Size = new System.Drawing.Size(72, 17);
@@ -141,6 +144,7 @@
             // 
             // funcionalidadesCheckbox
             // 
+            this.funcionalidadesCheckbox.Enabled = false;
             this.funcionalidadesCheckbox.FormattingEnabled = true;
             this.funcionalidadesCheckbox.Items.AddRange(new object[] {
             "Alta usuario",
@@ -175,6 +179,7 @@
             // 
             // botonActualizar
             // 
+            this.botonActualizar.Enabled = false;
             this.botonActualizar.Location = new System.Drawing.Point(133, 384);
             this.botonActualizar.Name = "botonActualizar";
             this.botonActualizar.Size = new System.Drawing.Size(90, 30);

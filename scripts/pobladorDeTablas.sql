@@ -165,3 +165,7 @@ insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (9, 2);
 
 insert into ROCKET_DATABASE.USUARIO_ROLES values (1, 1);
 insert into ROCKET_DATABASE.USUARIO_ROLES values (2, 2);
+
+/*** insertando tipos de devoluciones ***/
+insert into ROCKET_DATABASE.TIPO_DEVOLUCION values ('devolucion_factura', 'Devolucion de factura');
+insert into ROCKET_DATABASE.TIPO_DEVOLUCION values ('devolucion_rendicion', 'Devolucion de rendicion');

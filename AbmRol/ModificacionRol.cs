@@ -136,6 +136,22 @@ namespace PagoAgilFrba.AbmRol
             }
         }
 
+        private void habilitarCampos()
+        {
+            this.nombreInput.Enabled = true;
+            this.funcionalidadesCheckbox.Enabled = true;
+            this.habilitadoRadioButton.Enabled = true;
+            this.deshabilitadoRadioButton.Enabled = true;
+        }
+
+        private void deshabilitarCampos()
+        {
+            this.nombreInput.Enabled = false;
+            this.funcionalidadesCheckbox.Enabled = false;
+            this.habilitadoRadioButton.Enabled = false;
+            this.deshabilitadoRadioButton.Enabled = false;
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -143,12 +159,16 @@ namespace PagoAgilFrba.AbmRol
             using (ResultadosBusqueda resultadosBusqueda = new ResultadosBusqueda(this.rolSeleccionado))
             {
                 var result = resultadosBusqueda.ShowDialog(this);
-                if (result == DialogResult.Cancel)
+                this.rolSeleccionado = new Rol();
+                this.rolSeleccionado = resultadosBusqueda.getRolSeleccionado();
+
+                if (this.rolSeleccionado != null)
                 {
-                    this.rolSeleccionado = new Rol();
-                    this.rolSeleccionado = resultadosBusqueda.getRolSeleccionado();
+                    this.habilitarCampos();
                     this.cargarDatosRol();
+                    this.botonActualizar.Enabled = true;
                 }
+
             }
         }
 
@@ -156,6 +176,11 @@ namespace PagoAgilFrba.AbmRol
         private void botonActualizar_Click(object sender, EventArgs e)
         {
             this.actualizarRol();
+            Utils.clearTextBoxes(this);
+            this.rolModificado = new Rol();
+            this.rolSeleccionado = new Rol();
+            this.deshabilitarCampos();
+            this.botonActualizar.Enabled = false;
         }
 
         // Boton Volver

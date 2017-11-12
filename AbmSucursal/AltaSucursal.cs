@@ -17,12 +17,10 @@ namespace PagoAgilFrba.AbmSucursal
     public partial class AltaSucursal : Form
     {
 
-        // Atributos
         private Sucursal nuevaSucursal;
         private SucursalDAO<Sucursal> sucursalDao;
         private Utils utils;
 
-        // Constructores
         public AltaSucursal()
         {
             InitializeComponent();
@@ -31,7 +29,6 @@ namespace PagoAgilFrba.AbmSucursal
             this.sucursalDao = new SucursalDAO<Sucursal>();
         }
 
-        // Metodos
         private void agregarSucursal()
         {
             this.nuevaSucursal.activo = true;

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -102,17 +103,25 @@ namespace PagoAgilFrba.AbmFactura
 
         private void agregarFactura()
         {
-            if (this.camposCompletos())
+            try
             {
-                this.calcularTotal();
-                this.facturaDao.agregarFactura(this.nuevaFactura);
-                this.agregarConceptos();
-                MessageBox.Show("Factura agregado!");
+                if (this.camposCompletos())
+                {
+                    this.calcularTotal();
+                    this.facturaDao.agregarFactura(this.nuevaFactura);
+                    this.agregarConceptos();
+                    MessageBox.Show("Factura agregado!");
+                }
+                else
+                {
+                    MessageBox.Show("Complete los campos faltantes.");
+                }
             }
-            else
+            catch (SqlException)
             {
-                MessageBox.Show("Complete los campos faltantes.");
+                MessageBox.Show("Ya existe una factura con ese numero.");
             }
+
         }
 
         private Boolean camposCompletos()

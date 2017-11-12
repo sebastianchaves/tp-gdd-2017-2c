@@ -135,6 +135,18 @@
     <Compile Include="Busquedas\BusquedaSucursal.Designer.cs">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devoluciones\DevolucionFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devoluciones\DevolucionFacturaForm.Designer.cs">
+      <DependentUpon>DevolucionFacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Devoluciones\DevolucionRendicionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devoluciones\DevolucionRendicionForm.Designer.cs">
+      <DependentUpon>DevolucionRendicionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,7 @@
       <DependentUpon>ListadoEstadisticoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\DAOs\ConceptoDAO.cs" />
+    <Compile Include="Modelo\DAOs\DevolucionDAO.cs" />
     <Compile Include="Modelo\DAOs\Estadisticas.cs" />
     <Compile Include="Modelo\DAOs\PagoDAO.cs" />
     <Compile Include="Modelo\DAOs\Condicion.cs" />
@@ -181,6 +194,8 @@
     <Compile Include="Modelo\DAOs\UsuarioDAO.cs" />
     <Compile Include="Modelo\Entidades\Cliente.cs" />
     <Compile Include="Modelo\Entidades\ClienteConPagos.cs" />
+    <Compile Include="Modelo\Entidades\Devolucion.cs" />
+    <Compile Include="Modelo\Entidades\DevolucionFactura.cs" />
     <Compile Include="Modelo\Entidades\EmpresaConMontoRendido.cs" />
     <Compile Include="Modelo\Entidades\Empresa.cs" />
     <Compile Include="Modelo\Entidades\Factura.cs" />
@@ -258,6 +273,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\BusquedaSucursal.resx">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devoluciones\DevolucionFacturaForm.resx">
+      <DependentUpon>DevolucionFacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devoluciones\DevolucionRendicionForm.resx">
+      <DependentUpon>DevolucionRendicionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

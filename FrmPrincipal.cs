@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using PagoAgilFrba.Modelo.Entidades;
 using PagoAgilFrba.Modelo.DAOs;
 using PagoAgilFrba.Rendicion;
+using PagoAgilFrba.Devoluciones;
 
 namespace PagoAgilFrba
 {
@@ -101,6 +102,14 @@ namespace PagoAgilFrba
 
                     case "abm_estadisticas":
                         this.estadisticasTooltip.Enabled = true;
+                        break;
+
+                    case "abm_devolucion_factura":
+                        this.devolucionFacturaTooltip.Enabled = true;
+                        break;
+
+                    case "abm_devolucion_rendicion":
+                        this.devolucionRendicionTooltip.Enabled = true;
                         break;
 
                     default:
@@ -191,7 +200,17 @@ namespace PagoAgilFrba
             new ListadoEstadisticoForm().ShowDialog();
         }
 
+        // Devolucion Factura
+        private void devolucionFacturaTooltip_Click(object sender, EventArgs e)
+        {
+            new DevolucionFacturaForm().ShowDialog();
+        }
 
+        // Devolucion Rendicion
+        private void devolucionRendicionTooltip_Click(object sender, EventArgs e)
+        {
+            new DevolucionRendicionForm().ShowDialog();
+        }
 
     }
 }

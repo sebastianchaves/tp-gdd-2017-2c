@@ -136,6 +136,14 @@ namespace PagoAgilFrba.AbmEmpresa
             this.rubroCombo.Enabled = true;
         }
 
+        private void deshabilitarCampos()
+        {
+            this.nombreInput.Enabled = false;
+            this.cuitInput.Enabled = false;
+            this.direccionInput.Enabled = false;
+            this.rubroCombo.Enabled = false;
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -143,11 +151,16 @@ namespace PagoAgilFrba.AbmEmpresa
             using (BusquedaEmpresa busquedaForm = new BusquedaEmpresa())
             {
                 busquedaForm.ShowDialog(this);
-                this.botonActualizar.Enabled = true;
                 this.empresaACargar = busquedaForm.getEmpresaEncontrada();
-                this.cargarRubros();
-                this.cargarDatos();
-                this.habilitarCampos();
+
+                if (this.empresaACargar != null)
+                {
+                    this.cargarRubros();
+                    this.cargarDatos();
+                    this.botonActualizar.Enabled = true;
+                    this.habilitarCampos();
+                }
+
             }
         }
 
@@ -158,6 +171,8 @@ namespace PagoAgilFrba.AbmEmpresa
             Utils.clearTextBoxes(this);
             this.empresaModificada = new Empresa();
             this.empresaACargar = new Empresa();
+            this.deshabilitarCampos();
+            this.botonActualizar.Enabled = false;
         }
 
         // Boton Volver

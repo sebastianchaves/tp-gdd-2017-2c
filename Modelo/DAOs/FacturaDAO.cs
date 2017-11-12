@@ -30,7 +30,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             tipos.Add(Utils.Utils.INT_TYPE);
             tipos.Add(Utils.Utils.INT_TYPE);
             tipos.Add(Utils.Utils.INT_TYPE);
-            tipos.Add(Utils.Utils.BIT_TYPE);
+            // tipos.Add(Utils.Utils.BIT_TYPE);
 
             allColumns.Add("id");
             allColumns.Add("numero");
@@ -40,7 +40,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumns.Add("idRendicion");
             allColumns.Add("idCliente");
             allColumns.Add("idEmpresa");
-            allColumns.Add("pagada");
+            // allColumns.Add("pagada");
 
             allColumnsInDB.Add("id_factura");
             allColumnsInDB.Add("nro_factura");

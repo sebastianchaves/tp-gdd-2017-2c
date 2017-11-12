@@ -214,6 +214,22 @@ namespace PagoAgilFrba.AbmCliente
             this.departamentoInput.Enabled = true;
         }
 
+        private void deshabilitarCampos()
+        {
+            this.nombreInput.Enabled = false;
+            this.apellidoInput.Enabled = false;
+            this.dniInput.Enabled = false;
+            this.mailInput.Enabled = false;
+            this.fechaDeNacimientoInput.Enabled = false;
+            this.telefonoInput.Enabled = false;
+            this.calleInput.Enabled = false;
+            this.numeroDomicilioInput.Enabled = false;
+            this.localidadInput.Enabled = false;
+            this.codigoPostalInput.Enabled = false;
+            this.pisoInput.Enabled = false;
+            this.departamentoInput.Enabled = false;
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -222,9 +238,14 @@ namespace PagoAgilFrba.AbmCliente
             {
                 busquedaForm.ShowDialog(this);
                 this.clienteACargar = busquedaForm.getClienteEncontrado();
-                this.botonActualizar.Enabled = true;
-                this.cargarDatos();
-                this.habilitarCampos();
+
+                if (this.clienteACargar.id != 0)
+                {
+                    this.botonActualizar.Enabled = true;
+                    this.cargarDatos();
+                    this.habilitarCampos();
+                }
+
             }
         }
 
@@ -235,6 +256,8 @@ namespace PagoAgilFrba.AbmCliente
             Utils.clearTextBoxes(this);
             this.clienteModificado = new Cliente();
             this.clienteACargar = new Cliente();
+            this.deshabilitarCampos();
+            this.botonActualizar.Enabled = false;
         }
 
         // Boton Cancelar
