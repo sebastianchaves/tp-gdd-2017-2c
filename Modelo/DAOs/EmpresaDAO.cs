@@ -1,6 +1,8 @@
 ﻿using PagoAgilFrba.Modelo.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ namespace PagoAgilFrba.Modelo.DAOs
     class EmpresaDAO<T>: Dao<T>
     {
 
+        private const String RENDICION_STORED_PROCEDURE = "[ROCKET_DATABASE].rendirEmpresa";
         private const String EMPRESAS = "GD2C2017.ROCKET_DATABASE.EMPRESAS";
         private const String RUBROS = "GD2C2017.ROCKET_DATABASE.RUBROS";
         private const String PUEDE_DESHABILITAR = "select count(1) from rocket_database.facturas f, "+
@@ -119,6 +122,23 @@ namespace PagoAgilFrba.Modelo.DAOs
         public List<T> obtenerEmpresasPorDiaDeRendicion(int dia)
         {
             return obtenerPorQueryGenerica(EMPRESAS_POR_DIA_DE_RENDICION + dia.ToString(), allColumns, tipos);
+        }
+
+        public int rendirEmpresa(int idEmpresa, int anio, int mes, decimal porcentaje)
+        {
+            using (this.connection = new SqlConnection(CONNECTION_STRING))
+            {
+                this.connection.Open();
+                SqlCommand command = new SqlCommand(RENDICION_STORED_PROCEDURE, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@id_empresa", idEmpresa);
+                command.Parameters.AddWithValue("@mes", mes);
+                command.Parameters.AddWithValue("@anio", anio);
+                command.Parameters.AddWithValue("@porcentaje", porcentaje);
+                int result = command.ExecuteNonQuery();
+                closeConnections();
+                return result;
+            }
         }
     }
 }

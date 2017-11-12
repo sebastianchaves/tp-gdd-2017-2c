@@ -14,9 +14,9 @@ namespace PagoAgilFrba.Modelo.DAOs
     class Dao<T>
     {
 
-        private String CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
+        protected String CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
         public const String ALL = "*";
-        private SqlConnection connection;
+        protected SqlConnection connection;
 
         protected List<List<String>> select(String tabla, String select, List<String> tipos, Condicion condicion)
         {
@@ -92,13 +92,13 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         }
 
-        private void closeConnections(SqlDataReader reader)
+        protected void closeConnections(SqlDataReader reader)
         {
             if (reader != null) { reader.Close(); }
             if (this.connection != null) { this.connection.Close(); }
         }
 
-        private void closeConnections()
+        protected void closeConnections()
         {
             if (this.connection != null) { this.connection.Close(); }
         }
