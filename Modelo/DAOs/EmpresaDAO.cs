@@ -90,6 +90,12 @@ namespace PagoAgilFrba.Modelo.DAOs
             return getEntities(resultSet, allColumns, tipos);
         }
 
+        public T findEmpresaById(String id)
+        {
+            String query = "SELECT * from " + EMPRESAS + " where id_empresa = " + id;
+            return obtenerPorQueryGenerica(query, allColumns, tipos).ElementAt(0);
+        }
+
         // Updates
         public void updateEmpresa(Empresa empresaUpdate)
         {

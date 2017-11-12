@@ -100,6 +100,12 @@ namespace PagoAgilFrba.Modelo.DAOs
             return getEntities(resultSet, allColumns, tipos);
         }
 
+        public T findClienteById(String id)
+        {
+            String query = "SELECT * from " + TABLA + " where id_cliente = " + id;
+            return obtenerPorQueryGenerica(query, allColumns, tipos).ElementAt(0);
+        }
+
         // Updates
         public void updateCliente(Cliente clienteUpdate)
         {

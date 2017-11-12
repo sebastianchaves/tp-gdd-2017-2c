@@ -149,7 +149,6 @@ namespace PagoAgilFrba.AbmFactura
 
                 this.conceptoDao.agregarConcepto(concepto);
             }
-
         }
 
         private void calcularTotal()
@@ -170,7 +169,6 @@ namespace PagoAgilFrba.AbmFactura
         {
             this.agregarFactura();
             Utils.clearTextBoxes(this);
-
 
             if (this.conceptosGrid.Rows.Count != 0)
             {
@@ -247,7 +245,7 @@ namespace PagoAgilFrba.AbmFactura
             }
             catch (Exception ex)
             {
-                Utils.catchearErrorFormato(ex, cantidadTooltip, cantidadInput);
+                Utils.catchearErrorFormato(ex, montoTooltip, montoInput);
             }
         }
 
@@ -260,7 +258,7 @@ namespace PagoAgilFrba.AbmFactura
             }
             catch (Exception ex)
             {
-                Utils.catchearErrorFormato(ex, montoTooltip, montoInput);
+                Utils.catchearErrorFormato(ex, cantidadTooltip, cantidadInput);
             }
         }
 

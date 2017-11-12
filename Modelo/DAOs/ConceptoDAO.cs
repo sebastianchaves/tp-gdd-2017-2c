@@ -50,5 +50,12 @@ namespace PagoAgilFrba.Modelo.DAOs
             insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
+        // Selects
+        public List<T> findConceptos(String idFactura)
+        {
+            String query = "SELECT * from " + TABLA + " where id_factura = " + idFactura;
+            return obtenerPorQueryGenerica(query, allColumns, tipos);
+        }
+
     }
 }
