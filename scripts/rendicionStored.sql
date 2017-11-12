@@ -5,9 +5,11 @@ CREATE PROCEDURE [ROCKET_DATABASE].rendirEmpresa
 	@porcentaje decimal
 AS   
 	declare @cantFacturas int;
-	declare @importeTotal int;
-	declare @comision int;
+	declare @importeTotal decimal(8,2);
+	declare @comision decimal(8,2);
 	declare @dia int;
+	declare @diaString varchar(2);
+	declare @mesString varchar(2);
 	declare @idRendicion int;
 	declare @idRendicionTable table
 	(
@@ -21,6 +23,16 @@ AS
 
 	select @dia=dia_de_rendicion from ROCKET_DATABASE.EMPRESAS e where e.id_empresa = @id_empresa;
 
+	if @dia < 10
+		set @diaString = '0' + cast(@dia as varchar(1));
+	else
+		set @diaString = cast(@dia as varchar(2));
+
+	if @mes < 10
+		set @mesString = '0' + cast(@mes as varchar(1));
+	else
+		set @mesString = cast(@mes as varchar(2));
+
 	insert into @idFacturaTable
 	select f.id_factura, f.total
 	from ROCKET_DATABASE.FACTURAS f, ROCKET_DATABASE.PAGO_FACTURA pf, ROCKET_DATABASE.PAGOS p 
@@ -32,15 +44,17 @@ AS
 
 	set @comision = @importeTotal / 100 * @porcentaje;
 
-	insert into ROCKET_DATABASE.RENDICIONES 
-	OUTPUT inserted.id_rendicion into @idRendicionTable
-	values (@cantFacturas, 
-	convert(datetime, cast(@anio as varchar(4)) + '-' + cast(@mes as varchar(2)) + cast(@dia as varchar(2)))
-	, @comision, @importeTotal, @porcentaje, @id_empresa);
+	if @cantFacturas > 0
+		begin
+			insert into ROCKET_DATABASE.RENDICIONES 
+			OUTPUT inserted.id_rendicion into @idRendicionTable
+			values (@cantFacturas, 
+			convert(datetime, cast(@anio as varchar(4)) + '-' + @mesString + '-' + @diaString)
+			, @comision, @importeTotal, @porcentaje, @id_empresa);
 
-	select @idRendicion=id_rendicion from @idRendicionTable;
+			select @idRendicion=id_rendicion from @idRendicionTable;
 
-	update ROCKET_DATABASE.FACTURAS set id_rendicion = @idRendicion where id_factura in
-	(select id_factura from @idFacturaTable);
-
+			update ROCKET_DATABASE.FACTURAS set id_rendicion = @idRendicion where id_factura in
+			(select id_factura from @idFacturaTable);
+		end;
 GO  
