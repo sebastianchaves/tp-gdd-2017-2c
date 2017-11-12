@@ -79,7 +79,13 @@ namespace PagoAgilFrba.Modelo.DAOs
             newAllColumns.Add("pagada");
             return this.obtenerPorQueryGenerica(OBTENER_CON_COLUMNA_PAGADA + numeroFactura.ToString(), newAllColumns, newTipos);
         }
-        
+
+        public T findFacturaByNumero(int numeroFactura)
+        {
+            String query = "SELECT * from " + TABLA + " where nro_factura = " + numeroFactura;
+            return obtenerPorQueryGenerica(query, allColumns, tipos).ElementAt(0);
+        }
+
         // Deletes
         public int deleteFactura(Factura factura)
         {
@@ -91,6 +97,26 @@ namespace PagoAgilFrba.Modelo.DAOs
             String query = "DELETE from " + TABLA + " where id_factura = " + factura.id;
 
             return deleteQuery(query);
+        }
+
+        // Updates
+        public void updateFactura(Factura facturaUpdate)
+        {
+            Condicion actualizacion = new Condicion();
+
+            actualizacion.agregarCondicion("nro_factura", facturaUpdate.numero, Utils.Utils.INT_TYPE);
+            actualizacion.agregarCondicion("fecha_alta", facturaUpdate.fechaAlta, Utils.Utils.DATETIME_TYPE);
+            actualizacion.agregarCondicion("total", facturaUpdate.total, Utils.Utils.DECIMAL_TYPE);
+            actualizacion.agregarCondicion("fecha_vencimiento", facturaUpdate.fechaVencimiento, Utils.Utils.DATETIME_TYPE);
+            actualizacion.agregarCondicion("id_rendicion", "", Utils.Utils.INT_TYPE);
+            actualizacion.agregarCondicion("id_cliente", facturaUpdate.idCliente, Utils.Utils.INT_TYPE);
+            actualizacion.agregarCondicion("id_empresa", facturaUpdate.idEmpresa, Utils.Utils.INT_TYPE);
+
+            Condicion condicion = new Condicion();
+
+            condicion.agregarCondicion("id_factura", facturaUpdate.id, Utils.Utils.INT_TYPE);
+
+            update(TABLA, actualizacion, condicion);
         }
 
     }

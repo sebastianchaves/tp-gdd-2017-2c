@@ -31,19 +31,25 @@
             this.registroPagoLabel = new System.Windows.Forms.Label();
             this.facturasGrid = new System.Windows.Forms.DataGridView();
             this.agregeFacturasGroupBox = new System.Windows.Forms.GroupBox();
+            this.formaPagoLabel = new System.Windows.Forms.Label();
+            this.formasPagoCombo = new System.Windows.Forms.ComboBox();
             this.botonRegistrar = new System.Windows.Forms.Button();
             this.botonEliminar = new System.Windows.Forms.Button();
             this.botonCargarFactura = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
+            this.buscarClienteGroupBox = new System.Windows.Forms.GroupBox();
+            this.clienteInput = new System.Windows.Forms.TextBox();
+            this.botonBuscarCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.facturasGrid)).BeginInit();
             this.agregeFacturasGroupBox.SuspendLayout();
+            this.buscarClienteGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // registroPagoLabel
             // 
             this.registroPagoLabel.AutoSize = true;
             this.registroPagoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registroPagoLabel.Location = new System.Drawing.Point(149, 9);
+            this.registroPagoLabel.Location = new System.Drawing.Point(205, 9);
             this.registroPagoLabel.Name = "registroPagoLabel";
             this.registroPagoLabel.Size = new System.Drawing.Size(221, 20);
             this.registroPagoLabel.TabIndex = 0;
@@ -54,66 +60,116 @@
             this.facturasGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.facturasGrid.Location = new System.Drawing.Point(6, 19);
             this.facturasGrid.Name = "facturasGrid";
-            this.facturasGrid.Size = new System.Drawing.Size(507, 223);
+            this.facturasGrid.Size = new System.Drawing.Size(616, 132);
             this.facturasGrid.TabIndex = 1;
             // 
             // agregeFacturasGroupBox
             // 
-            this.agregeFacturasGroupBox.Controls.Add(this.botonRegistrar);
             this.agregeFacturasGroupBox.Controls.Add(this.botonEliminar);
+            this.agregeFacturasGroupBox.Controls.Add(this.formasPagoCombo);
             this.agregeFacturasGroupBox.Controls.Add(this.facturasGrid);
+            this.agregeFacturasGroupBox.Controls.Add(this.formaPagoLabel);
             this.agregeFacturasGroupBox.Controls.Add(this.botonCargarFactura);
             this.agregeFacturasGroupBox.Location = new System.Drawing.Point(12, 32);
             this.agregeFacturasGroupBox.Name = "agregeFacturasGroupBox";
-            this.agregeFacturasGroupBox.Size = new System.Drawing.Size(519, 284);
+            this.agregeFacturasGroupBox.Size = new System.Drawing.Size(628, 196);
             this.agregeFacturasGroupBox.TabIndex = 2;
             this.agregeFacturasGroupBox.TabStop = false;
             this.agregeFacturasGroupBox.Text = "Agregue facturas a registrar";
             // 
+            // formaPagoLabel
+            // 
+            this.formaPagoLabel.AutoSize = true;
+            this.formaPagoLabel.Location = new System.Drawing.Point(6, 166);
+            this.formaPagoLabel.Name = "formaPagoLabel";
+            this.formaPagoLabel.Size = new System.Drawing.Size(81, 13);
+            this.formaPagoLabel.TabIndex = 4;
+            this.formaPagoLabel.Text = "Forma de pago:";
+            // 
+            // formasPagoCombo
+            // 
+            this.formasPagoCombo.FormattingEnabled = true;
+            this.formasPagoCombo.Location = new System.Drawing.Point(93, 163);
+            this.formasPagoCombo.Name = "formasPagoCombo";
+            this.formasPagoCombo.Size = new System.Drawing.Size(121, 21);
+            this.formasPagoCombo.TabIndex = 3;
+            // 
             // botonRegistrar
             // 
-            this.botonRegistrar.Location = new System.Drawing.Point(423, 248);
+            this.botonRegistrar.Location = new System.Drawing.Point(454, 268);
             this.botonRegistrar.Name = "botonRegistrar";
             this.botonRegistrar.Size = new System.Drawing.Size(90, 30);
             this.botonRegistrar.TabIndex = 2;
-            this.botonRegistrar.Text = "Registrar";
+            this.botonRegistrar.Text = "&Registrar Pago";
             this.botonRegistrar.UseVisualStyleBackColor = true;
             this.botonRegistrar.Click += new System.EventHandler(this.botonRegistrar_Click);
             // 
             // botonEliminar
             // 
-            this.botonEliminar.Location = new System.Drawing.Point(102, 248);
+            this.botonEliminar.Location = new System.Drawing.Point(532, 157);
             this.botonEliminar.Name = "botonEliminar";
             this.botonEliminar.Size = new System.Drawing.Size(90, 30);
             this.botonEliminar.TabIndex = 1;
-            this.botonEliminar.Text = "Eliminar";
+            this.botonEliminar.Text = "&Eliminar Factura";
             this.botonEliminar.UseVisualStyleBackColor = true;
+            this.botonEliminar.Click += new System.EventHandler(this.botonEliminar_Click);
             // 
             // botonCargarFactura
             // 
-            this.botonCargarFactura.Location = new System.Drawing.Point(6, 248);
+            this.botonCargarFactura.Location = new System.Drawing.Point(436, 157);
             this.botonCargarFactura.Name = "botonCargarFactura";
             this.botonCargarFactura.Size = new System.Drawing.Size(90, 30);
             this.botonCargarFactura.TabIndex = 0;
-            this.botonCargarFactura.Text = "Cargar Factura";
+            this.botonCargarFactura.Text = "&Cargar Factura";
             this.botonCargarFactura.UseVisualStyleBackColor = true;
             this.botonCargarFactura.Click += new System.EventHandler(this.botonCargarFactura_Click);
             // 
             // botonVolver
             // 
-            this.botonVolver.Location = new System.Drawing.Point(441, 322);
+            this.botonVolver.Location = new System.Drawing.Point(550, 268);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(90, 30);
             this.botonVolver.TabIndex = 2;
-            this.botonVolver.Text = "Volver";
+            this.botonVolver.Text = "&Volver";
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            // 
+            // buscarClienteGroupBox
+            // 
+            this.buscarClienteGroupBox.Controls.Add(this.clienteInput);
+            this.buscarClienteGroupBox.Controls.Add(this.botonBuscarCliente);
+            this.buscarClienteGroupBox.Location = new System.Drawing.Point(12, 234);
+            this.buscarClienteGroupBox.Name = "buscarClienteGroupBox";
+            this.buscarClienteGroupBox.Size = new System.Drawing.Size(346, 58);
+            this.buscarClienteGroupBox.TabIndex = 5;
+            this.buscarClienteGroupBox.TabStop = false;
+            this.buscarClienteGroupBox.Text = "Buscar cliente";
+            // 
+            // clienteInput
+            // 
+            this.clienteInput.Enabled = false;
+            this.clienteInput.Location = new System.Drawing.Point(6, 25);
+            this.clienteInput.Name = "clienteInput";
+            this.clienteInput.Size = new System.Drawing.Size(227, 20);
+            this.clienteInput.TabIndex = 9;
+            // 
+            // botonBuscarCliente
+            // 
+            this.botonBuscarCliente.Location = new System.Drawing.Point(239, 19);
+            this.botonBuscarCliente.Name = "botonBuscarCliente";
+            this.botonBuscarCliente.Size = new System.Drawing.Size(90, 30);
+            this.botonBuscarCliente.TabIndex = 16;
+            this.botonBuscarCliente.Text = "&Buscar";
+            this.botonBuscarCliente.UseVisualStyleBackColor = true;
+            this.botonBuscarCliente.Click += new System.EventHandler(this.botonBuscarCliente_Click);
             // 
             // RegistroPagoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 364);
+            this.ClientSize = new System.Drawing.Size(652, 310);
+            this.Controls.Add(this.buscarClienteGroupBox);
+            this.Controls.Add(this.botonRegistrar);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.agregeFacturasGroupBox);
             this.Controls.Add(this.registroPagoLabel);
@@ -121,6 +177,9 @@
             this.Text = "Registro de Pago de Facturas";
             ((System.ComponentModel.ISupportInitialize)(this.facturasGrid)).EndInit();
             this.agregeFacturasGroupBox.ResumeLayout(false);
+            this.agregeFacturasGroupBox.PerformLayout();
+            this.buscarClienteGroupBox.ResumeLayout(false);
+            this.buscarClienteGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,5 +194,10 @@
         private System.Windows.Forms.Button botonEliminar;
         private System.Windows.Forms.Button botonCargarFactura;
         private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.Label formaPagoLabel;
+        private System.Windows.Forms.ComboBox formasPagoCombo;
+        private System.Windows.Forms.GroupBox buscarClienteGroupBox;
+        private System.Windows.Forms.TextBox clienteInput;
+        private System.Windows.Forms.Button botonBuscarCliente;
     }
 }

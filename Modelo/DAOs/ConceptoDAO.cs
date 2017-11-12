@@ -57,5 +57,27 @@ namespace PagoAgilFrba.Modelo.DAOs
             return obtenerPorQueryGenerica(query, allColumns, tipos);
         }
 
+        // Updates
+        public void updateConcepto(Concepto conceptoUpdate)
+        {
+            Condicion actualizacion = new Condicion();
+
+            actualizacion.agregarCondicion("monto", conceptoUpdate.monto, Utils.Utils.DECIMAL_TYPE);
+            actualizacion.agregarCondicion("cantidad", conceptoUpdate.cantidad, Utils.Utils.INT_TYPE);
+            actualizacion.agregarCondicion("id_factura", conceptoUpdate.idFactura, Utils.Utils.INT_TYPE);
+
+            Condicion condicion = new Condicion();
+
+            condicion.agregarCondicion("id_concepto", conceptoUpdate.id, Utils.Utils.INT_TYPE);
+
+            update(TABLA, actualizacion, condicion);
+        }
+
+        public int deleteConcepto(Concepto conceptoDelete)
+        {
+            String query = "DELETE from " + TABLA + " where id_concepto = " + conceptoDelete.id;
+            return deleteQuery(query);
+        }
+
     }
 }

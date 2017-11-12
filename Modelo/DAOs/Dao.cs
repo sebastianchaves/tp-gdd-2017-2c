@@ -254,6 +254,10 @@ namespace PagoAgilFrba.Modelo.DAOs
                             insert += "0";
                         }
                     }
+                    else if (tipos.ElementAt(i).Equals(Utils.Utils.DECIMAL_TYPE))
+                    {
+                        insert += "'" + valores.ElementAt(i).Replace(",", ".") + "'";
+                    }
                     else
                     {
                         insert += valores.ElementAt(i);
@@ -315,6 +319,10 @@ namespace PagoAgilFrba.Modelo.DAOs
                             {
                                 updateString += columna + " = 0";
                             }
+                        }
+                        else if (tipo.Equals(Utils.Utils.DECIMAL_TYPE))
+                        {
+                            updateString += columna + " = '" + valor.Replace(",", ".") + "'";
                         }
                         else
                         {

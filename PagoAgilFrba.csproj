@@ -188,6 +188,7 @@
     <Compile Include="Modelo\DAOs\DevolucionFacturaDAO.cs" />
     <Compile Include="Modelo\DAOs\DevolucionRendicionDAO.cs" />
     <Compile Include="Modelo\DAOs\Estadisticas.cs" />
+    <Compile Include="Modelo\DAOs\FormaPagoDAO.cs" />
     <Compile Include="Modelo\DAOs\PagoDAO.cs" />
     <Compile Include="Modelo\DAOs\Condicion.cs" />
     <Compile Include="Modelo\DAOs\ClienteDAO.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Modelo\DAOs\EmpresaDAO.cs" />
     <Compile Include="Modelo\DAOs\FacturaDAO.cs" />
     <Compile Include="Modelo\DAOs\FuncionalidadDAO.cs" />
+    <Compile Include="Modelo\DAOs\PagoFacturaDAO.cs" />
     <Compile Include="Modelo\DAOs\RendicionDAO.cs" />
     <Compile Include="Modelo\DAOs\RolDAO.cs" />
     <Compile Include="Modelo\DAOs\RubroDAO.cs" />
@@ -206,6 +208,8 @@
     <Compile Include="Modelo\Entidades\Devolucion.cs" />
     <Compile Include="Modelo\Entidades\DevolucionFactura.cs" />
     <Compile Include="Modelo\Entidades\DevolucionRendicion.cs" />
+    <Compile Include="Modelo\Entidades\FormaPago.cs" />
+    <Compile Include="Modelo\Entidades\PagoFactura.cs" />
     <Compile Include="Modelo\Entidades\PorcentajeFacturasPagadas.cs" />
     <Compile Include="Modelo\Entidades\EmpresaConMontoRendido.cs" />
     <Compile Include="Modelo\Entidades\Empresa.cs" />

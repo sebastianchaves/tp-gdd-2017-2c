@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Security.Cryptography;
+using PagoAgilFrba.Modelo.Entidades;
 
 namespace PagoAgilFrba.Modelo.Utils
 {
@@ -23,6 +24,12 @@ namespace PagoAgilFrba.Modelo.Utils
 
         public static DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
         public static DateTime minTime = new DateTime(1890, 1, 1);
+        public static Usuario usuarioGlobal;
+
+        public static void globalUser(Usuario usuarioLogin)
+        {
+            usuarioGlobal = usuarioLogin;
+        }
 
         // Metodo para borrar contenido de inputs
         public static void clearTextBoxes(Control control)

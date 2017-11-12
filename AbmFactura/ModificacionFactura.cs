@@ -37,6 +37,8 @@ namespace PagoAgilFrba.AbmFactura
         {
             InitializeComponent();
 
+            Utils.iniciarGrids(this.itemsGrid);
+
             this.facturaDao = new FacturaDAO<Factura>();
             this.facturaModificada = new Factura();
             this.clienteDao = new ClienteDAO<Cliente>();
@@ -63,13 +65,61 @@ namespace PagoAgilFrba.AbmFactura
 
         private void actualizarFactura()
         {
-            if (!this.facturaACargar.pagada && this.facturaACargar.idRendicion == 0)
+            if (camposCompletos())
             {
+                if (!this.facturaACargar.pagada && this.facturaACargar.idRendicion == 0)
+                {
+                    this.calcularTotal();
+                    this.facturaDao.updateFactura(this.facturaModificada);
+                    this.agregarConceptos();
+                    MessageBox.Show("Datos actualizados!");
+                }
+                else
+                {
+                    MessageBox.Show("La factura se encuentra pagada o ya fue rendida.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Complete los campos obligatorios.");
+            }
+        }
 
-            }
+        private Boolean camposCompletos()
+        {
+            return this.numeroInput.Text != "" &&
+                this.fechaAltaInput.Value.ToString() != "" &&
+                this.fechaVencimientoInput.Value.ToString() != "";
+        }
+
+        private void agregarConceptos()
+        {
+            int idNuevaFactura = this.facturaDao.obtenerFacturas(this.facturaModificada.numero).ElementAt(0).id;
+
+            foreach (Concepto concepto in this.conceptosModificados)
             {
-                MessageBox.Show("La factura se encuentra pagada o ya fue rendida.");
+                if (concepto.idFactura == 0)
+                {
+                    concepto.idFactura = idNuevaFactura;
+                    this.conceptoDao.agregarConcepto(concepto);
+                }
+                else
+                {
+                    this.conceptoDao.updateConcepto(concepto);
+                }
             }
+        }
+
+        private void calcularTotal()
+        {
+            decimal total = 0;
+
+            foreach (Concepto concepto in this.conceptosModificados)
+            {
+                total += (concepto.cantidad * concepto.monto);
+            }
+
+            this.facturaModificada.total = total;
         }
 
         private void cargarDatos()
@@ -98,11 +148,7 @@ namespace PagoAgilFrba.AbmFactura
         private void cargarConceptos()
         {
             this.conceptosModificados.AddRange(this.conceptosACargar);
-
-            foreach(Concepto concepto in this.conceptosACargar)
-            {
-                this.agregarAGrid(concepto);
-            }
+            this.agregarTodosAGrid(this.conceptosModificados);
         }
 
         private void agregarAGrid()
@@ -113,6 +159,21 @@ namespace PagoAgilFrba.AbmFactura
             resultadosConceptos.Columns.Add("Cantidad");
 
             foreach (Concepto concepto in this.conceptosModificados)
+            {
+                resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad);
+            }
+
+            itemsGrid.DataSource = resultadosConceptos;
+        }
+
+        private void agregarTodosAGrid(List<Concepto> conceptos)
+        {
+            DataTable resultadosConceptos = new DataTable();
+
+            resultadosConceptos.Columns.Add("Monto");
+            resultadosConceptos.Columns.Add("Cantidad");
+
+            foreach (Concepto concepto in conceptos)
             {
                 resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad);
             }
@@ -201,15 +262,7 @@ namespace PagoAgilFrba.AbmFactura
         {
             this.actualizarFactura();
             Utils.clearTextBoxes(this);
-
-            if (this.itemsGrid.Rows.Count != 0)
-            {
-                for (int i = 0; i < this.itemsGrid.Rows.Count; i++)
-                {
-                    this.itemsGrid.Rows.RemoveAt(i);
-                }
-            }
-
+            this.nuevoConcepto = new Concepto();
             this.facturaACargar = new Factura();
             this.facturaModificada = new Factura();
             this.clienteEncontrado = new Cliente();
@@ -254,16 +307,36 @@ namespace PagoAgilFrba.AbmFactura
 
         private void botonEliminarConcepto_Click(object sender, EventArgs e)
         {
-            int index = this.itemsGrid.SelectedCells[0].RowIndex;
+            if (itemsGrid.Rows.Count > 0)
+            {
+                int index = this.itemsGrid.SelectedCells[0].RowIndex;
+                
+                decimal conceptoMonto = Decimal.Parse(this.itemsGrid.Rows[index].Cells[0].Value.ToString());
+                int conceptoCantidad = Int32.Parse(this.itemsGrid.Rows[index].Cells[1].Value.ToString());
 
-            decimal conceptoMonto = Decimal.Parse(this.itemsGrid.Rows[index].Cells[0].Value.ToString());
-            int conceptoCantidad = Int32.Parse(this.itemsGrid.Rows[index].Cells[1].Value.ToString());
+                this.itemsGrid.Rows.RemoveAt(index);
 
-            Concepto conceptoAEliminar = this.conceptosACargar.Find(concepto => concepto.cantidad == conceptoCantidad && concepto.monto == conceptoMonto);
+                Concepto conceptoAEliminar = this.conceptosACargar.Find(concepto => concepto.cantidad == conceptoCantidad && concepto.monto == conceptoMonto);
 
-            this.conceptosModificados.Remove(conceptoAEliminar);
+                if (conceptoAEliminar != null)
+                {
+                    this.conceptoDao.deleteConcepto(conceptoAEliminar);
+                    this.conceptosModificados.Remove(conceptoAEliminar);
+                }
+                else
+                {
+                    this.conceptosModificados.Remove(
+                        this.conceptosModificados.Find(concepto => 
+                        concepto.cantidad == conceptoCantidad 
+                        && concepto.monto == conceptoMonto));
+                }
 
-            this.agregarAGrid();
+                this.agregarTodosAGrid(this.conceptosModificados);
+            }
+            else
+            {
+                MessageBox.Show("No hay conceptos para eliminar");
+            }
         }
 
         // Boton Volver

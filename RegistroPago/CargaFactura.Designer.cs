@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.numeroFacturaLabel = new System.Windows.Forms.Label();
             this.fechaCobroLabel = new System.Windows.Forms.Label();
             this.fechaVencimientoLabel = new System.Windows.Forms.Label();
@@ -47,6 +48,8 @@
             this.botonAceptar = new System.Windows.Forms.Button();
             this.botonCancelar = new System.Windows.Forms.Button();
             this.sucursalLabel = new System.Windows.Forms.Label();
+            this.numeroTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.importeTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.buscarEmpresaGroupBox.SuspendLayout();
             this.buscarClienteGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -93,9 +96,11 @@
             this.numeroInput.Name = "numeroInput";
             this.numeroInput.Size = new System.Drawing.Size(214, 20);
             this.numeroInput.TabIndex = 7;
+            this.numeroInput.Leave += new System.EventHandler(this.numeroInput_Leave);
             // 
             // fechaCobroInput
             // 
+            this.fechaCobroInput.Enabled = false;
             this.fechaCobroInput.Location = new System.Drawing.Point(127, 75);
             this.fechaCobroInput.Name = "fechaCobroInput";
             this.fechaCobroInput.Size = new System.Drawing.Size(214, 20);
@@ -123,6 +128,7 @@
             this.fechaVencimientoInput.Name = "fechaVencimientoInput";
             this.fechaVencimientoInput.Size = new System.Drawing.Size(214, 20);
             this.fechaVencimientoInput.TabIndex = 11;
+            this.fechaVencimientoInput.Leave += new System.EventHandler(this.fechaVencimientoInput_Leave);
             // 
             // importeInput
             // 
@@ -130,6 +136,7 @@
             this.importeInput.Name = "importeInput";
             this.importeInput.Size = new System.Drawing.Size(214, 20);
             this.importeInput.TabIndex = 12;
+            this.importeInput.Leave += new System.EventHandler(this.importeInput_Leave);
             // 
             // sucursalInput
             // 
@@ -271,5 +278,7 @@
         private System.Windows.Forms.Button botonAceptar;
         private System.Windows.Forms.Button botonCancelar;
         private System.Windows.Forms.Label sucursalLabel;
+        private System.Windows.Forms.ToolTip numeroTooltip;
+        private System.Windows.Forms.ToolTip importeTooltip;
     }
 }

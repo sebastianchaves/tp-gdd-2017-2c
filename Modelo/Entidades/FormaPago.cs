@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    public class Pago
+    public class FormaPago
     {
-        public int id;
-        public DateTime fechaCobro;
-        public decimal importe;
-        public int idFormaPago;
-        public int idSucursal;
-        public int idCliente;
-    }
 
+        public int id;
+        public String nombre;
+        public String descripcion;
+
+        public int indexCombo;
+
+    }
 }

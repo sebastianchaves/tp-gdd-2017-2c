@@ -28,8 +28,7 @@ namespace PagoAgilFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModificacionFactura());
-            new EmpresaDAO<Empresa>().rendirEmpresa(1, 2017, 3, 10);
+            Application.Run(new FrmLogin());
         }
     }
 }

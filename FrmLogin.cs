@@ -50,6 +50,7 @@ namespace PagoAgilFrba
             {
 
                 this.usuarioLogin = usuarios.ElementAt(0);
+                Utils.globalUser(this.usuarioLogin);
 
                 String contraseniaPosta = Utils.getSha256(this.contrasenia);
 
