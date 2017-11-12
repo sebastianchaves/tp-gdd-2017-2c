@@ -23,6 +23,12 @@ CREATE TABLE [ROCKET_DATABASE].[CLIENTES](
 ) ON [PRIMARY]
 GO
 
+CREATE INDEX clientes_dni
+ON [ROCKET_DATABASE].[CLIENTES] (dni);
+
+CREATE INDEX clientes_apellido
+ON [ROCKET_DATABASE].[CLIENTES] (apellido);
+
 CREATE TABLE [ROCKET_DATABASE].[TIPO_DEVOLUCION](
 	id_tipo_devolucion int IDENTITY(1,1) primary key,
 	nombre varchar(255) not null,
@@ -99,6 +105,10 @@ CREATE TABLE [ROCKET_DATABASE].[FACTURAS](
 	foreign key (id_empresa) references ROCKET_DATABASE.EMPRESAS(id_empresa)
 ) ON [PRIMARY]
 GO
+
+CREATE INDEX facturas_nro_factura
+ON [ROCKET_DATABASE].[FACTURAS] (nro_factura);
+
 CREATE TABLE [ROCKET_DATABASE].[CONCEPTOS](
 	id_concepto int IDENTITY(1,1) PRIMARY KEY,
 	monto decimal (8,2),
