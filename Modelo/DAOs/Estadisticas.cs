@@ -147,7 +147,9 @@ namespace PagoAgilFrba.Modelo.DAOs
 "f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')) * 100.0 / " +
 "(select count(1) from ROCKET_DATABASE.facturas f where f.id_cliente = c.id_cliente AND " +
 "f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')))) as porcentajePagados " +
-"from ROCKET_DATABASE.clientes c ";
+"from ROCKET_DATABASE.clientes c where " +
+"(select count(1) from ROCKET_DATABASE.facturas f where f.id_cliente = c.id_cliente and " +
+"f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')) > 0 ";
 
         private List<String> tipos;
         private List<String> allColumns;
