@@ -124,7 +124,7 @@ GO
 /*** insertando relaciones de pagos y facturas ***/
 print 'Insertando relaciones entre pagos y facturas';
 insert into rocket_database.pago_factura
-select distinct id_factura, pago_nro from gd_esquema.maestra m, rocket_database.FACTURAS f
+select distinct id_factura, pago_nro from gd_esquema.Maestra m, rocket_database.FACTURAS f
 where m.nro_factura = f.nro_factura and pago_nro is not null;
 
 
@@ -145,6 +145,8 @@ insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_factura', 'abm_factura'
 insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_pago', 'abm_pago');
 insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_rendicion', 'abm_rendicion');
 insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_estadisticas', 'abm_estadisticas');
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_devolucion_factura', 'abm_devolucion_factura');
+insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_devolucion_rendicion', 'abm_devolucion_rendicion');
 
 insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (1, 1);
 insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (2, 1);
@@ -154,10 +156,12 @@ insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (5, 1);
 insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (6, 1);
 insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (7, 1);
 insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (8, 1);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (10, 1);
 
 insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (5, 2);
 insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (6, 2);
 insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (7, 2);
+insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (9, 2);
 
 insert into ROCKET_DATABASE.USUARIO_ROLES values (1, 1);
 insert into ROCKET_DATABASE.USUARIO_ROLES values (2, 2);
