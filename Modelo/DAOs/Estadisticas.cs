@@ -7,24 +7,33 @@ using System.Threading.Tasks;
 namespace PagoAgilFrba.Modelo.DAOs
 {
 
-    class PorcentajeFacturasPagadasDao<T> : Dao<T>
+    class PorcentajeCobradasPorEmpresaDao<T> : Dao<T>
     {
         private const String FECHA_INICIO = "#FECHA_INICIO#";
         private const String FECHA_FIN = "#FECHA_FIN#";
         private const String PORCENTAJE_PAGADO =
-            "select top 5 id_empresa, nombre, ( " +
-            "(select count(distinct f.nro_factura) from rocket_Database.facturas f, rocket_Database.pago_factura pf " +
-            "where f.id_empresa = id_empresa and f.id_factura = pf.id_factura and f.fecha_alta > convert(datetime, '" + FECHA_INICIO + "') " +
-            "and f.fecha_alta < convert(datetime, '"+ FECHA_FIN +"')) * 100 / " +
-            "(select count(distinct f.nro_factura) from rocket_Database.facturas f where f.id_empresa = id_empresa " +
-            "and f.fecha_alta > convert(datetime, '" + FECHA_INICIO + "') and f.fecha_alta < convert(datetime, '" + FECHA_FIN + "')) " +
-            ") as porcentaje_pagado from rocket_database.empresas order by porcentaje_pagado desc ";
+            "select top 5 tt.id_empresa, tt.nombre, tt.primero / tt.segundo as porcentaje from " +
+            "( "+
+            "select id_empresa, nombre,  "+
+		    "        ( "+
+		    "        select count(distinct f.nro_factura) from rocket_Database.facturas f, rocket_Database.pago_factura pf where  "+
+		    "        f.id_empresa = id_empresa and f.id_factura = pf.id_factura and f.fecha_alta > convert(datetime, '" + FECHA_INICIO +"')  "+
+		    "        and f.fecha_alta < convert(datetime, '"+ FECHA_FIN +"') "+
+		    "        ) * 100 as primero,  "+
+		    "        ( "+
+		    "        select count(distinct f.nro_factura) from rocket_Database.facturas f where f.id_empresa = id_empresa and f.fecha_alta >  "+
+		    "        convert(datetime, '"+ FECHA_INICIO +"') and f.fecha_alta < convert(datetime, '"+ FECHA_FIN +"') "+
+		    "        ) as segundo "+
+            "from rocket_database.empresas "+
+            ") as tt "+
+            "where tt.segundo > 0 "+
+            "order by porcentaje ";
 
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
 
-        public PorcentajeFacturasPagadasDao()
+        public PorcentajeCobradasPorEmpresaDao()
         {
             this.tipos = new List<String>();
             this.allColumns = new List<String>();
@@ -39,7 +48,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumns.Add("porcentaje");
         }
 
-        public List<T> obtenerPorcentajesPagados(int anio, int trimestre)
+        public List<T> obtenerPorcentajesCobrados(int anio, int trimestre)
         {
             String fechaInicio = Utils.Utils.getInicioTrimestre(anio, trimestre);
             String fechaFin = Utils.Utils.getFinTrimestre(anio, trimestre);
@@ -136,12 +145,12 @@ namespace PagoAgilFrba.Modelo.DAOs
         }
     }
 
-    class PorcentajeFacturasPagadas<T> : Dao<T>
+    class ClientePorcentajeFacturasPagadas<T> : Dao<T>
     {
         private const String FECHA_INICIO = "#FECHA_INICIO#";
         private const String FECHA_FIN = "#FECHA_FIN#";
         private const String PORCENTAJE_FACTURAS_PAGADAS =
-"select c.id_cliente, c.apellido, c.nombre, ( convert(decimal(5, 2), " +
+"select top 5 c.id_cliente, c.apellido, c.nombre, ( convert(decimal(5, 2), " +
 "(select count(1) from ROCKET_DATABASE.facturas f, rocket_database.pago_factura p " +
 "where f.id_cliente = c.id_cliente and f.id_factura = p.id_factura and " +
 "f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')) * 100.0 / " +
@@ -149,13 +158,14 @@ namespace PagoAgilFrba.Modelo.DAOs
 "f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')))) as porcentajePagados " +
 "from ROCKET_DATABASE.clientes c where " +
 "(select count(1) from ROCKET_DATABASE.facturas f where f.id_cliente = c.id_cliente and " +
-"f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')) > 0 ";
+"f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')) > 0 " +
+" order by porcentajePagados desc";
 
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
 
-        public PorcentajeFacturasPagadas()
+        public ClientePorcentajeFacturasPagadas()
         {
             this.tipos = new List<String>();
             this.allColumns = new List<String>();

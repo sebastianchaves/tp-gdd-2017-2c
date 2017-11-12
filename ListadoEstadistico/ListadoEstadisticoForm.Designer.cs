@@ -49,14 +49,15 @@
             // tipoCombo
             // 
             this.tipoCombo.FormattingEnabled = true;
-            this.tipoCombo.Location = new System.Drawing.Point(40, 42);
+            this.tipoCombo.Location = new System.Drawing.Point(15, 42);
             this.tipoCombo.Name = "tipoCombo";
-            this.tipoCombo.Size = new System.Drawing.Size(121, 21);
+            this.tipoCombo.Size = new System.Drawing.Size(351, 21);
             this.tipoCombo.TabIndex = 0;
+            this.tipoCombo.SelectedIndexChanged += new System.EventHandler(this.tipoCombo_SelectedIndexChanged);
             // 
             // anioNumeric
             // 
-            this.anioNumeric.Location = new System.Drawing.Point(212, 42);
+            this.anioNumeric.Location = new System.Drawing.Point(500, 42);
             this.anioNumeric.Maximum = new decimal(new int[] {
             2017,
             0,
@@ -76,19 +77,21 @@
             0,
             0,
             0});
+            this.anioNumeric.ValueChanged += new System.EventHandler(this.anioNumeric_ValueChanged);
             // 
             // trimestreCombo
             // 
             this.trimestreCombo.FormattingEnabled = true;
-            this.trimestreCombo.Location = new System.Drawing.Point(384, 42);
+            this.trimestreCombo.Location = new System.Drawing.Point(655, 42);
             this.trimestreCombo.Name = "trimestreCombo";
             this.trimestreCombo.Size = new System.Drawing.Size(121, 21);
             this.trimestreCombo.TabIndex = 2;
+            this.trimestreCombo.SelectedIndexChanged += new System.EventHandler(this.trimestreCombo_SelectedIndexChanged);
             // 
             // tipoLabel
             // 
             this.tipoLabel.AutoSize = true;
-            this.tipoLabel.Location = new System.Drawing.Point(37, 26);
+            this.tipoLabel.Location = new System.Drawing.Point(12, 26);
             this.tipoLabel.Name = "tipoLabel";
             this.tipoLabel.Size = new System.Drawing.Size(31, 13);
             this.tipoLabel.TabIndex = 3;
@@ -97,7 +100,7 @@
             // anioLabel
             // 
             this.anioLabel.AutoSize = true;
-            this.anioLabel.Location = new System.Drawing.Point(209, 26);
+            this.anioLabel.Location = new System.Drawing.Point(497, 26);
             this.anioLabel.Name = "anioLabel";
             this.anioLabel.Size = new System.Drawing.Size(29, 13);
             this.anioLabel.TabIndex = 4;
@@ -106,7 +109,7 @@
             // trimestreLabel
             // 
             this.trimestreLabel.AutoSize = true;
-            this.trimestreLabel.Location = new System.Drawing.Point(381, 26);
+            this.trimestreLabel.Location = new System.Drawing.Point(652, 26);
             this.trimestreLabel.Name = "trimestreLabel";
             this.trimestreLabel.Size = new System.Drawing.Size(53, 13);
             this.trimestreLabel.TabIndex = 5;
@@ -133,14 +136,14 @@
             this.confeccioneSuListadoGroupBox.Controls.Add(this.trimestreCombo);
             this.confeccioneSuListadoGroupBox.Location = new System.Drawing.Point(12, 32);
             this.confeccioneSuListadoGroupBox.Name = "confeccioneSuListadoGroupBox";
-            this.confeccioneSuListadoGroupBox.Size = new System.Drawing.Size(537, 114);
+            this.confeccioneSuListadoGroupBox.Size = new System.Drawing.Size(792, 114);
             this.confeccioneSuListadoGroupBox.TabIndex = 7;
             this.confeccioneSuListadoGroupBox.TabStop = false;
             this.confeccioneSuListadoGroupBox.Text = "Confeccione su listado";
             // 
             // botonEjecutar
             // 
-            this.botonEjecutar.Location = new System.Drawing.Point(441, 78);
+            this.botonEjecutar.Location = new System.Drawing.Point(673, 78);
             this.botonEjecutar.Name = "botonEjecutar";
             this.botonEjecutar.Size = new System.Drawing.Size(90, 30);
             this.botonEjecutar.TabIndex = 9;
@@ -153,7 +156,7 @@
             this.resultadosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.resultadosGrid.Location = new System.Drawing.Point(6, 19);
             this.resultadosGrid.Name = "resultadosGrid";
-            this.resultadosGrid.Size = new System.Drawing.Size(525, 167);
+            this.resultadosGrid.Size = new System.Drawing.Size(780, 167);
             this.resultadosGrid.TabIndex = 6;
             // 
             // botonVolver
@@ -171,7 +174,7 @@
             this.groupBox2.Controls.Add(this.resultadosGrid);
             this.groupBox2.Location = new System.Drawing.Point(12, 152);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(537, 192);
+            this.groupBox2.Size = new System.Drawing.Size(792, 192);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listado";
@@ -180,7 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 392);
+            this.ClientSize = new System.Drawing.Size(816, 392);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.confeccioneSuListadoGroupBox);
