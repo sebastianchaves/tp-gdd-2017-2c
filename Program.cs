@@ -15,6 +15,7 @@ using PagoAgilFrba.AbmFactura;
 using PagoAgilFrba.Devoluciones;
 using PagoAgilFrba.ListadoEstadistico;
 using PagoAgilFrba.Modelo.Entidades;
+using PagoAgilFrba.RendicionesPKG;
 
 namespace PagoAgilFrba
 {

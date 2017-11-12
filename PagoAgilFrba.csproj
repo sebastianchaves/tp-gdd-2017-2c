@@ -329,6 +329,9 @@
     <EmbeddedResource Include="RegistroPago\RegistroPagoForm.resx">
       <DependentUpon>RegistroPagoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RendicionesPKG\RendicionPKGFrm.resx">
+      <DependentUpon>RendicionPKGFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

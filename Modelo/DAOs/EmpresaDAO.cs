@@ -130,7 +130,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             return obtenerPorQueryGenerica(EMPRESAS_POR_DIA_DE_RENDICION + dia.ToString(), allColumns, tipos);
         }
 
-        public int rendirEmpresa(int idEmpresa, int anio, int mes, decimal porcentaje)
+        public int rendirEmpresa(int idEmpresa, int anio, int mes, int dia, decimal porcentaje)
         {
             using (this.connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -139,11 +139,15 @@ namespace PagoAgilFrba.Modelo.DAOs
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@id_empresa", idEmpresa);
                 command.Parameters.AddWithValue("@mes", mes);
+                command.Parameters.AddWithValue("@dia", dia);
                 command.Parameters.AddWithValue("@anio", anio);
                 command.Parameters.AddWithValue("@porcentaje", porcentaje);
-                int result = command.ExecuteNonQuery();
+                var returnParameter = command.Parameters.Add("@result", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+                command.ExecuteNonQuery();
+                var result = returnParameter.Value;
                 closeConnections();
-                return result;
+                return Int32.Parse(result.ToString());
             }
         }
     }
