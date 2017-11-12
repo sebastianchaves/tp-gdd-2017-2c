@@ -129,12 +129,6 @@
     <Compile Include="Busquedas\BusquedaFactura.Designer.cs">
       <DependentUpon>BusquedaFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="Busquedas\BusquedaRendicion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Busquedas\BusquedaRendicion.Designer.cs">
-      <DependentUpon>BusquedaRendicion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Busquedas\BusquedaSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,11 +229,11 @@
     <Compile Include="RegistroPago\RegistroPagoForm.Designer.cs">
       <DependentUpon>RegistroPagoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rendiciones\FrmRendicion.cs">
+    <Compile Include="RendicionesPKG\RendicionPKGFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Rendiciones\FrmRendicion.Designer.cs">
-      <DependentUpon>FrmRendicion.cs</DependentUpon>
+    <Compile Include="RendicionesPKG\RendicionPKGFrm.Designer.cs">
+      <DependentUpon>RendicionPKGFrm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
@@ -283,9 +277,6 @@
     <EmbeddedResource Include="Busquedas\BusquedaFactura.resx">
       <DependentUpon>BusquedaFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Busquedas\BusquedaRendicion.resx">
-      <DependentUpon>BusquedaRendicion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Busquedas\BusquedaSucursal.resx">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,9 +315,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroPago\RegistroPagoForm.resx">
       <DependentUpon>RegistroPagoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rendiciones\FrmRendicion.resx">
-      <DependentUpon>FrmRendicion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
