@@ -1,16 +1,18 @@
 CREATE PROCEDURE [ROCKET_DATABASE].rendirEmpresa   
     @id_empresa int,
+	@dia int,
 	@mes int,
 	@anio int,
 	@porcentaje decimal
 AS   
 	declare @cantFacturas int;
-	declare @importeTotal decimal(8,2);
-	declare @comision decimal(8,2);
-	declare @dia int;
+	declare @importeTotal decimal(12,2);
+	declare @comision decimal(12,2);
 	declare @diaString varchar(2);
 	declare @mesString varchar(2);
 	declare @idRendicion int;
+	declare @tieneRendiciones int;
+	declare @result int;
 	declare @idRendicionTable table
 	(
 	  id_rendicion int
@@ -18,10 +20,8 @@ AS
 	declare @idFacturaTable table
 	(
 	  id_factura int,
-	  total decimal(8,2)
+	  total decimal(12,2)
 	);
-
-	select @dia=dia_de_rendicion from ROCKET_DATABASE.EMPRESAS e where e.id_empresa = @id_empresa;
 
 	if @dia < 10
 		set @diaString = '0' + cast(@dia as varchar(1));
@@ -33,6 +33,12 @@ AS
 	else
 		set @mesString = cast(@mes as varchar(2));
 
+	set @result = 0;
+
+	select @tieneRendiciones = count(1) from ROCKET_DATABASE.RENDICIONES r
+	where r.id_empresa = @id_empresa and year(r.fecha) = @anio
+	and month(r.fecha) = @mes;
+
 	insert into @idFacturaTable
 	select f.id_factura, f.total
 	from ROCKET_DATABASE.FACTURAS f, ROCKET_DATABASE.PAGO_FACTURA pf, ROCKET_DATABASE.PAGOS p 
@@ -42,10 +48,19 @@ AS
 	select @cantFacturas = count(1) from @idFacturaTable;
 	select @importeTotal = sum(total) from @idFacturaTable;
 
-	set @comision = @importeTotal / 100 * @porcentaje;
+	if @cantFacturas = 0
+		set @result = 2;
+	if @tieneRendiciones > 0
+		set @result = 1;
 
-	if @cantFacturas > 0
+	if @porcentaje = 0
+		set @comision = 0;
+	else
+		set @comision = @importeTotal / 100 * @porcentaje;
+
+	if @cantFacturas > 0 and @tieneRendiciones = 0
 		begin
+
 			insert into ROCKET_DATABASE.RENDICIONES 
 			OUTPUT inserted.id_rendicion into @idRendicionTable
 			values (@cantFacturas, 
@@ -57,4 +72,5 @@ AS
 			update ROCKET_DATABASE.FACTURAS set id_rendicion = @idRendicion where id_factura in
 			(select id_factura from @idFacturaTable);
 		end;
+		return @result;
 GO  

@@ -58,7 +58,7 @@ GO
 CREATE TABLE [ROCKET_DATABASE].[PAGOS](
 	id_pago int IDENTITY(1,1) primary key,
 	fecha_cobro datetime,
-	importe decimal(8,2) not null,
+	importe decimal(12,2) not null,
 	id_forma_pago int not null,
 	id_sucursal int not null,
 	id_cliente int,
@@ -84,8 +84,8 @@ CREATE TABLE ROCKET_DATABASE.RENDICIONES(
 	id_rendicion int IDENTITY(1,1) primary key,
 	cantidad_facturas_rendidas int,
 	fecha datetime,
-	comision decimal(8,2),
-	valor_total decimal (8,2),
+	comision decimal(12,2),
+	valor_total decimal (12,2),
 	porcentaje int,
 	id_empresa int not null,
 	foreign key (id_empresa) references ROCKET_DATABASE.EMPRESAS(id_empresa)
@@ -95,7 +95,7 @@ CREATE TABLE [ROCKET_DATABASE].[FACTURAS](
 	id_factura int IDENTITY(1,1) primary key,
 	nro_factura int,
 	fecha_alta datetime,
-	total decimal (8,2) not null,
+	total decimal (12,2) not null,
 	fecha_vencimiento datetime,
 	id_rendicion int,
 	id_cliente int,
