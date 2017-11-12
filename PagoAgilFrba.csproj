@@ -181,6 +181,7 @@
     <Compile Include="Modelo\DAOs\UsuarioDAO.cs" />
     <Compile Include="Modelo\Entidades\Cliente.cs" />
     <Compile Include="Modelo\Entidades\ClienteConPagos.cs" />
+    <Compile Include="Modelo\Entidades\PorcentajeFacturasPagadas.cs" />
     <Compile Include="Modelo\Entidades\EmpresaConMontoRendido.cs" />
     <Compile Include="Modelo\Entidades\Empresa.cs" />
     <Compile Include="Modelo\Entidades\Factura.cs" />
