@@ -170,6 +170,16 @@ namespace PagoAgilFrba.AbmFactura
         {
             this.agregarFactura();
             Utils.clearTextBoxes(this);
+
+
+            if (this.conceptosGrid.Rows.Count != 0)
+            {
+                for (int i = 0; i < this.conceptosGrid.Rows.Count; i++)
+                {
+                    this.conceptosGrid.Rows.RemoveAt(i);
+                }
+            }
+
             this.nuevaFactura = new Factura();
             this.conceptosAgregados = new List<Concepto>();
         }
