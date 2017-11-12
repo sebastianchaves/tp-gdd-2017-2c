@@ -235,12 +235,6 @@
     <Compile Include="RegistroPago\RegistroPagoForm.Designer.cs">
       <DependentUpon>RegistroPagoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rendiciones\FrmRendicion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Rendiciones\FrmRendicion.Designer.cs">
-      <DependentUpon>FrmRendicion.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,9 +318,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistroPago\RegistroPagoForm.resx">
       <DependentUpon>RegistroPagoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rendiciones\FrmRendicion.resx">
-      <DependentUpon>FrmRendicion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
