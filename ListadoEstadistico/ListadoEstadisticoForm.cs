@@ -13,21 +13,16 @@ namespace PagoAgilFrba.ListadoEstadistico
 {
     public partial class ListadoEstadisticoForm : Form
     {
-
-        // Atributos
-        private Dictionary<int, String> tiposListados;
-
         // Constructores
         public ListadoEstadisticoForm()
         {
             InitializeComponent();
 
-            this.tiposListados = new Dictionary<int, String>();
             Utils.iniciarGrids(resultadosGrid);
             this.cargarTipos();
+            this.cargarCuatrimestres();
         }
 
-        // Metodos
         private void cargarTipos()
         {
             var dataSource = new List<String>();
@@ -35,19 +30,31 @@ namespace PagoAgilFrba.ListadoEstadistico
             String porcentajeFacturasEmpresas = "Porcentaje de facturas cobradas por empresa";
             String mayorRendicion = "Empresas con mayor monto rendido";
             String masPagos = "Clientes con mas pagos";
-            String porcentajeFacturasClientes = "Clientes con mayor porcentaje de facturas pagadas (clientes cumplidores)";
+            String porcentajeFacturasClientes = "Clientes con mayor porcentaje de facturas pagadas";
 
             dataSource.Add(porcentajeFacturasEmpresas);
             dataSource.Add(mayorRendicion);
             dataSource.Add(masPagos);
             dataSource.Add(porcentajeFacturasClientes);
 
-            this.tiposListados.Add(0, porcentajeFacturasEmpresas);
-            this.tiposListados.Add(1, mayorRendicion);
-            this.tiposListados.Add(2, masPagos);
-            this.tiposListados.Add(3, porcentajeFacturasClientes);
-
             this.tipoCombo.DataSource = dataSource;
+        }
+
+        private void cargarCuatrimestres()
+        {
+            var dataSource = new List<String>();
+
+            String porcentajeFacturasEmpresas = "1";
+            String mayorRendicion = "2";
+            String masPagos = "3";
+            String porcentajeFacturasClientes = "4s";
+
+            dataSource.Add(porcentajeFacturasEmpresas);
+            dataSource.Add(mayorRendicion);
+            dataSource.Add(masPagos);
+            dataSource.Add(porcentajeFacturasClientes);
+
+            this.trimestreCombo.DataSource = dataSource;
         }
 
         // Eventos
@@ -62,10 +69,6 @@ namespace PagoAgilFrba.ListadoEstadistico
         {
             this.Close();
         }
-
-
-        
-
 
     }
 }

@@ -176,7 +176,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listado";
             // 
-            // ListadoEstadistico
+            // ListadoEstadisticoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,7 +185,7 @@
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.confeccioneSuListadoGroupBox);
             this.Controls.Add(this.listadosEstadisticosLabel);
-            this.Name = "ListadoEstadistico";
+            this.Name = "ListadoEstadisticoForm";
             this.Text = "Listados Estadísticos";
             ((System.ComponentModel.ISupportInitialize)(this.anioNumeric)).EndInit();
             this.confeccioneSuListadoGroupBox.ResumeLayout(false);
