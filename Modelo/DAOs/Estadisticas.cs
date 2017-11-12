@@ -135,4 +135,51 @@ namespace PagoAgilFrba.Modelo.DAOs
             return obtenerPorQueryGenerica(query, allColumns, tipos);
         }
     }
+
+    class PorcentajeFacturasPagadas<T> : Dao<T>
+    {
+        private const String FECHA_INICIO = "#FECHA_INICIO#";
+        private const String FECHA_FIN = "#FECHA_FIN#";
+        private const String PORCENTAJE_FACTURAS_PAGADAS =
+"select c.id_cliente, c.apellido, c.nombre, ( convert(decimal(5, 2), " +
+"(select count(1) from ROCKET_DATABASE.facturas f, rocket_database.pago_factura p " +
+"where f.id_cliente = c.id_cliente and f.id_factura = p.id_factura and " +
+"f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')) * 100.0 / " +
+"(select count(1) from ROCKET_DATABASE.facturas f where f.id_cliente = c.id_cliente AND " +
+"f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')))) as porcentajePagados " +
+"from ROCKET_DATABASE.clientes c where " +
+"(select count(1) from ROCKET_DATABASE.facturas f where f.id_cliente = c.id_cliente and " +
+"f.fecha_alta > convert(datetime, '#FECHA_INICIO#') and f.fecha_alta < convert(datetime, '#FECHA_FIN#')) > 0 ";
+
+        private List<String> tipos;
+        private List<String> allColumns;
+        private List<String> allColumnsInDB;
+
+        public PorcentajeFacturasPagadas()
+        {
+            this.tipos = new List<String>();
+            this.allColumns = new List<String>();
+            this.allColumnsInDB = new List<String>();
+
+            tipos.Add(Utils.Utils.INT_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
+            tipos.Add(Utils.Utils.DECIMAL_TYPE);
+
+            allColumns.Add("idCliente");
+            allColumns.Add("apellido");
+            allColumns.Add("nombre");
+            allColumns.Add("porcentajePagados");
+        }
+
+        public List<T> obtenerPorcentajeFacturasPagadas(int anio, int trimestre)
+        {
+            String fechaInicio = Utils.Utils.getInicioTrimestre(anio, trimestre);
+            String fechaFin = Utils.Utils.getFinTrimestre(anio, trimestre);
+            String query = PORCENTAJE_FACTURAS_PAGADAS;
+            query = query.Replace(FECHA_INICIO, fechaInicio);
+            query = query.Replace(FECHA_FIN, fechaFin);
+            return obtenerPorQueryGenerica(query, allColumns, tipos);
+        }
+    }
 }

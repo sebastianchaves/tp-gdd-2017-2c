@@ -120,7 +120,7 @@ namespace PagoAgilFrba.Modelo.Utils
                 case 3:
                     fechaInicio += "-07-01";
                     break;
-                case 4:
+                default:
                     fechaInicio += "-10-01";
                     break;
             }
@@ -140,7 +140,7 @@ namespace PagoAgilFrba.Modelo.Utils
                 case 3:
                     fechaFin += "-09-30";
                     break;
-                case 4:
+                default:
                     fechaFin += "-12-31";
                     break;
             }

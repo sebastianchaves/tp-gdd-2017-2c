@@ -26,9 +26,8 @@ namespace PagoAgilFrba
         public FrmLogin()
         {
             InitializeComponent();
-            ClienteConPagosDAO<ClienteConPagos> dao = new ClienteConPagosDAO<ClienteConPagos>();
-            List<ClienteConPagos> result = dao.obtenerClientesConMasPagos(2017, 1);
-            this.usuarioDao = new UsuarioDAO<Usuario>();
+            FacturaDAO<Factura> dao = new FacturaDAO<Factura>();
+            List<Factura> facturas = dao.obtenerFacturas(10002);
             this.sucursalDao = new SucursalDAO<Sucursal>();
         }
 
