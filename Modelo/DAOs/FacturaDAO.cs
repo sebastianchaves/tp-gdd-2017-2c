@@ -11,7 +11,7 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
 
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.FACTURAS";
-        private const String TODOS_LAS_FACTURAS = "select f.*, (select count(1) from ROCKET_DATABASE.PAGO_FACTURA pf where pf.id_factura = f.id_factura) as pagada from ROCKET_DATABASE.FACTURAS f where f.nro_factura = ";
+        private const String OBTENER_CON_COLUMNA_PAGADA = "select f.*, convert(Bit, (select count(1) from ROCKET_DATABASE.PAGO_FACTURA pf where pf.id_factura = f.id_factura)) as pagada from ROCKET_DATABASE.FACTURAS f where f.nro_factura = ";
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
@@ -30,7 +30,6 @@ namespace PagoAgilFrba.Modelo.DAOs
             tipos.Add(Utils.Utils.INT_TYPE);
             tipos.Add(Utils.Utils.INT_TYPE);
             tipos.Add(Utils.Utils.INT_TYPE);
-            tipos.Add(Utils.Utils.BIT_TYPE);
 
             allColumns.Add("id");
             allColumns.Add("numero");
@@ -40,7 +39,6 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumns.Add("idRendicion");
             allColumns.Add("idCliente");
             allColumns.Add("idEmpresa");
-            allColumns.Add("pagada");
 
             allColumnsInDB.Add("id_factura");
             allColumnsInDB.Add("nro_factura");
@@ -72,8 +70,13 @@ namespace PagoAgilFrba.Modelo.DAOs
         // Selects
         public List<T> obtenerFacturas(int numeroFactura)
         {
-            return obtenerPorQueryGenerica(TODOS_LAS_FACTURAS + numeroFactura.ToString(), allColumns, tipos);
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("nro_factura", numeroFactura, Utils.Utils.INT_TYPE);
+            List<String> newTipos = new List<string>(tipos);
+            newTipos.Add(Utils.Utils.BIT_TYPE);
+            List<String> newAllColumns = new List<String>(allColumns);
+            newAllColumns.Add("pagada");
+            return this.obtenerPorQueryGenerica(OBTENER_CON_COLUMNA_PAGADA + numeroFactura.ToString(), newAllColumns, newTipos);
         }
-
     }
 }
