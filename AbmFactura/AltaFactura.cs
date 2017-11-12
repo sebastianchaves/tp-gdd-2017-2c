@@ -145,7 +145,8 @@ namespace PagoAgilFrba.AbmFactura
 
             foreach (Concepto concepto in this.conceptosAgregados)
             {
-                concepto.id = idNuevaFactura;
+                concepto.idFactura = idNuevaFactura;
+
                 this.conceptoDao.agregarConcepto(concepto);
             }
 

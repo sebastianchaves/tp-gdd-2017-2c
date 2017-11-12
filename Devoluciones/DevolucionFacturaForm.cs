@@ -1,6 +1,7 @@
 ﻿using PagoAgilFrba.Busquedas;
 using PagoAgilFrba.Modelo.DAOs;
 using PagoAgilFrba.Modelo.Entidades;
+using PagoAgilFrba.Modelo.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,12 +22,15 @@ namespace PagoAgilFrba.Devoluciones
         private Factura facturaACargar;
 
         private DevolucionDAO<Devolucion> devolucionDao;
+        private TipoDevolucionDAO<TipoDevolucion> tipoDevolucionDao;
+        private DevolucionFacturaDAO<DevolucionFactura> devolucionFacturaDao;
 
         public DevolucionFacturaForm()
         {
             InitializeComponent();
 
             this.devolucionDao = new DevolucionDAO<Devolucion>();
+            this.tipoDevolucionDao = new TipoDevolucionDAO<TipoDevolucion>();
 
             this.nuevaDevolucion = new Devolucion();
             this.nuevaDevolucionFactura = new DevolucionFactura();
@@ -38,6 +42,9 @@ namespace PagoAgilFrba.Devoluciones
             if (camposCompletos())
             {
                 this.devolucionDao.agregarDevolucion(this.nuevaDevolucion);
+                
+                //this.devolucionFacturaDao.agregarDevolucionFactura(this.nuevaDevolucionFactura);
+                
                 MessageBox.Show("Devolucion agregada!");
             }
             else
@@ -71,9 +78,7 @@ namespace PagoAgilFrba.Devoluciones
 
             this.nuevaDevolucion.fecha = this.fechaInput.Value;
             this.nuevaDevolucion.motivo = this.motivoInput.Text;
-
-            this.nuevaDevolucion.idTipoDevolucion = this.devolucionDao.findTipoDevolucion("devolucion_factura").ElementAt(0).id;
-
+            this.nuevaDevolucion.idTipoDevolucion = this.tipoDevolucionDao.findTipoDevolucion("devolucion_factura").ElementAt(0).id;
         }
 
         // Eventos
@@ -85,9 +90,9 @@ namespace PagoAgilFrba.Devoluciones
                 busquedaForm.ShowDialog(this);
                 this.facturaACargar = busquedaForm.getFacturaEncontrada();
 
-                if (this.facturaACargar.id != 0)
+                if (this.facturaACargar != null)
                 {
-                    if (this.facturaACargar.idRendicion != 0 && !this.facturaACargar.pagada)
+                    if (this.facturaACargar.idRendicion == 0 && !this.facturaACargar.pagada)
                     {
                         this.botonDevolver.Enabled = true;
                         this.cargarDatos();
@@ -95,7 +100,7 @@ namespace PagoAgilFrba.Devoluciones
                     }
                     else
                     {
-                        if (this.facturaACargar.idRendicion == 0)
+                        if (this.facturaACargar.idRendicion != 0)
                         {
                             MessageBox.Show("La factura ya se encuentra rendida");
                         }
@@ -112,8 +117,13 @@ namespace PagoAgilFrba.Devoluciones
         private void botonDevolver_Click(object sender, EventArgs e)
         {
             this.devolverFactura();
+            Utils.clearTextBoxes(this);
 
+            this.nuevaDevolucion = new Devolucion();
+            this.nuevaDevolucionFactura = new DevolucionFactura();
             this.deshabilitarCampos();
+            this.botonDevolver.Enabled = false;
+
         }
 
         // Boton Volver

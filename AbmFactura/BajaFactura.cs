@@ -39,7 +39,7 @@ namespace PagoAgilFrba.AbmFactura
                 busquedaForm.ShowDialog(this);
                 this.facturaACargar = busquedaForm.getFacturaEncontrada();
 
-                if (this.facturaACargar.id != 0)
+                if (this.facturaACargar != null)
                 {
                     this.botonBaja.Enabled = true;
                     this.cargarDatos();

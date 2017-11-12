@@ -12,7 +12,6 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
 
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.DEVOLUCIONES";
-        private const String TABLA_TIPO_DEVOLUCION = "GD2C2017.ROCKET_DATABASE.TIPO_DEVOLUCION";
         private List<String> tipos;
         private List<String> allColumns;
         private List<String> allColumnsInDB;
@@ -33,7 +32,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumns.Add("idTipoDevolucion");
             allColumns.Add("motivo");
 
-            allColumnsInDB.Add("id");
+            allColumnsInDB.Add("id_devolucion");
             allColumnsInDB.Add("fecha");
             allColumnsInDB.Add("id_tipo_devolucion");
             allColumnsInDB.Add("motivo_devolucion");
@@ -49,17 +48,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             valores.Add(devolucion.idTipoDevolucion.ToString());
             valores.Add(devolucion.motivo);
 
-            insert(TABLA, allColumnsInDB, tipos, valores);
-        }
-
-        // Selects
-        public List<T> findTipoDevolucion(string nombreTipoDevolucion)
-        {
-            Condicion condicion = new Condicion();
-            condicion.agregarCondicion("nombre", nombreTipoDevolucion, Utils.Utils.STRING_TYPE);
-
-            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
-            return getEntities(resultSet, allColumns, tipos);
+            insert(TABLA, allColumnsInDB, tipos, valores, true);
         }
 
     }

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.RegistroPago;
 using PagoAgilFrba.AbmFactura;
+using PagoAgilFrba.Devoluciones;
 
 namespace PagoAgilFrba
 {
@@ -25,7 +26,7 @@ namespace PagoAgilFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            Application.Run(new DevolucionFacturaForm());
         }
     }
 }

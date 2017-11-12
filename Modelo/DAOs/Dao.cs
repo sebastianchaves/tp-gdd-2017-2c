@@ -203,6 +203,11 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         protected int insert(String tabla, List<String> columnas, List<String> tipos, List<String> valores)
         {
+            return this.insert(tabla, columnas, tipos, valores, false);
+        }
+
+        protected int insert(String tabla, List<String> columnas, List<String> tipos, List<String> valores, bool output)
+        {
             String insert = "INSERT INTO " + tabla + "(";
             for (int i = 0; i < columnas.Count; i++)
             {
@@ -215,7 +220,15 @@ namespace PagoAgilFrba.Modelo.DAOs
                     }
                 }
             }
-            insert += ") VALUES (";
+
+            if (output)
+            {
+                insert += ") OUTPUT INSERTED." + columnas.ElementAt(0) + " VALUES (";
+            }
+            else
+            {
+                insert += ") VALUES (";
+            }
 
             for (int i = 0; i < columnas.Count; i++)
             {
@@ -254,9 +267,19 @@ namespace PagoAgilFrba.Modelo.DAOs
             insert += ") ";
             using (this.connection = new SqlConnection(CONNECTION_STRING))
             {
+                int result;
                 this.connection.Open();
                 SqlCommand command = new SqlCommand(insert, connection);
-                int result = command.ExecuteNonQuery();
+
+                if (!output)
+                {
+                    result = command.ExecuteNonQuery();
+                }
+                else
+                {
+                    result = (int)command.ExecuteScalar();
+                }
+
                 closeConnections();
                 return result;
             }

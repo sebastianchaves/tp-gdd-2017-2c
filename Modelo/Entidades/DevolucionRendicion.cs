@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.Entidades
 {
-    public class DevolucionFactura
+    public class DevolucionRendicion
     {
 
         public int idDevolucion;
-        public int idFactura;
+        public int idRendicion;
 
     }
 }

@@ -43,5 +43,6 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumnsInDB.Add("porcentaje");
             allColumnsInDB.Add("id_empresa");
         }
+
     }
 }

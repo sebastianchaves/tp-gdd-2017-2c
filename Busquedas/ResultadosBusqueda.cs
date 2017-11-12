@@ -240,9 +240,9 @@ namespace PagoAgilFrba.Busquedas
             {
                 this.facturaSeleccionada = new Factura();
 
-                String numeroFactura = this.resultadosGrid.Rows[index].Cells[0].Value.ToString();
+                int numeroFactura = Int32.Parse(this.resultadosGrid.Rows[index].Cells[0].Value.ToString());
 
-                this.facturaSeleccionada = this.facturasEncontradas.Find(factura => factura.numero.Equals(numeroFactura));
+                this.facturaSeleccionada = this.facturasEncontradas.Find(factura => factura.numero == numeroFactura);
             }
 
             this.Close();
