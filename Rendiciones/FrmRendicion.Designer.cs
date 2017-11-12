@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Rendicion
+            // FrmRendicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 261);
-            this.Name = "Rendicion";
-            this.Text = "Form1";
+            this.Name = "FrmRendicion";
+            this.Text = "  ";
             this.ResumeLayout(false);
 
         }

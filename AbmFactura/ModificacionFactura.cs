@@ -1,4 +1,5 @@
 ﻿using PagoAgilFrba.Busquedas;
+using PagoAgilFrba.Model;
 using PagoAgilFrba.Modelo.DAOs;
 using PagoAgilFrba.Modelo.Entidades;
 using System;
@@ -20,6 +21,9 @@ namespace PagoAgilFrba.AbmFactura
         private Factura facturaModificada;
         private FacturaDAO<Factura> facturaDao;
 
+        private Cliente clienteEncontrado;
+        private Empresa empresaEncontrada;
+
         public ModificacionFactura()
         {
             InitializeComponent();
@@ -40,11 +44,19 @@ namespace PagoAgilFrba.AbmFactura
 
         private void habilitarCampos()
         {
+            this.botonBuscarCliente.Enabled = true;
+            this.botonBuscarEmpresa.Enabled = true;
 
+            this.fechaAltaInput.Enabled = true;
+            this.fechaVencimientoInput.Enabled = true;
+
+            this.montoInput.Enabled = true;
+            this.cantidadInput.Enabled = true;
         }
 
         private void deshabilitarCampos()
         {
+
 
         }
 
@@ -80,6 +92,30 @@ namespace PagoAgilFrba.AbmFactura
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // Boton Buscar Cliente
+        private void botonBuscarCliente_Click(object sender, EventArgs e)
+        {
+            using (BusquedaCliente busquedaForm = new BusquedaCliente())
+            {
+                busquedaForm.ShowDialog(this);
+                this.clienteEncontrado = busquedaForm.getClienteEncontrado();
+                this.clienteInput.Text = this.clienteEncontrado.nombre;
+                this.facturaModificada.idCliente = this.clienteEncontrado.id;
+            }
+        }
+
+        // Boton Buscar Empresa
+        private void botonBuscarEmpresa_Click(object sender, EventArgs e)
+        {
+            using (BusquedaEmpresa busquedaForm = new BusquedaEmpresa())
+            {
+                busquedaForm.ShowDialog(this);
+                this.empresaEncontrada = busquedaForm.getEmpresaEncontrada();
+                this.empresaInput.Text = this.empresaEncontrada.nombre;
+                this.facturaModificada.idEmpresa = this.empresaEncontrada.id;
+            }
         }
 
 

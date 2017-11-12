@@ -30,12 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionFactura));
             this.modificacionFacturaLabel = new System.Windows.Forms.Label();
-            this.datosClienteGroupbox = new System.Windows.Forms.GroupBox();
-            this.clienteInput = new System.Windows.Forms.TextBox();
-            this.clienteLabel = new System.Windows.Forms.Label();
-            this.datosEmpresaGroupbox = new System.Windows.Forms.GroupBox();
-            this.empresaInput = new System.Windows.Forms.TextBox();
-            this.empresaLabel = new System.Windows.Forms.Label();
             this.datosItemGroupbox = new System.Windows.Forms.GroupBox();
             this.cantidadInput = new System.Windows.Forms.TextBox();
             this.montoInput = new System.Windows.Forms.TextBox();
@@ -53,12 +47,20 @@
             this.botonVolver = new System.Windows.Forms.Button();
             this.botonActualizar = new System.Windows.Forms.Button();
             this.botonBuscar = new System.Windows.Forms.Button();
-            this.datosClienteGroupbox.SuspendLayout();
-            this.datosEmpresaGroupbox.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.botonBuscarCliente = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.clienteInput = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.botonBuscarEmpresa = new System.Windows.Forms.Button();
+            this.empresaInput = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.datosItemGroupbox.SuspendLayout();
             this.datosFacturaGroupbox.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // modificacionFacturaLabel
@@ -70,61 +72,6 @@
             this.modificacionFacturaLabel.Size = new System.Drawing.Size(156, 20);
             this.modificacionFacturaLabel.TabIndex = 1;
             this.modificacionFacturaLabel.Text = "Modificacion Factura";
-            // 
-            // datosClienteGroupbox
-            // 
-            this.datosClienteGroupbox.Controls.Add(this.clienteInput);
-            this.datosClienteGroupbox.Controls.Add(this.clienteLabel);
-            this.datosClienteGroupbox.Location = new System.Drawing.Point(12, 40);
-            this.datosClienteGroupbox.Name = "datosClienteGroupbox";
-            this.datosClienteGroupbox.Size = new System.Drawing.Size(213, 100);
-            this.datosClienteGroupbox.TabIndex = 4;
-            this.datosClienteGroupbox.TabStop = false;
-            this.datosClienteGroupbox.Text = "Datos Cliente:";
-            // 
-            // clienteInput
-            // 
-            this.clienteInput.Location = new System.Drawing.Point(10, 55);
-            this.clienteInput.Name = "clienteInput";
-            this.clienteInput.ReadOnly = true;
-            this.clienteInput.Size = new System.Drawing.Size(197, 20);
-            this.clienteInput.TabIndex = 1;
-            // 
-            // clienteLabel
-            // 
-            this.clienteLabel.AutoSize = true;
-            this.clienteLabel.Location = new System.Drawing.Point(7, 29);
-            this.clienteLabel.Name = "clienteLabel";
-            this.clienteLabel.Size = new System.Drawing.Size(42, 13);
-            this.clienteLabel.TabIndex = 0;
-            this.clienteLabel.Text = "Cliente:";
-            // 
-            // datosEmpresaGroupbox
-            // 
-            this.datosEmpresaGroupbox.Controls.Add(this.empresaInput);
-            this.datosEmpresaGroupbox.Controls.Add(this.empresaLabel);
-            this.datosEmpresaGroupbox.Location = new System.Drawing.Point(12, 146);
-            this.datosEmpresaGroupbox.Name = "datosEmpresaGroupbox";
-            this.datosEmpresaGroupbox.Size = new System.Drawing.Size(211, 100);
-            this.datosEmpresaGroupbox.TabIndex = 5;
-            this.datosEmpresaGroupbox.TabStop = false;
-            this.datosEmpresaGroupbox.Text = "Datos Empresa:";
-            // 
-            // empresaInput
-            // 
-            this.empresaInput.Location = new System.Drawing.Point(8, 57);
-            this.empresaInput.Name = "empresaInput";
-            this.empresaInput.ReadOnly = true;
-            this.empresaInput.Size = new System.Drawing.Size(197, 20);
-            this.empresaInput.TabIndex = 2;
-            // 
-            // empresaLabel
-            // 
-            this.empresaLabel.Location = new System.Drawing.Point(10, 31);
-            this.empresaLabel.Name = "empresaLabel";
-            this.empresaLabel.Size = new System.Drawing.Size(100, 23);
-            this.empresaLabel.TabIndex = 0;
-            this.empresaLabel.Text = "Empresa:";
             // 
             // datosItemGroupbox
             // 
@@ -141,17 +88,17 @@
             // 
             // cantidadInput
             // 
+            this.cantidadInput.Enabled = false;
             this.cantidadInput.Location = new System.Drawing.Point(67, 65);
             this.cantidadInput.Name = "cantidadInput";
-            this.cantidadInput.ReadOnly = true;
             this.cantidadInput.Size = new System.Drawing.Size(138, 20);
             this.cantidadInput.TabIndex = 3;
             // 
             // montoInput
             // 
+            this.montoInput.Enabled = false;
             this.montoInput.Location = new System.Drawing.Point(67, 27);
             this.montoInput.Name = "montoInput";
-            this.montoInput.ReadOnly = true;
             this.montoInput.Size = new System.Drawing.Size(138, 20);
             this.montoInput.TabIndex = 2;
             // 
@@ -184,7 +131,7 @@
             this.datosFacturaGroupbox.Controls.Add(this.numeroLabel);
             this.datosFacturaGroupbox.Location = new System.Drawing.Point(231, 40);
             this.datosFacturaGroupbox.Name = "datosFacturaGroupbox";
-            this.datosFacturaGroupbox.Size = new System.Drawing.Size(363, 312);
+            this.datosFacturaGroupbox.Size = new System.Drawing.Size(363, 313);
             this.datosFacturaGroupbox.TabIndex = 7;
             this.datosFacturaGroupbox.TabStop = false;
             this.datosFacturaGroupbox.Text = "Datos Factura:";
@@ -209,6 +156,7 @@
             // 
             // fechaVencimientoInput
             // 
+            this.fechaVencimientoInput.Enabled = false;
             this.fechaVencimientoInput.Location = new System.Drawing.Point(133, 79);
             this.fechaVencimientoInput.Name = "fechaVencimientoInput";
             this.fechaVencimientoInput.Size = new System.Drawing.Size(224, 20);
@@ -216,6 +164,7 @@
             // 
             // fechaAltaInput
             // 
+            this.fechaAltaInput.Enabled = false;
             this.fechaAltaInput.Location = new System.Drawing.Point(133, 49);
             this.fechaAltaInput.Name = "fechaAltaInput";
             this.fechaAltaInput.Size = new System.Drawing.Size(224, 20);
@@ -258,7 +207,7 @@
             // 
             // botonVolver
             // 
-            this.botonVolver.Location = new System.Drawing.Point(352, 358);
+            this.botonVolver.Location = new System.Drawing.Point(353, 386);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(90, 30);
             this.botonVolver.TabIndex = 8;
@@ -269,7 +218,7 @@
             // botonActualizar
             // 
             this.botonActualizar.Enabled = false;
-            this.botonActualizar.Location = new System.Drawing.Point(256, 358);
+            this.botonActualizar.Location = new System.Drawing.Point(257, 386);
             this.botonActualizar.Name = "botonActualizar";
             this.botonActualizar.Size = new System.Drawing.Size(90, 30);
             this.botonActualizar.TabIndex = 9;
@@ -279,7 +228,7 @@
             // 
             // botonBuscar
             // 
-            this.botonBuscar.Location = new System.Drawing.Point(160, 358);
+            this.botonBuscar.Location = new System.Drawing.Point(161, 386);
             this.botonBuscar.Name = "botonBuscar";
             this.botonBuscar.Size = new System.Drawing.Size(90, 30);
             this.botonBuscar.TabIndex = 10;
@@ -287,18 +236,100 @@
             this.botonBuscar.UseVisualStyleBackColor = true;
             this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.clienteInput);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.botonBuscarCliente);
+            this.groupBox1.Location = new System.Drawing.Point(12, 40);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(213, 81);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Cliente";
+            // 
+            // botonBuscarCliente
+            // 
+            this.botonBuscarCliente.Enabled = false;
+            this.botonBuscarCliente.Location = new System.Drawing.Point(117, 44);
+            this.botonBuscarCliente.Name = "botonBuscarCliente";
+            this.botonBuscarCliente.Size = new System.Drawing.Size(90, 30);
+            this.botonBuscarCliente.TabIndex = 8;
+            this.botonBuscarCliente.Text = "Buscar";
+            this.botonBuscarCliente.UseVisualStyleBackColor = true;
+            this.botonBuscarCliente.Click += new System.EventHandler(this.botonBuscarCliente_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Cliente:";
+            // 
+            // clienteInput
+            // 
+            this.clienteInput.Enabled = false;
+            this.clienteInput.Location = new System.Drawing.Point(74, 18);
+            this.clienteInput.Name = "clienteInput";
+            this.clienteInput.ReadOnly = true;
+            this.clienteInput.Size = new System.Drawing.Size(131, 20);
+            this.clienteInput.TabIndex = 8;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.empresaInput);
+            this.groupBox2.Controls.Add(this.botonBuscarEmpresa);
+            this.groupBox2.Location = new System.Drawing.Point(12, 146);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(213, 81);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Datos Empresa";
+            // 
+            // botonBuscarEmpresa
+            // 
+            this.botonBuscarEmpresa.Enabled = false;
+            this.botonBuscarEmpresa.Location = new System.Drawing.Point(117, 46);
+            this.botonBuscarEmpresa.Name = "botonBuscarEmpresa";
+            this.botonBuscarEmpresa.Size = new System.Drawing.Size(90, 30);
+            this.botonBuscarEmpresa.TabIndex = 7;
+            this.botonBuscarEmpresa.Text = "Buscar";
+            this.botonBuscarEmpresa.UseVisualStyleBackColor = true;
+            this.botonBuscarEmpresa.Click += new System.EventHandler(this.botonBuscarEmpresa_Click);
+            // 
+            // empresaInput
+            // 
+            this.empresaInput.Enabled = false;
+            this.empresaInput.Location = new System.Drawing.Point(74, 20);
+            this.empresaInput.Name = "empresaInput";
+            this.empresaInput.ReadOnly = true;
+            this.empresaInput.Size = new System.Drawing.Size(131, 20);
+            this.empresaInput.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Empresa:";
+            // 
             // ModificacionFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 397);
+            this.ClientSize = new System.Drawing.Size(606, 428);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.botonBuscar);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.botonActualizar);
             this.Controls.Add(this.datosItemGroupbox);
             this.Controls.Add(this.datosFacturaGroupbox);
-            this.Controls.Add(this.datosEmpresaGroupbox);
-            this.Controls.Add(this.datosClienteGroupbox);
             this.Controls.Add(this.modificacionFacturaLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -306,16 +337,16 @@
             this.Name = "ModificacionFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion Factura";
-            this.datosClienteGroupbox.ResumeLayout(false);
-            this.datosClienteGroupbox.PerformLayout();
-            this.datosEmpresaGroupbox.ResumeLayout(false);
-            this.datosEmpresaGroupbox.PerformLayout();
             this.datosItemGroupbox.ResumeLayout(false);
             this.datosItemGroupbox.PerformLayout();
             this.datosFacturaGroupbox.ResumeLayout(false);
             this.datosFacturaGroupbox.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,14 +355,8 @@
         #endregion
 
         private System.Windows.Forms.Label modificacionFacturaLabel;
-        private System.Windows.Forms.GroupBox datosClienteGroupbox;
-        private System.Windows.Forms.GroupBox datosEmpresaGroupbox;
         private System.Windows.Forms.GroupBox datosItemGroupbox;
         private System.Windows.Forms.GroupBox datosFacturaGroupbox;
-        private System.Windows.Forms.Label clienteLabel;
-        private System.Windows.Forms.TextBox clienteInput;
-        private System.Windows.Forms.TextBox empresaInput;
-        private System.Windows.Forms.Label empresaLabel;
         private System.Windows.Forms.TextBox cantidadInput;
         private System.Windows.Forms.TextBox montoInput;
         private System.Windows.Forms.Label cantidadLabel;
@@ -347,5 +372,13 @@
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Button botonActualizar;
         private System.Windows.Forms.Button botonBuscar;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox clienteInput;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button botonBuscarCliente;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox empresaInput;
+        private System.Windows.Forms.Button botonBuscarEmpresa;
     }
 }
