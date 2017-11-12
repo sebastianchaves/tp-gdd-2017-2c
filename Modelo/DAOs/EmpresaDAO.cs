@@ -11,6 +11,7 @@ namespace PagoAgilFrba.Modelo.DAOs
     class EmpresaDAO<T>: Dao<T>
     {
 
+        private const String RENDICION_STORED_PROCEDURE = "[ROCKET_DATABASE].rendirEmpresa";
         private const String EMPRESAS = "GD2C2017.ROCKET_DATABASE.EMPRESAS";
         private const String RUBROS = "GD2C2017.ROCKET_DATABASE.RUBROS";
         private const String PUEDE_DESHABILITAR = "select count(1) from rocket_database.facturas f, "+
