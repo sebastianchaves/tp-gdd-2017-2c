@@ -26,7 +26,6 @@ namespace PagoAgilFrba
         public FrmLogin()
         {
             InitializeComponent();
-
             this.usuarioDao = new UsuarioDAO<Usuario>();
             this.sucursalDao = new SucursalDAO<Sucursal>();
         }
