@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.RendicionesPKG
 {
-    partial class RendicionPKGFrm
+    partial class RendicionConsultaFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,16 +32,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.mesCombo = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comisionText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.empresaIdCombo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.diaRendicionCombo = new System.Windows.Forms.ComboBox();
             this.anioCombo = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.rendicionesDataGrid = new System.Windows.Forms.DataGridView();
             this.confeccioneSuListadoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anioCombo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rendicionesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // confeccioneSuListadoGroupBox
@@ -49,8 +49,6 @@
             this.confeccioneSuListadoGroupBox.Controls.Add(this.label5);
             this.confeccioneSuListadoGroupBox.Controls.Add(this.mesCombo);
             this.confeccioneSuListadoGroupBox.Controls.Add(this.button1);
-            this.confeccioneSuListadoGroupBox.Controls.Add(this.label4);
-            this.confeccioneSuListadoGroupBox.Controls.Add(this.comisionText);
             this.confeccioneSuListadoGroupBox.Controls.Add(this.label3);
             this.confeccioneSuListadoGroupBox.Controls.Add(this.empresaIdCombo);
             this.confeccioneSuListadoGroupBox.Controls.Add(this.label1);
@@ -84,29 +82,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(420, 101);
+            this.button1.Location = new System.Drawing.Point(413, 100);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 23);
             this.button1.TabIndex = 11;
-            this.button1.Text = "Rendir";
+            this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(348, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Porcentaje comision";
-            // 
-            // comisionText
-            // 
-            this.comisionText.Location = new System.Drawing.Point(351, 44);
-            this.comisionText.Name = "comisionText";
-            this.comisionText.Size = new System.Drawing.Size(186, 20);
-            this.comisionText.TabIndex = 9;
             // 
             // label3
             // 
@@ -177,17 +159,27 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Año:";
             // 
-            // RendicionPKGFrm
+            // rendicionesDataGrid
+            // 
+            this.rendicionesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rendicionesDataGrid.Location = new System.Drawing.Point(86, 169);
+            this.rendicionesDataGrid.Name = "rendicionesDataGrid";
+            this.rendicionesDataGrid.Size = new System.Drawing.Size(561, 150);
+            this.rendicionesDataGrid.TabIndex = 11;
+            // 
+            // RendicionConsultaFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(735, 317);
+            this.ClientSize = new System.Drawing.Size(765, 365);
+            this.Controls.Add(this.rendicionesDataGrid);
             this.Controls.Add(this.confeccioneSuListadoGroupBox);
-            this.Name = "RendicionPKGFrm";
-            this.Text = "Alta de rendicion";
+            this.Name = "RendicionConsultaFrm";
+            this.Text = "Busqueda de rendicion";
             this.confeccioneSuListadoGroupBox.ResumeLayout(false);
             this.confeccioneSuListadoGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anioCombo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rendicionesDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -200,11 +192,10 @@
         private System.Windows.Forms.ComboBox diaRendicionCombo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox comisionText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox empresaIdCombo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox mesCombo;
+        private System.Windows.Forms.DataGridView rendicionesDataGrid;
     }
 }

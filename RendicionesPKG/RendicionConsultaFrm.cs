@@ -1,5 +1,7 @@
-﻿using PagoAgilFrba.Modelo.DAOs;
+﻿using PagoAgilFrba.Busquedas;
+using PagoAgilFrba.Modelo.DAOs;
 using PagoAgilFrba.Modelo.Entidades;
+using PagoAgilFrba.Modelo.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,21 +15,24 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.RendicionesPKG
 {
-    public partial class RendicionPKGFrm : Form
+    public partial class RendicionConsultaFrm : Form
     {
         private int diaSeleccionado=1;
         private int mesSeleccionado = 1;
         private int anioSeleccionado = 2017;
         private int empresaIdSeleccionado = 0;
         private EmpresaDAO<Empresa> empresaDao;
+        private RendicionDAO<Rendicion> rendicionDao;
         private Dictionary<int, int> empresasIds;
         private Dictionary<String, int> meses;
 
-        public RendicionPKGFrm()
+        public RendicionConsultaFrm()
         {
             InitializeComponent();
             inicializarMesCombo();
+            Utils.iniciarGrids(this.rendicionesDataGrid);
             this.empresaDao = new EmpresaDAO<Empresa>();
+            this.rendicionDao = new RendicionDAO<Rendicion>();
             for (int i = 1; i < 29; i++)
             {
                 String dia = i.ToString();
@@ -102,40 +107,24 @@ namespace PagoAgilFrba.RendicionesPKG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            decimal n;
-            bool isNumeric = decimal.TryParse(this.comisionText.Text, out n);
-            if (!isNumeric || this.empresaIdSeleccionado == 0)
+            DataTable gridEstadistica = new DataTable();
+
+            gridEstadistica.Columns.Add("cantidad facturas");
+            gridEstadistica.Columns.Add("fecha");
+            gridEstadistica.Columns.Add("comision");
+            gridEstadistica.Columns.Add("valor total");
+            gridEstadistica.Columns.Add("porcentaje");
+            gridEstadistica.Columns.Add("empresa");
+
+            List<Rendicion> results = 
+                rendicionDao.filtrarRendiciones(empresaIdSeleccionado, mesSeleccionado.ToString(), anioSeleccionado.ToString());
+
+            foreach (Rendicion item in results)
             {
-                MessageBox.Show("Ingrese por favor una comision y una empresa valida");
+                gridEstadistica.Rows.Add(item.cantidadFacturas, item.fecha, item.comision, item.valorTotal, item.porcentaje, item.nombreEmpresa);
             }
-            else
-            {
-                try
-                {
-                    int returnValue = empresaDao.rendirEmpresa(empresaIdSeleccionado, anioSeleccionado, mesSeleccionado, diaSeleccionado, n);
-                    if (returnValue == 0)
-                    {
-                        MessageBox.Show("Empresa rendida");
-                    }
-                    else if (returnValue == 1)
-                    {
-                        MessageBox.Show("Ya hay una rendicion en el mes y año indicado");
-                    }
-                    else if (returnValue == 2)
-                    {
-                        MessageBox.Show("No hay facturas que rendir en el mes y año seleccionado");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error en la fecha seleccionada");
-                    }
-                    
-                }
-                catch (SqlException s)
-                {
-                    MessageBox.Show("Hubo un error en la rendicion");
-                }
-            }
+
+            rendicionesDataGrid.DataSource = gridEstadistica;
         }
 
         private void mesCombo_SelectedIndexChanged(object sender, EventArgs e)

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.devolucionTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abmClienteTooltip = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,9 +53,12 @@
             this.estadisticasTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoEstadisticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rendicionTooltip = new System.Windows.Forms.ToolStripMenuItem();
-            this.botonSalir = new System.Windows.Forms.Button();
+            this.devolucionTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.devolucionFacturaTooltip = new System.Windows.Forms.ToolStripMenuItem();
             this.devolucionRendicionTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.botonSalir = new System.Windows.Forms.Button();
+            this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -89,15 +91,6 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // devolucionTooltip
-            // 
-            this.devolucionTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.devolucionFacturaTooltip,
-            this.devolucionRendicionTooltip});
-            this.devolucionTooltip.Name = "devolucionTooltip";
-            this.devolucionTooltip.Size = new System.Drawing.Size(79, 20);
-            this.devolucionTooltip.Text = "&Devolucion";
-            // 
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -109,7 +102,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -270,11 +263,38 @@
             // 
             // rendicionTooltip
             // 
+            this.rendicionTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarToolStripMenuItem,
+            this.altaToolStripMenuItem});
             this.rendicionTooltip.Enabled = false;
             this.rendicionTooltip.Name = "rendicionTooltip";
             this.rendicionTooltip.Size = new System.Drawing.Size(72, 20);
             this.rendicionTooltip.Text = "Re&ndición";
-            this.rendicionTooltip.Click += new System.EventHandler(this.rendicionTooltip_Click);
+            // 
+            // devolucionTooltip
+            // 
+            this.devolucionTooltip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.devolucionFacturaTooltip,
+            this.devolucionRendicionTooltip});
+            this.devolucionTooltip.Name = "devolucionTooltip";
+            this.devolucionTooltip.Size = new System.Drawing.Size(79, 20);
+            this.devolucionTooltip.Text = "&Devolucion";
+            // 
+            // devolucionFacturaTooltip
+            // 
+            this.devolucionFacturaTooltip.Enabled = false;
+            this.devolucionFacturaTooltip.Name = "devolucionFacturaTooltip";
+            this.devolucionFacturaTooltip.Size = new System.Drawing.Size(127, 22);
+            this.devolucionFacturaTooltip.Text = "&Factura";
+            this.devolucionFacturaTooltip.Click += new System.EventHandler(this.devolucionFacturaTooltip_Click);
+            // 
+            // devolucionRendicionTooltip
+            // 
+            this.devolucionRendicionTooltip.Enabled = false;
+            this.devolucionRendicionTooltip.Name = "devolucionRendicionTooltip";
+            this.devolucionRendicionTooltip.Size = new System.Drawing.Size(127, 22);
+            this.devolucionRendicionTooltip.Text = "&Rendicion";
+            this.devolucionRendicionTooltip.Click += new System.EventHandler(this.devolucionRendicionTooltip_Click);
             // 
             // botonSalir
             // 
@@ -286,21 +306,19 @@
             this.botonSalir.UseVisualStyleBackColor = true;
             this.botonSalir.Click += new System.EventHandler(this.botonSalir_Click);
             // 
-            // devolucionFacturaTooltip
+            // buscarToolStripMenuItem
             // 
-            this.devolucionFacturaTooltip.Enabled = false;
-            this.devolucionFacturaTooltip.Name = "devolucionFacturaTooltip";
-            this.devolucionFacturaTooltip.Size = new System.Drawing.Size(152, 22);
-            this.devolucionFacturaTooltip.Text = "&Factura";
-            this.devolucionFacturaTooltip.Click += new System.EventHandler(this.devolucionFacturaTooltip_Click);
+            this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
+            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.buscarToolStripMenuItem.Text = "Buscar";
+            this.buscarToolStripMenuItem.Click += new System.EventHandler(this.buscarToolStripMenuItem_Click);
             // 
-            // devolucionRendicionTooltip
+            // altaToolStripMenuItem
             // 
-            this.devolucionRendicionTooltip.Enabled = false;
-            this.devolucionRendicionTooltip.Name = "devolucionRendicionTooltip";
-            this.devolucionRendicionTooltip.Size = new System.Drawing.Size(152, 22);
-            this.devolucionRendicionTooltip.Text = "&Rendicion";
-            this.devolucionRendicionTooltip.Click += new System.EventHandler(this.devolucionRendicionTooltip_Click);
+            this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
+            this.altaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.altaToolStripMenuItem.Text = "Alta";
+            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -355,5 +373,7 @@
         private System.Windows.Forms.ToolStripMenuItem devolucionTooltip;
         private System.Windows.Forms.ToolStripMenuItem devolucionFacturaTooltip;
         private System.Windows.Forms.ToolStripMenuItem devolucionRendicionTooltip;
+        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem;
     }
 }

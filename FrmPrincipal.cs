@@ -188,12 +188,6 @@ namespace PagoAgilFrba
             new ModificacionSucursal().ShowDialog();
         }
 
-        // Rendiciones
-        private void rendicionTooltip_Click(object sender, EventArgs e)
-        {
-            new RendicionPKGFrm().ShowDialog();
-        }
-
         // Estadisticas
         private void listadoEstadisticoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -210,6 +204,16 @@ namespace PagoAgilFrba
         private void devolucionRendicionTooltip_Click(object sender, EventArgs e)
         {
             new DevolucionRendicionForm().ShowDialog();
+        }
+
+        private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RendicionConsultaFrm().ShowDialog();
+        }
+
+        private void altaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new RendicionAltaFrm().ShowDialog();
         }
 
     }
