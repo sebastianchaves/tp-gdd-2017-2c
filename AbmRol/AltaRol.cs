@@ -17,10 +17,14 @@ namespace PagoAgilFrba.AbmRol
     {
 
         private FuncionalidadDAO<Funcionalidad> funcionalidadDao;
+        private List<Funcionalidad> funcionalidadesEncontradas;
+
         private RolDAO<Rol> rolDao;
         private Rol nuevoRol;
-        private List<Funcionalidad> funcionalidadesEncontradas;
+        
         private Dictionary<int, String> funcionalidadesIDs;
+
+        private RolFuncionalidadDAO<RolFuncionalidad> rolFuncionalidadDao;
 
         public AltaRol()
         {
@@ -30,6 +34,8 @@ namespace PagoAgilFrba.AbmRol
             this.funcionalidadDao = new FuncionalidadDAO<Funcionalidad>();
             this.nuevoRol = new Rol();
             this.funcionalidadesIDs = new Dictionary<int, String>();
+
+            this.rolFuncionalidadDao = new RolFuncionalidadDAO<RolFuncionalidad>();
 
             this.cargarFuncionalidadesDisponibles();
         }
@@ -51,15 +57,33 @@ namespace PagoAgilFrba.AbmRol
         {
             this.nuevoRol.habilitado = true;
 
-            if (camposCompletos())
+            if (camposCompletos() && hayFuncionalidades())
             {
-                this.rolDao.agregarRol(nuevoRol);
+                int idNuevoRol = this.rolDao.agregarRol(nuevoRol);
+                this.insertarFuncionalidadesRol(this.nuevoRol.funcionalidades, idNuevoRol);
                 MessageBox.Show("Rol agregado!");
             }
             else
             {
                 MessageBox.Show("Complete los campos faltantes.");
             }
+        }
+
+        private void insertarFuncionalidadesRol(List<Funcionalidad> funcionalidades, int idNuevoRol)
+        {
+            foreach (Funcionalidad funcionalidad in funcionalidades)
+            {
+                RolFuncionalidad rolFuncionalidad = new RolFuncionalidad();
+                rolFuncionalidad.idFuncionalidad = funcionalidad.id;
+                rolFuncionalidad.idRol = idNuevoRol;
+
+                this.rolFuncionalidadDao.insert(rolFuncionalidad);
+            }
+        }
+
+        private Boolean hayFuncionalidades()
+        {
+            return this.nuevoRol.funcionalidades.Count > 0;
         }
 
         private Boolean camposCompletos()
@@ -78,6 +102,17 @@ namespace PagoAgilFrba.AbmRol
             }
         }
 
+        private void uncheckFuncionalidades()
+        {
+            for (int i = 0; i < this.funcionalidadesCheckbox.Items.Count; i++)
+            {
+                if (this.funcionalidadesCheckbox.GetItemCheckState(i).Equals(CheckState.Checked))
+                {
+                    this.funcionalidadesCheckbox.SetItemCheckState(i, CheckState.Unchecked);
+                }
+            }
+        }
+
         // Eventos
         // Boton Aceptar
         private void botonAceptar_Click(object sender, EventArgs e)
@@ -85,8 +120,8 @@ namespace PagoAgilFrba.AbmRol
             this.cargarFuncionalidades();
             this.cargarRol();
             this.nuevoRol = new Rol();
-            Utils.clearTextBoxes(this);
-            this.funcionalidadesCheckbox.Items.Clear();
+            this.nombreInput.Clear();
+            this.uncheckFuncionalidades();
         }
 
         // Boton Cancelar

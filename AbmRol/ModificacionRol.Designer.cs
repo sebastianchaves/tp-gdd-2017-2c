@@ -99,6 +99,7 @@
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(165, 20);
             this.nombreInput.TabIndex = 13;
+            this.nombreInput.Leave += new System.EventHandler(this.nombreInput_Leave);
             // 
             // nombreLabel
             // 
@@ -128,6 +129,7 @@
             this.deshabilitadoRadioButton.TabIndex = 9;
             this.deshabilitadoRadioButton.Text = "Deshabilitado";
             this.deshabilitadoRadioButton.UseVisualStyleBackColor = true;
+            this.deshabilitadoRadioButton.CheckedChanged += new System.EventHandler(this.deshabilitadoRadioButton_CheckedChanged);
             // 
             // habilitadoRadioButton
             // 
@@ -141,6 +143,7 @@
             this.habilitadoRadioButton.TabStop = true;
             this.habilitadoRadioButton.Text = "Habilitado";
             this.habilitadoRadioButton.UseVisualStyleBackColor = true;
+            this.habilitadoRadioButton.CheckedChanged += new System.EventHandler(this.habilitadoRadioButton_CheckedChanged);
             // 
             // funcionalidadesCheckbox
             // 

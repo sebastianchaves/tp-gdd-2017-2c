@@ -40,14 +40,14 @@ Facturas
 6) Validar en rendiciones que la empresa este habilitada ✓
 
 - ABM de Rol (SEBA)
-1) Testear ABM rol
-2) Datos de alta obligatorios y editables: nombre y funcionalidades
-3) las funcionalidades no pueden estar repetidas para un mismo rol
-4) la baja es logica
-5) no esta permitida la asignacion de un rol deshabilitado a un usuario
-6) cuando se deshabilita un rol, Se debe quitar el rol a todos aquellos usuarios que lo posean
-7) Si se vuelve a habilitar no hace falta volver a asignar a sus antiguos usuarios
-8) Insertar relacion ROL_FUNCIONALIDAD en la DB
+1) Testear ABM rol ✓
+2) Datos de alta obligatorios y editables: nombre y funcionalidades ✓
+3) las funcionalidades no pueden estar repetidas para un mismo rol ✓
+4) la baja es logica ✓
+5) no esta permitida la asignacion de un rol deshabilitado a un usuario ✓
+6) cuando se deshabilita un rol, Se debe quitar el rol a todos aquellos usuarios que lo posean ✓
+7) Si se vuelve a habilitar no hace falta volver a asignar a sus antiguos usuarios ✓
+8) Insertar relacion ROL_FUNCIONALIDAD en la DB ✓
 
 - Login y Seguridad (DANI)
 1) Al realizar un Login satisfactorio, el sistema deberá limpiar la cantidad de intentos fallidos.

@@ -33,14 +33,14 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumns.Add("descripcion");
             allColumns.Add("habilitado");
 
-            allColumnsInDB.Add("id");
+            allColumnsInDB.Add("id_rol");
             allColumnsInDB.Add("nombre");
             allColumnsInDB.Add("descripcion");
             allColumnsInDB.Add("habilitado");
         }
 
         // Inserts
-        public void agregarRol(Rol rol)
+        public int agregarRol(Rol rol)
         {
             List<String> valores = new List<String>();
 
@@ -49,7 +49,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             valores.Add(rol.descripcion);
             valores.Add(rol.habilitado.ToString());
 
-            insert(TABLA, allColumnsInDB, tipos, valores);
+            return insert(TABLA, allColumnsInDB, tipos, valores, true);
         }
 
         // Selects
@@ -81,17 +81,13 @@ namespace PagoAgilFrba.Modelo.DAOs
         {
             Condicion actualizacion = new Condicion();
 
-            int valor = 0;
-            if (rolUpdate.habilitado)
-            {
-                valor = 1;
-            }
-
-            actualizacion.agregarCondicion("habilitado", valor, Utils.Utils.BIT_TYPE);
+            actualizacion.agregarCondicion("nombre", rolUpdate.nombre, Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("descripcion", rolUpdate.descripcion, Utils.Utils.STRING_TYPE);
+            actualizacion.agregarCondicion("habilitado", rolUpdate.habilitado.ToString(), Utils.Utils.BIT_TYPE);
 
             Condicion condicion = new Condicion();
 
-            condicion.agregarCondicion("id_rol", rolUpdate.id, Utils.Utils.INT_ID_NOT_INSERTABLE_TYPE);
+            condicion.agregarCondicion("id_rol", rolUpdate.id, Utils.Utils.INT_TYPE);
 
             update(TABLA, actualizacion, condicion);
         }

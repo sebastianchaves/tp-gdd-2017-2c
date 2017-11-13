@@ -17,18 +17,23 @@ namespace PagoAgilFrba.AbmRol
     public partial class ModificacionRol : Form
     {
 
-        private FuncionalidadDAO<Funcionalidad> funcionalidadDao;
         private RolDAO<Rol> rolDao;
         private Rol rolSeleccionado;
         private Rol rolModificado;
+
         private Dictionary<int, String> funcionalidadesIDs;
+
+        private FuncionalidadDAO<Funcionalidad> funcionalidadDao;
         private List<Funcionalidad> funcionalidadesEncontradas;
         private List<Funcionalidad> funcionalidadesDisponibles;
+
+        private RolFuncionalidadDAO<RolFuncionalidad> rolFuncionalidadDao;
 
         public ModificacionRol()
         {
             InitializeComponent();
 
+            this.rolFuncionalidadDao = new RolFuncionalidadDAO<RolFuncionalidad>();
             this.rolDao = new RolDAO<Rol>();
             this.funcionalidadDao = new FuncionalidadDAO<Funcionalidad>();
             this.rolModificado = new Rol();
@@ -46,7 +51,7 @@ namespace PagoAgilFrba.AbmRol
             for (int i = 0; i < this.funcionalidadesDisponibles.Count; i++)
             {
                 this.funcionalidadesDisponibles.ElementAt(i).checklistIndex = i;
-                this.funcionalidadesCheckbox.Items.Insert(0, this.funcionalidadesDisponibles.ElementAt(i).nombre);
+                this.funcionalidadesCheckbox.Items.Insert(i, this.funcionalidadesDisponibles.ElementAt(i).nombre);
                 this.funcionalidadesIDs.Add(this.funcionalidadesDisponibles.ElementAt(i).id, this.funcionalidadesDisponibles.ElementAt(i).nombre);
             }
         }
@@ -61,7 +66,7 @@ namespace PagoAgilFrba.AbmRol
                 {
                     this.rolDao.darDeBajaRolEnTodosLosUsuarios(this.rolModificado);
                 }
-                
+
                 this.rolDao.updateRol(this.rolModificado);
                 MessageBox.Show("Datos actualizados!");
             }
@@ -84,6 +89,8 @@ namespace PagoAgilFrba.AbmRol
 
         private void cargarDatosRol()
         {
+            this.rolModificado.id = this.rolSeleccionado.id;
+
             this.rolSeleccionadoInput.Text = this.rolSeleccionado.nombre;
 
             this.nombreInput.Text = this.rolSeleccionado.nombre;
@@ -98,13 +105,16 @@ namespace PagoAgilFrba.AbmRol
         {
             this.funcionalidadesEncontradas = this.funcionalidadDao.obtenerFuncionalidadesPorRol(this.rolSeleccionado.nombre);
 
-            foreach (Funcionalidad funcionalidad in this.funcionalidadesEncontradas)
+            for (int i = 0; i < this.funcionalidadesEncontradas.Count; i++)
             {
-                for (int i = 0; i < this.funcionalidadesEncontradas.Count; i++)
-                {
-                    this.funcionalidadesCheckbox.SetItemChecked(this.funcionalidadesEncontradas.ElementAt(i).checklistIndex, true);
-                }
+                Funcionalidad funcionalidadEncontrada = this.funcionalidadesEncontradas.ElementAt(i);
+
+                int checkIndex = this.funcionalidadesDisponibles.Find(
+                    func => func.id == funcionalidadEncontrada.id).checklistIndex;
+
+                this.funcionalidadesCheckbox.SetItemCheckState(checkIndex, CheckState.Checked);
             }
+
         }
 
         private void habilitarDeshabilitar()
@@ -126,14 +136,48 @@ namespace PagoAgilFrba.AbmRol
 
         private void cargarFuncionalidades()
         {
-            this.funcionalidadesEncontradas = this.funcionalidadDao.obtenerFuncionalidadesPorRol(this.rolSeleccionado.nombre);
+            List<Funcionalidad> funcionalidadesElegidas = this.obtenerFuncionalidadesElegidas();
 
-            foreach (String itemChecked in this.funcionalidadesCheckbox.CheckedItems)
+            foreach (Funcionalidad func in funcionalidadesElegidas)
             {
-                var id = this.funcionalidadesIDs.FirstOrDefault(x => x.Value == itemChecked).Key;
+                RolFuncionalidad rolFuncionalidad = new RolFuncionalidad();
+                rolFuncionalidad.idFuncionalidad = func.id;
+                rolFuncionalidad.idRol = this.rolModificado.id;
 
-                this.rolModificado.funcionalidades.Add(this.funcionalidadesEncontradas.Find(x => x.id == id));
+                if (!this.funcionalidadesEncontradas.Exists(f => f.id == func.id))
+                {
+                    this.rolFuncionalidadDao.insert(rolFuncionalidad);
+                }
             }
+
+            foreach (Funcionalidad func in this.funcionalidadesEncontradas)
+            {
+                RolFuncionalidad rolFuncionalidad = new RolFuncionalidad();
+                rolFuncionalidad.idFuncionalidad = func.id;
+                rolFuncionalidad.idRol = this.rolModificado.id;
+
+                if (!funcionalidadesElegidas.Exists(f => f.id == func.id))
+                {
+                    this.rolFuncionalidadDao.delete(rolFuncionalidad);
+                }
+            }
+
+        }
+
+        private List<Funcionalidad> obtenerFuncionalidadesElegidas()
+        {
+            List<Funcionalidad> funcionalidadesElegidas = new List<Funcionalidad>();
+
+            for (int i = 0; i < this.funcionalidadesDisponibles.Count; i++)
+            {
+                if (this.funcionalidadesCheckbox.GetItemCheckState(i).Equals(CheckState.Checked))
+                {
+                    funcionalidadesElegidas.Add(
+                        this.funcionalidadesDisponibles.Find(func => func.checklistIndex == i));
+                }
+            }
+
+            return funcionalidadesElegidas;
         }
 
         private void habilitarCampos()
@@ -152,10 +196,22 @@ namespace PagoAgilFrba.AbmRol
             this.deshabilitadoRadioButton.Enabled = false;
         }
 
+        private void uncheckFuncionalidades()
+        {
+            for (int i = 0; i < this.funcionalidadesCheckbox.Items.Count; i++)
+            {
+                if (this.funcionalidadesCheckbox.GetItemCheckState(i).Equals(CheckState.Checked))
+                {
+                    this.funcionalidadesCheckbox.SetItemCheckState(i, CheckState.Unchecked);
+                }
+            }
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
+            this.uncheckFuncionalidades();
             using (ResultadosBusqueda resultadosBusqueda = new ResultadosBusqueda(this.rolSeleccionado))
             {
                 var result = resultadosBusqueda.ShowDialog(this);
@@ -197,13 +253,13 @@ namespace PagoAgilFrba.AbmRol
         }
 
         // Habilitar
-        private void habilitadoRadio_CheckedChanged(object sender, EventArgs e)
+        private void habilitadoRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             this.rolModificado.habilitado = true;
         }
 
         // Deshabilitar
-        private void deshabilitadoRadio_CheckedChanged(object sender, EventArgs e)
+        private void deshabilitadoRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             this.rolModificado.habilitado = false;
         }
