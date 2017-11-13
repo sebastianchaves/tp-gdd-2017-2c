@@ -9,7 +9,7 @@
 24) Desarollar los listados estadisticos ✓
 22) Validar si sos administrador o cobrador para permitir la devolucion de facturas o rendiciones. ✓
 
-3) ABM de empresa entero 
+3) ABM de empresa 
 
 10) ABM de facturas
 13) Las facturas no se pueden modificar ni eliminar si fueron pagadas y rendidas
@@ -33,11 +33,11 @@
 Empresas
 
 Facturas
-28) La tabla factura no tiene el boolean pagada, pero el modelo si ¿que hacemo?
+28) La tabla factura no tiene el boolean pagada, pero el modelo si ¿que hacemo? ✓
 
-29) Eliminar relacion entre factura y pago cuando se realiza una devolucion de factura.
+29) Eliminar relacion entre factura y pago cuando se realiza una devolucion de factura. 
 
-6) Validar en rendiciones que la empresa este habilitada 
+6) Validar en rendiciones que la empresa este habilitada ✓
 
 - ABM de Rol
 1) Testear ABM rol
@@ -47,6 +47,7 @@ Facturas
 5) no esta permitida la asignacion de un rol deshabilitado a un usuario
 6) cuando se deshabilita un rol, Se debe quitar el rol a todos aquellos usuarios que lo posean
 7) Si se vuelve a habilitar no hace falta volver a asignar a sus antiguos usuarios
+8) Insertar relacion ROL_FUNCIONALIDAD en la DB
 
 - Login y Seguridad
 1) Al realizar un Login satisfactorio, el sistema deberá limpiar la cantidad de intentos fallidos.
@@ -72,11 +73,12 @@ Facturas
 6) Al deshabilitar controlar que no se encuentren facturas pendientes de rendicion. 
 Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendida.
 7) Filtrar por uno, alguno o todos los siguientes campos: nombre, cuit, rubro
-8) que onda el dia de rendicion de la empresa
+8) que onda el dia de rendicion de la empresa ✓
+9) Agregar en Alta, el dia de la rendicion
 
 - ABM de Sucursal
 1) Testear ABM sucursal
-2) La baja es logica, si se da de baja una sucursal, los usuarios pertenecientes a dicha sucursal no podran logearse.
+2) La baja es logica, si se da de baja una sucursal, los usuarios pertenecientes a dicha sucursal no podran logearse. ✓
 3) Todos los datos obligatorios y modificables
 4) No pueden haber sucursales con mismo codigo postal
 5) Se vuelve a habilitar desde M
@@ -85,22 +87,20 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 - ABM Facturas
 1) Testear ABM facturas
 2) Todos los datos son obligatorios
-3) No pueden haber facturas con el mismo numero
+3) No pueden haber facturas con el mismo numero ✓
 4) La baja no es logica, se elimina de la tabla
 5) No se podran dar de B o M, si fueron pagadas y/o rendidas
+6) Eliminar conceptos en deleteFactura() cuando se da de baja la factura
+7) Catchear SqlException en la baja
 
 - Registro de Pago de Facturas
 1) Testear Pagos
 2) Todos los datos son obligatorios
-3) La fecha de vencimiento ingresada debe ser menor o igual a la fecha del sistema
-4) No pueden haber facturas con importe menor o igual a cero
-5) La empresa debe estar activa
+3) La fecha de vencimiento ingresada debe ser menor o igual a la fecha del sistema ✓
+4) No pueden haber facturas con importe menor o igual a cero ✓
+5) La empresa debe estar activa 
 6) El cliente que pague debe estar habilitado
-
-DUDA: Del mismo modo se deberá registrar la sucursal en la cual se efectuó el pago,
-dicho dato se obtendrá del usuario operador. En caso de que el operador trabaje en más
-de una sucursal, se deberá tomar aquella que se seleccionó al momento del login cuando
-el cobrador ingresó al sistema.
+7) Aclarar en estrategia que no permitimos usuarios con mas de 1 sucursal
 
 - Rendición de Facturas cobradas
 1) Testear Rendicion
@@ -109,21 +109,15 @@ el cobrador ingresó al sistema.
 4) La factura se rinde 1 sola vez
 5) Todos los datos son obligatorios
 
-DUDA: Nuestra empresa cobra un pequeño porcentaje (ganancia por el cobro) el cual es
-descontado del total rendido. Dicho importe cobrado a la empresa de servicios debe
-quedar registrado el momento de la rendición como así también todas aquellas facturas
-que forman parte de la rendición, se debe seguir un patrón maestro detalle para su
-modelado.
-
 - Devoluciones
 1) Testear Devoluciones
 2) No se pueden devolver facturas ya rendidas
 3) Las facturas devueltas pueden ser cobradas nuevamente
 4) Solo los administradores pueden devolver rendiciones y solo los cobradores
-pueden devolver facturas pagadas.
+pueden devolver facturas pagadas. ✓
 
 - Listado Estadístico
 1) Testear Listado
-2) Tipo(4), año, trimestre
-3) Listas descendentemente
-4) Columnas segun tipo
+2) Tipo(4), año, trimestre ✓
+3) Listas descendentemente ✓
+4) Columnas segun tipo ✓
