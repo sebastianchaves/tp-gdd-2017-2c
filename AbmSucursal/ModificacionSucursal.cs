@@ -85,6 +85,9 @@ namespace PagoAgilFrba.AbmSucursal
                 if (camposCompletos())
                 {
                     this.sucursalDao.updateSucursal(this.sucursalModificada);
+                    Utils.clearTextBoxes(this);
+                    this.deshabilitarCampos();
+                    this.botonActualizar.Enabled = false;
                     MessageBox.Show("Datos actualizados!");
                 }
                 else
@@ -114,7 +117,7 @@ namespace PagoAgilFrba.AbmSucursal
                 busquedaForm.ShowDialog(this);
                 this.sucursalACargar = busquedaForm.getSucursalEncontrada();
 
-                if (this.sucursalACargar.id != 0)
+                if (this.sucursalACargar != null)
                 {
                     this.botonActualizar.Enabled = true;
                     this.cargarDatos();
@@ -128,11 +131,8 @@ namespace PagoAgilFrba.AbmSucursal
         private void botonActualizar_Click(object sender, EventArgs e)
         {
             this.modificarSucursal();
-            Utils.clearTextBoxes(this);
             this.sucursalModificada = new Sucursal();
             this.sucursalACargar = new Sucursal();
-            this.deshabilitarCampos();
-            this.botonActualizar.Enabled = false;
         }
 
         // Boton Volver

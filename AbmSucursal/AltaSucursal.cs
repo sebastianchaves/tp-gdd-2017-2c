@@ -66,7 +66,6 @@ namespace PagoAgilFrba.AbmSucursal
         {
             this.agregarSucursal();
             this.nuevaSucursal = new Sucursal();
-            Utils.clearTextBoxes(this);
         }
 
         // Boton Volver

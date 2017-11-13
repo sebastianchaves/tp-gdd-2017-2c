@@ -56,13 +56,14 @@ Facturas
 1) Poner los usuarios disponibles en el archivo estrategia ✓
 
 - ABM de Cliente (SEBA)
-1) Testear ABM cliente
-2) Todos los datos modificables y obligatorios, menos dto y piso
-3) No pueden existir dos clientes con mismo mail
-4) La baja es logica
+1) Testear ABM cliente ✓
+2) Todos los datos modificables y obligatorios, menos dto y piso ✓
+3) No pueden existir dos clientes con mismo mail ✓
+4) La baja es logica ✓
 5) Un cliente deshabilitado no podra realizar pagos
-6) Se vuelve a habilitar desde M
-7) Filtrar busqueda por nombre, apellido o dni. (uno, algunos o todos)
+6) Se vuelve a habilitar desde M ✓
+7) Filtrar busqueda por nombre, apellido o dni. (uno, algunos o todos) ✓
+8) Plus: deshabilitar y habilitar radio buttons cuando se debe
 
 - ABM de Empresa (DANI)
 1) Testear ABM empresa
@@ -77,12 +78,12 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 9) Agregar en Alta, el dia de la rendicion
 
 - ABM de Sucursal (SEBA)
-1) Testear ABM sucursal
+1) Testear ABM sucursal ✓
 2) La baja es logica, si se da de baja una sucursal, los usuarios pertenecientes a dicha sucursal no podran logearse. ✓
-3) Todos los datos obligatorios y modificables
-4) No pueden haber sucursales con mismo codigo postal
-5) Se vuelve a habilitar desde M
-6) Filtrar por uno, alguno o todos sus campos
+3) Todos los datos obligatorios y modificables ✓
+4) No pueden haber sucursales con mismo codigo postal ✓
+5) Se vuelve a habilitar desde M ✓
+6) Filtrar por uno, alguno o todos sus campos ✓
 
 - ABM Facturas (DANI)
 1) Testear ABM facturas

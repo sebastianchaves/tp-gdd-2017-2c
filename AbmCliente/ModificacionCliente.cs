@@ -146,6 +146,9 @@ namespace PagoAgilFrba.AbmCliente
                     {
                         this.armarDireccion();
                         this.clienteDao.updateCliente(clienteModificado);
+                        Utils.clearTextBoxes(this);
+                        this.deshabilitarCampos();
+                        this.botonActualizar.Enabled = false;
                         MessageBox.Show("Datos actualizados!");
                     }
                     else
@@ -253,11 +256,8 @@ namespace PagoAgilFrba.AbmCliente
         private void botonActualizar_Click(object sender, EventArgs e)
         {
             this.modificarCliente();
-            Utils.clearTextBoxes(this);
             this.clienteModificado = new Cliente();
             this.clienteACargar = new Cliente();
-            this.deshabilitarCampos();
-            this.botonActualizar.Enabled = false;
         }
 
         // Boton Cancelar

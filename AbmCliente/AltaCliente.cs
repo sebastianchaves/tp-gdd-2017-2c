@@ -40,6 +40,7 @@ namespace PagoAgilFrba.AbmCliente
                     {
                         this.cargarDireccion();
                         clienteDAO.agregarCliente(nuevoCliente);
+                        Utils.clearTextBoxes(this);
                         MessageBox.Show("Cliente agregado!");
                     }
                     else
@@ -95,7 +96,6 @@ namespace PagoAgilFrba.AbmCliente
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             this.agregarCliente();
-            Utils.clearTextBoxes(this);
             this.nuevoCliente = new Cliente();
         }
 
