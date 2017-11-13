@@ -39,7 +39,7 @@ Facturas
 
 6) Validar en rendiciones que la empresa este habilitada ✓
 
-- ABM de Rol
+- ABM de Rol (SEBA)
 1) Testear ABM rol
 2) Datos de alta obligatorios y editables: nombre y funcionalidades
 3) las funcionalidades no pueden estar repetidas para un mismo rol
@@ -49,13 +49,13 @@ Facturas
 7) Si se vuelve a habilitar no hace falta volver a asignar a sus antiguos usuarios
 8) Insertar relacion ROL_FUNCIONALIDAD en la DB
 
-- Login y Seguridad
+- Login y Seguridad (DANI)
 1) Al realizar un Login satisfactorio, el sistema deberá limpiar la cantidad de intentos fallidos.
 
 - Registro de Usuario
-1) Poner los usuarios disponibles en el archivo estrategia
+1) Poner los usuarios disponibles en el archivo estrategia ✓
 
-- ABM de Cliente
+- ABM de Cliente (SEBA)
 1) Testear ABM cliente
 2) Todos los datos modificables y obligatorios, menos dto y piso
 3) No pueden existir dos clientes con mismo mail
@@ -64,7 +64,7 @@ Facturas
 6) Se vuelve a habilitar desde M
 7) Filtrar busqueda por nombre, apellido o dni. (uno, algunos o todos)
 
-- ABM de Empresa
+- ABM de Empresa (DANI)
 1) Testear ABM empresa
 2) Todos los datos obligatorios y modificables
 3) No pueden existir empresas con el mismo cuit
@@ -76,7 +76,7 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 8) que onda el dia de rendicion de la empresa ✓
 9) Agregar en Alta, el dia de la rendicion
 
-- ABM de Sucursal
+- ABM de Sucursal (SEBA)
 1) Testear ABM sucursal
 2) La baja es logica, si se da de baja una sucursal, los usuarios pertenecientes a dicha sucursal no podran logearse. ✓
 3) Todos los datos obligatorios y modificables
@@ -84,7 +84,7 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 5) Se vuelve a habilitar desde M
 6) Filtrar por uno, alguno o todos sus campos
 
-- ABM Facturas
+- ABM Facturas (DANI)
 1) Testear ABM facturas
 2) Todos los datos son obligatorios
 3) No pueden haber facturas con el mismo numero ✓
@@ -93,7 +93,7 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 6) Eliminar conceptos en deleteFactura() cuando se da de baja la factura
 7) Catchear SqlException en la baja
 
-- Registro de Pago de Facturas
+- Registro de Pago de Facturas (SEBA)
 1) Testear Pagos
 2) Todos los datos son obligatorios
 3) La fecha de vencimiento ingresada debe ser menor o igual a la fecha del sistema ✓
@@ -102,29 +102,29 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 6) El cliente que pague debe estar habilitado
 7) Aclarar en estrategia que no permitimos usuarios con mas de 1 sucursal
 
-- Rendición de Facturas cobradas
+- Rendición de Facturas cobradas (DANI)
 1) Testear Rendicion
 2) Se realizan una vez al mes por unica vez en el mes para 1 empresa
 3) La fecha de rendicion es pactada con la empresa
 4) La factura se rinde 1 sola vez
 5) Todos los datos son obligatorios
 
-- Devoluciones
+- Devoluciones (SEBA)
 1) Testear Devoluciones
 2) No se pueden devolver facturas ya rendidas
 3) Las facturas devueltas pueden ser cobradas nuevamente
 4) Solo los administradores pueden devolver rendiciones y solo los cobradores
 pueden devolver facturas pagadas. ✓
 
-- Listado Estadístico
+- Listado Estadístico (DANI)
 1) Testear Listado
 2) Tipo(4), año, trimestre ✓
 3) Listas descendentemente ✓
 4) Columnas segun tipo ✓
 
-- Generales
+- Generales (DANI(1), SEBA(2))
 1) Unificar scripts
 2) Agregar aclaraciones sobre entidades en estrategia.txt
 3) Clean build de proyect para enviar
-4) Poner Javadocs
+4) Poner Javadoc 
 5) Agregar el DER (.jpg)
