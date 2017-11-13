@@ -1,0 +1,129 @@
+1) Validar en pagos, que el usuario esta habilitado ✓
+2) Borrar baja rol ✓
+4) Eliminar baja de empresa, porque es logica. ✓
+5) Validar en pagos, que la empresa esta habilitada ✓
+9) ABM de sucursal ✓
+7) Validar al dar de baja una empresa, que las factuars esten rendidas (metodo hecho en EmpresaDao) ✓
+8) Validar en el login que la sucursal este habilitada ✓
+23) Cargar harcodeadamente los tipos de listados estadisticos ✓
+24) Desarollar los listados estadisticos ✓
+22) Validar si sos administrador o cobrador para permitir la devolucion de facturas o rendiciones. ✓
+
+3) ABM de empresa entero 
+
+10) ABM de facturas
+13) Las facturas no se pueden modificar ni eliminar si fueron pagadas y rendidas
+
+13) ABM de pagos
+13) Validar que la fecha de vencimiento sea menos o igual que la fecha del sistema
+14) Validar que el importe de las facturas sea menos o igual a 0
+15) Ingresar en el pago, el monto total de las facturas ingresadas
+
+16) ABM de rendicion
+17) Agregar fecha de rendicion mensual
+18) Validar que las rendiciones sean solo del 1 al 28
+19) Mostrar empresas que rinden ese dia.
+
+20) ALTA de devoluciones
+21) Validar que las devoluciones no fueron rendidas
+
+25) Reealizar zip final
+26) PDF de instrucciones (jesi)
+
+Empresas
+
+Facturas
+28) La tabla factura no tiene el boolean pagada, pero el modelo si ¿que hacemo?
+
+29) Eliminar relacion entre factura y pago cuando se realiza una devolucion de factura.
+
+6) Validar en rendiciones que la empresa este habilitada 
+
+- ABM de Rol
+1) Testear ABM rol
+2) Datos de alta obligatorios y editables: nombre y funcionalidades
+3) las funcionalidades no pueden estar repetidas para un mismo rol
+4) la baja es logica
+5) no esta permitida la asignacion de un rol deshabilitado a un usuario
+6) cuando se deshabilita un rol, Se debe quitar el rol a todos aquellos usuarios que lo posean
+7) Si se vuelve a habilitar no hace falta volver a asignar a sus antiguos usuarios
+
+- Login y Seguridad
+1) Al realizar un Login satisfactorio, el sistema deberá limpiar la cantidad de intentos fallidos.
+
+- Registro de Usuario
+1) Poner los usuarios disponibles en el archivo estrategia
+
+- ABM de Cliente
+1) Testear ABM cliente
+2) Todos los datos modificables y obligatorios, menos dto y piso
+3) No pueden existir dos clientes con mismo mail
+4) La baja es logica
+5) Un cliente deshabilitado no podra realizar pagos
+6) Se vuelve a habilitar desde M
+7) Filtrar busqueda por nombre, apellido o dni. (uno, algunos o todos)
+
+- ABM de Empresa
+1) Testear ABM empresa
+2) Todos los datos obligatorios y modificables
+3) No pueden existir empresas con el mismo cuit
+4) La baja es logica, se vuelve a habilitar desde M
+5) Si esta inactiva no se pueden realizar pagos de facturas a su nombre, tampoco rendiciones
+6) Al deshabilitar controlar que no se encuentren facturas pendientes de rendicion. 
+Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendida.
+7) Filtrar por uno, alguno o todos los siguientes campos: nombre, cuit, rubro
+8) que onda el dia de rendicion de la empresa
+
+- ABM de Sucursal
+1) Testear ABM sucursal
+2) La baja es logica, si se da de baja una sucursal, los usuarios pertenecientes a dicha sucursal no podran logearse.
+3) Todos los datos obligatorios y modificables
+4) No pueden haber sucursales con mismo codigo postal
+5) Se vuelve a habilitar desde M
+6) Filtrar por uno, alguno o todos sus campos
+
+- ABM Facturas
+1) Testear ABM facturas
+2) Todos los datos son obligatorios
+3) No pueden haber facturas con el mismo numero
+4) La baja no es logica, se elimina de la tabla
+5) No se podran dar de B o M, si fueron pagadas y/o rendidas
+
+- Registro de Pago de Facturas
+1) Testear Pagos
+2) Todos los datos son obligatorios
+3) La fecha de vencimiento ingresada debe ser menor o igual a la fecha del sistema
+4) No pueden haber facturas con importe menor o igual a cero
+5) La empresa debe estar activa
+6) El cliente que pague debe estar habilitado
+
+DUDA: Del mismo modo se deberá registrar la sucursal en la cual se efectuó el pago,
+dicho dato se obtendrá del usuario operador. En caso de que el operador trabaje en más
+de una sucursal, se deberá tomar aquella que se seleccionó al momento del login cuando
+el cobrador ingresó al sistema.
+
+- Rendición de Facturas cobradas
+1) Testear Rendicion
+2) Se realizan una vez al mes por unica vez en el mes para 1 empresa
+3) La fecha de rendicion es pactada con la empresa
+4) La factura se rinde 1 sola vez
+5) Todos los datos son obligatorios
+
+DUDA: Nuestra empresa cobra un pequeño porcentaje (ganancia por el cobro) el cual es
+descontado del total rendido. Dicho importe cobrado a la empresa de servicios debe
+quedar registrado el momento de la rendición como así también todas aquellas facturas
+que forman parte de la rendición, se debe seguir un patrón maestro detalle para su
+modelado.
+
+- Devoluciones
+1) Testear Devoluciones
+2) No se pueden devolver facturas ya rendidas
+3) Las facturas devueltas pueden ser cobradas nuevamente
+4) Solo los administradores pueden devolver rendiciones y solo los cobradores
+pueden devolver facturas pagadas.
+
+- Listado Estadístico
+1) Testear Listado
+2) Tipo(4), año, trimestre
+3) Listas descendentemente
+4) Columnas segun tipo
