@@ -103,8 +103,16 @@ namespace PagoAgilFrba.RegistroPago
             {
                 busquedaEmpresaForm.ShowDialog(this);
                 Empresa empresaEncontrada = busquedaEmpresaForm.getEmpresaEncontrada();
-                this.nuevaFactura.idEmpresa = empresaEncontrada.id;
-                this.empresaInput.Text = empresaEncontrada.nombre;
+
+                if (empresaEncontrada.activo)
+                {
+                    this.nuevaFactura.idEmpresa = empresaEncontrada.id;
+                    this.empresaInput.Text = empresaEncontrada.nombre;
+                }
+                else
+                {
+                    MessageBox.Show("La empresa ingresada no esta activa.");
+                }
             }
         }
 

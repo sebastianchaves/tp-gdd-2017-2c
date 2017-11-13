@@ -231,9 +231,18 @@ namespace PagoAgilFrba.RegistroPago
             using (BusquedaCliente busquedaClienteForm = new BusquedaCliente())
             {
                 busquedaClienteForm.ShowDialog(this);
+                
                 Cliente clienteEncontrado = busquedaClienteForm.getClienteEncontrado();
-                this.nuevoPago.idCliente = clienteEncontrado.id;
-                this.clienteInput.Text = clienteEncontrado.nombre;
+
+                if (clienteEncontrado.habilitado)
+                {
+                    this.nuevoPago.idCliente = clienteEncontrado.id;
+                    this.clienteInput.Text = clienteEncontrado.nombre;
+                }
+                else
+                {
+                    MessageBox.Show("Ese cliente se encuentra deshabilitado.");
+                }
             }
         }
     
