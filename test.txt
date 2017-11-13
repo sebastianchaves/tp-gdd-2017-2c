@@ -121,3 +121,10 @@ pueden devolver facturas pagadas. ✓
 2) Tipo(4), año, trimestre ✓
 3) Listas descendentemente ✓
 4) Columnas segun tipo ✓
+
+- Generales
+1) Unificar scripts
+2) Agregar aclaraciones sobre entidades en estrategia.txt
+3) Clean build de proyect para enviar
+4) Poner Javadocs
+5) Agregar el DER (.jpg)
