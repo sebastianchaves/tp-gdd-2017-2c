@@ -135,6 +135,7 @@ namespace PagoAgilFrba.Modelo.Utils
             }
             return fechaInicio;
         }
+        
         public static String getFinTrimestre(int anio, int trimestre)
         {
             String fechaFin = anio.ToString();
@@ -153,5 +154,11 @@ namespace PagoAgilFrba.Modelo.Utils
             }
             return fechaFin;
         }
+
+        public static String formatDateTime(DateTime date)
+        {
+            return String.Format("{0:yyyy/MM/dd}", date);
+        }
+
     }
 }

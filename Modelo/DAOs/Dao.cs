@@ -240,7 +240,8 @@ namespace PagoAgilFrba.Modelo.DAOs
                     }
                     else if (tipos.ElementAt(i).Equals(Utils.Utils.DATETIME_TYPE))
                     {
-                        insert += "convert(datetime, '" + DateTime.Parse(valores.ElementAt(i)).ToString() + "')";
+                        insert += "convert(datetime, '" + valores.ElementAt(i) + "')";
+                        // DateTime.Parse(valores.ElementAt(i)).ToString()
                     }
                     else if (tipos.ElementAt(i).Equals(Utils.Utils.BIT_TYPE))
                     {

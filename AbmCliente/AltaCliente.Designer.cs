@@ -118,7 +118,7 @@
             // 
             // dniInput
             // 
-            this.dniInput.Location = new System.Drawing.Point(77, 71);
+            this.dniInput.Location = new System.Drawing.Point(79, 71);
             this.dniInput.Name = "dniInput";
             this.dniInput.Size = new System.Drawing.Size(213, 20);
             this.dniInput.TabIndex = 2;

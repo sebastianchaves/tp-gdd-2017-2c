@@ -44,7 +44,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             List<String> valores = new List<String>();
 
             valores.Add("");
-            valores.Add(devolucion.fecha.ToString());
+            valores.Add(Utils.Utils.formatDateTime(devolucion.fecha));
             valores.Add(devolucion.idTipoDevolucion.ToString());
             valores.Add(devolucion.motivo);
 

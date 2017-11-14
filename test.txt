@@ -8,36 +8,25 @@
 23) Cargar harcodeadamente los tipos de listados estadisticos ✓
 24) Desarollar los listados estadisticos ✓
 22) Validar si sos administrador o cobrador para permitir la devolucion de facturas o rendiciones. ✓
+15) Ingresar en el pago, el monto total de las facturas ingresadas ✓
+14) ABM de pagos ✓
+28) La tabla factura no tiene el boolean pagada, pero el modelo si ¿que hacemo? ✓
+6) Validar en rendiciones que la empresa este habilitada ✓
+
 
 3) ABM de empresa 
-
 10) ABM de facturas
 13) Las facturas no se pueden modificar ni eliminar si fueron pagadas y rendidas
-
-13) ABM de pagos
-13) Validar que la fecha de vencimiento sea menos o igual que la fecha del sistema
-14) Validar que el importe de las facturas sea menos o igual a 0
-15) Ingresar en el pago, el monto total de las facturas ingresadas
-
 16) ABM de rendicion
 17) Agregar fecha de rendicion mensual
 18) Validar que las rendiciones sean solo del 1 al 28
 19) Mostrar empresas que rinden ese dia.
-
 20) ALTA de devoluciones
 21) Validar que las devoluciones no fueron rendidas
-
 25) Reealizar zip final
 26) PDF de instrucciones (jesi)
-
-Empresas
-
-Facturas
-28) La tabla factura no tiene el boolean pagada, pero el modelo si ¿que hacemo? ✓
-
 29) Eliminar relacion entre factura y pago cuando se realiza una devolucion de factura. 
 
-6) Validar en rendiciones que la empresa este habilitada ✓
 
 - ABM de Rol (SEBA)
 1) Testear ABM rol ✓
