@@ -141,7 +141,6 @@ namespace PagoAgilFrba.AbmCliente
             else
             {
                 fechaNacimientoTooltip.Show("Fecha invalida", fechaDeNacimientoInput, 1500);
-                fechaDeNacimientoInput.ResetText();
             }
         }
 

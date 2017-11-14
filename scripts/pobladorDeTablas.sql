@@ -128,6 +128,7 @@ insert into ROCKET_DATABASE.ROLES values ('cobrador', 'Rol de cobrador', 1);
 
 insert into ROCKET_DATABASE.USUARIOS values ('admin', '', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', null, 0, 1);
 insert into ROCKET_DATABASE.USUARIOS values ('cobrador', '', 'fda9be620062a617156c1c6dbc788a6a204f85fe06e8ead0e3a43817b0e382db', 1, 0, 1);
+insert into ROCKET_DATABASE.USUARIOS values ('super', '', '73d1b1b1bc1dabfb97f216d897b7968e44b06457920f00f2dc6c1ed3be25ad4c', null, 0, 1);
 
 insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_rol', 'abm_rol')
 insert into ROCKET_DATABASE.FUNCIONALIDADES values ('abm_cliente', 'abm_cliente');
@@ -156,6 +157,8 @@ insert into ROCKET_DATABASE.ROL_FUNCIONALIDAD values (9, 2);
 
 insert into ROCKET_DATABASE.USUARIO_ROLES values (1, 1);
 insert into ROCKET_DATABASE.USUARIO_ROLES values (2, 2);
+insert into ROCKET_DATABASE.USUARIO_ROLES values (3, 1);
+insert into ROCKET_DATABASE.USUARIO_ROLES values (3, 2);
 
 /*** insertando tipos de devoluciones ***/
 insert into ROCKET_DATABASE.TIPO_DEVOLUCION values ('devolucion_factura', 'Devolucion de factura');
