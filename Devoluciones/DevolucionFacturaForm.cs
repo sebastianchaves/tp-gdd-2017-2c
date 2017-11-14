@@ -24,6 +24,7 @@ namespace PagoAgilFrba.Devoluciones
         private DevolucionDAO<Devolucion> devolucionDao;
         private TipoDevolucionDAO<TipoDevolucion> tipoDevolucionDao;
         private DevolucionFacturaDAO<DevolucionFactura> devolucionFacturaDao;
+        private PagoFacturaDAO<PagoFactura> pagoFacturaDao;
 
         public DevolucionFacturaForm()
         {
@@ -32,6 +33,7 @@ namespace PagoAgilFrba.Devoluciones
             this.devolucionDao = new DevolucionDAO<Devolucion>();
             this.tipoDevolucionDao = new TipoDevolucionDAO<TipoDevolucion>();
             this.devolucionFacturaDao = new DevolucionFacturaDAO<DevolucionFactura>();
+            this.pagoFacturaDao = new PagoFacturaDAO<PagoFactura>();
 
             this.nuevaDevolucion = new Devolucion();
             this.nuevaDevolucionFactura = new DevolucionFactura();
@@ -45,13 +47,23 @@ namespace PagoAgilFrba.Devoluciones
                 this.nuevaDevolucionFactura.idFactura = facturaACargar.id;
                 this.nuevaDevolucionFactura.idDevolucion = nuevaDevolucion.id;
                 this.devolucionFacturaDao.agregarDevolucionFactura(this.nuevaDevolucionFactura);
-
+                this.eliminarPagoFactura();
                 MessageBox.Show("Devolucion agregada!");
             }
             else
             {
                 MessageBox.Show("No cargo ninguna factura.");
             }
+        }
+
+        private void eliminarPagoFactura()
+        {
+            PagoFactura pagoFactura = new PagoFactura();
+
+            pagoFactura.idFactura = facturaACargar.id;
+            pagoFactura.idPago = this.pagoFacturaDao.findByIdFactura(facturaACargar.id).ElementAt(0).idPago;
+
+            this.pagoFacturaDao.delete(pagoFactura);
         }
 
         private Boolean hayFactura()
@@ -120,7 +132,7 @@ namespace PagoAgilFrba.Devoluciones
 
                 if (this.facturaACargar != null)
                 {
-                    if (this.facturaACargar.idRendicion == 0 && !this.facturaACargar.pagada)
+                    if (this.facturaACargar.idRendicion == 0 && this.facturaACargar.pagada)
                     {
                         this.botonDevolver.Enabled = true;
                         this.cargarDatos();
@@ -131,9 +143,9 @@ namespace PagoAgilFrba.Devoluciones
                         {
                             MessageBox.Show("La factura ya se encuentra rendida");
                         }
-                        if (this.facturaACargar.pagada)
+                        if (!this.facturaACargar.pagada)
                         {
-                            MessageBox.Show("La factura ya se encuentra pagada");
+                            MessageBox.Show("La factura no ha sido pagada");
                         }
                     }
                 }

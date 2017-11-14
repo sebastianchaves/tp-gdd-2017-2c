@@ -36,7 +36,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumns.Add("idEmpresa");
 
             allColumnsInDB.Add("id_rendicion");
-            allColumnsInDB.Add("cantidad_facturas");
+            allColumnsInDB.Add("cantidad_facturas_rendidas");
             allColumnsInDB.Add("fecha");
             allColumnsInDB.Add("comision");
             allColumnsInDB.Add("valor_total");
@@ -66,10 +66,10 @@ namespace PagoAgilFrba.Modelo.DAOs
             tiposNew.Add(Utils.Utils.STRING_TYPE);
 
             String query = "select r.*, e.nombre from ROCKET_DATABASE.RENDICIONES r, ROCKET_DATABASE.EMPRESAS e where year(fecha) = "
-            + anio.ToString() + " and month(fecha) = " + mes.ToString() + " and id_empresa = " + idEmpresa.ToString()
-            + " and e.empresa_id = r.empresa_id";
+            + anio.ToString() + " and month(fecha) = " + mes.ToString() + " and e.id_empresa = " + idEmpresa.ToString()
+            + " and e.id_empresa = r.id_empresa";
 
-            return this.obtenerPorQueryGenerica(query, allColumns, tipos);
+            return this.obtenerPorQueryGenerica(query, allColumnsNew, tiposNew);
         }
 
         public List<T> filtrarRendiciones(int idEmpresa, String mes, String anio)

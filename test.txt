@@ -100,9 +100,9 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 5) Todos los datos son obligatorios
 
 - Devoluciones (SEBA)
-1) Testear Devoluciones
-2) No se pueden devolver facturas ya rendidas
-3) Las facturas devueltas pueden ser cobradas nuevamente
+1) Testear Devoluciones 
+2) No se pueden devolver facturas ya rendidas ✓
+3) Las facturas devueltas pueden ser cobradas nuevamente 
 4) Solo los administradores pueden devolver rendiciones y solo los cobradores
 pueden devolver facturas pagadas. ✓
 

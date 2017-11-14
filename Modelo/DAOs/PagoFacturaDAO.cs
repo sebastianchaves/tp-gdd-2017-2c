@@ -42,5 +42,24 @@ namespace PagoAgilFrba.Modelo.DAOs
             insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
+        // Delete
+        public int delete(PagoFactura pagoFactura)
+        {
+            String query = "DELETE from " + TABLA +
+                " where id_factura = " + pagoFactura.idFactura +
+                " and id_pago = " + pagoFactura.idPago;
+
+            return deleteQuery(query);
+        }
+
+        // Select
+        public List<T> findByIdFactura(int idFactura)
+        {
+            String query = "SELECT * from " + TABLA +
+                " where id_factura = " + idFactura;
+
+            return obtenerPorQueryGenerica(query, allColumns, tipos);
+        }
+
     }
 }
