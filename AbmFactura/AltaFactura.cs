@@ -107,10 +107,17 @@ namespace PagoAgilFrba.AbmFactura
             {
                 if (this.camposCompletos())
                 {
-                    this.calcularTotal();
-                    this.facturaDao.agregarFactura(this.nuevaFactura);
-                    this.agregarConceptos();
-                    MessageBox.Show("Factura agregado!");
+                    if (this.empresaEncontrada.activo)
+                    {
+                        this.calcularTotal();
+                        this.facturaDao.agregarFactura(this.nuevaFactura);
+                        this.agregarConceptos();
+                        MessageBox.Show("Factura agregado!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("La empresa seleccionada esta inhabilitada, no se puede cargar la factura");
+                    }
                 }
                 else
                 {
@@ -119,7 +126,7 @@ namespace PagoAgilFrba.AbmFactura
             }
             catch (SqlException)
             {
-                MessageBox.Show("Ya existe una factura con ese numero.");
+                MessageBox.Show("Error en la carga de la factura. Asegurese que el numero no exista");
             }
 
         }
@@ -169,14 +176,8 @@ namespace PagoAgilFrba.AbmFactura
         {
             this.agregarFactura();
             Utils.clearTextBoxes(this);
-
-            if (this.conceptosGrid.Rows.Count != 0)
-            {
-                for (int i = 0; i < this.conceptosGrid.Rows.Count; i++)
-                {
-                    this.conceptosGrid.Rows.RemoveAt(i);
-                }
-            }
+            this.conceptosGrid.DataSource = null;
+            this.conceptosGrid.Rows.Clear();
 
             this.nuevaFactura = new Factura();
             this.conceptosAgregados = new List<Concepto>();
