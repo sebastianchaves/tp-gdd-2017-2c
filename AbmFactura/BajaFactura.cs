@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -75,7 +76,12 @@ namespace PagoAgilFrba.AbmFactura
         // Boton Baja
         private void botonBaja_Click(object sender, EventArgs e)
         {
-            this.darDeBaja();
+            try
+            {
+                this.darDeBaja();
+            }catch(SqlException s){
+                MessageBox.Show("Hubo un error en la baja de la factura.");
+            }
             this.facturaACargar = new Factura();
             this.numeroInput.Clear();
             Utils.clearTextBoxes(this);

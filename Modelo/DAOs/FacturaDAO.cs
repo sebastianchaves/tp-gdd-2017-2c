@@ -11,7 +11,7 @@ namespace PagoAgilFrba.Modelo.DAOs
     {
 
         private const String TABLA = "GD2C2017.ROCKET_DATABASE.FACTURAS";
-        private const String TABLA_DEVOLUCION_FACTURA = "GD2C2017.ROCKET_DATABASE.DEVOLUCION_FACTURA";
+        private const String TABLA_CONCEPTOS = "GD2C2017.ROCKET_DATABASE.CONCEPTOS";
         private const String OBTENER_CON_COLUMNA_PAGADA = "select f.*, convert(Bit, (select count(1) from ROCKET_DATABASE.PAGO_FACTURA pf where pf.id_factura = f.id_factura)) as pagada from ROCKET_DATABASE.FACTURAS f where f.nro_factura = ";
         private List<String> tipos;
         private List<String> allColumns;
@@ -89,7 +89,7 @@ namespace PagoAgilFrba.Modelo.DAOs
         // Deletes
         public int deleteFactura(Factura factura)
         {
-            String queryRelations = "DELETE from " + TABLA_DEVOLUCION_FACTURA + " where id_factura = "
+            String queryRelations = "DELETE from " + TABLA_CONCEPTOS + " where id_factura = "
                 + factura.id;
 
             deleteQuery(queryRelations);
