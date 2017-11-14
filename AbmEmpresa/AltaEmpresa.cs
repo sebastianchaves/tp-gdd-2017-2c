@@ -53,7 +53,7 @@ namespace PagoAgilFrba.AbmEmpresa
             }
             catch(SqlException)
             {
-                MessageBox.Show("Ya existe una empresa con ese CUIT.");
+                MessageBox.Show("Error en la carga de la empresa.");
             }
         }
 
@@ -61,7 +61,9 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             return this.nombreInput.Text != "" &&
                 this.cuitInput.Text != "" &&
-                this.direccionInput.Text != "";
+                this.direccionInput.Text != "" &&
+                this.diaDeRendicion.Text != "" &&
+                this.nuevaEmpresa.diaDeRendicion > 0 && this.nuevaEmpresa.diaDeRendicion < 29;
         }
 
         private void cargarRubros()
@@ -89,7 +91,6 @@ namespace PagoAgilFrba.AbmEmpresa
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             agregarEmpresa();
-            Utils.clearTextBoxes(this);
             this.nuevaEmpresa = new Empresa();
         }
 
@@ -122,6 +123,20 @@ namespace PagoAgilFrba.AbmEmpresa
         private void rubroCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.nuevaEmpresa.idRubro = this.rubroByIndex(this.rubroCombo.SelectedIndex).id;
+        }
+
+        private void diaDeRendicion_Leave(object sender, EventArgs e)
+        {
+            int a;
+            bool result = Int32.TryParse(this.diaDeRendicion.Text, out a);
+            if (result)
+            {
+                this.nuevaEmpresa.diaDeRendicion = a;
+            }
+            else
+            {
+                this.nuevaEmpresa.diaDeRendicion = -1;
+            }
         }
 
     }

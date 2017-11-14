@@ -66,6 +66,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             valores.Add(empresa.direccion);
             valores.Add(empresa.idRubro.ToString());
             valores.Add(empresa.activo.ToString());
+            valores.Add(empresa.diaDeRendicion.ToString());
 
             insert(EMPRESAS, allColumnsInDB, tipos, valores);
         }
@@ -105,6 +106,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             actualizacion.agregarCondicion("direccion", empresaUpdate.direccion, Utils.Utils.STRING_TYPE);
             actualizacion.agregarCondicion("id_rubro", empresaUpdate.idRubro, Utils.Utils.INT_TYPE);
             actualizacion.agregarCondicion("activo", empresaUpdate.activo.ToString(), Utils.Utils.BIT_TYPE);
+            actualizacion.agregarCondicion("dia_de_rendicion", empresaUpdate.diaDeRendicion, Utils.Utils.INT_TYPE);
 
             Condicion condicion = new Condicion();
 

@@ -33,6 +33,8 @@
             this.botonAceptar = new System.Windows.Forms.Button();
             this.botonCancelar = new System.Windows.Forms.Button();
             this.datosEmpresaGroupBox = new System.Windows.Forms.GroupBox();
+            this.diaDeRendicion = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.rubroLabel = new System.Windows.Forms.Label();
             this.direccionLabel = new System.Windows.Forms.Label();
             this.cuitLabel = new System.Windows.Forms.Label();
@@ -57,7 +59,7 @@
             // 
             // botonAceptar
             // 
-            this.botonAceptar.Location = new System.Drawing.Point(76, 210);
+            this.botonAceptar.Location = new System.Drawing.Point(76, 248);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(90, 30);
             this.botonAceptar.TabIndex = 4;
@@ -67,7 +69,7 @@
             // 
             // botonCancelar
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(172, 210);
+            this.botonCancelar.Location = new System.Drawing.Point(172, 248);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(90, 30);
             this.botonCancelar.TabIndex = 5;
@@ -77,6 +79,8 @@
             // 
             // datosEmpresaGroupBox
             // 
+            this.datosEmpresaGroupBox.Controls.Add(this.diaDeRendicion);
+            this.datosEmpresaGroupBox.Controls.Add(this.label1);
             this.datosEmpresaGroupBox.Controls.Add(this.rubroLabel);
             this.datosEmpresaGroupBox.Controls.Add(this.direccionLabel);
             this.datosEmpresaGroupBox.Controls.Add(this.cuitLabel);
@@ -87,10 +91,27 @@
             this.datosEmpresaGroupBox.Controls.Add(this.nombreInput);
             this.datosEmpresaGroupBox.Location = new System.Drawing.Point(12, 36);
             this.datosEmpresaGroupBox.Name = "datosEmpresaGroupBox";
-            this.datosEmpresaGroupBox.Size = new System.Drawing.Size(311, 168);
+            this.datosEmpresaGroupBox.Size = new System.Drawing.Size(311, 206);
             this.datosEmpresaGroupBox.TabIndex = 2;
             this.datosEmpresaGroupBox.TabStop = false;
             this.datosEmpresaGroupBox.Text = "Datos Empresa";
+            // 
+            // diaDeRendicion
+            // 
+            this.diaDeRendicion.Location = new System.Drawing.Point(126, 162);
+            this.diaDeRendicion.Name = "diaDeRendicion";
+            this.diaDeRendicion.Size = new System.Drawing.Size(179, 20);
+            this.diaDeRendicion.TabIndex = 9;
+            this.diaDeRendicion.Leave += new System.EventHandler(this.diaDeRendicion_Leave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 165);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Dia de rendicion";
             // 
             // rubroLabel
             // 
@@ -165,7 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 248);
+            this.ClientSize = new System.Drawing.Size(341, 301);
             this.Controls.Add(this.datosEmpresaGroupBox);
             this.Controls.Add(this.botonCancelar);
             this.Controls.Add(this.botonAceptar);
@@ -194,5 +215,7 @@
         private System.Windows.Forms.Label direccionLabel;
         private System.Windows.Forms.Label cuitLabel;
         private System.Windows.Forms.ToolTip cuitTooltip;
+        private System.Windows.Forms.TextBox diaDeRendicion;
+        private System.Windows.Forms.Label label1;
     }
 }

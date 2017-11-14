@@ -216,5 +216,10 @@ namespace PagoAgilFrba
             new RendicionAltaFrm().ShowDialog();
         }
 
+        private void FrmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }

@@ -50,7 +50,7 @@ Facturas
 8) Insertar relacion ROL_FUNCIONALIDAD en la DB ✓
 
 - Login y Seguridad (DANI)
-1) Al realizar un Login satisfactorio, el sistema deberá limpiar la cantidad de intentos fallidos.
+1) Al realizar un Login satisfactorio, el sistema deberá limpiar la cantidad de intentos fallidos. ✓
 
 - Registro de Usuario
 1) Poner los usuarios disponibles en el archivo estrategia ✓
