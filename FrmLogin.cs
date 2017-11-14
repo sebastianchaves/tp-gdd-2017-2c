@@ -130,5 +130,10 @@ namespace PagoAgilFrba
             this.contrasenia = this.contraseniaInput.Text;
         }
 
+        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }

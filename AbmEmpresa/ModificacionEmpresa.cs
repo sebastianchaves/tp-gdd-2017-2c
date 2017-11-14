@@ -44,6 +44,9 @@ namespace PagoAgilFrba.AbmEmpresa
             this.direccionInput.Text = this.empresaACargar.direccion;
             this.empresaModificada.direccion = this.empresaACargar.direccion;
 
+            this.diaDeRendicionText.Text = this.empresaACargar.diaDeRendicion.ToString();
+            this.empresaModificada.diaDeRendicion = this.empresaACargar.diaDeRendicion;
+
             this.rubroCombo.SelectedIndex = this.rubroCombo.FindString(rubroPorId().nombre);
             this.empresaModificada.idRubro = this.rubrosEncontrados.ElementAt(this.rubroCombo.SelectedIndex).id;
 
@@ -110,7 +113,8 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             return this.nombreInput.Text != "" &&
                 this.cuitInput.Text != "" &&
-                this.direccionInput.Text != "";
+                this.direccionInput.Text != "" &&
+                this.empresaACargar.diaDeRendicion > 0 && this.empresaACargar.diaDeRendicion < 29;
         }
 
         private void cargarRubros()
@@ -134,6 +138,7 @@ namespace PagoAgilFrba.AbmEmpresa
             this.cuitInput.Enabled = true;
             this.direccionInput.Enabled = true;
             this.rubroCombo.Enabled = true;
+            this.diaDeRendicionText.Enabled = true;
         }
 
         private void deshabilitarCampos()
@@ -142,6 +147,7 @@ namespace PagoAgilFrba.AbmEmpresa
             this.cuitInput.Enabled = false;
             this.direccionInput.Enabled = false;
             this.rubroCombo.Enabled = false;
+            this.diaDeRendicionText.Enabled = false;
         }
 
         // Eventos
@@ -191,6 +197,47 @@ namespace PagoAgilFrba.AbmEmpresa
         private void deshabilitadaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             this.empresaModificada.activo = false;
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            int a;
+            bool result = Int32.TryParse(this.diaDeRendicionText.Text, out a);
+            if (result)
+            {
+                this.empresaModificada.diaDeRendicion = a;
+            }
+            else
+            {
+                this.empresaModificada.diaDeRendicion = -1;
+            }
+        }
+
+        private void direccionInput_Leave(object sender, EventArgs e)
+        {
+            this.empresaModificada.direccion = this.direccionInput.Text;
+        }
+
+        private void nombreInput_Leave(object sender, EventArgs e)
+        {
+            this.empresaModificada.nombre = this.nombreInput.Text;
+        }
+
+        private void cuitInput_Leave(object sender, EventArgs e)
+        {
+            this.empresaModificada.cuit = this.cuitInput.Text;
+        }
+
+        private void rubroCombo_Leave(object sender, EventArgs e)
+        {
+            foreach (Rubro rubro in this.rubrosEncontrados)
+            {
+                if (rubro.indexCombo == this.rubroCombo.SelectedIndex)
+                {
+                    this.empresaModificada.idRubro = rubro.id;
+                    break;
+                }
+            }
         }
 
     }
