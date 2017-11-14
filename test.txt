@@ -95,12 +95,12 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 7) Catchear SqlException en la baja
 
 - Registro de Pago de Facturas (SEBA)
-1) Testear Pagos
-2) Todos los datos son obligatorios
+1) Testear Pagos ✓
+2) Todos los datos son obligatorios ✓
 3) La fecha de vencimiento ingresada debe ser menor o igual a la fecha del sistema ✓
 4) No pueden haber facturas con importe menor o igual a cero ✓
-5) La empresa debe estar activa 
-6) El cliente que pague debe estar habilitado
+5) La empresa debe estar activa ✓
+6) El cliente que pague debe estar habilitado ✓
 7) Aclarar en estrategia que no permitimos usuarios con mas de 1 sucursal
 
 - Rendición de Facturas cobradas (DANI)

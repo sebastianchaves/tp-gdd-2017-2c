@@ -64,6 +64,9 @@ namespace PagoAgilFrba.RegistroPago
                     this.cargarValoresPago();
                     int idNuevoPago = this.pagoDao.insertPago(this.nuevoPago);
                     this.cargarPagoFacturas(idNuevoPago);
+                    this.facturasGrid.Refresh();
+                    this.facturasGrid.DataSource = null;
+                    
                 }
                 else
                 {
@@ -203,6 +206,8 @@ namespace PagoAgilFrba.RegistroPago
         private void botonRegistrar_Click(object sender, EventArgs e)
         {
             this.registrarPago();
+            this.nuevoPago = new Pago();
+            this.facturasAPagar = new List<Factura>();
         }
 
         // Boton Eliminar
@@ -238,6 +243,10 @@ namespace PagoAgilFrba.RegistroPago
                 {
                     this.nuevoPago.idCliente = clienteEncontrado.id;
                     this.clienteInput.Text = clienteEncontrado.nombre;
+                }
+                else if (clienteEncontrado.id == 0)
+                {
+                    MessageBox.Show("No se selecciono ningun cliente.");
                 }
                 else
                 {

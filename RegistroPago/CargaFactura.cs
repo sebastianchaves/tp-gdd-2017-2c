@@ -91,8 +91,16 @@ namespace PagoAgilFrba.RegistroPago
             {
                 busquedaClienteForm.ShowDialog(this);
                 Cliente clienteEncontrado = busquedaClienteForm.getClienteEncontrado();
-                this.nuevaFactura.idCliente = clienteEncontrado.id;
-                this.clienteInput.Text = clienteEncontrado.nombre;
+
+                if (clienteEncontrado != null)
+                {
+                    this.nuevaFactura.idCliente = clienteEncontrado.id;
+                    this.clienteInput.Text = clienteEncontrado.nombre;
+                }
+                else
+                {
+                    MessageBox.Show("No se ingreso ningun cliente.");
+                }
             }
         }
 
@@ -104,15 +112,23 @@ namespace PagoAgilFrba.RegistroPago
                 busquedaEmpresaForm.ShowDialog(this);
                 Empresa empresaEncontrada = busquedaEmpresaForm.getEmpresaEncontrada();
 
-                if (empresaEncontrada.activo)
+                if (empresaEncontrada != null)
                 {
-                    this.nuevaFactura.idEmpresa = empresaEncontrada.id;
-                    this.empresaInput.Text = empresaEncontrada.nombre;
+                    if (empresaEncontrada.activo)
+                    {
+                        this.nuevaFactura.idEmpresa = empresaEncontrada.id;
+                        this.empresaInput.Text = empresaEncontrada.nombre;
+                    }
+                    else
+                    {
+                        MessageBox.Show("La empresa ingresada no esta activa.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("La empresa ingresada no esta activa.");
+                    MessageBox.Show("No se ingreso ninguna empresa.");
                 }
+
             }
         }
 
@@ -170,6 +186,7 @@ namespace PagoAgilFrba.RegistroPago
                 else
                 {
                     MessageBox.Show("El importe debe ser mayor o igual a 0");
+                    this.importeInput.Clear();
                 }
             }
             catch (Exception ex)
@@ -178,17 +195,17 @@ namespace PagoAgilFrba.RegistroPago
             }
         }
 
+        // Fecha Vencimiento
         private void fechaVencimientoInput_Leave(object sender, EventArgs e)
         {
-            DateTime fechaIngresada = this.fechaVencimientoInput.Value;
-
-            if (Utils.fechaValida(fechaIngresada))
+            if (Utils.fechaValida(this.fechaVencimientoInput.Value))
             {
                 this.nuevaFactura.fechaVencimiento = this.fechaVencimientoInput.Value;
             }
             else
             {
                 MessageBox.Show("La fecha debe ser menor o igual a la fecha del sistema");
+                this.fechaVencimientoInput.Value = DateTime.Today;
             }
         }
 
