@@ -86,13 +86,13 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 6) Filtrar por uno, alguno o todos sus campos ✓
 
 - ABM Facturas (DANI)
-1) Testear ABM facturas
-2) Todos los datos son obligatorios
+1) Testear ABM facturas ✓
+2) Todos los datos son obligatorios ✓
 3) No pueden haber facturas con el mismo numero ✓
-4) La baja no es logica, se elimina de la tabla
-5) No se podran dar de B o M, si fueron pagadas y/o rendidas
-6) Eliminar conceptos en deleteFactura() cuando se da de baja la factura
-7) Catchear SqlException en la baja
+4) La baja no es logica, se elimina de la tabla ✓
+5) No se podran dar de B o M, si fueron pagadas y/o rendidas ✓
+6) Eliminar conceptos en deleteFactura() cuando se da de baja la factura ✓
+7) Catchear SqlException en la baja ✓
 
 - Registro de Pago de Facturas (SEBA)
 1) Testear Pagos ✓
@@ -104,11 +104,11 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 7) Aclarar en estrategia que no permitimos usuarios con mas de 1 sucursal
 
 - Rendición de Facturas cobradas (DANI)
-1) Testear Rendicion
-2) Se realizan una vez al mes por unica vez en el mes para 1 empresa
-3) La fecha de rendicion es pactada con la empresa
-4) La factura se rinde 1 sola vez
-5) Todos los datos son obligatorios
+1) Testear Rendicion ✓
+2) Se realizan una vez al mes por unica vez en el mes para 1 empresa ✓
+3) La fecha de rendicion es pactada con la empresa ✓
+4) La factura se rinde 1 sola vez ✓
+5) Todos los datos son obligatorios ✓
 
 - Devoluciones (SEBA)
 1) Testear Devoluciones
