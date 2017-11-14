@@ -66,7 +66,9 @@ namespace PagoAgilFrba.RegistroPago
                     this.cargarPagoFacturas(idNuevoPago);
                     this.facturasGrid.Refresh();
                     this.facturasGrid.DataSource = null;
-                    
+                    this.tablaFacturas.Clear();
+                    this.facturasAPagar = new List<Factura>();
+                    this.clienteInput.Clear();
                 }
                 else
                 {
@@ -207,7 +209,6 @@ namespace PagoAgilFrba.RegistroPago
         {
             this.registrarPago();
             this.nuevoPago = new Pago();
-            this.facturasAPagar = new List<Factura>();
         }
 
         // Boton Eliminar

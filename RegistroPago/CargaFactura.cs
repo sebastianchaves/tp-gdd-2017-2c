@@ -139,17 +139,24 @@ namespace PagoAgilFrba.RegistroPago
             {
                 if (this.numeroFacturaValida())
                 {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (!this.nuevaFactura.pagada)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("La factura ingresada se encuentra pagada.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Numero de factura invalido");
+                    MessageBox.Show("Numero de factura invalido.");
                 }
             }
             else
             {
-                MessageBox.Show("Complete los campos obligatorios");
+                MessageBox.Show("Complete los campos obligatorios.");
             }
         }
 
