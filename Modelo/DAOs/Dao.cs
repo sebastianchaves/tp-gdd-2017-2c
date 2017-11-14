@@ -11,13 +11,25 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.DAOs
 {
-    class Dao<T>
+    /**
+     * Clase padre de todos los DAOS de la aplicacion. Provee la funcionalidad generica y repetida en todos los DAOS.
+     * Es una clase tipada, es decir que todos los metodos desarrollados aqui, tienen en cuenta el tipo de Entidad
+     * para la cual fue definida. Todos los metodos son usados por sus clases hijas, ya que esta es una clase abstracta
+     * y no puede ser instanciada.
+     */ 
+    abstract class Dao<T>
     {
 
         protected String CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;
         public const String ALL = "*";
         protected SqlConnection connection;
 
+        /**
+         * Metodo que dada una tabla, una seleccion de columnas, los tipos de las columnas y una lista de condiciones
+         * en el where arma una query, y la ejecuta en la base de datos. Luego arma una lista de listas de String,
+         * dicha estructura son los registros devueltos por la base de datos con sus columnas.
+         * Este metodo es usado de manera generica por todos los DAOS de la aplicacion que hereden de esta clase.
+         */
         protected List<List<String>> select(String tabla, String select, List<String> tipos, Condicion condicion)
         {
 
@@ -92,17 +104,27 @@ namespace PagoAgilFrba.Modelo.DAOs
 
         }
 
+        /*
+         * Metodo que cierra la conexion de base de datos y el objecto SqlDataReader. Es usado por los DAOS que heredan
+         * de esta clase.
+         */
         protected void closeConnections(SqlDataReader reader)
         {
             if (reader != null) { reader.Close(); }
             if (this.connection != null) { this.connection.Close(); }
         }
-
+        /*
+         * Metodo sobrecargado que solo cierra la conexion. Es usado por los DAOS que heredan de esta clase
+         */ 
         protected void closeConnections()
         {
             if (this.connection != null) { this.connection.Close(); }
         }
 
+        /**
+         * Metodo privado que dada una lista de columnas, condiciones y tipos, arma la sintaxis del where
+         * en una consulta SQL. Es usado indistintamente para select o update.
+         */ 
         private String armarWhere(List<String> columns, List<String> conditions, List<String> tipos)
         {
             String where = "";
@@ -135,6 +157,10 @@ namespace PagoAgilFrba.Modelo.DAOs
             return where;
         }
 
+        /**
+         * Metodo utilitario para verificar que hay mas condiciones para agregar, entonces puede tomar la decision
+         * de agregar una , en el insert/update o un AND en el select.
+         * */
         private Boolean hayMasElementosNoNulos(List<String> conditions, int i)
         {
             for (int a = i + 1; a < conditions.Count; a++)
@@ -147,6 +173,10 @@ namespace PagoAgilFrba.Modelo.DAOs
             return false;
         }
 
+        /**
+         * Metodo que dado un tipo INT, STRING, DATE, etc y dado un FieldInfo perteneciente a una instancia de clase,
+         * setea el field. (Para cada tipo de datos se requieren algunas particularidades al momento de setear)
+         */ 
         protected void setWithType(FieldInfo myFieldInfo, Object entidad, String valor, String tipo)
         {
             if (tipo.Equals(Utils.Utils.STRING_TYPE))
@@ -171,6 +201,11 @@ namespace PagoAgilFrba.Modelo.DAOs
             }
         }
 
+        /**
+         * Metodo que, dado un resultset (filas y columnas de resultado de una query de seleccion), dada una
+         * lista de de nombres de fields de entidades y sus respectivos tipos, genera las entidades para el cual el
+         * DAO fue tipado. Esto lo realiza de manera generica indistintamente de que entidad se trate.
+         */ 
         protected List<T> getEntities(List<List<String>> resultSet, List<String> allColumns, List<String> tipos)
         {
             List<T> entities = new List<T>();
@@ -201,11 +236,19 @@ namespace PagoAgilFrba.Modelo.DAOs
             return entities;
         }
 
+        /**
+         * Sobrecarga del metodo de insert para cuando no se especifica si el mismo retorna un valor escalar.
+         * Por default, sino especifica, entonces no devuelve un escalar
+         */ 
         protected int insert(String tabla, List<String> columnas, List<String> tipos, List<String> valores)
         {
             return this.insert(tabla, columnas, tipos, valores, false);
         }
 
+        /**
+         * Metodo que dada una lista de columnas de base de datos, sus tipos y sus valores, arma genericamente una
+         * query de insercion. El valor output indica si el insert devuelve un escalar luego de la insercion o no.
+         */ 
         protected int insert(String tabla, List<String> columnas, List<String> tipos, List<String> valores, bool output)
         {
             String insert = "INSERT INTO " + tabla + "(";
@@ -289,6 +332,10 @@ namespace PagoAgilFrba.Modelo.DAOs
             }
         }
 
+        /**
+         * Metodo que dada una tabla, una lista de actualizaciones y una condicion de where arma una query genericamente
+         * de update en la tabla especificada.
+         */
         public int update(String tabla, Condicion actualizacion, Condicion condicion)
         {
             if (hayMasElementosNoNulos(actualizacion.getConditions(), -1))
@@ -350,6 +397,10 @@ namespace PagoAgilFrba.Modelo.DAOs
             return -1;
         }
 
+        /**
+         * Metodo que, dada una query cualquiera, y la lista de nombres de columnas del select y sus tipos, arma
+         * una query, la ejecuta y luego devuelve las entidades para el cual el DAO fue tipado con los resultados de la query.
+         * */
         protected List<T> obtenerPorQueryGenerica(String query, List<String> allColumns, List<String> tipos)
         {
             using (this.connection = new SqlConnection(CONNECTION_STRING))
@@ -414,6 +465,9 @@ namespace PagoAgilFrba.Modelo.DAOs
                 return getEntities(resultSet, allColumns, tipos);
             }
         }
+        /**
+         * Metodo que dado una query cualquiera, la ejecuta en la base de datos esperando como respuesta un escalar
+         */ 
         protected int obtenerCountQueryGenerica(String query)
         {
             using (this.connection = new SqlConnection(CONNECTION_STRING))
@@ -426,6 +480,10 @@ namespace PagoAgilFrba.Modelo.DAOs
                 return result;
             }
         }
+        /*
+         * Metodo que ejecuta cualquier query provista. Se utiliza para algunos deletes especificos. Devuelve el escalar
+         * devuelto por la base de datos
+         */ 
         protected int deleteQuery(String query)
         {
             using (this.connection = new SqlConnection(CONNECTION_STRING))

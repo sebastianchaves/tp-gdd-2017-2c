@@ -73,6 +73,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             update(TABLA, actualizacion, condicion);
         }
 
+        //Elimina un concepto
         public int deleteConcepto(Concepto conceptoDelete)
         {
             String query = "DELETE from " + TABLA + " where id_concepto = " + conceptoDelete.id;

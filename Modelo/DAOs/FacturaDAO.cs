@@ -79,7 +79,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             newAllColumns.Add("pagada");
             return this.obtenerPorQueryGenerica(OBTENER_CON_COLUMNA_PAGADA + numeroFactura.ToString(), newAllColumns, newTipos);
         }
-
+        // Devuelve una unica factura por numero de factura
         public T findFacturaByNumero(int numeroFactura)
         {
             String query = "SELECT * from " + TABLA + " where nro_factura = " + numeroFactura;

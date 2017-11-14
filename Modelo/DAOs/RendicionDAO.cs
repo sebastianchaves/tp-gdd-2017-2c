@@ -44,6 +44,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumnsInDB.Add("id_empresa");
         }
 
+        //Obtiene rendicion por id
         public List<T> obtenerRendicion(int id)
         {
             String query = "select r.*, e.nombre from ROCKET_DATABASE.rendiciones r, "
@@ -58,6 +59,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             return obtenerPorQueryGenerica(query, allColumnsNew, tiposNew);
         }
 
+        //Obtiene una rendicion dada una empresa, mes y anio.
         public List<T> findRendicion(int idEmpresa, String mes, String anio)
         {
             List<String> allColumnsNew = new List<String>(allColumns);
@@ -72,6 +74,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             return this.obtenerPorQueryGenerica(query, allColumns, tipos);
         }
 
+        //Filtra rendiciones por los campos dado de manera opcional. No pueden ser simultaneamente nulos.
         public List<T> filtrarRendiciones(int idEmpresa, String mes, String anio)
         {
 

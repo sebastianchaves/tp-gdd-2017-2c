@@ -100,13 +100,14 @@ namespace PagoAgilFrba.Modelo.DAOs
             return getEntities(resultSet, allColumns, tipos);
         }
 
+        // Busca clientes y devuelve uno solo por id
         public T findClienteById(String id)
         {
             String query = "SELECT * from " + TABLA + " where id_cliente = " + id;
             return obtenerPorQueryGenerica(query, allColumns, tipos).ElementAt(0);
         }
 
-        // Updates
+        // realiza el update de un cliente
         public void updateCliente(Cliente clienteUpdate)
         {
             Condicion actualizacion = new Condicion();
@@ -126,11 +127,5 @@ namespace PagoAgilFrba.Modelo.DAOs
            
             update(TABLA, actualizacion, condicion);
         }
-
-        public List<T> obtenerCLientesPorTelefono(String telefono)
-        {
-            return this.obtenerPorQueryGenerica("select * from " + TABLA + " where codigo_postal = " + telefono, allColumns, tipos);
-        }
-
     }
 }

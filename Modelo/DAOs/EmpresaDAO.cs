@@ -80,6 +80,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             return getEntities(resultSet, allColumns, tipos);
         }
 
+        // Busca empresa por nombre, cuit y rubro. Pueden ser nulos.
         public List<T> findEmpresa(String nombreEmpresa, String cuitEmpresa, String rubroEmpresa)
         {
             Condicion condicion = new Condicion();
@@ -90,7 +91,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             List<List<String>> resultSet = this.select(EMPRESAS + " e, " + RUBROS + " r", ALL, tipos, condicion);
             return getEntities(resultSet, allColumns, tipos);
         }
-
+        // busca una empresa por id.
         public T findEmpresaById(String id)
         {
             String query = "SELECT * from " + EMPRESAS + " where id_empresa = " + id;
@@ -114,7 +115,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
             update(EMPRESAS, actualizacion, condicion);
         }
-
+        //Devuelve true si la empresa espeficidada se puede deshabilitar (valida que no tenga facturas por rendir)
         public Boolean puedeDeshabilitar(Empresa empresaUpdate)
         {
             int count = obtenerCountQueryGenerica(PUEDE_DESHABILITAR + empresaUpdate.id);
@@ -127,11 +128,13 @@ namespace PagoAgilFrba.Modelo.DAOs
                 return false;
             }
         }
+        //Devuelve una lista de empresas que rinden en el dia especificado
         public List<T> obtenerEmpresasPorDiaDeRendicion(int dia)
         {
             return obtenerPorQueryGenerica(EMPRESAS_POR_DIA_DE_RENDICION + dia.ToString(), allColumns, tipos);
         }
-
+        //Rinde la empresa indicada, en el anio, mes y dia, con el porcentaje de comision especificado.
+        //Utiliza un stored procedure para esto
         public int rendirEmpresa(int idEmpresa, int anio, int mes, int dia, decimal porcentaje)
         {
             using (this.connection = new SqlConnection(CONNECTION_STRING))

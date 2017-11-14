@@ -65,7 +65,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
             return getEntities(resultSet, allColumns, tipos);
         }
-
+        //Obtiene una sucursal por id
         public List<T> sucursalPorId(int id)
         {
             Condicion condicion = new Condicion();
