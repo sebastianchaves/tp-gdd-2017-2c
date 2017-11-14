@@ -36,7 +36,7 @@ AS
 	set @result = 0;
 
 	select @tieneRendiciones = count(1) from ROCKET_DATABASE.RENDICIONES r
-	right join ROCKET_DATABASE.DEVOLUCION_RENDICION dr
+	left join ROCKET_DATABASE.DEVOLUCION_RENDICION dr
 	on r.id_rendicion = dr.id_rendicion
 	where r.id_empresa = @id_empresa and year(r.fecha) = @anio
 	and month(r.fecha) = @mes and dr.id_devolucion is null;

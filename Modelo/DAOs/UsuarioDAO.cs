@@ -55,7 +55,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
             return getEntities(resultSet, allColumns, tipos);
         }
-
+        //Suma un intento de login
         public int sumarIntentos(Usuario usuario)
         {
             Condicion actualizacion = new Condicion();
@@ -69,7 +69,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             update(TABLA, actualizacion, condicion);
             return usuario.intentos + 1;
         }
-
+        //Setea a 0 los intentos
         public void reiniciarIntentos(Usuario usuario)
         {
             Condicion actualizacion = new Condicion();

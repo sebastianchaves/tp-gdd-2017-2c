@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -173,12 +174,19 @@ namespace PagoAgilFrba.AbmEmpresa
         // Boton Actualizar
         private void botonActualizar_Click(object sender, EventArgs e)
         {
-            this.updateEmpresa();
-            Utils.clearTextBoxes(this);
-            this.empresaModificada = new Empresa();
-            this.empresaACargar = new Empresa();
-            this.deshabilitarCampos();
-            this.botonActualizar.Enabled = false;
+            try
+            {
+                this.updateEmpresa();
+                Utils.clearTextBoxes(this);
+                this.empresaModificada = new Empresa();
+                this.empresaACargar = new Empresa();
+                this.deshabilitarCampos();
+                this.botonActualizar.Enabled = false;
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error en la modificacion. Asegurese que el CUIT es unico");
+            }
         }
 
         // Boton Volver

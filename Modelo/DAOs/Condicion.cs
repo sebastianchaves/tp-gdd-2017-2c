@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Modelo.DAOs
 {
+    /**
+     * Clase que gestiona las condiciones de las querys genericas que realizan los daos.
+     * La estructura es la siguiente: tiene tres listas con la misma cantidad de elementos que se corresponden uno a uno.
+     * En la primer lista estan las columnas a actualizar/filtrar, en la segunda los valores por/a los cuales se va a 
+     * seleccionar/actualizar. Y de cada uno de estas selecciones/actualizaciones estan los tipos de datos, ya que
+     * no es lo mismo actualizar un string, que un int, que una fecha.
+     */ 
     public class Condicion
     {
         private List<String> columns;

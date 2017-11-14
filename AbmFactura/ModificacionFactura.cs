@@ -262,6 +262,8 @@ namespace PagoAgilFrba.AbmFactura
         {
             this.actualizarFactura();
             Utils.clearTextBoxes(this);
+            this.itemsGrid.DataSource = null;
+            this.itemsGrid.Rows.Clear();
             this.nuevoConcepto = new Concepto();
             this.facturaACargar = new Factura();
             this.facturaModificada = new Factura();
@@ -291,9 +293,16 @@ namespace PagoAgilFrba.AbmFactura
             using (BusquedaEmpresa busquedaForm = new BusquedaEmpresa())
             {
                 busquedaForm.ShowDialog(this);
-                this.empresaEncontrada = busquedaForm.getEmpresaEncontrada();
-                this.empresaInput.Text = this.empresaEncontrada.nombre;
-                this.facturaModificada.idEmpresa = this.empresaEncontrada.id;
+                if (busquedaForm.getEmpresaEncontrada() != null && busquedaForm.getEmpresaEncontrada().activo)
+                {
+                    this.empresaEncontrada = busquedaForm.getEmpresaEncontrada();
+                    this.empresaInput.Text = this.empresaEncontrada.nombre;
+                    this.facturaModificada.idEmpresa = this.empresaEncontrada.id;
+                }
+                else
+                {
+                    MessageBox.Show("La empresa seleccionada esta inhabilitada");
+                }
             }
         }
 

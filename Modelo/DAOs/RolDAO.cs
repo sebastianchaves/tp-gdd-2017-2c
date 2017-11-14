@@ -60,7 +60,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
             return getEntities(resultSet, allColumns, tipos);
         }
-
+        //Buscar un rol por id
         public List<T> findRol(Rol rol)
         {
             Condicion condicion = new Condicion();
@@ -70,7 +70,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
             return getEntities(resultSet, allColumns, tipos);
         }
-
+        //Obtiene los roles del usuario especificado
         public List<T> obtenerRolesPorUsuario(String usuario)
         {
             return obtenerPorQueryGenerica(ROLES_X_USUARIO + "'" + usuario + "'", allColumns, tipos);
@@ -91,7 +91,7 @@ namespace PagoAgilFrba.Modelo.DAOs
 
             update(TABLA, actualizacion, condicion);
         }
-
+        //Elimina la relacion rol con todos los usuarios que la tengan.
         public void darDeBajaRolEnTodosLosUsuarios(Rol rol)
         {
             deleteQuery(INHABILITAR_ROLES_USUARIO + rol.id);
