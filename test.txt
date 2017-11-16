@@ -107,14 +107,14 @@ Para poder deshabilitar deben estar todas sus facturas cobradas de manera rendid
 pueden devolver facturas pagadas. ✓
 
 - Listado Estadístico (DANI)
-1) Testear Listado
+1) Testear Listado ✓
 2) Tipo(4), año, trimestre ✓
 3) Listas descendentemente ✓
 4) Columnas segun tipo ✓
 
 - Generales (DANI(1), SEBA(2))
-1) Unificar scripts
-2) Agregar aclaraciones sobre entidades en estrategia.txt
-3) Clean build de proyect para enviar
-4) Poner Javadoc 
-5) Agregar el DER (.jpg)
+1) Unificar scripts ✓
+2) Agregar aclaraciones sobre entidades en estrategia.pdf ✓
+3) Clean build de proyect para enviar ✓
+4) Poner Javadoc  ✓
+5) Agregar el DER (.jpg) ✓

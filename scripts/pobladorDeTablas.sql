@@ -96,6 +96,13 @@ where id_rendicion is null and nro_factura in
 (select nro_factura from GD2C2017.ROCKET_DATABASE.FACTURAS where id_rendicion is not null);
 alter table GD2C2017.ROCKET_DATABASE.FACTURAS add unique(nro_factura);
 GO
+/*** insertando conceptos ***/
+print 'Insertando conceptos...';
+insert into ROCKET_DATABASE.CONCEPTOS
+select distinct m.ItemFactura_Monto, m.ItemFactura_Cantidad,
+(select f.id_factura from ROCKET_DATABASE.FACTURAS f where m.Nro_Factura = f.nro_factura) as id_factura
+from gd_esquema.Maestra m;
+GO
 /*** insertando pagos ***/
 print 'Insertando pagos...';
 set identity_insert GD2C2017.ROCKET_DATABASE.PAGOS ON;
