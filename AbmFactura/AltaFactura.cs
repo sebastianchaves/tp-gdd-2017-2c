@@ -117,15 +117,22 @@ namespace PagoAgilFrba.AbmFactura
                 {
                     if (this.empresaEncontrada.activo)
                     {
-                        this.calcularTotal();
-                        this.facturaDao.agregarFactura(this.nuevaFactura);
-                        this.agregarConceptos();
-                        MessageBox.Show("Factura agregado!");
-                        Utils.clearTextBoxes(this);
-                        this.conceptosGrid.DataSource = null;
-                        this.conceptosGrid.Rows.Clear();
-                        this.nuevaFactura = new Factura();
-                        this.conceptosAgregados = new List<Concepto>();
+                        if (nuevaFactura.fechaVencimiento > nuevaFactura.fechaAlta)
+                        {
+                            this.calcularTotal();
+                            this.facturaDao.agregarFactura(this.nuevaFactura);
+                            this.agregarConceptos();
+                            MessageBox.Show("Factura agregada!");
+                            Utils.clearTextBoxes(this);
+                            this.conceptosGrid.DataSource = null;
+                            this.conceptosGrid.Rows.Clear();
+                            this.nuevaFactura = new Factura();
+                            this.conceptosAgregados = new List<Concepto>();
+                        }
+                        else
+                        {
+                            MessageBox.Show("La fecha de vencimiento debe ser mayor a la fecha de alta");
+                        }
                     }
                     else
                     {

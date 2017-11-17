@@ -19,13 +19,13 @@ namespace PagoAgilFrba.Modelo.Utils
             return matches.Count > 1;
         }
 
-        public static Boolean campoNumericoMayorA0(String text)
+        public static bool campoNumericoMayorA0(String text)
         {
             int i;
             return (Int32.TryParse(text, out i) && i > 0);
         }
 
-        public static Boolean campoNumerico(String text)
+        public static bool campoNumerico(String text)
         {
             int i;
             return Int32.TryParse(text, out i);
