@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionFactura));
             this.modificacionFacturaLabel = new System.Windows.Forms.Label();
             this.datosItemGroupbox = new System.Windows.Forms.GroupBox();
+            this.descripcionInput = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.botonAgregarConcepto = new System.Windows.Forms.Button();
             this.cantidadInput = new System.Windows.Forms.TextBox();
             this.botonEliminarConcepto = new System.Windows.Forms.Button();
@@ -60,8 +62,6 @@
             this.botonBuscarEmpresa = new System.Windows.Forms.Button();
             this.montoTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.cantidadTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.datosItemGroupbox.SuspendLayout();
             this.datosFacturaGroupbox.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -82,7 +82,7 @@
             // 
             // datosItemGroupbox
             // 
-            this.datosItemGroupbox.Controls.Add(this.textBox1);
+            this.datosItemGroupbox.Controls.Add(this.descripcionInput);
             this.datosItemGroupbox.Controls.Add(this.label3);
             this.datosItemGroupbox.Controls.Add(this.botonAgregarConcepto);
             this.datosItemGroupbox.Controls.Add(this.cantidadInput);
@@ -96,6 +96,23 @@
             this.datosItemGroupbox.TabIndex = 6;
             this.datosItemGroupbox.TabStop = false;
             this.datosItemGroupbox.Text = "Datos Items:";
+            // 
+            // descripcionInput
+            // 
+            this.descripcionInput.Enabled = false;
+            this.descripcionInput.Location = new System.Drawing.Point(74, 91);
+            this.descripcionInput.Name = "descripcionInput";
+            this.descripcionInput.Size = new System.Drawing.Size(130, 20);
+            this.descripcionInput.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 94);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Descripcion:";
             // 
             // botonAgregarConcepto
             // 
@@ -355,23 +372,6 @@
             this.botonBuscarEmpresa.UseVisualStyleBackColor = true;
             this.botonBuscarEmpresa.Click += new System.EventHandler(this.botonBuscarEmpresa_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(74, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 20);
-            this.textBox1.TabIndex = 16;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Descripcion:";
-            // 
             // ModificacionFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,7 +438,7 @@
         private System.Windows.Forms.Button botonEliminarConcepto;
         private System.Windows.Forms.ToolTip montoTooltip;
         private System.Windows.Forms.ToolTip cantidadTooltip;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox descripcionInput;
         private System.Windows.Forms.Label label3;
     }
 }

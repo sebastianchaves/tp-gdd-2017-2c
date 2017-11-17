@@ -61,6 +61,7 @@ namespace PagoAgilFrba.AbmFactura
 
             resultadosConceptos.Columns.Add("Monto");
             resultadosConceptos.Columns.Add("Cantidad");
+            resultadosConceptos.Columns.Add("Descripcion");
 
             itemsGrid.DataSource = resultadosConceptos;
         }
@@ -168,10 +169,11 @@ namespace PagoAgilFrba.AbmFactura
 
             resultadosConceptos.Columns.Add("Monto");
             resultadosConceptos.Columns.Add("Cantidad");
+            resultadosConceptos.Columns.Add("Descripcion");
 
             foreach (Concepto concepto in this.conceptosModificados)
             {
-                resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad);
+                resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad, concepto.descripcion);
             }
 
             itemsGrid.DataSource = resultadosConceptos;
@@ -199,8 +201,9 @@ namespace PagoAgilFrba.AbmFactura
 
             resultadosConceptos.Columns.Add("Monto");
             resultadosConceptos.Columns.Add("Cantidad");
+            resultadosConceptos.Columns.Add("Descripcion");
 
-            resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad);
+            resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad, concepto.descripcion);
 
             this.itemsGrid.DataSource = resultadosConceptos;
         }
@@ -215,6 +218,7 @@ namespace PagoAgilFrba.AbmFactura
 
             this.montoInput.Enabled = true;
             this.cantidadInput.Enabled = true;
+            this.descripcionInput.Enabled = true;
             this.botonAgregarConcepto.Enabled = true;
             this.botonEliminarConcepto.Enabled = true;
         }
@@ -229,6 +233,7 @@ namespace PagoAgilFrba.AbmFactura
 
             this.montoInput.Enabled = false;
             this.cantidadInput.Enabled = false;
+            this.descripcionInput.Enabled = false;
             this.botonAgregarConcepto.Enabled = false;
             this.botonEliminarConcepto.Enabled = false;
         }
@@ -331,6 +336,7 @@ namespace PagoAgilFrba.AbmFactura
             this.agregarConcepto();
             this.cantidadInput.Clear();
             this.montoInput.Clear();
+            this.descripcionInput.Clear();
             this.nuevoConcepto = new Concepto();
         }
 
