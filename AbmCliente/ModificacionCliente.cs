@@ -328,14 +328,11 @@ namespace PagoAgilFrba.AbmCliente
         // Fecha Nacimiento
         private void fechaDeNacimientoInput_Leave(object sender, EventArgs e)
         {
-            if (fechaDeNacimientoInput.Value.Date <= Utils.appDate.Date)
-            {
-                this.clienteModificado.fechaDeNacimiento = this.fechaDeNacimientoInput.Value;
-            }
-            else
+            if (!(fechaDeNacimientoInput.Value.Date <= Utils.appDate.Date))
             {
                 fechaNacimientoTooltip.Show("Fecha invalida", fechaDeNacimientoInput, 1500);
             }
+            this.clienteModificado.fechaDeNacimiento = this.fechaDeNacimientoInput.Value;
         }
 
         // Telefono
