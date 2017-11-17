@@ -110,6 +110,7 @@
             // 
             this.contraseniaInput.Location = new System.Drawing.Point(233, 117);
             this.contraseniaInput.Name = "contraseniaInput";
+            this.contraseniaInput.PasswordChar = '*';
             this.contraseniaInput.Size = new System.Drawing.Size(142, 20);
             this.contraseniaInput.TabIndex = 7;
             this.contraseniaInput.Leave += new System.EventHandler(this.contraseniaInput_Leave);

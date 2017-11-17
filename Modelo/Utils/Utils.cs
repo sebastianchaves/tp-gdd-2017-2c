@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Security.Cryptography;
 using PagoAgilFrba.Modelo.Entidades;
+using System.Text.RegularExpressions;
 
 namespace PagoAgilFrba.Modelo.Utils
 {
@@ -159,6 +160,5 @@ namespace PagoAgilFrba.Modelo.Utils
         {
             return String.Format("{0:yyyy/MM/dd}", date);
         }
-
     }
 }

@@ -39,16 +39,23 @@ namespace PagoAgilFrba.AbmEmpresa
             {
                 this.nuevaEmpresa.activo = true;
 
-                if (this.camposCompletos())
+                if (Validaciones.validarCuit(this.cuitInput.Text))
                 {
-                    this.empresaDao.agregarEmpresa(this.nuevaEmpresa);
-                    MessageBox.Show("Empresa agregada!");
-                    Utils.clearTextBoxes(this);
-                    this.nuevaEmpresa = new Empresa();
+                    if (this.camposCompletos())
+                    {
+                        this.empresaDao.agregarEmpresa(this.nuevaEmpresa);
+                        MessageBox.Show("Empresa agregada!");
+                        Utils.clearTextBoxes(this);
+                        this.nuevaEmpresa = new Empresa();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor, complete los campos faltantes.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Complete los campos faltantes.");
+                    MessageBox.Show("Formato de CUIT invalido. Por favor ingrese un CUIT valido con el formato: XX-XXXXXXXX-X");
                 }
             }
             catch(SqlException)

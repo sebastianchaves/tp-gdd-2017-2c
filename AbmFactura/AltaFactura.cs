@@ -72,8 +72,15 @@ namespace PagoAgilFrba.AbmFactura
         {
             if (this.camposConceptoCompletos())
             {
-                this.conceptosAgregados.Add(nuevoConcepto);
-                this.agregarAGrid();
+                if (Validaciones.campoNumericoMayorA0(montoInput.Text) && Validaciones.campoNumericoMayorA0(cantidadInput.Text))
+                {
+                    this.conceptosAgregados.Add(nuevoConcepto);
+                    this.agregarAGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Campos con datos invalidos. Ambos valores deben ser mayores a 0");
+                }
             }
             else
             {

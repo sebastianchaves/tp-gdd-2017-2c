@@ -84,6 +84,13 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void updateEmpresa()
         {
+
+            if (!Validaciones.validarCuit(this.cuitInput.Text))
+            {
+                MessageBox.Show("Formato de CUIT invalido. Por favor ingrese un CUIT valido con el formato: XX-XXXXXXXX-X");
+                return;
+            }
+
             if (this.camposCompletos())
             {
                 if (!this.empresaModificada.activo && this.empresaACargar.activo)
