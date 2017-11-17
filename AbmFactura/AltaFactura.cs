@@ -119,15 +119,22 @@ namespace PagoAgilFrba.AbmFactura
                     {
                         if (nuevaFactura.fechaVencimiento > nuevaFactura.fechaAlta)
                         {
-                            this.calcularTotal();
-                            this.facturaDao.agregarFactura(this.nuevaFactura);
-                            this.agregarConceptos();
-                            MessageBox.Show("Factura agregada!");
-                            Utils.clearTextBoxes(this);
-                            this.conceptosGrid.DataSource = null;
-                            this.conceptosGrid.Rows.Clear();
-                            this.nuevaFactura = new Factura();
-                            this.conceptosAgregados = new List<Concepto>();
+                            if (facturaDao.obtenerFacturas(nuevaFactura.numero).Count == 0)
+                            {
+                                this.calcularTotal();
+                                this.facturaDao.agregarFactura(this.nuevaFactura);
+                                this.agregarConceptos();
+                                MessageBox.Show("Factura agregada!");
+                                Utils.clearTextBoxes(this);
+                                this.conceptosGrid.DataSource = null;
+                                this.conceptosGrid.Rows.Clear();
+                                this.nuevaFactura = new Factura();
+                                this.conceptosAgregados = new List<Concepto>();
+                            }
+                            else
+                            {
+                                MessageBox.Show("El numero de factura ya existe");
+                            }
                         }
                         else
                         {
@@ -144,9 +151,9 @@ namespace PagoAgilFrba.AbmFactura
                     MessageBox.Show("Complete los campos faltantes.");
                 }
             }
-            catch (SqlException)
+            catch (SqlException s)
             {
-                MessageBox.Show("Error en la carga de la factura. Asegurese que el numero no exista");
+                MessageBox.Show("Error inesperado en la carga de factura");
             }
 
         }

@@ -17,7 +17,7 @@ namespace PagoAgilFrba.Modelo.DAOs
      * para la cual fue definida. Todos los metodos son usados por sus clases hijas, ya que esta es una clase abstracta
      * y no puede ser instanciada.
      */ 
-    abstract class Dao<T>
+    abstract class Dao<T> 
     {
 
         protected String CONNECTION_STRING = ConfigurationManager.ConnectionStrings["dataBase"].ConnectionString;

@@ -86,7 +86,7 @@ namespace PagoAgilFrba.RegistroPago
             foreach (Factura factura in this.facturasAPagar)
             {
                 PagoFactura pagoFactura = new PagoFactura();
-                pagoFactura.idFactura = this.facturaDao.findFacturaByNumero(factura.numero).id;
+                pagoFactura.idFactura = this.facturaDao.obtenerFacturas(factura.numero).ElementAt(0).id;
                 pagoFactura.idPago = idNuevoPago;
 
                 this.pagoFacturaDao.agregarPagoFactura(pagoFactura);
