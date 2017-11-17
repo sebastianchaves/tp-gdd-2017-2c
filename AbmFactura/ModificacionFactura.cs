@@ -72,11 +72,31 @@ namespace PagoAgilFrba.AbmFactura
             {
                 if (!this.facturaACargar.pagada && this.facturaACargar.idRendicion == 0)
                 {
-                    this.calcularTotal();
-                    this.facturaDao.updateFactura(this.facturaModificada);
-                    this.agregarConceptos();
-                    this.eliminarConceptos();
-                    MessageBox.Show("Datos actualizados!");
+                    if (facturaModificada.fechaVencimiento > facturaModificada.fechaAlta)
+                    {
+                        this.calcularTotal();
+                        this.facturaDao.updateFactura(this.facturaModificada);
+                        this.agregarConceptos();
+                        this.eliminarConceptos();
+                        MessageBox.Show("Datos actualizados!");
+                        Utils.clearTextBoxes(this);
+                        this.itemsGrid.DataSource = null;
+                        this.itemsGrid.Rows.Clear();
+                        this.nuevoConcepto = new Concepto();
+                        this.facturaACargar = new Factura();
+                        this.facturaModificada = new Factura();
+                        this.clienteEncontrado = new Cliente();
+                        this.empresaEncontrada = new Empresa();
+                        this.conceptosACargar = new List<Concepto>();
+                        this.conceptosAEliminar = new List<Concepto>();
+                        this.conceptosModificados = new List<Concepto>();
+                        this.deshabilitarCampos();
+                        this.botonActualizar.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("La fecha de vencimiento debe ser posterior a la fecha de alta");
+                    }
                 }
                 else
                 {
@@ -285,19 +305,6 @@ namespace PagoAgilFrba.AbmFactura
         private void botonActualizar_Click(object sender, EventArgs e)
         {
             this.actualizarFactura();
-            Utils.clearTextBoxes(this);
-            this.itemsGrid.DataSource = null;
-            this.itemsGrid.Rows.Clear();
-            this.nuevoConcepto = new Concepto();
-            this.facturaACargar = new Factura();
-            this.facturaModificada = new Factura();
-            this.clienteEncontrado = new Cliente();
-            this.empresaEncontrada = new Empresa();
-            this.conceptosACargar = new List<Concepto>();
-            this.conceptosAEliminar = new List<Concepto>();
-            this.conceptosModificados = new List<Concepto>();
-            this.deshabilitarCampos();
-            this.botonActualizar.Enabled = false;
         }
 
         // Boton Buscar Cliente
@@ -334,10 +341,10 @@ namespace PagoAgilFrba.AbmFactura
         private void botonAgregarConcepto_Click(object sender, EventArgs e)
         {
             this.agregarConcepto();
+            this.nuevoConcepto = new Concepto();
             this.cantidadInput.Clear();
             this.montoInput.Clear();
             this.descripcionInput.Clear();
-            this.nuevoConcepto = new Concepto();
         }
 
         private void botonEliminarConcepto_Click(object sender, EventArgs e)
@@ -348,10 +355,11 @@ namespace PagoAgilFrba.AbmFactura
                 
                 decimal conceptoMonto = Decimal.Parse(this.itemsGrid.Rows[index].Cells[0].Value.ToString());
                 int conceptoCantidad = Int32.Parse(this.itemsGrid.Rows[index].Cells[1].Value.ToString());
+                String descripcion = this.itemsGrid.Rows[index].Cells[2].Value.ToString();
 
                 this.itemsGrid.Rows.RemoveAt(index);
 
-                Concepto conceptoAEliminar = this.conceptosACargar.Find(concepto => concepto.cantidad == conceptoCantidad && concepto.monto == conceptoMonto);
+                Concepto conceptoAEliminar = this.conceptosACargar.Find(concepto => concepto.cantidad == conceptoCantidad && concepto.monto == conceptoMonto && concepto.descripcion.Equals(descripcion));
 
                 if (conceptoAEliminar != null)
                 {
@@ -363,7 +371,8 @@ namespace PagoAgilFrba.AbmFactura
                     this.conceptosModificados.Remove(
                         this.conceptosModificados.Find(concepto => 
                         concepto.cantidad == conceptoCantidad 
-                        && concepto.monto == conceptoMonto));
+                        && concepto.monto == conceptoMonto
+                        && concepto.descripcion.Equals(descripcion)));
                 }
 
                 this.agregarTodosAGrid(this.conceptosModificados);
@@ -416,6 +425,11 @@ namespace PagoAgilFrba.AbmFactura
         private void fechaVencimientoInput_Leave(object sender, EventArgs e)
         {
             this.facturaModificada.fechaVencimiento = this.fechaVencimientoInput.Value;
+        }
+
+        private void descripcionInput_TextChanged(object sender, EventArgs e)
+        {
+            this.nuevoConcepto.descripcion = this.descripcionInput.Text;
         }
 
     }

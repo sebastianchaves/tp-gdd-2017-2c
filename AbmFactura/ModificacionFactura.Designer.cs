@@ -104,6 +104,7 @@
             this.descripcionInput.Name = "descripcionInput";
             this.descripcionInput.Size = new System.Drawing.Size(130, 20);
             this.descripcionInput.TabIndex = 16;
+            this.descripcionInput.TextChanged += new System.EventHandler(this.descripcionInput_TextChanged);
             // 
             // label3
             // 
