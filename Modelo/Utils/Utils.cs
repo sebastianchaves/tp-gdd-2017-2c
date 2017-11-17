@@ -78,7 +78,7 @@ namespace PagoAgilFrba.Modelo.Utils
         // Metodo para validar fecha
         public static Boolean fechaValida(DateTime fecha)
         {
-            return fecha.Date > minTime.Date && fecha.Date <= appDate.Date;
+            return fecha != null && fecha.Date > minTime.Date && fecha.Date <= appDate.Date;
         }
 
         // Metodo para mostrar formatos invalidos

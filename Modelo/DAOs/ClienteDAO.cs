@@ -127,5 +127,12 @@ namespace PagoAgilFrba.Modelo.DAOs
            
             update(TABLA, actualizacion, condicion);
         }
+
+        public bool existeMail(String mail)
+        {
+            String query = "SELECT * from " + TABLA + " where mail = '" + mail + "'";
+            List<T> lista = obtenerPorQueryGenerica(query, allColumns, tipos);
+            return lista.Count > 0;
+        }
     }
 }

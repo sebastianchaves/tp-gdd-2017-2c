@@ -144,12 +144,26 @@ namespace PagoAgilFrba.AbmCliente
                 {
                     if (Utils.fechaValida(this.clienteModificado.fechaDeNacimiento))
                     {
-                        this.armarDireccion();
-                        this.clienteDao.updateCliente(clienteModificado);
-                        Utils.clearTextBoxes(this);
-                        this.deshabilitarCampos();
-                        this.botonActualizar.Enabled = false;
-                        MessageBox.Show("Datos actualizados!");
+                        if (clienteACargar.mail.Equals(clienteModificado.mail) || !clienteDao.existeMail(clienteModificado.mail))
+                        {
+                            if (Validaciones.mailValido(clienteModificado.mail))
+                            {
+                                this.armarDireccion();
+                                this.clienteDao.updateCliente(clienteModificado);
+                                Utils.clearTextBoxes(this);
+                                this.deshabilitarCampos();
+                                this.botonActualizar.Enabled = false;
+                                MessageBox.Show("Datos actualizados!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Mail de formato invalido");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya existe un cliente con el mail especificado");
+                        }
                     }
                     else
                     {
@@ -161,9 +175,9 @@ namespace PagoAgilFrba.AbmCliente
                     MessageBox.Show("Complete los campos obligatorios.");
                 }
             }
-            catch (SqlException)
+            catch (SqlException s)
             {
-                MessageBox.Show("Ya existe ese mail.");
+                MessageBox.Show("Error inesperado en la carga del cliente");
             }
 
         }
@@ -321,7 +335,6 @@ namespace PagoAgilFrba.AbmCliente
             else
             {
                 fechaNacimientoTooltip.Show("Fecha invalida", fechaDeNacimientoInput, 1500);
-                fechaDeNacimientoInput.ResetText();
             }
         }
 

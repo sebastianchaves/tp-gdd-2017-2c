@@ -38,11 +38,24 @@ namespace PagoAgilFrba.AbmCliente
                 {
                     if (Utils.fechaValida(nuevoCliente.fechaDeNacimiento))
                     {
-                        this.cargarDireccion();
-                        clienteDAO.agregarCliente(nuevoCliente);
-                        Utils.clearTextBoxes(this);
-                        this.nuevoCliente = new Cliente();
-                        MessageBox.Show("Cliente agregado!");
+                        if (!clienteDAO.existeMail(nuevoCliente.mail))
+                        {
+                            if (!Validaciones.mailValido(nuevoCliente.mail))
+                            {
+                                MessageBox.Show("Formato de mail invalido");
+                                return;
+                            }
+
+                            this.cargarDireccion();
+                            clienteDAO.agregarCliente(nuevoCliente);
+                            Utils.clearTextBoxes(this);
+                            this.nuevoCliente = new Cliente();
+                            MessageBox.Show("Cliente agregado!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya existe un cliente con el mail especificado");
+                        }
                     }
                     else
                     {
@@ -54,9 +67,9 @@ namespace PagoAgilFrba.AbmCliente
                     MessageBox.Show("Complete los campos faltantes.");
                 }
             }
-            catch (SqlException)
+            catch (SqlException s)
             {
-                MessageBox.Show("Ya existe ese mail.");
+                MessageBox.Show("Ocurrio un error inesperado en la carga del cliente");
             }
         }
 

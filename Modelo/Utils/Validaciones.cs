@@ -11,6 +11,7 @@ namespace PagoAgilFrba.Modelo.Utils
     {
 
         private static String CUIT_REGEX = "\\d{2}\\-\\d{8}\\-\\d";
+        private static String EMAIL_REGEX = ".*?@.*?\\..+?(\\..*?)?";
 
         public static Boolean validarCuit(String cuit)
         {
@@ -29,6 +30,13 @@ namespace PagoAgilFrba.Modelo.Utils
         {
             int i;
             return Int32.TryParse(text, out i);
+        }
+
+        public static bool mailValido(String mail) {
+            return Regex.IsMatch(mail,
+                @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
         }
     }
 }
