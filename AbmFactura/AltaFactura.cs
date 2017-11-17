@@ -211,8 +211,11 @@ namespace PagoAgilFrba.AbmFactura
             {
                 busquedaForm.ShowDialog(this);
                 this.clienteEncontrado = busquedaForm.getClienteEncontrado();
-                this.clienteInput.Text = this.clienteEncontrado.nombre;
-                this.nuevaFactura.idCliente = this.clienteEncontrado.id;
+                if (clienteEncontrado != null)
+                {
+                    this.clienteInput.Text = this.clienteEncontrado.nombre;
+                    this.nuevaFactura.idCliente = this.clienteEncontrado.id;
+                }
             }
         }
 
@@ -223,8 +226,11 @@ namespace PagoAgilFrba.AbmFactura
             {
                 busquedaForm.ShowDialog(this);
                 this.empresaEncontrada = busquedaForm.getEmpresaEncontrada();
-                this.empresaInput.Text = this.empresaEncontrada.nombre;
-                this.nuevaFactura.idEmpresa = this.empresaEncontrada.id;
+                if (empresaEncontrada != null)
+                {
+                    this.empresaInput.Text = this.empresaEncontrada.nombre;
+                    this.nuevaFactura.idEmpresa = this.empresaEncontrada.id;
+                }
             }
         }
 

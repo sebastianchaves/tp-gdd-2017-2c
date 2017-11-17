@@ -30,6 +30,7 @@ namespace PagoAgilFrba.AbmFactura
         private ConceptoDAO<Concepto> conceptoDao;
         private List<Concepto> conceptosACargar;
         private List<Concepto> conceptosModificados;
+        private List<Concepto> conceptosAEliminar;
 
         private Concepto nuevoConcepto;
 
@@ -45,6 +46,7 @@ namespace PagoAgilFrba.AbmFactura
             this.empresaDao = new EmpresaDAO<Empresa>();
 
             this.conceptoDao = new ConceptoDAO<Concepto>();
+            this.conceptosAEliminar = new List<Concepto>();
             this.conceptosACargar = new List<Concepto>();
             this.conceptosModificados = new List<Concepto>();
 
@@ -72,6 +74,7 @@ namespace PagoAgilFrba.AbmFactura
                     this.calcularTotal();
                     this.facturaDao.updateFactura(this.facturaModificada);
                     this.agregarConceptos();
+                    this.eliminarConceptos();
                     MessageBox.Show("Datos actualizados!");
                 }
                 else
@@ -107,6 +110,14 @@ namespace PagoAgilFrba.AbmFactura
                 {
                     this.conceptoDao.updateConcepto(concepto);
                 }
+            }
+        }
+
+        private void eliminarConceptos()
+        {
+            foreach (Concepto concepto in this.conceptosAEliminar)
+            {
+                this.conceptoDao.deleteConcepto(concepto);
             }
         }
 
@@ -278,6 +289,7 @@ namespace PagoAgilFrba.AbmFactura
             this.clienteEncontrado = new Cliente();
             this.empresaEncontrada = new Empresa();
             this.conceptosACargar = new List<Concepto>();
+            this.conceptosAEliminar = new List<Concepto>();
             this.conceptosModificados = new List<Concepto>();
             this.deshabilitarCampos();
             this.botonActualizar.Enabled = false;
@@ -337,7 +349,7 @@ namespace PagoAgilFrba.AbmFactura
 
                 if (conceptoAEliminar != null)
                 {
-                    this.conceptoDao.deleteConcepto(conceptoAEliminar);
+                    this.conceptosAEliminar.Add(conceptoAEliminar);
                     this.conceptosModificados.Remove(conceptoAEliminar);
                 }
                 else
