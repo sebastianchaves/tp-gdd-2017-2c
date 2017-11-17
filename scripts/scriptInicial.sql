@@ -114,6 +114,7 @@ CREATE TABLE [ROCKET_DATABASE].[CONCEPTOS](
 	monto decimal (8,2),
 	cantidad int,
 	id_factura int not null,
+	descripcion varchar(255),
 	foreign key (id_factura) references ROCKET_DATABASE.FACTURAS(id_factura)
 ) ON [PRIMARY]
 GO

@@ -172,10 +172,11 @@ namespace PagoAgilFrba.AbmFactura
 
             resultadosConceptos.Columns.Add("Monto");
             resultadosConceptos.Columns.Add("Cantidad");
+            resultadosConceptos.Columns.Add("Descripcion");
 
             foreach (Concepto concepto in conceptos)
             {
-                resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad);
+                resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad, concepto.descripcion);
             }
 
             itemsGrid.DataSource = resultadosConceptos;

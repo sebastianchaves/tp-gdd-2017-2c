@@ -25,16 +25,19 @@ namespace PagoAgilFrba.Modelo.DAOs
             tipos.Add(Utils.Utils.DECIMAL_TYPE);
             tipos.Add(Utils.Utils.INT_TYPE);
             tipos.Add(Utils.Utils.INT_TYPE);
+            tipos.Add(Utils.Utils.STRING_TYPE);
 
             allColumns.Add("id");
             allColumns.Add("monto");
             allColumns.Add("cantidad");
             allColumns.Add("idFactura");
+            allColumns.Add("descripcion");
 
             allColumnsInDB.Add("id");
             allColumnsInDB.Add("monto");
             allColumnsInDB.Add("cantidad");
             allColumnsInDB.Add("id_factura");
+            allColumnsInDB.Add("descripcion");
         }
 
         // Inserts
@@ -46,6 +49,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             valores.Add(concepto.monto.ToString());
             valores.Add(concepto.cantidad.ToString());
             valores.Add(concepto.idFactura.ToString());
+            valores.Add(concepto.descripcion);
 
             insert(TABLA, allColumnsInDB, tipos, valores);
         }
@@ -65,6 +69,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             actualizacion.agregarCondicion("monto", conceptoUpdate.monto, Utils.Utils.DECIMAL_TYPE);
             actualizacion.agregarCondicion("cantidad", conceptoUpdate.cantidad, Utils.Utils.INT_TYPE);
             actualizacion.agregarCondicion("id_factura", conceptoUpdate.idFactura, Utils.Utils.INT_TYPE);
+            actualizacion.agregarCondicion("descripcion", conceptoUpdate.descripcion, Utils.Utils.STRING_TYPE);
 
             Condicion condicion = new Condicion();
 

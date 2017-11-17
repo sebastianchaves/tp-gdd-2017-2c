@@ -26,6 +26,7 @@ namespace PagoAgilFrba
         public FrmLogin()
         {
             InitializeComponent();
+            this.AcceptButton = botonIngresar;
             this.usuarioDao = new UsuarioDAO<Usuario>();
             this.sucursalDao = new SucursalDAO<Sucursal>();
         }
@@ -51,8 +52,15 @@ namespace PagoAgilFrba
 
                 this.usuarioLogin = usuarios.ElementAt(0);
                 Utils.globalUser(this.usuarioLogin);
-
-                String contraseniaPosta = Utils.getSha256(this.contrasenia);
+                String contraseniaPosta;
+                if (this.contrasenia != null)
+                {
+                    contraseniaPosta = Utils.getSha256(this.contrasenia);
+                }
+                else
+                {
+                    contraseniaPosta = ""; 
+                }
 
                 if (contraseniaPosta.Equals(this.usuarioLogin.contrasenia) && this.usuarioLogin.habilitado)
                 {

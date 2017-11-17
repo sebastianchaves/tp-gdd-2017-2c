@@ -94,10 +94,11 @@ namespace PagoAgilFrba.AbmFactura
 
             resultadosConceptos.Columns.Add("Monto");
             resultadosConceptos.Columns.Add("Cantidad");
+            resultadosConceptos.Columns.Add("Descripcion");
 
             foreach (Concepto concepto in this.conceptosAgregados)
             {
-                resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad);
+                resultadosConceptos.Rows.Add(concepto.monto, concepto.cantidad, concepto.descripcion);
             }
 
             conceptosGrid.DataSource = resultadosConceptos;
@@ -120,6 +121,11 @@ namespace PagoAgilFrba.AbmFactura
                         this.facturaDao.agregarFactura(this.nuevaFactura);
                         this.agregarConceptos();
                         MessageBox.Show("Factura agregado!");
+                        Utils.clearTextBoxes(this);
+                        this.conceptosGrid.DataSource = null;
+                        this.conceptosGrid.Rows.Clear();
+                        this.nuevaFactura = new Factura();
+                        this.conceptosAgregados = new List<Concepto>();
                     }
                     else
                     {
@@ -182,12 +188,6 @@ namespace PagoAgilFrba.AbmFactura
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             this.agregarFactura();
-            Utils.clearTextBoxes(this);
-            this.conceptosGrid.DataSource = null;
-            this.conceptosGrid.Rows.Clear();
-
-            this.nuevaFactura = new Factura();
-            this.conceptosAgregados = new List<Concepto>();
         }
 
         // Boton Buscar Cliente
@@ -218,9 +218,10 @@ namespace PagoAgilFrba.AbmFactura
         private void botonAgregarConcepto_Click(object sender, EventArgs e)
         {
             this.agregarConcepto();
+            this.nuevoConcepto = new Concepto();
             this.cantidadInput.Clear();
             this.montoInput.Clear();
-            this.nuevoConcepto = new Concepto();
+            this.descripcionInput.Clear();
         }
 
         // Boton Eliminar Concepto
@@ -293,6 +294,11 @@ namespace PagoAgilFrba.AbmFactura
         private void fechaVencimientoInput_Leave(object sender, EventArgs e)
         {
             this.nuevaFactura.fechaVencimiento = this.fechaVencimientoInput.Value;
+        }
+
+        private void descripcionInput_TextChanged(object sender, EventArgs e)
+        {
+            this.nuevoConcepto.descripcion = this.descripcionInput.Text;
         }
 
     }

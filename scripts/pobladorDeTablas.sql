@@ -100,7 +100,7 @@ GO
 print 'Insertando conceptos...';
 insert into ROCKET_DATABASE.CONCEPTOS
 select distinct m.ItemFactura_Monto, m.ItemFactura_Cantidad,
-(select f.id_factura from ROCKET_DATABASE.FACTURAS f where m.Nro_Factura = f.nro_factura) as id_factura
+(select f.id_factura from ROCKET_DATABASE.FACTURAS f where m.Nro_Factura = f.nro_factura) as id_factura, null
 from gd_esquema.Maestra m;
 GO
 /*** insertando pagos ***/

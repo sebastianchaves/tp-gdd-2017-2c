@@ -32,7 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionFactura));
             this.modificacionFacturaLabel = new System.Windows.Forms.Label();
             this.datosItemGroupbox = new System.Windows.Forms.GroupBox();
+            this.botonAgregarConcepto = new System.Windows.Forms.Button();
             this.cantidadInput = new System.Windows.Forms.TextBox();
+            this.botonEliminarConcepto = new System.Windows.Forms.Button();
             this.montoInput = new System.Windows.Forms.TextBox();
             this.cantidadLabel = new System.Windows.Forms.Label();
             this.montoLabel = new System.Windows.Forms.Label();
@@ -56,10 +58,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.empresaInput = new System.Windows.Forms.TextBox();
             this.botonBuscarEmpresa = new System.Windows.Forms.Button();
-            this.botonAgregarConcepto = new System.Windows.Forms.Button();
-            this.botonEliminarConcepto = new System.Windows.Forms.Button();
             this.montoTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.cantidadTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.datosItemGroupbox.SuspendLayout();
             this.datosFacturaGroupbox.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -80,6 +82,8 @@
             // 
             // datosItemGroupbox
             // 
+            this.datosItemGroupbox.Controls.Add(this.textBox1);
+            this.datosItemGroupbox.Controls.Add(this.label3);
             this.datosItemGroupbox.Controls.Add(this.botonAgregarConcepto);
             this.datosItemGroupbox.Controls.Add(this.cantidadInput);
             this.datosItemGroupbox.Controls.Add(this.botonEliminarConcepto);
@@ -88,33 +92,55 @@
             this.datosItemGroupbox.Controls.Add(this.montoLabel);
             this.datosItemGroupbox.Location = new System.Drawing.Point(12, 223);
             this.datosItemGroupbox.Name = "datosItemGroupbox";
-            this.datosItemGroupbox.Size = new System.Drawing.Size(213, 130);
+            this.datosItemGroupbox.Size = new System.Drawing.Size(213, 168);
             this.datosItemGroupbox.TabIndex = 6;
             this.datosItemGroupbox.TabStop = false;
             this.datosItemGroupbox.Text = "Datos Items:";
             // 
+            // botonAgregarConcepto
+            // 
+            this.botonAgregarConcepto.Enabled = false;
+            this.botonAgregarConcepto.Location = new System.Drawing.Point(18, 126);
+            this.botonAgregarConcepto.Name = "botonAgregarConcepto";
+            this.botonAgregarConcepto.Size = new System.Drawing.Size(90, 30);
+            this.botonAgregarConcepto.TabIndex = 14;
+            this.botonAgregarConcepto.Text = "Agregar";
+            this.botonAgregarConcepto.UseVisualStyleBackColor = true;
+            this.botonAgregarConcepto.Click += new System.EventHandler(this.botonAgregarConcepto_Click);
+            // 
             // cantidadInput
             // 
             this.cantidadInput.Enabled = false;
-            this.cantidadInput.Location = new System.Drawing.Point(67, 65);
+            this.cantidadInput.Location = new System.Drawing.Point(74, 58);
             this.cantidadInput.Name = "cantidadInput";
-            this.cantidadInput.Size = new System.Drawing.Size(138, 20);
+            this.cantidadInput.Size = new System.Drawing.Size(131, 20);
             this.cantidadInput.TabIndex = 3;
             this.cantidadInput.TextChanged += new System.EventHandler(this.cantidadInput_TextChanged);
+            // 
+            // botonEliminarConcepto
+            // 
+            this.botonEliminarConcepto.Enabled = false;
+            this.botonEliminarConcepto.Location = new System.Drawing.Point(114, 126);
+            this.botonEliminarConcepto.Name = "botonEliminarConcepto";
+            this.botonEliminarConcepto.Size = new System.Drawing.Size(90, 30);
+            this.botonEliminarConcepto.TabIndex = 13;
+            this.botonEliminarConcepto.Text = "Eliminar";
+            this.botonEliminarConcepto.UseVisualStyleBackColor = true;
+            this.botonEliminarConcepto.Click += new System.EventHandler(this.botonEliminarConcepto_Click);
             // 
             // montoInput
             // 
             this.montoInput.Enabled = false;
-            this.montoInput.Location = new System.Drawing.Point(67, 27);
+            this.montoInput.Location = new System.Drawing.Point(74, 27);
             this.montoInput.Name = "montoInput";
-            this.montoInput.Size = new System.Drawing.Size(138, 20);
+            this.montoInput.Size = new System.Drawing.Size(131, 20);
             this.montoInput.TabIndex = 2;
             this.montoInput.TextChanged += new System.EventHandler(this.montoInput_TextChanged);
             // 
             // cantidadLabel
             // 
             this.cantidadLabel.AutoSize = true;
-            this.cantidadLabel.Location = new System.Drawing.Point(10, 68);
+            this.cantidadLabel.Location = new System.Drawing.Point(6, 61);
             this.cantidadLabel.Name = "cantidadLabel";
             this.cantidadLabel.Size = new System.Drawing.Size(52, 13);
             this.cantidadLabel.TabIndex = 1;
@@ -123,7 +149,7 @@
             // montoLabel
             // 
             this.montoLabel.AutoSize = true;
-            this.montoLabel.Location = new System.Drawing.Point(10, 30);
+            this.montoLabel.Location = new System.Drawing.Point(6, 30);
             this.montoLabel.Name = "montoLabel";
             this.montoLabel.Size = new System.Drawing.Size(40, 13);
             this.montoLabel.TabIndex = 0;
@@ -140,7 +166,7 @@
             this.datosFacturaGroupbox.Controls.Add(this.numeroLabel);
             this.datosFacturaGroupbox.Location = new System.Drawing.Point(231, 40);
             this.datosFacturaGroupbox.Name = "datosFacturaGroupbox";
-            this.datosFacturaGroupbox.Size = new System.Drawing.Size(363, 313);
+            this.datosFacturaGroupbox.Size = new System.Drawing.Size(363, 351);
             this.datosFacturaGroupbox.TabIndex = 7;
             this.datosFacturaGroupbox.TabStop = false;
             this.datosFacturaGroupbox.Text = "Datos Factura:";
@@ -150,7 +176,7 @@
             this.groupBox5.Controls.Add(this.itemsGrid);
             this.groupBox5.Location = new System.Drawing.Point(6, 105);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(351, 199);
+            this.groupBox5.Size = new System.Drawing.Size(351, 240);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Items:";
@@ -160,7 +186,7 @@
             this.itemsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemsGrid.Location = new System.Drawing.Point(6, 19);
             this.itemsGrid.Name = "itemsGrid";
-            this.itemsGrid.Size = new System.Drawing.Size(339, 174);
+            this.itemsGrid.Size = new System.Drawing.Size(339, 215);
             this.itemsGrid.TabIndex = 8;
             // 
             // fechaVencimientoInput
@@ -218,7 +244,7 @@
             // 
             // botonVolver
             // 
-            this.botonVolver.Location = new System.Drawing.Point(353, 386);
+            this.botonVolver.Location = new System.Drawing.Point(354, 405);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(90, 30);
             this.botonVolver.TabIndex = 8;
@@ -229,7 +255,7 @@
             // botonActualizar
             // 
             this.botonActualizar.Enabled = false;
-            this.botonActualizar.Location = new System.Drawing.Point(257, 386);
+            this.botonActualizar.Location = new System.Drawing.Point(258, 405);
             this.botonActualizar.Name = "botonActualizar";
             this.botonActualizar.Size = new System.Drawing.Size(90, 30);
             this.botonActualizar.TabIndex = 9;
@@ -239,7 +265,7 @@
             // 
             // botonBuscar
             // 
-            this.botonBuscar.Location = new System.Drawing.Point(161, 386);
+            this.botonBuscar.Location = new System.Drawing.Point(162, 405);
             this.botonBuscar.Name = "botonBuscar";
             this.botonBuscar.Size = new System.Drawing.Size(90, 30);
             this.botonBuscar.TabIndex = 10;
@@ -329,33 +355,28 @@
             this.botonBuscarEmpresa.UseVisualStyleBackColor = true;
             this.botonBuscarEmpresa.Click += new System.EventHandler(this.botonBuscarEmpresa_Click);
             // 
-            // botonAgregarConcepto
+            // textBox1
             // 
-            this.botonAgregarConcepto.Enabled = false;
-            this.botonAgregarConcepto.Location = new System.Drawing.Point(21, 91);
-            this.botonAgregarConcepto.Name = "botonAgregarConcepto";
-            this.botonAgregarConcepto.Size = new System.Drawing.Size(90, 30);
-            this.botonAgregarConcepto.TabIndex = 14;
-            this.botonAgregarConcepto.Text = "Agregar";
-            this.botonAgregarConcepto.UseVisualStyleBackColor = true;
-            this.botonAgregarConcepto.Click += new System.EventHandler(this.botonAgregarConcepto_Click);
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(74, 91);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(130, 20);
+            this.textBox1.TabIndex = 16;
             // 
-            // botonEliminarConcepto
+            // label3
             // 
-            this.botonEliminarConcepto.Enabled = false;
-            this.botonEliminarConcepto.Location = new System.Drawing.Point(117, 91);
-            this.botonEliminarConcepto.Name = "botonEliminarConcepto";
-            this.botonEliminarConcepto.Size = new System.Drawing.Size(90, 30);
-            this.botonEliminarConcepto.TabIndex = 13;
-            this.botonEliminarConcepto.Text = "Eliminar";
-            this.botonEliminarConcepto.UseVisualStyleBackColor = true;
-            this.botonEliminarConcepto.Click += new System.EventHandler(this.botonEliminarConcepto_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 94);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Descripcion:";
             // 
             // ModificacionFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 428);
+            this.ClientSize = new System.Drawing.Size(606, 447);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.botonBuscar);
@@ -417,5 +438,7 @@
         private System.Windows.Forms.Button botonEliminarConcepto;
         private System.Windows.Forms.ToolTip montoTooltip;
         private System.Windows.Forms.ToolTip cantidadTooltip;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -50,6 +50,8 @@
             this.botonAceptar = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.datosConceptoGroupBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.descripcionInput = new System.Windows.Forms.TextBox();
             this.botonAgregarConcepto = new System.Windows.Forms.Button();
             this.cantidadLabel = new System.Windows.Forms.Label();
             this.cantidadInput = new System.Windows.Forms.TextBox();
@@ -128,7 +130,7 @@
             this.datosFacturaGroupBox.Controls.Add(this.numeroLabel);
             this.datosFacturaGroupBox.Location = new System.Drawing.Point(249, 32);
             this.datosFacturaGroupBox.Name = "datosFacturaGroupBox";
-            this.datosFacturaGroupBox.Size = new System.Drawing.Size(359, 286);
+            this.datosFacturaGroupBox.Size = new System.Drawing.Size(359, 323);
             this.datosFacturaGroupBox.TabIndex = 0;
             this.datosFacturaGroupBox.TabStop = false;
             this.datosFacturaGroupBox.Text = "Datos Factura";
@@ -147,7 +149,7 @@
             this.conceptosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.conceptosGrid.Location = new System.Drawing.Point(13, 138);
             this.conceptosGrid.Name = "conceptosGrid";
-            this.conceptosGrid.Size = new System.Drawing.Size(334, 136);
+            this.conceptosGrid.Size = new System.Drawing.Size(334, 179);
             this.conceptosGrid.TabIndex = 9;
             // 
             // numeroInput
@@ -243,7 +245,7 @@
             // 
             // botonAceptar
             // 
-            this.botonAceptar.Location = new System.Drawing.Point(335, 324);
+            this.botonAceptar.Location = new System.Drawing.Point(334, 361);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(90, 30);
             this.botonAceptar.TabIndex = 5;
@@ -253,7 +255,7 @@
             // 
             // botonVolver
             // 
-            this.botonVolver.Location = new System.Drawing.Point(431, 324);
+            this.botonVolver.Location = new System.Drawing.Point(430, 361);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(90, 30);
             this.botonVolver.TabIndex = 6;
@@ -263,6 +265,8 @@
             // 
             // datosConceptoGroupBox
             // 
+            this.datosConceptoGroupBox.Controls.Add(this.label1);
+            this.datosConceptoGroupBox.Controls.Add(this.descripcionInput);
             this.datosConceptoGroupBox.Controls.Add(this.botonAgregarConcepto);
             this.datosConceptoGroupBox.Controls.Add(this.cantidadLabel);
             this.datosConceptoGroupBox.Controls.Add(this.cantidadInput);
@@ -271,14 +275,31 @@
             this.datosConceptoGroupBox.Controls.Add(this.botonEliminarConcepto);
             this.datosConceptoGroupBox.Location = new System.Drawing.Point(12, 206);
             this.datosConceptoGroupBox.Name = "datosConceptoGroupBox";
-            this.datosConceptoGroupBox.Size = new System.Drawing.Size(231, 112);
+            this.datosConceptoGroupBox.Size = new System.Drawing.Size(231, 149);
             this.datosConceptoGroupBox.TabIndex = 10;
             this.datosConceptoGroupBox.TabStop = false;
             this.datosConceptoGroupBox.Text = "Datos Item";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Descripcion:";
+            // 
+            // descripcionInput
+            // 
+            this.descripcionInput.Location = new System.Drawing.Point(74, 72);
+            this.descripcionInput.Name = "descripcionInput";
+            this.descripcionInput.Size = new System.Drawing.Size(151, 20);
+            this.descripcionInput.TabIndex = 13;
+            this.descripcionInput.TextChanged += new System.EventHandler(this.descripcionInput_TextChanged);
+            // 
             // botonAgregarConcepto
             // 
-            this.botonAgregarConcepto.Location = new System.Drawing.Point(39, 72);
+            this.botonAgregarConcepto.Location = new System.Drawing.Point(28, 113);
             this.botonAgregarConcepto.Name = "botonAgregarConcepto";
             this.botonAgregarConcepto.Size = new System.Drawing.Size(90, 30);
             this.botonAgregarConcepto.TabIndex = 12;
@@ -289,7 +310,7 @@
             // cantidadLabel
             // 
             this.cantidadLabel.AutoSize = true;
-            this.cantidadLabel.Location = new System.Drawing.Point(15, 49);
+            this.cantidadLabel.Location = new System.Drawing.Point(6, 49);
             this.cantidadLabel.Name = "cantidadLabel";
             this.cantidadLabel.Size = new System.Drawing.Size(52, 13);
             this.cantidadLabel.TabIndex = 11;
@@ -306,7 +327,7 @@
             // montoLabel
             // 
             this.montoLabel.AutoSize = true;
-            this.montoLabel.Location = new System.Drawing.Point(15, 22);
+            this.montoLabel.Location = new System.Drawing.Point(6, 22);
             this.montoLabel.Name = "montoLabel";
             this.montoLabel.Size = new System.Drawing.Size(40, 13);
             this.montoLabel.TabIndex = 9;
@@ -322,7 +343,7 @@
             // 
             // botonEliminarConcepto
             // 
-            this.botonEliminarConcepto.Location = new System.Drawing.Point(135, 72);
+            this.botonEliminarConcepto.Location = new System.Drawing.Point(124, 113);
             this.botonEliminarConcepto.Name = "botonEliminarConcepto";
             this.botonEliminarConcepto.Size = new System.Drawing.Size(90, 30);
             this.botonEliminarConcepto.TabIndex = 7;
@@ -334,7 +355,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 364);
+            this.ClientSize = new System.Drawing.Size(608, 403);
             this.Controls.Add(this.datosConceptoGroupBox);
             this.Controls.Add(this.botonAceptar);
             this.Controls.Add(this.botonVolver);
@@ -390,5 +411,7 @@
         private System.Windows.Forms.ToolTip montoTooltip;
         private System.Windows.Forms.ToolTip cantidadTooltip;
         private System.Windows.Forms.ToolTip numeroTooltip;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox descripcionInput;
     }
 }

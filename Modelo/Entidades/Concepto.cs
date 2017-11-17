@@ -13,6 +13,7 @@ namespace PagoAgilFrba.Modelo.Entidades
         public decimal monto;
         public int cantidad;
         public int idFactura;
+        public String descripcion;
 
     }
 
