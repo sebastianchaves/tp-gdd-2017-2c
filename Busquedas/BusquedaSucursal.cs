@@ -26,7 +26,6 @@ namespace PagoAgilFrba.Busquedas
 
             this.sucursalDao = new SucursalDAO<Sucursal>();
             this.sucursalBuscada = new Sucursal();
-            this.sucursalEncontrada = new Sucursal();
         }
 
         public Sucursal getSucursalEncontrada()
