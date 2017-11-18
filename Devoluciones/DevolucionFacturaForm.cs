@@ -48,16 +48,20 @@ namespace PagoAgilFrba.Devoluciones
 
         private void devolverFactura()
         {
-            if (hayFactura())
+            if (this.facturaACargar != null && this.facturaACargar.id != 0)
             {
                 this.nuevaDevolucionFactura.idFactura = facturaACargar.id;
                 this.nuevaDevolucionFactura.idDevolucion = nuevaDevolucion.id;
                 this.devolucionFacturaDao.agregarDevolucionFactura(this.nuevaDevolucionFactura);
                 this.eliminarPagoFactura();
+
                 this.nuevaDevolucionFactura = new DevolucionFactura();
                 this.facturaACargar = new Factura();
+                
                 this.facturaInput.Clear();
+
                 this.minimoDevoluciones = true;
+
                 MessageBox.Show("Devolucion agregada!");
             }
             else
@@ -74,11 +78,6 @@ namespace PagoAgilFrba.Devoluciones
             pagoFactura.idPago = this.pagoFacturaDao.findByIdFactura(facturaACargar.id).ElementAt(0).idPago;
 
             this.pagoFacturaDao.delete(pagoFactura);
-        }
-
-        private Boolean hayFactura()
-        {
-            return this.facturaACargar.id != 0;
         }
 
         private Boolean camposCompletos()
@@ -134,6 +133,11 @@ namespace PagoAgilFrba.Devoluciones
         {
             return MessageBox.Show("La devolucion actual no registra facturas devueltas...\n ¿Desea cancelarla?",
                     "Cancelar Devolucion", MessageBoxButtons.YesNo);
+        }
+
+        private void eliminarDevolucionActual()
+        {
+            this.devolucionDao.deleteDevolucion(this.nuevaDevolucion);
         }
 
         // Eventos
@@ -199,11 +203,6 @@ namespace PagoAgilFrba.Devoluciones
             }
         }
 
-        private void eliminarDevolucionActual()
-        {
-            this.devolucionDao.deleteDevolucion(this.nuevaDevolucion);
-        }
-
         // Cargando Datos
         // Fecha
         private void fechaInput_Leave(object sender, EventArgs e)
@@ -243,10 +242,13 @@ namespace PagoAgilFrba.Devoluciones
 
                     this.botonDevolver.Enabled = false;
                     this.motivoInput.Enabled = true;
+                    
                     this.facturaInput.Clear();
+                    
                     this.facturaACargar = new Factura();
-                    this.nuevaDevolucion = new Devolucion();
+
                     this.motivoInput.Clear();
+                    this.nuevaDevolucion = new Devolucion();
                     this.devolucionEnCurso = false;
                     this.minimoDevoluciones = true;
                 }
@@ -255,10 +257,13 @@ namespace PagoAgilFrba.Devoluciones
             {
                 this.botonDevolver.Enabled = false;
                 this.motivoInput.Enabled = true;
+
                 this.facturaInput.Clear();
+
+                this.motivoInput.Clear();
+
                 this.facturaACargar = new Factura();
                 this.nuevaDevolucion = new Devolucion();
-                this.motivoInput.Clear();
                 this.devolucionEnCurso = false;
             }
         }

@@ -50,13 +50,16 @@ namespace PagoAgilFrba.Devoluciones
                 this.nuevaDevolucionRendicion.idDevolucion = nuevaDevolucion.id;
                 this.devolucionRendicionDao.agregarDevolucionRendicion(this.nuevaDevolucionRendicion);
 
-                MessageBox.Show("Devolucion agregada!");
                 this.nuevaDevolucionRendicion = new DevolucionRendicion();
+                this.rendicionACargar = new Rendicion();
+
                 this.rendicionInput.Clear();
                 this.mesInput.Clear();
                 this.anioInput.Clear();
 
                 this.minimoDevoluciones = true;
+
+                MessageBox.Show("Devolucion agregada!");
             }
             else
             {
@@ -120,6 +123,12 @@ namespace PagoAgilFrba.Devoluciones
             }
         }
 
+        private DialogResult devolucionSinRegistros()
+        {
+            return MessageBox.Show("La devolucion actual no registra rendiciones devueltas...\n ¿Desea cancelarla?",
+                    "Cancelar Devolucion", MessageBoxButtons.YesNo);
+        }
+
         private void eliminarDevolucionActual()
         {
             this.devolucionDao.deleteDevolucion(this.nuevaDevolucion);
@@ -156,26 +165,20 @@ namespace PagoAgilFrba.Devoluciones
             this.devolverRendicion();
         }
 
-        private DialogResult devolucionSinRegistros()
-        {
-            return MessageBox.Show("La devolucion actual no registra rendiciones devueltas...\n ¿Desea cancelarla?",
-                    "Cancelar Devolucion", MessageBoxButtons.YesNo);
-        }
-
         // Boton Volver
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            if (this.minimoDevoluciones)
-            {
-                this.Close();
-            }
-            else
+            if (!this.minimoDevoluciones)
             {
                 if (this.devolucionSinRegistros() == DialogResult.Yes)
                 {
                     this.eliminarDevolucionActual();
                     this.Close();
                 }
+            }
+            else
+            {
+                this.Close();
             }
         }
 
@@ -223,6 +226,8 @@ namespace PagoAgilFrba.Devoluciones
                     this.anioInput.Clear();
                     this.mesInput.Clear();
 
+                    this.rendicionACargar = new Rendicion();
+
                     this.motivoInput.Clear();
                     this.nuevaDevolucion = new Devolucion();
                     this.devolucionEnCurso = false;
@@ -239,6 +244,8 @@ namespace PagoAgilFrba.Devoluciones
                 this.mesInput.Clear();
 
                 this.motivoInput.Clear();
+
+                this.rendicionACargar = new Rendicion();
                 this.nuevaDevolucion = new Devolucion();
                 this.devolucionEnCurso = false;
             }
@@ -254,13 +261,7 @@ namespace PagoAgilFrba.Devoluciones
             }
             else
             {
-                if(this.devolucionSinRegistros() == DialogResult.Yes)
-                {
-                    this.eliminarDevolucionActual();
-                    this.motivoInput.Clear();
-                    this.motivoInput.Enabled = true;
-                    this.nuevaDevolucion = new Devolucion();
-                }
+                MessageBox.Show("Ya se encuentra una devolucion en curso.");
             }
         }
 
