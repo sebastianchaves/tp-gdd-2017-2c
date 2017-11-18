@@ -24,6 +24,9 @@ namespace PagoAgilFrba.Devoluciones
         private TipoDevolucionDAO<TipoDevolucion> tipoDevolucionDao;
         private DevolucionRendicionDAO<DevolucionRendicion> devolucionRendicionDao;
 
+        private Boolean devolucionEnCurso;
+        private Boolean minimoDevoluciones;
+    
         public DevolucionRendicionForm()
         {
             InitializeComponent();
@@ -34,28 +37,31 @@ namespace PagoAgilFrba.Devoluciones
 
             this.nuevaDevolucion = new Devolucion();
             this.nuevaDevolucionRendicion = new DevolucionRendicion();
-            this.rendicionACargar = new Rendicion();
+
+            this.devolucionEnCurso = false;
+            this.minimoDevoluciones = true;
         }
 
         private void devolverRendicion()
         {
-            if (hayRendicion())
+            if (this.rendicionACargar != null && this.rendicionACargar.id != 0)
             {
                 this.nuevaDevolucionRendicion.idRendicion = rendicionACargar.id;
                 this.nuevaDevolucionRendicion.idDevolucion = nuevaDevolucion.id;
                 this.devolucionRendicionDao.agregarDevolucionRendicion(this.nuevaDevolucionRendicion);
 
                 MessageBox.Show("Devolucion agregada!");
+                this.nuevaDevolucionRendicion = new DevolucionRendicion();
+                this.rendicionInput.Clear();
+                this.mesInput.Clear();
+                this.anioInput.Clear();
+
+                this.minimoDevoluciones = true;
             }
             else
             {
                 MessageBox.Show("No cargo ninguna rendicion.");
             }
-        }
-
-        private Boolean hayRendicion()
-        {
-            return this.rendicionACargar.id != 0;
         }
 
         private Boolean camposCompletos()
@@ -83,15 +89,18 @@ namespace PagoAgilFrba.Devoluciones
             this.motivoInput.Enabled = false;
         }
 
-        private void cargarDatos()
+        private void cargarDatosDevolucion()
         {
-            this.rendicionInput.Text = this.rendicionACargar.nombreEmpresa;
-            this.mesInput.Text = this.rendicionACargar.fecha.Month.ToString();
-            this.anioInput.Text = this.rendicionACargar.fecha.Year.ToString();
-
             this.nuevaDevolucion.fecha = this.fechaInput.Value;
             this.nuevaDevolucion.motivo = this.motivoInput.Text;
             this.nuevaDevolucion.idTipoDevolucion = this.tipoDevolucionDao.findTipoDevolucion("devolucion_rendicion").ElementAt(0).id;
+        }
+
+        private void cargarDatosRendicion()
+        {
+            this.anioInput.Text = this.rendicionACargar.fecha.Year.ToString();
+            this.mesInput.Text = this.rendicionACargar.fecha.Month.ToString();
+            this.rendicionInput.Text = this.rendicionACargar.nombreEmpresa;
         }
 
         private void crearNuevaDevolucion()
@@ -100,29 +109,43 @@ namespace PagoAgilFrba.Devoluciones
             {
                 this.deshabilitarCamposDevolucion();
                 this.habilitarCamposRendicion();
-                this.botonBuscar.Enabled = true;
-                this.cargarDatos();
+                this.cargarDatosDevolucion();
                 this.nuevaDevolucion.id = this.devolucionDao.agregarDevolucion(this.nuevaDevolucion);
+                this.devolucionEnCurso = true;
+                this.minimoDevoluciones = false;
             }
             else
             {
-                MessageBox.Show("Complete los campos obligatorios.");
+                MessageBox.Show("Complete el motivo de la devolucion.");
             }
+        }
+
+        private void eliminarDevolucionActual()
+        {
+            this.devolucionDao.deleteDevolucion(this.nuevaDevolucion);
         }
 
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
+            this.anioInput.Text = "";
+            this.mesInput.Text = "";
+            this.rendicionInput.Text = "";
+
             using (BusquedaRendicion busquedaForm = new BusquedaRendicion())
             {
                 busquedaForm.ShowDialog(this);
                 this.rendicionACargar = busquedaForm.getRendicionEncontrada();
 
-                if (this.rendicionACargar != null)
+                if (this.rendicionACargar.id != 0)
                 {
-                    this.botonDevolver.Enabled = true;
-                    this.cargarDatos();
+                    this.cargarDatosRendicion();
+                }
+                else
+                {
+                    MessageBox.Show("No se cargo ninguna rendicion!");
+                    this.rendicionACargar = new Rendicion();
                 }
             }
         }
@@ -131,41 +154,29 @@ namespace PagoAgilFrba.Devoluciones
         private void botonDevolver_Click(object sender, EventArgs e)
         {
             this.devolverRendicion();
-            this.nuevaDevolucionRendicion = new DevolucionRendicion();
-            this.botonDevolver.Enabled = false;
-            this.rendicionInput.Clear();
-            this.mesInput.Clear();
-            this.anioInput.Clear();
+        }
+
+        private DialogResult devolucionSinRegistros()
+        {
+            return MessageBox.Show("La devolucion actual no registra rendiciones devueltas...\n ¿Desea cancelarla?",
+                    "Cancelar Devolucion", MessageBoxButtons.YesNo);
         }
 
         // Boton Volver
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        // Boton Nueva Devolucion
-        private void botonNuevaDevolucion_Click(object sender, EventArgs e)
-        {
-            this.motivoInput.Clear();
-            this.habilitarCamposDevolucion();
-           
-            this.botonCrearDevolucion.Enabled = true;
-            this.botonBuscar.Enabled = false;
-            this.botonDevolver.Enabled = false;
-            
-            this.rendicionInput.Clear();
-            this.anioInput.Clear();
-            this.mesInput.Clear();
-
-            this.nuevaDevolucion = new Devolucion();
-        }
-
-        // Boton Crear Devolucion
-        private void botonCrearDevolucion_Click(object sender, EventArgs e)
-        {
-            this.botonCrearDevolucion.Enabled = false;
-            this.crearNuevaDevolucion();
+            if (this.minimoDevoluciones)
+            {
+                this.Close();
+            }
+            else
+            {
+                if (this.devolucionSinRegistros() == DialogResult.Yes)
+                {
+                    this.eliminarDevolucionActual();
+                    this.Close();
+                }
+            }
         }
 
         // Cargando Datos
@@ -179,6 +190,78 @@ namespace PagoAgilFrba.Devoluciones
         private void motivoInput_Leave(object sender, EventArgs e)
         {
             this.nuevaDevolucion.motivo = this.motivoInput.Text;
+        }
+
+        // Text change Motivo Input
+        private void motivoInput_TextChanged(object sender, EventArgs e)
+        {
+            if (this.motivoInput.Text != "")
+            {
+                this.botonNuevaDevolucion.Enabled = true;
+                this.botonCrearDevolucion.Enabled = true;
+            }
+            else
+            {
+                this.botonNuevaDevolucion.Enabled = false;
+                this.botonCrearDevolucion.Enabled = false;
+            }
+        }
+
+        // Boton Nueva Devolucion
+        private void botonNuevaDevolucion_Click(object sender, EventArgs e)
+        {
+            if (!this.minimoDevoluciones)
+            {
+                if (this.devolucionSinRegistros() == DialogResult.Yes)
+                {
+                    this.eliminarDevolucionActual();
+
+                    this.botonDevolver.Enabled = false;
+                    this.motivoInput.Enabled = true;
+
+                    this.rendicionInput.Clear();
+                    this.anioInput.Clear();
+                    this.mesInput.Clear();
+
+                    this.motivoInput.Clear();
+                    this.nuevaDevolucion = new Devolucion();
+                    this.devolucionEnCurso = false;
+                    this.minimoDevoluciones = true;
+                }
+            }
+            else
+            {
+                this.botonDevolver.Enabled = false;
+                this.motivoInput.Enabled = true;
+
+                this.rendicionInput.Clear();
+                this.anioInput.Clear();
+                this.mesInput.Clear();
+
+                this.motivoInput.Clear();
+                this.nuevaDevolucion = new Devolucion();
+                this.devolucionEnCurso = false;
+            }
+        }
+
+        // Boton Crear Devolucion
+        private void botonCrearDevolucion_Click(object sender, EventArgs e)
+        {
+            if (!this.devolucionEnCurso)
+            {
+                this.crearNuevaDevolucion();
+                this.botonDevolver.Enabled = true;
+            }
+            else
+            {
+                if(this.devolucionSinRegistros() == DialogResult.Yes)
+                {
+                    this.eliminarDevolucionActual();
+                    this.motivoInput.Clear();
+                    this.motivoInput.Enabled = true;
+                    this.nuevaDevolucion = new Devolucion();
+                }
+            }
         }
 
     }

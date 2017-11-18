@@ -41,15 +41,14 @@
             this.devolucionFacturaLabel = new System.Windows.Forms.Label();
             this.datosRendicionGroupbox = new System.Windows.Forms.GroupBox();
             this.botonNueva = new System.Windows.Forms.Button();
-            this.botonCrearDevolucion = new System.Windows.Forms.Button();
+            this.botonCrear = new System.Windows.Forms.Button();
             this.datosFacturaGroupbox.SuspendLayout();
             this.datosRendicionGroupbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // botonBuscar
             // 
-            this.botonBuscar.Enabled = false;
-            this.botonBuscar.Location = new System.Drawing.Point(146, 51);
+            this.botonBuscar.Location = new System.Drawing.Point(235, 51);
             this.botonBuscar.Name = "botonBuscar";
             this.botonBuscar.Size = new System.Drawing.Size(90, 30);
             this.botonBuscar.TabIndex = 0;
@@ -60,7 +59,7 @@
             // botonDevolver
             // 
             this.botonDevolver.Enabled = false;
-            this.botonDevolver.Location = new System.Drawing.Point(242, 51);
+            this.botonDevolver.Location = new System.Drawing.Point(164, 312);
             this.botonDevolver.Name = "botonDevolver";
             this.botonDevolver.Size = new System.Drawing.Size(90, 30);
             this.botonDevolver.TabIndex = 1;
@@ -82,7 +81,6 @@
             // 
             this.datosFacturaGroupbox.Controls.Add(this.facturaLabel);
             this.datosFacturaGroupbox.Controls.Add(this.facturaInput);
-            this.datosFacturaGroupbox.Controls.Add(this.botonDevolver);
             this.datosFacturaGroupbox.Controls.Add(this.botonBuscar);
             this.datosFacturaGroupbox.Location = new System.Drawing.Point(12, 203);
             this.datosFacturaGroupbox.Name = "datosFacturaGroupbox";
@@ -129,12 +127,12 @@
             // 
             // motivoInput
             // 
-            this.motivoInput.Enabled = false;
             this.motivoInput.Location = new System.Drawing.Point(88, 61);
             this.motivoInput.Name = "motivoInput";
             this.motivoInput.Size = new System.Drawing.Size(237, 63);
             this.motivoInput.TabIndex = 9;
             this.motivoInput.Text = "";
+            this.motivoInput.TextChanged += new System.EventHandler(this.motivoInput_TextChanged);
             this.motivoInput.Leave += new System.EventHandler(this.motivoInput_Leave);
             // 
             // fechaInput
@@ -158,8 +156,8 @@
             // 
             // datosRendicionGroupbox
             // 
+            this.datosRendicionGroupbox.Controls.Add(this.botonCrear);
             this.datosRendicionGroupbox.Controls.Add(this.botonNueva);
-            this.datosRendicionGroupbox.Controls.Add(this.botonCrearDevolucion);
             this.datosRendicionGroupbox.Controls.Add(this.fechaLabel);
             this.datosRendicionGroupbox.Controls.Add(this.motivoLabel);
             this.datosRendicionGroupbox.Controls.Add(this.fechaInput);
@@ -173,7 +171,8 @@
             // 
             // botonNueva
             // 
-            this.botonNueva.Location = new System.Drawing.Point(146, 129);
+            this.botonNueva.Enabled = false;
+            this.botonNueva.Location = new System.Drawing.Point(139, 130);
             this.botonNueva.Name = "botonNueva";
             this.botonNueva.Size = new System.Drawing.Size(90, 30);
             this.botonNueva.TabIndex = 14;
@@ -181,16 +180,16 @@
             this.botonNueva.UseVisualStyleBackColor = true;
             this.botonNueva.Click += new System.EventHandler(this.botonNueva_Click);
             // 
-            // botonCrearDevolucion
+            // botonCrear
             // 
-            this.botonCrearDevolucion.Enabled = false;
-            this.botonCrearDevolucion.Location = new System.Drawing.Point(242, 129);
-            this.botonCrearDevolucion.Name = "botonCrearDevolucion";
-            this.botonCrearDevolucion.Size = new System.Drawing.Size(90, 30);
-            this.botonCrearDevolucion.TabIndex = 12;
-            this.botonCrearDevolucion.Text = "&Crear";
-            this.botonCrearDevolucion.UseVisualStyleBackColor = true;
-            this.botonCrearDevolucion.Click += new System.EventHandler(this.botonCrearDevolucion_Click);
+            this.botonCrear.Enabled = false;
+            this.botonCrear.Location = new System.Drawing.Point(235, 129);
+            this.botonCrear.Name = "botonCrear";
+            this.botonCrear.Size = new System.Drawing.Size(90, 30);
+            this.botonCrear.TabIndex = 15;
+            this.botonCrear.Text = "&Crear";
+            this.botonCrear.UseVisualStyleBackColor = true;
+            this.botonCrear.Click += new System.EventHandler(this.botonCrear_Click);
             // 
             // DevolucionFacturaForm
             // 
@@ -198,6 +197,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 354);
             this.Controls.Add(this.datosRendicionGroupbox);
+            this.Controls.Add(this.botonDevolver);
             this.Controls.Add(this.devolucionFacturaLabel);
             this.Controls.Add(this.datosFacturaGroupbox);
             this.Controls.Add(this.botonVolver);
@@ -226,7 +226,7 @@
         private System.Windows.Forms.Label facturaLabel;
         private System.Windows.Forms.TextBox facturaInput;
         private System.Windows.Forms.GroupBox datosRendicionGroupbox;
-        private System.Windows.Forms.Button botonCrearDevolucion;
         private System.Windows.Forms.Button botonNueva;
+        private System.Windows.Forms.Button botonCrear;
     }
 }

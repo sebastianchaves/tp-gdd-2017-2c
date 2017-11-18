@@ -100,6 +100,7 @@ namespace PagoAgilFrba.Busquedas
         // Boton Volver
         private void botonVolver_Click(object sender, EventArgs e)
         {
+            this.empresaABuscar = null;
             this.Close();
         }
 

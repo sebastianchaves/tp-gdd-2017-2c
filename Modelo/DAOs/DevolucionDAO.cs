@@ -51,5 +51,13 @@ namespace PagoAgilFrba.Modelo.DAOs
             return insert(TABLA, allColumnsInDB, tipos, valores, true);
         }
 
+        // Deletes
+        public int deleteDevolucion(Devolucion devolucion)
+        {
+            String query = "DELETE from " + TABLA + " where id_devolucion = " + devolucion.id;
+
+            return deleteQuery(query);
+        }
+
     }
 }

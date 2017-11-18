@@ -33,6 +33,10 @@
             this.botonBuscar = new System.Windows.Forms.Button();
             this.devolucionRendicionLabel = new System.Windows.Forms.Label();
             this.datosRendicionGroupbox = new System.Windows.Forms.GroupBox();
+            this.anioLabel = new System.Windows.Forms.Label();
+            this.mesLabel = new System.Windows.Forms.Label();
+            this.anioInput = new System.Windows.Forms.TextBox();
+            this.mesInput = new System.Windows.Forms.TextBox();
             this.rendicionLabel = new System.Windows.Forms.Label();
             this.rendicionInput = new System.Windows.Forms.TextBox();
             this.datosDevolucionGroupbox = new System.Windows.Forms.GroupBox();
@@ -42,10 +46,6 @@
             this.motivoLabel = new System.Windows.Forms.Label();
             this.fechaInput = new System.Windows.Forms.DateTimePicker();
             this.motivoInput = new System.Windows.Forms.RichTextBox();
-            this.mesInput = new System.Windows.Forms.TextBox();
-            this.anioInput = new System.Windows.Forms.TextBox();
-            this.mesLabel = new System.Windows.Forms.Label();
-            this.anioLabel = new System.Windows.Forms.Label();
             this.datosRendicionGroupbox.SuspendLayout();
             this.datosDevolucionGroupbox.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +63,7 @@
             // botonDevolver
             // 
             this.botonDevolver.Enabled = false;
-            this.botonDevolver.Location = new System.Drawing.Point(242, 103);
+            this.botonDevolver.Location = new System.Drawing.Point(164, 358);
             this.botonDevolver.Name = "botonDevolver";
             this.botonDevolver.Size = new System.Drawing.Size(90, 30);
             this.botonDevolver.TabIndex = 4;
@@ -73,8 +73,7 @@
             // 
             // botonBuscar
             // 
-            this.botonBuscar.Enabled = false;
-            this.botonBuscar.Location = new System.Drawing.Point(146, 103);
+            this.botonBuscar.Location = new System.Drawing.Point(235, 103);
             this.botonBuscar.Name = "botonBuscar";
             this.botonBuscar.Size = new System.Drawing.Size(90, 30);
             this.botonBuscar.TabIndex = 3;
@@ -100,14 +99,47 @@
             this.datosRendicionGroupbox.Controls.Add(this.mesInput);
             this.datosRendicionGroupbox.Controls.Add(this.rendicionLabel);
             this.datosRendicionGroupbox.Controls.Add(this.rendicionInput);
-            this.datosRendicionGroupbox.Controls.Add(this.botonDevolver);
             this.datosRendicionGroupbox.Controls.Add(this.botonBuscar);
             this.datosRendicionGroupbox.Location = new System.Drawing.Point(12, 203);
             this.datosRendicionGroupbox.Name = "datosRendicionGroupbox";
-            this.datosRendicionGroupbox.Size = new System.Drawing.Size(338, 149);
+            this.datosRendicionGroupbox.Size = new System.Drawing.Size(338, 139);
             this.datosRendicionGroupbox.TabIndex = 8;
             this.datosRendicionGroupbox.TabStop = false;
             this.datosRendicionGroupbox.Text = "Datos rendicion";
+            // 
+            // anioLabel
+            // 
+            this.anioLabel.AutoSize = true;
+            this.anioLabel.Location = new System.Drawing.Point(14, 80);
+            this.anioLabel.Name = "anioLabel";
+            this.anioLabel.Size = new System.Drawing.Size(29, 13);
+            this.anioLabel.TabIndex = 15;
+            this.anioLabel.Text = "Año:";
+            // 
+            // mesLabel
+            // 
+            this.mesLabel.AutoSize = true;
+            this.mesLabel.Location = new System.Drawing.Point(14, 54);
+            this.mesLabel.Name = "mesLabel";
+            this.mesLabel.Size = new System.Drawing.Size(30, 13);
+            this.mesLabel.TabIndex = 14;
+            this.mesLabel.Text = "Mes:";
+            // 
+            // anioInput
+            // 
+            this.anioInput.Location = new System.Drawing.Point(88, 77);
+            this.anioInput.Name = "anioInput";
+            this.anioInput.ReadOnly = true;
+            this.anioInput.Size = new System.Drawing.Size(237, 20);
+            this.anioInput.TabIndex = 13;
+            // 
+            // mesInput
+            // 
+            this.mesInput.Location = new System.Drawing.Point(88, 51);
+            this.mesInput.Name = "mesInput";
+            this.mesInput.ReadOnly = true;
+            this.mesInput.Size = new System.Drawing.Size(237, 20);
+            this.mesInput.TabIndex = 12;
             // 
             // rendicionLabel
             // 
@@ -143,7 +175,8 @@
             // 
             // botonNuevaDevolucion
             // 
-            this.botonNuevaDevolucion.Location = new System.Drawing.Point(146, 129);
+            this.botonNuevaDevolucion.Enabled = false;
+            this.botonNuevaDevolucion.Location = new System.Drawing.Point(139, 129);
             this.botonNuevaDevolucion.Name = "botonNuevaDevolucion";
             this.botonNuevaDevolucion.Size = new System.Drawing.Size(90, 30);
             this.botonNuevaDevolucion.TabIndex = 16;
@@ -154,7 +187,7 @@
             // botonCrearDevolucion
             // 
             this.botonCrearDevolucion.Enabled = false;
-            this.botonCrearDevolucion.Location = new System.Drawing.Point(242, 129);
+            this.botonCrearDevolucion.Location = new System.Drawing.Point(235, 129);
             this.botonCrearDevolucion.Name = "botonCrearDevolucion";
             this.botonCrearDevolucion.Size = new System.Drawing.Size(90, 30);
             this.botonCrearDevolucion.TabIndex = 15;
@@ -191,47 +224,13 @@
             // 
             // motivoInput
             // 
-            this.motivoInput.Enabled = false;
             this.motivoInput.Location = new System.Drawing.Point(88, 61);
             this.motivoInput.Name = "motivoInput";
             this.motivoInput.Size = new System.Drawing.Size(237, 63);
             this.motivoInput.TabIndex = 9;
             this.motivoInput.Text = "";
+            this.motivoInput.TextChanged += new System.EventHandler(this.motivoInput_TextChanged);
             this.motivoInput.Leave += new System.EventHandler(this.motivoInput_Leave);
-            // 
-            // mesInput
-            // 
-            this.mesInput.Location = new System.Drawing.Point(88, 51);
-            this.mesInput.Name = "mesInput";
-            this.mesInput.ReadOnly = true;
-            this.mesInput.Size = new System.Drawing.Size(237, 20);
-            this.mesInput.TabIndex = 12;
-            // 
-            // anioInput
-            // 
-            this.anioInput.Location = new System.Drawing.Point(88, 77);
-            this.anioInput.Name = "anioInput";
-            this.anioInput.ReadOnly = true;
-            this.anioInput.Size = new System.Drawing.Size(237, 20);
-            this.anioInput.TabIndex = 13;
-            // 
-            // mesLabel
-            // 
-            this.mesLabel.AutoSize = true;
-            this.mesLabel.Location = new System.Drawing.Point(14, 54);
-            this.mesLabel.Name = "mesLabel";
-            this.mesLabel.Size = new System.Drawing.Size(30, 13);
-            this.mesLabel.TabIndex = 14;
-            this.mesLabel.Text = "Mes:";
-            // 
-            // anioLabel
-            // 
-            this.anioLabel.AutoSize = true;
-            this.anioLabel.Location = new System.Drawing.Point(14, 80);
-            this.anioLabel.Name = "anioLabel";
-            this.anioLabel.Size = new System.Drawing.Size(29, 13);
-            this.anioLabel.TabIndex = 15;
-            this.anioLabel.Text = "Año:";
             // 
             // DevolucionRendicionForm
             // 
@@ -242,6 +241,7 @@
             this.Controls.Add(this.datosRendicionGroupbox);
             this.Controls.Add(this.devolucionRendicionLabel);
             this.Controls.Add(this.botonVolver);
+            this.Controls.Add(this.botonDevolver);
             this.Name = "DevolucionRendicionForm";
             this.Text = "Devolucion Rendicion";
             this.datosRendicionGroupbox.ResumeLayout(false);

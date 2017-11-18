@@ -26,6 +26,9 @@ namespace PagoAgilFrba.Devoluciones
         private DevolucionFacturaDAO<DevolucionFactura> devolucionFacturaDao;
         private PagoFacturaDAO<PagoFactura> pagoFacturaDao;
 
+        private Boolean devolucionEnCurso;
+        private Boolean minimoDevoluciones;
+
         public DevolucionFacturaForm()
         {
             InitializeComponent();
@@ -38,6 +41,9 @@ namespace PagoAgilFrba.Devoluciones
             this.nuevaDevolucion = new Devolucion();
             this.nuevaDevolucionFactura = new DevolucionFactura();
             this.facturaACargar = new Factura();
+
+            this.devolucionEnCurso = false;
+            this.minimoDevoluciones = true;
         }
 
         private void devolverFactura()
@@ -48,6 +54,10 @@ namespace PagoAgilFrba.Devoluciones
                 this.nuevaDevolucionFactura.idDevolucion = nuevaDevolucion.id;
                 this.devolucionFacturaDao.agregarDevolucionFactura(this.nuevaDevolucionFactura);
                 this.eliminarPagoFactura();
+                this.nuevaDevolucionFactura = new DevolucionFactura();
+                this.facturaACargar = new Factura();
+                this.facturaInput.Clear();
+                this.minimoDevoluciones = true;
                 MessageBox.Show("Devolucion agregada!");
             }
             else
@@ -86,23 +96,21 @@ namespace PagoAgilFrba.Devoluciones
             this.facturaInput.Enabled = false;
         }
 
-        private void habilitarCamposDevolucion()
-        {
-            this.motivoInput.Enabled = true;
-        }
-
         private void deshabilitarCamposDevolucion()
         {
             this.motivoInput.Enabled = false;
         }
 
-        private void cargarDatos()
+        private void cargarDatosDevolucion()
         {
-            this.facturaInput.Text = this.facturaACargar.numero.ToString();
-
             this.nuevaDevolucion.fecha = this.fechaInput.Value;
             this.nuevaDevolucion.motivo = this.motivoInput.Text;
             this.nuevaDevolucion.idTipoDevolucion = this.tipoDevolucionDao.findTipoDevolucion("devolucion_factura").ElementAt(0).id;
+        }
+
+        private void cargarDatosFactura()
+        {
+            this.facturaInput.Text = this.facturaACargar.numero.ToString();
         }
 
         private void crearNuevaDevolucion()
@@ -111,20 +119,30 @@ namespace PagoAgilFrba.Devoluciones
             {
                 this.deshabilitarCamposDevolucion();
                 this.habilitarCamposFactura();
-                this.botonBuscar.Enabled = true;
-                this.cargarDatos();
+                this.cargarDatosDevolucion();
                 this.nuevaDevolucion.id = this.devolucionDao.agregarDevolucion(this.nuevaDevolucion);
+                this.devolucionEnCurso = true;
+                this.minimoDevoluciones = false;
             }
             else
             {
-                MessageBox.Show("Complete los campos obligatorios.");
+                MessageBox.Show("Complete el motivo de la devolucion.");
             }
+        }
+
+        private DialogResult devolucionSinRegistros()
+        {
+            return MessageBox.Show("La devolucion actual no registra facturas devueltas...\n ¿Desea cancelarla?",
+                    "Cancelar Devolucion", MessageBoxButtons.YesNo);
         }
 
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
         {
+            this.facturaInput.Text = "";
+            this.facturaACargar = new Factura();
+
             using (BusquedaFactura busquedaForm = new BusquedaFactura())
             {
                 busquedaForm.ShowDialog(this);
@@ -134,20 +152,26 @@ namespace PagoAgilFrba.Devoluciones
                 {
                     if (this.facturaACargar.idRendicion == 0 && this.facturaACargar.pagada)
                     {
-                        this.botonDevolver.Enabled = true;
-                        this.cargarDatos();
+                        this.cargarDatosFactura();
+                        MessageBox.Show("Factura cargada con exito!.");
                     }
                     else
                     {
                         if (this.facturaACargar.idRendicion != 0)
                         {
-                            MessageBox.Show("La factura ya se encuentra rendida");
+                            MessageBox.Show("La factura ya se encuentra rendida.");
                         }
                         if (!this.facturaACargar.pagada)
                         {
-                            MessageBox.Show("La factura no ha sido pagada");
+                            MessageBox.Show("La factura no ha sido pagada.");
                         }
+                        this.facturaACargar = new Factura();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("No se cargo ninguna factura!");
+                    this.facturaACargar = new Factura();
                 }
             }
         }
@@ -156,14 +180,28 @@ namespace PagoAgilFrba.Devoluciones
         private void botonDevolver_Click(object sender, EventArgs e)
         {
             this.devolverFactura();
-            this.nuevaDevolucionFactura = new DevolucionFactura();
-            this.botonDevolver.Enabled = false;
         }
 
         // Boton Volver
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (!this.minimoDevoluciones)
+            {
+                if (this.devolucionSinRegistros() == DialogResult.Yes)
+                {
+                    this.eliminarDevolucionActual();
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void eliminarDevolucionActual()
+        {
+            this.devolucionDao.deleteDevolucion(this.nuevaDevolucion);
         }
 
         // Cargando Datos
@@ -179,20 +217,64 @@ namespace PagoAgilFrba.Devoluciones
             this.nuevaDevolucion.motivo = this.motivoInput.Text;
         }
 
-        // Crear Devolucion
-        private void botonCrearDevolucion_Click(object sender, EventArgs e)
+        // Text change Motivo Input
+        private void motivoInput_TextChanged(object sender, EventArgs e)
         {
-            this.botonCrearDevolucion.Enabled = false;
-            this.crearNuevaDevolucion();
+            if (this.motivoInput.Text != "")
+            {
+                this.botonNueva.Enabled = true;
+                this.botonCrear.Enabled = true;
+            }
+            else
+            {
+                this.botonNueva.Enabled = false;
+                this.botonCrear.Enabled = false;
+            }
         }
 
-        // Nueva Devolucion
+        // Boton Nueva Devolucion
         private void botonNueva_Click(object sender, EventArgs e)
         {
-            this.motivoInput.Clear();
-            this.habilitarCamposDevolucion();
-            this.botonCrearDevolucion.Enabled = true;
-            this.nuevaDevolucion = new Devolucion();
+            if (!this.minimoDevoluciones)
+            {
+                if (this.devolucionSinRegistros() == DialogResult.Yes)
+                {
+                    this.eliminarDevolucionActual();
+
+                    this.botonDevolver.Enabled = false;
+                    this.motivoInput.Enabled = true;
+                    this.facturaInput.Clear();
+                    this.facturaACargar = new Factura();
+                    this.nuevaDevolucion = new Devolucion();
+                    this.motivoInput.Clear();
+                    this.devolucionEnCurso = false;
+                    this.minimoDevoluciones = true;
+                }
+            }
+            else
+            {
+                this.botonDevolver.Enabled = false;
+                this.motivoInput.Enabled = true;
+                this.facturaInput.Clear();
+                this.facturaACargar = new Factura();
+                this.nuevaDevolucion = new Devolucion();
+                this.motivoInput.Clear();
+                this.devolucionEnCurso = false;
+            }
+        }
+
+        // Boton Crear Devolucion
+        private void botonCrear_Click(object sender, EventArgs e)
+        {
+            if (!this.devolucionEnCurso)
+            {
+                this.crearNuevaDevolucion();
+                this.botonDevolver.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Ya se encuentra una devolucion en curso.");
+            }
         }
 
     }
