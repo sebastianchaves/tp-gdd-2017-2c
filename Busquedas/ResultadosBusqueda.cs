@@ -247,6 +247,10 @@ namespace PagoAgilFrba.Busquedas
         // Boton Aceptar
         private void aceptarButton_Click(object sender, EventArgs e)
         {
+            if (resultadosGrid.SelectedCells.Count == 0)
+            {
+                return;
+            }
             int index = this.resultadosGrid.SelectedCells[0].RowIndex;
 
             if (this.rolesEncontrados != null)

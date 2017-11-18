@@ -112,6 +112,13 @@ namespace PagoAgilFrba.Modelo.DAOs
 
             update(TABLA, actualizacion, condicion);
         }
-
+        public List<T> buscarFacturas(String clienteId, String empresaId)
+        {
+            Condicion condicion = new Condicion();
+            condicion.agregarCondicion("id_cliente", clienteId, Utils.Utils.INT_TYPE);
+            condicion.agregarCondicion("id_empresa", empresaId, Utils.Utils.INT_TYPE);
+            List<List<String>> results=select(TABLA, ALL, tipos, condicion);
+            return getEntities(results, allColumns, tipos);
+        }
     }
 }

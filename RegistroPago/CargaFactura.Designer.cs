@@ -48,6 +48,7 @@
             this.botonCancelar = new System.Windows.Forms.Button();
             this.numeroTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.importeTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.buscarEmpresaGroupBox.SuspendLayout();
             this.buscarClienteGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -190,7 +191,7 @@
             // 
             // botonAceptar
             // 
-            this.botonAceptar.Location = new System.Drawing.Point(86, 356);
+            this.botonAceptar.Location = new System.Drawing.Point(127, 356);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(90, 30);
             this.botonAceptar.TabIndex = 18;
@@ -200,7 +201,7 @@
             // 
             // botonCancelar
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(182, 356);
+            this.botonCancelar.Location = new System.Drawing.Point(237, 356);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(90, 30);
             this.botonCancelar.TabIndex = 19;
@@ -208,11 +209,22 @@
             this.botonCancelar.UseVisualStyleBackColor = true;
             this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(18, 356);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 30);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // CargaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 398);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.botonCancelar);
             this.Controls.Add(this.botonAceptar);
             this.Controls.Add(this.buscarClienteGroupBox);
@@ -257,5 +269,6 @@
         private System.Windows.Forms.Button botonCancelar;
         private System.Windows.Forms.ToolTip numeroTooltip;
         private System.Windows.Forms.ToolTip importeTooltip;
+        private System.Windows.Forms.Button button1;
     }
 }

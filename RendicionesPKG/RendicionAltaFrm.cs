@@ -91,6 +91,7 @@ namespace PagoAgilFrba.RendicionesPKG
             List<Empresa> empresas = empresaDao.obtenerEmpresasPorDiaDeRendicion(diaSeleccionado);
             this.empresaIdCombo.Items.Clear();
             this.empresaIdCombo.Text = null;
+            habilitado = new Dictionary<int, bool>();
             this.empresasIds = new Dictionary<int, int>();
             int i = 0;
             foreach (Empresa empresa in empresas)

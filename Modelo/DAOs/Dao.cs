@@ -133,7 +133,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             {
                 String valor = conditions.ElementAt(i);
 
-                if (valor != null && !valor.Equals(""))
+                if (valor != null && !valor.Equals("") && (!valor.Equals("0") || !tipos.ElementAt(i).Equals(Utils.Utils.INT_TYPE)))
                 {
                     if (tipos.ElementAt(i).Equals(Utils.Utils.STRING_TYPE))
                     {
@@ -147,7 +147,7 @@ namespace PagoAgilFrba.Modelo.DAOs
                     {
                         where += columns.ElementAt(i) + " = " + valor;
                     }
-                    if (hayMasElementosNoNulos(conditions, i))
+                    if (hayMasElementosNoNulos(conditions, tipos, i))
                     {
                         where += " AND ";
                     }
@@ -161,11 +161,12 @@ namespace PagoAgilFrba.Modelo.DAOs
          * Metodo utilitario para verificar que hay mas condiciones para agregar, entonces puede tomar la decision
          * de agregar una , en el insert/update o un AND en el select.
          * */
-        private Boolean hayMasElementosNoNulos(List<String> conditions, int i)
+        private Boolean hayMasElementosNoNulos(List<String> conditions, List<String> tipos, int i)
         {
             for (int a = i + 1; a < conditions.Count; a++)
             {
-                if (conditions.ElementAt(a) != null && !conditions.ElementAt(a).Equals(""))
+                String element = conditions.ElementAt(a);
+                if (element != null && !element.Equals("") && (!element.Equals("0") || !tipos.ElementAt(a).Equals(Utils.Utils.INT_TYPE)))
                 {
                     return true;
                 }
@@ -339,7 +340,7 @@ namespace PagoAgilFrba.Modelo.DAOs
          */
         public int update(String tabla, Condicion actualizacion, Condicion condicion)
         {
-            if (hayMasElementosNoNulos(actualizacion.getConditions(), -1))
+            if (hayMasElementosNoNulos(actualizacion.getConditions(), actualizacion.getTipos(), -1))
             {
                 String updateString = "update " + tabla + " set ";
                 for (int i = 0; i < actualizacion.getColumns().Count; i++)
@@ -377,12 +378,12 @@ namespace PagoAgilFrba.Modelo.DAOs
                             updateString += columna + " = " + valor;
                         }
                     }
-                    if (valor != null && !valor.Equals("") && hayMasElementosNoNulos(actualizacion.getConditions(), i))
+                    if (valor != null && !valor.Equals("") && hayMasElementosNoNulos(actualizacion.getConditions(), actualizacion.getTipos(), i))
                     {
                         updateString += ", ";
                     }
                 }
-                if (hayMasElementosNoNulos(condicion.getConditions(), -1))
+                if (hayMasElementosNoNulos(condicion.getConditions(), condicion.getTipos(), -1))
                 {
                     updateString += " where " + armarWhere(condicion.getColumns(), condicion.getConditions(), condicion.getTipos());
                 }

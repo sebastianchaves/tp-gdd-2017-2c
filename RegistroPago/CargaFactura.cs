@@ -198,5 +198,34 @@ namespace PagoAgilFrba.RegistroPago
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!clienteInput.Text.Equals("") || !empresaInput.Text.Equals(""))
+            {
+                List<Factura> resultados = facturaDao.buscarFacturas(nuevaFactura.idCliente.ToString(), nuevaFactura.idEmpresa.ToString());
+                if (resultados.Count > 0)
+                {
+                    using (ResultadosBusqueda resultadosForm = new ResultadosBusqueda(resultados))
+                    {
+                        resultadosForm.ShowDialog(this);
+                        Factura factura = resultadosForm.getFacturaSeleccionada();
+                        if (factura != null)
+                        {
+                            nuevaFactura = factura;
+                            numeroInput.Text = nuevaFactura.numero.ToString();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se encontro ninguna factura");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe completar al menos un criterio para buscar. (cliente o empresa)");
+            }
+        }
+
     }
 }
