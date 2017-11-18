@@ -247,16 +247,23 @@ namespace PagoAgilFrba.AbmFactura
         // Boton Eliminar Concepto
         private void botonEliminarConcepto_Click(object sender, EventArgs e)
         {
-            int index = this.conceptosGrid.SelectedCells[0].RowIndex;
+            if (this.conceptosGrid.SelectedCells.Count > 0)
+            {
+                int index = this.conceptosGrid.SelectedCells[0].RowIndex;
 
-            decimal conceptoMonto = Decimal.Parse(this.conceptosGrid.Rows[index].Cells[0].Value.ToString());
-            int conceptoCantidad = Int32.Parse(this.conceptosGrid.Rows[index].Cells[1].Value.ToString());
-
-            Concepto conceptoAEliminar = this.conceptosAgregados.Find(concepto => concepto.cantidad == conceptoCantidad && concepto.monto == conceptoMonto);
-
-            this.conceptosAgregados.Remove(conceptoAEliminar);
-
-            this.agregarAGrid();
+                try
+                {
+                    decimal conceptoMonto = Decimal.Parse(this.conceptosGrid.Rows[index].Cells[0].Value.ToString());
+                    int conceptoCantidad = Int32.Parse(this.conceptosGrid.Rows[index].Cells[1].Value.ToString());
+                    Concepto conceptoAEliminar = this.conceptosAgregados.Find(concepto => concepto.cantidad == conceptoCantidad && concepto.monto == conceptoMonto);
+                    this.conceptosAgregados.Remove(conceptoAEliminar);
+                    this.agregarAGrid();
+                }
+                catch (Exception)
+                {
+                    
+                }
+            }
         }
 
         // Boton Volver

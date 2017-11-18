@@ -98,7 +98,6 @@ namespace PagoAgilFrba.AbmEmpresa
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             agregarEmpresa();
-            this.nuevaEmpresa = new Empresa();
         }
 
         // Boton Cancelar

@@ -17,7 +17,7 @@ namespace PagoAgilFrba.Modelo.Utils
         {
             Regex rgx = new Regex(CUIT_REGEX, RegexOptions.IgnoreCase);
             MatchCollection matches = rgx.Matches(cuit);
-            return matches.Count > 1;
+            return matches.Count > 0;
         }
 
         public static bool campoNumericoMayorA0(String text)

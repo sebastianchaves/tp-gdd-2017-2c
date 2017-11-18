@@ -26,6 +26,7 @@ namespace PagoAgilFrba.RegistroPago
 
         private ClienteDAO<Cliente> clienteDao;
         private EmpresaDAO<Empresa> empresaDao;
+        private SucursalDAO<Sucursal> sucursalDao;
 
         private FormaPagoDAO<FormaPago> formaPagoDao;
         private List<FormaPago> formasPagoDisponibles;
@@ -39,7 +40,7 @@ namespace PagoAgilFrba.RegistroPago
             InitializeComponent();
 
             this.pagoFacturaDao = new PagoFacturaDAO<PagoFactura>();
-
+            sucursalDao = new SucursalDAO<Sucursal>();
             this.clienteDao = new ClienteDAO<Cliente>();
             this.empresaDao = new EmpresaDAO<Empresa>();
 
@@ -53,6 +54,7 @@ namespace PagoAgilFrba.RegistroPago
             this.pagoDao = new PagoDAO<Pago>();
             this.nuevoPago = new Pago();
             this.iniciarFacturasGrid();
+            cargarSucursalSegunUsuario();
         }
 
         private void registrarPago()
@@ -69,6 +71,8 @@ namespace PagoAgilFrba.RegistroPago
                     this.tablaFacturas.Clear();
                     this.facturasAPagar = new List<Factura>();
                     this.clienteInput.Clear();
+                    MessageBox.Show("Pago registrado exitosamente");
+                    this.nuevoPago = new Pago();
                 }
                 else
                 {
@@ -78,6 +82,18 @@ namespace PagoAgilFrba.RegistroPago
             else
             {
                 MessageBox.Show("Debe cargar por lo menos 1 factura para registrar el pago");
+            }
+        }
+
+        private void cargarSucursalSegunUsuario()
+        {
+            if (Utils.usuarioGlobal.idSucursal != 0)
+            {
+                this.sucursalInput.Text = this.sucursalDao.sucursalPorId(Utils.usuarioGlobal.idSucursal).ElementAt(0).nombre;
+            }
+            else
+            {
+                this.sucursalInput.Text = "Hola Admin!";
             }
         }
 
@@ -182,13 +198,24 @@ namespace PagoAgilFrba.RegistroPago
             using (CargaFactura cargaForm = new CargaFactura())
             {
                 cargaForm.ShowDialog(this);
-
+                if (!cargaForm.DialogResult.Equals(DialogResult.OK))
+                {
+                    return;
+                }
                 Factura nuevaFactura = cargaForm.getNuevaFactura();
 
                 if (nuevaFactura.numero != 0)
                 {
-                    this.cargarNuevaFactura(nuevaFactura);
-                    this.facturasAPagar.Add(nuevaFactura);
+                    List<Factura> list = facturaDao.obtenerFacturas(nuevaFactura.numero);
+                    if (list.Count > 0)
+                    {
+                        this.cargarNuevaFactura(list.ElementAt(0));
+                        this.facturasAPagar.Add(list.ElementAt(0));
+                    }
+                    else
+                    {
+                        MessageBox.Show("El numero de factura no existe en el sistema.");
+                    }
                 }
                 else 
                 {
@@ -208,27 +235,27 @@ namespace PagoAgilFrba.RegistroPago
         private void botonRegistrar_Click(object sender, EventArgs e)
         {
             this.registrarPago();
-            this.nuevoPago = new Pago();
         }
 
         // Boton Eliminar
         private void botonEliminar_Click(object sender, EventArgs e)
         {
-            if (facturasGrid.SelectedRows.Count > 0)
+            if (facturasGrid.SelectedCells.Count > 0)
             {
-                int index = facturasGrid.SelectedRows[0].Index;
+                try
+                {
+                    int index = facturasGrid.SelectedCells[0].RowIndex;
+                    int numeroFacturaAEliminar = Int32.Parse(this.facturasGrid.Rows[index].Cells[0].Value.ToString());
 
-                int numeroFacturaAEliminar = Int32.Parse(this.facturasGrid.Rows[index].Cells[0].Value.ToString());
+                    this.facturasAPagar.Remove(
+                        this.facturasAPagar.Find(
+                        factura => factura.numero == numeroFacturaAEliminar));
 
-                this.facturasAPagar.Remove(
-                    this.facturasAPagar.Find(
-                    factura => factura.numero == numeroFacturaAEliminar));
-
-                facturasGrid.Rows.RemoveAt(index);
-            }
-            else
-            {
-                MessageBox.Show("No selecciono ninguna factura para ser eliminar");
+                    facturasGrid.Rows.RemoveAt(index);
+                }
+                catch (Exception)
+                {
+                }
             }
         }
 

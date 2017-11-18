@@ -39,7 +39,6 @@
             this.empresaInput = new System.Windows.Forms.TextBox();
             this.fechaVencimientoInput = new System.Windows.Forms.DateTimePicker();
             this.importeInput = new System.Windows.Forms.TextBox();
-            this.sucursalInput = new System.Windows.Forms.TextBox();
             this.cargaFacturaLabel = new System.Windows.Forms.Label();
             this.botonBuscarEmpresa = new System.Windows.Forms.Button();
             this.botonBuscarCliente = new System.Windows.Forms.Button();
@@ -47,7 +46,6 @@
             this.buscarClienteGroupBox = new System.Windows.Forms.GroupBox();
             this.botonAceptar = new System.Windows.Forms.Button();
             this.botonCancelar = new System.Windows.Forms.Button();
-            this.sucursalLabel = new System.Windows.Forms.Label();
             this.numeroTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.importeTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.buscarEmpresaGroupBox.SuspendLayout();
@@ -138,14 +136,6 @@
             this.importeInput.TabIndex = 12;
             this.importeInput.Leave += new System.EventHandler(this.importeInput_Leave);
             // 
-            // sucursalInput
-            // 
-            this.sucursalInput.Enabled = false;
-            this.sucursalInput.Location = new System.Drawing.Point(127, 193);
-            this.sucursalInput.Name = "sucursalInput";
-            this.sucursalInput.Size = new System.Drawing.Size(214, 20);
-            this.sucursalInput.TabIndex = 13;
-            // 
             // cargaFacturaLabel
             // 
             this.cargaFacturaLabel.AutoSize = true;
@@ -218,22 +208,11 @@
             this.botonCancelar.UseVisualStyleBackColor = true;
             this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
-            // sucursalLabel
-            // 
-            this.sucursalLabel.AutoSize = true;
-            this.sucursalLabel.Location = new System.Drawing.Point(9, 196);
-            this.sucursalLabel.Name = "sucursalLabel";
-            this.sucursalLabel.Size = new System.Drawing.Size(51, 13);
-            this.sucursalLabel.TabIndex = 20;
-            this.sucursalLabel.Text = "Sucursal:";
-            // 
             // CargaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 398);
-            this.Controls.Add(this.sucursalInput);
-            this.Controls.Add(this.sucursalLabel);
             this.Controls.Add(this.botonCancelar);
             this.Controls.Add(this.botonAceptar);
             this.Controls.Add(this.buscarClienteGroupBox);
@@ -269,7 +248,6 @@
         private System.Windows.Forms.TextBox empresaInput;
         private System.Windows.Forms.DateTimePicker fechaVencimientoInput;
         private System.Windows.Forms.TextBox importeInput;
-        private System.Windows.Forms.TextBox sucursalInput;
         private System.Windows.Forms.Label cargaFacturaLabel;
         private System.Windows.Forms.Button botonBuscarEmpresa;
         private System.Windows.Forms.Button botonBuscarCliente;
@@ -277,7 +255,6 @@
         private System.Windows.Forms.GroupBox buscarClienteGroupBox;
         private System.Windows.Forms.Button botonAceptar;
         private System.Windows.Forms.Button botonCancelar;
-        private System.Windows.Forms.Label sucursalLabel;
         private System.Windows.Forms.ToolTip numeroTooltip;
         private System.Windows.Forms.ToolTip importeTooltip;
     }
