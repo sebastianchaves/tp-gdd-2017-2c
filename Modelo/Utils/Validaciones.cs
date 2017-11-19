@@ -10,7 +10,7 @@ namespace PagoAgilFrba.Modelo.Utils
     class Validaciones
     {
 
-        private static String CUIT_REGEX = "([0-9]{2})\\-([0-9]{8})\\-([0-9]{1})";
+        private static String CUIT_REGEX = "([0-9]{2})\\-([0-9]{8})\\-([0-9]{1})$";
         private static String EMAIL_REGEX = ".*?@.*?\\..+?(\\..*?)?";
 
         public static Boolean validarCuit(String cuit)
