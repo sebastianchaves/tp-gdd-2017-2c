@@ -43,10 +43,17 @@ namespace PagoAgilFrba.AbmEmpresa
                 {
                     if (this.camposCompletos())
                     {
-                        this.empresaDao.agregarEmpresa(this.nuevaEmpresa);
-                        MessageBox.Show("Empresa agregada!");
-                        Utils.clearTextBoxes(this);
-                        this.nuevaEmpresa = new Empresa();
+                        if (diaRendicionCorrecto())
+                        {
+                            this.empresaDao.agregarEmpresa(this.nuevaEmpresa);
+                            MessageBox.Show("Empresa agregada!");
+                            Utils.clearTextBoxes(this);
+                            this.nuevaEmpresa = new Empresa();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por favor, ingrese un dia de rendicion entre 1 y 28.");
+                        }
                     }
                     else
                     {
@@ -64,13 +71,17 @@ namespace PagoAgilFrba.AbmEmpresa
             }
         }
 
+        private Boolean diaRendicionCorrecto()
+        {
+            return this.nuevaEmpresa.diaDeRendicion > 0 && this.nuevaEmpresa.diaDeRendicion < 29;
+        }
+
         private Boolean camposCompletos()
         {
             return this.nombreInput.Text != "" &&
                 this.cuitInput.Text != "" &&
                 this.direccionInput.Text != "" &&
-                this.diaDeRendicion.Text != "" &&
-                this.nuevaEmpresa.diaDeRendicion > 0 && this.nuevaEmpresa.diaDeRendicion < 29;
+                this.diaRendicion.Text != "";
         }
 
         private void cargarRubros()
@@ -131,10 +142,11 @@ namespace PagoAgilFrba.AbmEmpresa
             this.nuevaEmpresa.idRubro = this.rubroByIndex(this.rubroCombo.SelectedIndex).id;
         }
 
-        private void diaDeRendicion_Leave(object sender, EventArgs e)
+        // Dia de Rendicion
+        private void diaRendicion_Leave(object sender, EventArgs e)
         {
             int a;
-            bool result = Int32.TryParse(this.diaDeRendicion.Text, out a);
+            bool result = Int32.TryParse(this.diaRendicion.Text, out a);
             if (result)
             {
                 this.nuevaEmpresa.diaDeRendicion = a;

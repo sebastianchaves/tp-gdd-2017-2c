@@ -46,7 +46,7 @@ namespace PagoAgilFrba.Modelo.DAOs
             allColumns.Add("activo");
             allColumns.Add("diaDeRendicion");
 
-            allColumnsInDB.Add("id");
+            allColumnsInDB.Add("id_empresa");
             allColumnsInDB.Add("cuit");
             allColumnsInDB.Add("nombre");
             allColumnsInDB.Add("direccion");

@@ -1,0 +1,42 @@
+#MIGRACION
+- Bien, pero la tabla conceptos (que serían los items de las facturas) se encuentra vacia sin los registros que conforman a las facturas.
+(si consultas las tablas de la base existen conceptos insertados)
+
+#APLICACION
+
+- ABM de Clientes
+1) Al intentar modificar un cliente existente se informa que el mail ya existe, 
+si seguimos intentado dice fecha fuera de rango, y recien cambiando la fecha permite la actualización
+
+- ABM de Empresa
+1) No valida estructura y composición algoritmica del cuil
+2) La regex no toma bien el cuit, xx-xxxxxxxx-x, parece que en la ultima x admite mas de 1 y pasa como valida.
+3) Al hacer alta de empresa rompe por sqlException cuando se hace el insert. Parece que es el campo de bit. (es la foto que te pase en wapp)
+4) Agrege dia de rendicion minimo y maximo con rango de numero, probarlo tambien.
+
+-ABM de Factura
+1) Permite ingresa cero tanto para la cantidad y el importe
+2) Falta ingresar la descripción del item o concepto como lo llaman uds.
+3) No valida la fecha de vencimiento tenga que ser mayor a la fecha de alta.
+4) Si el nro de factura se repite hay que ingresar todos los valores nuevemente lo cual dificulta la carga.
+5) Si la fecha de vencimiento es la misma que la fecha de alta da error sobre que el nro ya puede existir
+
+- Registro de Factura
+1) Se supone que con el numero de factura, cliente y empresa hay que buscar la factura en si y no 
+cargar datos adicionales porque ya los trae por defecto el sistema
+
+- ABM de Rol
+B
+
+- ABM de Sucursal
+B
+
+- Estadisticas (No aclaran si lo corrigieron)
+
+
+- Rendiciones (No lo corrigieron)
+
+
+- Devoluciones (No lo corrigieron)
+1) Lo refactorice todo, probarlo
+2) Si devuelvo una rendicion, puedo devolverla devuelta, que hacemos?

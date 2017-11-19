@@ -10,14 +10,16 @@ namespace PagoAgilFrba.Modelo.Utils
     class Validaciones
     {
 
-        private static String CUIT_REGEX = "\\d{2}\\-\\d{8}\\-\\d";
+        private static String CUIT_REGEX = "([0-9]{2})\\-([0-9]{8})\\-([0-9]{1})";
         private static String EMAIL_REGEX = ".*?@.*?\\..+?(\\..*?)?";
 
         public static Boolean validarCuit(String cuit)
         {
-            Regex rgx = new Regex(CUIT_REGEX, RegexOptions.IgnoreCase);
-            MatchCollection matches = rgx.Matches(cuit);
-            return matches.Count > 0;
+            Regex rgx = new Regex(CUIT_REGEX, RegexOptions.IgnoreCase | RegexOptions.ECMAScript);
+
+            Boolean matchea = rgx.IsMatch(cuit);
+
+            return matchea;
         }
 
         public static bool campoNumericoMayorA0(String text)

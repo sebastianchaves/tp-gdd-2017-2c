@@ -33,7 +33,6 @@
             this.botonAceptar = new System.Windows.Forms.Button();
             this.botonCancelar = new System.Windows.Forms.Button();
             this.datosEmpresaGroupBox = new System.Windows.Forms.GroupBox();
-            this.diaDeRendicion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rubroLabel = new System.Windows.Forms.Label();
             this.direccionLabel = new System.Windows.Forms.Label();
@@ -44,7 +43,9 @@
             this.direccionInput = new System.Windows.Forms.TextBox();
             this.nombreInput = new System.Windows.Forms.TextBox();
             this.cuitTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.diaRendicion = new System.Windows.Forms.NumericUpDown();
             this.datosEmpresaGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.diaRendicion)).BeginInit();
             this.SuspendLayout();
             // 
             // altaEmpresaLabel
@@ -79,7 +80,7 @@
             // 
             // datosEmpresaGroupBox
             // 
-            this.datosEmpresaGroupBox.Controls.Add(this.diaDeRendicion);
+            this.datosEmpresaGroupBox.Controls.Add(this.diaRendicion);
             this.datosEmpresaGroupBox.Controls.Add(this.label1);
             this.datosEmpresaGroupBox.Controls.Add(this.rubroLabel);
             this.datosEmpresaGroupBox.Controls.Add(this.direccionLabel);
@@ -95,14 +96,6 @@
             this.datosEmpresaGroupBox.TabIndex = 2;
             this.datosEmpresaGroupBox.TabStop = false;
             this.datosEmpresaGroupBox.Text = "Datos Empresa";
-            // 
-            // diaDeRendicion
-            // 
-            this.diaDeRendicion.Location = new System.Drawing.Point(126, 162);
-            this.diaDeRendicion.Name = "diaDeRendicion";
-            this.diaDeRendicion.Size = new System.Drawing.Size(179, 20);
-            this.diaDeRendicion.TabIndex = 9;
-            this.diaDeRendicion.Leave += new System.EventHandler(this.diaDeRendicion_Leave);
             // 
             // label1
             // 
@@ -182,6 +175,30 @@
             this.nombreInput.TabIndex = 0;
             this.nombreInput.Leave += new System.EventHandler(this.nombreInput_Leave);
             // 
+            // diaRendicion
+            // 
+            this.diaRendicion.Location = new System.Drawing.Point(126, 163);
+            this.diaRendicion.Maximum = new decimal(new int[] {
+            28,
+            0,
+            0,
+            0});
+            this.diaRendicion.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.diaRendicion.Name = "diaRendicion";
+            this.diaRendicion.Size = new System.Drawing.Size(179, 20);
+            this.diaRendicion.TabIndex = 10;
+            this.diaRendicion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.diaRendicion.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.diaRendicion.Leave += new System.EventHandler(this.diaRendicion_Leave);
+            // 
             // AltaEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,6 +212,7 @@
             this.Text = "Alta Empresa";
             this.datosEmpresaGroupBox.ResumeLayout(false);
             this.datosEmpresaGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.diaRendicion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,7 +233,7 @@
         private System.Windows.Forms.Label direccionLabel;
         private System.Windows.Forms.Label cuitLabel;
         private System.Windows.Forms.ToolTip cuitTooltip;
-        private System.Windows.Forms.TextBox diaDeRendicion;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown diaRendicion;
     }
 }
