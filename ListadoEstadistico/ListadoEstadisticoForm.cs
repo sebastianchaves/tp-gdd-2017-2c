@@ -63,6 +63,7 @@ namespace PagoAgilFrba.ListadoEstadistico
             dataSource.Add("1");
             dataSource.Add("2");
             dataSource.Add("3");
+            dataSource.Add("4");
 
             this.trimestreCombo.DataSource = dataSource;
             this.trimestreCombo.SelectedIndex = 0;
@@ -210,6 +211,10 @@ namespace PagoAgilFrba.ListadoEstadistico
             if (castSender.SelectedItem.Equals("3"))
             {
                 trimestreElegido = 3;
+            }
+            if (castSender.SelectedItem.Equals("4"))
+            {
+                trimestreElegido = 4;
             }
         }
     }
