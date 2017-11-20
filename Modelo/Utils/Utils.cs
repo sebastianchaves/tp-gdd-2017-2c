@@ -128,10 +128,13 @@ namespace PagoAgilFrba.Modelo.Utils
                     fechaInicio += "-01-01";
                     break;
                 case 2:
-                    fechaInicio += "-05-01";
+                    fechaInicio += "-04-01";
+                    break;
+                case 3:
+                    fechaInicio += "-07-01";
                     break;
                 default:
-                    fechaInicio += "-09-01";
+                    fechaInicio += "-10-01";
                     break;
             }
             return fechaInicio;
@@ -143,10 +146,13 @@ namespace PagoAgilFrba.Modelo.Utils
             switch (trimestre)
             {
                 case 1:
-                    fechaFin += "-04-30";
+                    fechaFin += "-03-31";
                     break;
                 case 2:
-                    fechaFin += "-08-31";
+                    fechaFin += "-06-30";
+                    break;
+                case 3:
+                    fechaFin += "-09-30";
                     break;
                 default:
                     fechaFin += "-12-31";
