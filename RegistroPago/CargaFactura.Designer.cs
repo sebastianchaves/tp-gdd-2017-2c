@@ -49,14 +49,17 @@
             this.numeroTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.importeTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buscarEmpresaGroupBox.SuspendLayout();
             this.buscarClienteGroupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // numeroFacturaLabel
             // 
             this.numeroFacturaLabel.AutoSize = true;
-            this.numeroFacturaLabel.Location = new System.Drawing.Point(9, 44);
+            this.numeroFacturaLabel.Location = new System.Drawing.Point(20, 16);
             this.numeroFacturaLabel.Name = "numeroFacturaLabel";
             this.numeroFacturaLabel.Size = new System.Drawing.Size(83, 13);
             this.numeroFacturaLabel.TabIndex = 0;
@@ -65,7 +68,7 @@
             // fechaCobroLabel
             // 
             this.fechaCobroLabel.AutoSize = true;
-            this.fechaCobroLabel.Location = new System.Drawing.Point(9, 82);
+            this.fechaCobroLabel.Location = new System.Drawing.Point(20, 54);
             this.fechaCobroLabel.Name = "fechaCobroLabel";
             this.fechaCobroLabel.Size = new System.Drawing.Size(85, 13);
             this.fechaCobroLabel.TabIndex = 1;
@@ -74,7 +77,7 @@
             // fechaVencimientoLabel
             // 
             this.fechaVencimientoLabel.AutoSize = true;
-            this.fechaVencimientoLabel.Location = new System.Drawing.Point(9, 120);
+            this.fechaVencimientoLabel.Location = new System.Drawing.Point(20, 92);
             this.fechaVencimientoLabel.Name = "fechaVencimientoLabel";
             this.fechaVencimientoLabel.Size = new System.Drawing.Size(115, 13);
             this.fechaVencimientoLabel.TabIndex = 4;
@@ -83,7 +86,7 @@
             // importeLabel
             // 
             this.importeLabel.AutoSize = true;
-            this.importeLabel.Location = new System.Drawing.Point(9, 158);
+            this.importeLabel.Location = new System.Drawing.Point(20, 130);
             this.importeLabel.Name = "importeLabel";
             this.importeLabel.Size = new System.Drawing.Size(45, 13);
             this.importeLabel.TabIndex = 5;
@@ -91,7 +94,7 @@
             // 
             // numeroInput
             // 
-            this.numeroInput.Location = new System.Drawing.Point(127, 41);
+            this.numeroInput.Location = new System.Drawing.Point(138, 13);
             this.numeroInput.Name = "numeroInput";
             this.numeroInput.Size = new System.Drawing.Size(214, 20);
             this.numeroInput.TabIndex = 7;
@@ -100,7 +103,7 @@
             // fechaCobroInput
             // 
             this.fechaCobroInput.Enabled = false;
-            this.fechaCobroInput.Location = new System.Drawing.Point(127, 75);
+            this.fechaCobroInput.Location = new System.Drawing.Point(138, 47);
             this.fechaCobroInput.Name = "fechaCobroInput";
             this.fechaCobroInput.Size = new System.Drawing.Size(214, 20);
             this.fechaCobroInput.TabIndex = 8;
@@ -123,7 +126,7 @@
             // 
             // fechaVencimientoInput
             // 
-            this.fechaVencimientoInput.Location = new System.Drawing.Point(127, 114);
+            this.fechaVencimientoInput.Location = new System.Drawing.Point(138, 86);
             this.fechaVencimientoInput.Name = "fechaVencimientoInput";
             this.fechaVencimientoInput.Size = new System.Drawing.Size(214, 20);
             this.fechaVencimientoInput.TabIndex = 11;
@@ -131,7 +134,7 @@
             // 
             // importeInput
             // 
-            this.importeInput.Location = new System.Drawing.Point(127, 155);
+            this.importeInput.Location = new System.Drawing.Point(138, 127);
             this.importeInput.Name = "importeInput";
             this.importeInput.Size = new System.Drawing.Size(214, 20);
             this.importeInput.TabIndex = 12;
@@ -141,15 +144,15 @@
             // 
             this.cargaFacturaLabel.AutoSize = true;
             this.cargaFacturaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cargaFacturaLabel.Location = new System.Drawing.Point(123, 9);
+            this.cargaFacturaLabel.Location = new System.Drawing.Point(98, 9);
             this.cargaFacturaLabel.Name = "cargaFacturaLabel";
-            this.cargaFacturaLabel.Size = new System.Drawing.Size(111, 20);
+            this.cargaFacturaLabel.Size = new System.Drawing.Size(206, 20);
             this.cargaFacturaLabel.TabIndex = 14;
-            this.cargaFacturaLabel.Text = "Carga Factura";
+            this.cargaFacturaLabel.Text = "Carga Factura (por numero)";
             // 
             // botonBuscarEmpresa
             // 
-            this.botonBuscarEmpresa.Location = new System.Drawing.Point(239, 19);
+            this.botonBuscarEmpresa.Location = new System.Drawing.Point(268, 19);
             this.botonBuscarEmpresa.Name = "botonBuscarEmpresa";
             this.botonBuscarEmpresa.Size = new System.Drawing.Size(90, 30);
             this.botonBuscarEmpresa.TabIndex = 15;
@@ -159,7 +162,7 @@
             // 
             // botonBuscarCliente
             // 
-            this.botonBuscarCliente.Location = new System.Drawing.Point(239, 19);
+            this.botonBuscarCliente.Location = new System.Drawing.Point(268, 19);
             this.botonBuscarCliente.Name = "botonBuscarCliente";
             this.botonBuscarCliente.Size = new System.Drawing.Size(90, 30);
             this.botonBuscarCliente.TabIndex = 16;
@@ -171,9 +174,9 @@
             // 
             this.buscarEmpresaGroupBox.Controls.Add(this.empresaInput);
             this.buscarEmpresaGroupBox.Controls.Add(this.botonBuscarEmpresa);
-            this.buscarEmpresaGroupBox.Location = new System.Drawing.Point(12, 294);
+            this.buscarEmpresaGroupBox.Location = new System.Drawing.Point(12, 334);
             this.buscarEmpresaGroupBox.Name = "buscarEmpresaGroupBox";
-            this.buscarEmpresaGroupBox.Size = new System.Drawing.Size(335, 56);
+            this.buscarEmpresaGroupBox.Size = new System.Drawing.Size(369, 56);
             this.buscarEmpresaGroupBox.TabIndex = 18;
             this.buscarEmpresaGroupBox.TabStop = false;
             this.buscarEmpresaGroupBox.Text = "Buscar empresa";
@@ -182,16 +185,16 @@
             // 
             this.buscarClienteGroupBox.Controls.Add(this.clienteInput);
             this.buscarClienteGroupBox.Controls.Add(this.botonBuscarCliente);
-            this.buscarClienteGroupBox.Location = new System.Drawing.Point(12, 230);
+            this.buscarClienteGroupBox.Location = new System.Drawing.Point(12, 270);
             this.buscarClienteGroupBox.Name = "buscarClienteGroupBox";
-            this.buscarClienteGroupBox.Size = new System.Drawing.Size(335, 58);
+            this.buscarClienteGroupBox.Size = new System.Drawing.Size(369, 58);
             this.buscarClienteGroupBox.TabIndex = 0;
             this.buscarClienteGroupBox.TabStop = false;
             this.buscarClienteGroupBox.Text = "Buscar cliente";
             // 
             // botonAceptar
             // 
-            this.botonAceptar.Location = new System.Drawing.Point(127, 356);
+            this.botonAceptar.Location = new System.Drawing.Point(61, 163);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(90, 30);
             this.botonAceptar.TabIndex = 18;
@@ -201,7 +204,7 @@
             // 
             // botonCancelar
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(237, 356);
+            this.botonCancelar.Location = new System.Drawing.Point(205, 163);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(90, 30);
             this.botonCancelar.TabIndex = 19;
@@ -211,7 +214,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(18, 356);
+            this.button1.Location = new System.Drawing.Point(144, 396);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 30);
             this.button1.TabIndex = 20;
@@ -219,31 +222,54 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(49, 234);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(290, 20);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Buscar factura (por cliente y/o empresa)";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numeroFacturaLabel);
+            this.groupBox1.Controls.Add(this.fechaCobroLabel);
+            this.groupBox1.Controls.Add(this.fechaVencimientoLabel);
+            this.groupBox1.Controls.Add(this.botonCancelar);
+            this.groupBox1.Controls.Add(this.importeLabel);
+            this.groupBox1.Controls.Add(this.botonAceptar);
+            this.groupBox1.Controls.Add(this.numeroInput);
+            this.groupBox1.Controls.Add(this.fechaCobroInput);
+            this.groupBox1.Controls.Add(this.fechaVencimientoInput);
+            this.groupBox1.Controls.Add(this.importeInput);
+            this.groupBox1.Location = new System.Drawing.Point(18, 32);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(363, 199);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Carga de factura";
+            // 
             // CargaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 398);
+            this.ClientSize = new System.Drawing.Size(400, 440);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.botonCancelar);
-            this.Controls.Add(this.botonAceptar);
             this.Controls.Add(this.buscarClienteGroupBox);
             this.Controls.Add(this.buscarEmpresaGroupBox);
             this.Controls.Add(this.cargaFacturaLabel);
-            this.Controls.Add(this.importeInput);
-            this.Controls.Add(this.fechaVencimientoInput);
-            this.Controls.Add(this.fechaCobroInput);
-            this.Controls.Add(this.numeroInput);
-            this.Controls.Add(this.importeLabel);
-            this.Controls.Add(this.fechaVencimientoLabel);
-            this.Controls.Add(this.fechaCobroLabel);
-            this.Controls.Add(this.numeroFacturaLabel);
             this.Name = "CargaFactura";
             this.Text = "Carga Factura";
             this.buscarEmpresaGroupBox.ResumeLayout(false);
             this.buscarEmpresaGroupBox.PerformLayout();
             this.buscarClienteGroupBox.ResumeLayout(false);
             this.buscarClienteGroupBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +296,7 @@
         private System.Windows.Forms.ToolTip numeroTooltip;
         private System.Windows.Forms.ToolTip importeTooltip;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
