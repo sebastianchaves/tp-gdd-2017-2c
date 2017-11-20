@@ -31,6 +31,7 @@ namespace PagoAgilFrba.AbmEmpresa
             this.empresaDao = new EmpresaDAO<Empresa>();
             this.rubroDao = new RubroDAO<Rubro>();
             this.cargarRubros();
+            nuevaEmpresa.diaDeRendicion = 1;
         }
 
         private void agregarEmpresa()
