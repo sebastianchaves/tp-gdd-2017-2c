@@ -97,7 +97,7 @@ namespace PagoAgilFrba.Modelo.Utils
             resultadosGrid.BackgroundColor = Color.LightGray;
             resultadosGrid.BorderStyle = BorderStyle.Fixed3D;
             resultadosGrid.AllowUserToAddRows = false;
-            resultadosGrid.AllowUserToDeleteRows = false;
+            resultadosGrid.AllowUserToDeleteRows = true;
             resultadosGrid.AllowUserToOrderColumns = true;
             resultadosGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             resultadosGrid.DefaultCellStyle.SelectionBackColor = Color.MediumTurquoise;

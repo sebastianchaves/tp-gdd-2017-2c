@@ -113,7 +113,13 @@ namespace PagoAgilFrba.AbmFactura
         {
             return this.numeroInput.Text != "" &&
                 this.fechaAltaInput.Value.ToString() != "" &&
-                this.fechaVencimientoInput.Value.ToString() != "";
+                this.fechaVencimientoInput.Value.ToString() != "" &&
+                this.hayConceptos();
+        }
+
+        private Boolean hayConceptos()
+        {
+            return this.itemsGrid.Rows.Count > 0;
         }
 
         private void agregarConceptos()
@@ -283,6 +289,16 @@ namespace PagoAgilFrba.AbmFactura
             return this.cantidadInput.Text != "" && this.montoInput.Text != "";
         }
 
+        private void limpiarTablaConceptos()
+        {
+            if (this.itemsGrid.RowCount > 0)
+            {
+                this.itemsGrid.DataSource = null;
+                this.conceptosModificados.Clear();
+                this.itemsGrid.Refresh();
+            }
+        }
+
         // Eventos
         // Boton Buscar
         private void botonBuscar_Click(object sender, EventArgs e)
@@ -294,6 +310,7 @@ namespace PagoAgilFrba.AbmFactura
 
                 if (this.facturaACargar != null)
                 {
+                    this.limpiarTablaConceptos();
                     this.botonActualizar.Enabled = true;
                     this.cargarDatos();
                     this.habilitarCampos();

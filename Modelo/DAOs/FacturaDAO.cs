@@ -58,9 +58,9 @@ namespace PagoAgilFrba.Modelo.DAOs
 
             valores.Add("");
             valores.Add(factura.numero.ToString());
-            valores.Add(factura.fechaAlta.ToString());
+            valores.Add(Utils.Utils.formatDateTime(factura.fechaAlta));
             valores.Add(factura.total.ToString());
-            valores.Add(factura.fechaVencimiento.ToString());
+            valores.Add(Utils.Utils.formatDateTime(factura.fechaVencimiento));
             valores.Add("null");
             valores.Add(factura.idCliente.ToString());
             valores.Add(factura.idEmpresa.ToString());

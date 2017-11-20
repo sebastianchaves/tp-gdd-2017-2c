@@ -191,6 +191,11 @@ namespace PagoAgilFrba.RegistroPago
             this.facturasGrid.DataSource = tablaFacturas;
         }
 
+        private Boolean facturaYaCargada(Factura factura)
+        {
+            return facturasAPagar.Any(f => f.numero.Equals(factura.numero));
+        }
+
         // Eventos
         // Boton Cargar Factura
         private void botonCargarFactura_Click(object sender, EventArgs e)
@@ -206,15 +211,22 @@ namespace PagoAgilFrba.RegistroPago
 
                 if (nuevaFactura.numero != 0)
                 {
-                    List<Factura> list = facturaDao.obtenerFacturas(nuevaFactura.numero);
-                    if (list.Count > 0)
+                    if (!this.facturaYaCargada(nuevaFactura))
                     {
-                        this.cargarNuevaFactura(list.ElementAt(0));
-                        this.facturasAPagar.Add(list.ElementAt(0));
+                        List<Factura> list = facturaDao.obtenerFacturas(nuevaFactura.numero);
+                        if (list.Count > 0)
+                        {
+                            this.cargarNuevaFactura(list.ElementAt(0));
+                            this.facturasAPagar.Add(list.ElementAt(0));
+                        }
+                        else
+                        {
+                            MessageBox.Show("El numero de factura no existe en el sistema.");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("El numero de factura no existe en el sistema.");
+                        MessageBox.Show("Esa factura ya se encuentra cargada.");
                     }
                 }
                 else 

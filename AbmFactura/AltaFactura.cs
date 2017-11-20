@@ -33,6 +33,8 @@ namespace PagoAgilFrba.AbmFactura
         {
             InitializeComponent();
 
+            Utils.iniciarGrids(this.conceptosGrid);
+
             this.nuevaFactura = new Factura();
 
             this.facturaDao = new FacturaDAO<Factura>();
@@ -251,17 +253,20 @@ namespace PagoAgilFrba.AbmFactura
             {
                 int index = this.conceptosGrid.SelectedCells[0].RowIndex;
 
-                try
+                if (this.conceptosGrid.Rows[index].Cells[0].Value != null)
                 {
-                    decimal conceptoMonto = Decimal.Parse(this.conceptosGrid.Rows[index].Cells[0].Value.ToString());
-                    int conceptoCantidad = Int32.Parse(this.conceptosGrid.Rows[index].Cells[1].Value.ToString());
-                    Concepto conceptoAEliminar = this.conceptosAgregados.Find(concepto => concepto.cantidad == conceptoCantidad && concepto.monto == conceptoMonto);
-                    this.conceptosAgregados.Remove(conceptoAEliminar);
-                    this.agregarAGrid();
-                }
-                catch (Exception)
-                {
-                    
+                    try
+                    {
+                        decimal conceptoMonto = Decimal.Parse(this.conceptosGrid.Rows[index].Cells[0].Value.ToString());
+                        int conceptoCantidad = Int32.Parse(this.conceptosGrid.Rows[index].Cells[1].Value.ToString());
+                        Concepto conceptoAEliminar = this.conceptosAgregados.Find(concepto => concepto.cantidad == conceptoCantidad && concepto.monto == conceptoMonto);
+                        this.conceptosAgregados.Remove(conceptoAEliminar);
+                        this.agregarAGrid();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
             }
         }

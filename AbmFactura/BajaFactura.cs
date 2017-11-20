@@ -43,6 +43,10 @@ namespace PagoAgilFrba.AbmFactura
                 if (result == 1)
                 {
                     MessageBox.Show("Se dio de baja de manera exitosa.");
+                    this.facturaACargar = new Factura();
+                    this.numeroInput.Clear();
+                    Utils.clearTextBoxes(this);
+                    this.botonBaja.Enabled = false;
                 }
                 else
                 {
@@ -70,6 +74,10 @@ namespace PagoAgilFrba.AbmFactura
                     this.botonBaja.Enabled = true;
                     this.cargarDatos();
                 }
+                else
+                {
+                    Utils.clearTextBoxes(this);
+                }
             }
         }
 
@@ -78,14 +86,17 @@ namespace PagoAgilFrba.AbmFactura
         {
             try
             {
-                this.darDeBaja();
-            }catch(SqlException s){
+                if (this.facturaACargar != null)
+                {
+                    this.darDeBaja();
+                }
+                else
+                {
+                    MessageBox.Show("No se cargo ninguna factura.");
+                }
+            }catch(SqlException){
                 MessageBox.Show("Hubo un error en la baja de la factura.");
             }
-            this.facturaACargar = new Factura();
-            this.numeroInput.Clear();
-            Utils.clearTextBoxes(this);
-            this.botonBaja.Enabled = false;
         }
 
         // Boton Volver
