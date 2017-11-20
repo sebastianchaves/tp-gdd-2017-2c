@@ -46,25 +46,46 @@ namespace PagoAgilFrba.Devoluciones
         {
             if (this.rendicionACargar != null && this.rendicionACargar.id != 0)
             {
-                this.nuevaDevolucionRendicion.idRendicion = rendicionACargar.id;
-                this.nuevaDevolucionRendicion.idDevolucion = nuevaDevolucion.id;
-                this.devolucionRendicionDao.agregarDevolucionRendicion(this.nuevaDevolucionRendicion);
+                if (!this.rendicionDevuelta())
+                {
+                    this.nuevaDevolucionRendicion.idRendicion = rendicionACargar.id;
+                    this.nuevaDevolucionRendicion.idDevolucion = nuevaDevolucion.id;
+                    this.devolucionRendicionDao.agregarDevolucionRendicion(this.nuevaDevolucionRendicion);
 
-                this.nuevaDevolucionRendicion = new DevolucionRendicion();
-                this.rendicionACargar = new Rendicion();
+                    this.nuevaDevolucionRendicion = new DevolucionRendicion();
+                    this.rendicionACargar = new Rendicion();
 
-                this.rendicionInput.Clear();
-                this.mesInput.Clear();
-                this.anioInput.Clear();
+                    this.rendicionInput.Clear();
+                    this.mesInput.Clear();
+                    this.anioInput.Clear();
 
-                this.minimoDevoluciones = true;
+                    this.minimoDevoluciones = true;
 
-                MessageBox.Show("Devolucion agregada!");
+                    MessageBox.Show("Devolucion agregada!");
+                }
+                else
+                {
+                    MessageBox.Show("Esta rendicion ya ha sido devuelta.");
+                    this.nuevaDevolucionRendicion = new DevolucionRendicion();
+                    this.rendicionACargar = new Rendicion();
+
+                    this.rendicionInput.Clear();
+                    this.mesInput.Clear();
+                    this.anioInput.Clear();
+
+                    this.minimoDevoluciones = true;
+                }
             }
             else
             {
                 MessageBox.Show("No cargo ninguna rendicion.");
             }
+        }
+
+        private Boolean rendicionDevuelta()
+        {
+            List<DevolucionRendicion> rendicionesDevueltas = this.devolucionRendicionDao.selectRendicion(this.rendicionACargar);
+            return rendicionesDevueltas.Count > 0;
         }
 
         private Boolean camposCompletos()

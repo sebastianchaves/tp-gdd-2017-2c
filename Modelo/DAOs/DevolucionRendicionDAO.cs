@@ -42,5 +42,16 @@ namespace PagoAgilFrba.Modelo.DAOs
             insert(TABLA, allColumnsInDB, tipos, valores);
         }
 
+        // Selects
+        public List<T> selectRendicion(Rendicion rendicion)
+        {
+            Condicion condicion = new Condicion();
+
+            condicion.agregarCondicion("id_rendicion", rendicion.id, Utils.Utils.INT_TYPE);
+            
+            List<List<String>> resultSet = this.select(TABLA, ALL, tipos, condicion);
+            return getEntities(resultSet, allColumns, tipos);
+        }
+
     }
 }
