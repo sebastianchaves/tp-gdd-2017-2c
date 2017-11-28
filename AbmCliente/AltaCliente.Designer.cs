@@ -73,6 +73,7 @@
             // nombreInput
             // 
             this.nombreInput.Location = new System.Drawing.Point(79, 19);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(213, 20);
             this.nombreInput.TabIndex = 0;
@@ -81,6 +82,7 @@
             // telefonoInput
             // 
             this.telefonoInput.Location = new System.Drawing.Point(64, 19);
+            this.telefonoInput.MaxLength = 20;
             this.telefonoInput.Name = "telefonoInput";
             this.telefonoInput.Size = new System.Drawing.Size(107, 20);
             this.telefonoInput.TabIndex = 4;
@@ -89,6 +91,7 @@
             // calleInput
             // 
             this.calleInput.Location = new System.Drawing.Point(45, 19);
+            this.calleInput.MaxLength = 80;
             this.calleInput.Name = "calleInput";
             this.calleInput.Size = new System.Drawing.Size(99, 20);
             this.calleInput.TabIndex = 6;
@@ -96,6 +99,7 @@
             // localidadInput
             // 
             this.localidadInput.Location = new System.Drawing.Point(391, 19);
+            this.localidadInput.MaxLength = 30;
             this.localidadInput.Name = "localidadInput";
             this.localidadInput.Size = new System.Drawing.Size(99, 20);
             this.localidadInput.TabIndex = 8;
@@ -103,6 +107,7 @@
             // apellidoInput
             // 
             this.apellidoInput.Location = new System.Drawing.Point(79, 45);
+            this.apellidoInput.MaxLength = 255;
             this.apellidoInput.Name = "apellidoInput";
             this.apellidoInput.Size = new System.Drawing.Size(213, 20);
             this.apellidoInput.TabIndex = 1;
@@ -111,6 +116,7 @@
             // mailInput
             // 
             this.mailInput.Location = new System.Drawing.Point(64, 45);
+            this.mailInput.MaxLength = 255;
             this.mailInput.Name = "mailInput";
             this.mailInput.Size = new System.Drawing.Size(107, 20);
             this.mailInput.TabIndex = 5;
@@ -119,6 +125,7 @@
             // dniInput
             // 
             this.dniInput.Location = new System.Drawing.Point(79, 71);
+            this.dniInput.MaxLength = 20;
             this.dniInput.Name = "dniInput";
             this.dniInput.Size = new System.Drawing.Size(213, 20);
             this.dniInput.TabIndex = 2;
@@ -236,6 +243,7 @@
             // codigoPostalInput
             // 
             this.codigoPostalInput.Location = new System.Drawing.Point(90, 53);
+            this.codigoPostalInput.MaxLength = 30;
             this.codigoPostalInput.Name = "codigoPostalInput";
             this.codigoPostalInput.Size = new System.Drawing.Size(54, 20);
             this.codigoPostalInput.TabIndex = 9;
@@ -244,6 +252,7 @@
             // pisoInput
             // 
             this.pisoInput.Location = new System.Drawing.Point(212, 53);
+            this.pisoInput.MaxLength = 5;
             this.pisoInput.Name = "pisoInput";
             this.pisoInput.Size = new System.Drawing.Size(52, 20);
             this.pisoInput.TabIndex = 10;
@@ -251,6 +260,7 @@
             // departamentoInput
             // 
             this.departamentoInput.Location = new System.Drawing.Point(412, 53);
+            this.departamentoInput.MaxLength = 5;
             this.departamentoInput.Name = "departamentoInput";
             this.departamentoInput.Size = new System.Drawing.Size(78, 20);
             this.departamentoInput.TabIndex = 11;
@@ -287,6 +297,7 @@
             // numeroDomicilioInput
             // 
             this.numeroDomicilioInput.Location = new System.Drawing.Point(212, 19);
+            this.numeroDomicilioInput.MaxLength = 10;
             this.numeroDomicilioInput.Name = "numeroDomicilioInput";
             this.numeroDomicilioInput.Size = new System.Drawing.Size(99, 20);
             this.numeroDomicilioInput.TabIndex = 7;

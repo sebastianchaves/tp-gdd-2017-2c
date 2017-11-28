@@ -85,6 +85,7 @@
             // 
             this.diaDeRendicionText.Enabled = false;
             this.diaDeRendicionText.Location = new System.Drawing.Point(107, 183);
+            this.diaDeRendicionText.MaxLength = 2;
             this.diaDeRendicionText.Name = "diaDeRendicionText";
             this.diaDeRendicionText.Size = new System.Drawing.Size(204, 20);
             this.diaDeRendicionText.TabIndex = 12;
@@ -148,6 +149,7 @@
             // 
             this.cuitInput.Enabled = false;
             this.cuitInput.Location = new System.Drawing.Point(107, 70);
+            this.cuitInput.MaxLength = 13;
             this.cuitInput.Name = "cuitInput";
             this.cuitInput.Size = new System.Drawing.Size(204, 20);
             this.cuitInput.TabIndex = 1;
@@ -157,6 +159,7 @@
             // 
             this.direccionInput.Enabled = false;
             this.direccionInput.Location = new System.Drawing.Point(107, 107);
+            this.direccionInput.MaxLength = 255;
             this.direccionInput.Name = "direccionInput";
             this.direccionInput.Size = new System.Drawing.Size(204, 20);
             this.direccionInput.TabIndex = 2;
@@ -175,6 +178,7 @@
             // 
             this.nombreInput.Enabled = false;
             this.nombreInput.Location = new System.Drawing.Point(107, 33);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(204, 20);
             this.nombreInput.TabIndex = 0;

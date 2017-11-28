@@ -33,6 +33,7 @@
             this.botonAceptar = new System.Windows.Forms.Button();
             this.botonCancelar = new System.Windows.Forms.Button();
             this.datosEmpresaGroupBox = new System.Windows.Forms.GroupBox();
+            this.diaRendicion = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.rubroLabel = new System.Windows.Forms.Label();
             this.direccionLabel = new System.Windows.Forms.Label();
@@ -43,7 +44,6 @@
             this.direccionInput = new System.Windows.Forms.TextBox();
             this.nombreInput = new System.Windows.Forms.TextBox();
             this.cuitTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.diaRendicion = new System.Windows.Forms.NumericUpDown();
             this.datosEmpresaGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diaRendicion)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +96,30 @@
             this.datosEmpresaGroupBox.TabIndex = 2;
             this.datosEmpresaGroupBox.TabStop = false;
             this.datosEmpresaGroupBox.Text = "Datos Empresa";
+            // 
+            // diaRendicion
+            // 
+            this.diaRendicion.Location = new System.Drawing.Point(126, 163);
+            this.diaRendicion.Maximum = new decimal(new int[] {
+            28,
+            0,
+            0,
+            0});
+            this.diaRendicion.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.diaRendicion.Name = "diaRendicion";
+            this.diaRendicion.Size = new System.Drawing.Size(179, 20);
+            this.diaRendicion.TabIndex = 10;
+            this.diaRendicion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.diaRendicion.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.diaRendicion.Leave += new System.EventHandler(this.diaRendicion_Leave);
             // 
             // label1
             // 
@@ -154,6 +178,7 @@
             // cuitInput
             // 
             this.cuitInput.Location = new System.Drawing.Point(126, 56);
+            this.cuitInput.MaxLength = 13;
             this.cuitInput.Name = "cuitInput";
             this.cuitInput.Size = new System.Drawing.Size(179, 20);
             this.cuitInput.TabIndex = 1;
@@ -162,6 +187,7 @@
             // direccionInput
             // 
             this.direccionInput.Location = new System.Drawing.Point(126, 93);
+            this.direccionInput.MaxLength = 255;
             this.direccionInput.Name = "direccionInput";
             this.direccionInput.Size = new System.Drawing.Size(179, 20);
             this.direccionInput.TabIndex = 2;
@@ -170,34 +196,11 @@
             // nombreInput
             // 
             this.nombreInput.Location = new System.Drawing.Point(126, 19);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(179, 20);
             this.nombreInput.TabIndex = 0;
             this.nombreInput.Leave += new System.EventHandler(this.nombreInput_Leave);
-            // 
-            // diaRendicion
-            // 
-            this.diaRendicion.Location = new System.Drawing.Point(126, 163);
-            this.diaRendicion.Maximum = new decimal(new int[] {
-            28,
-            0,
-            0,
-            0});
-            this.diaRendicion.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.diaRendicion.Name = "diaRendicion";
-            this.diaRendicion.Size = new System.Drawing.Size(179, 20);
-            this.diaRendicion.TabIndex = 10;
-            this.diaRendicion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.diaRendicion.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.diaRendicion.Leave += new System.EventHandler(this.diaRendicion_Leave);
             // 
             // AltaEmpresa
             // 

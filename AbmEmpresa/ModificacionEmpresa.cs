@@ -93,28 +93,45 @@ namespace PagoAgilFrba.AbmEmpresa
 
             if (this.camposCompletos())
             {
+                if (!Validaciones.campoNumerico(diaDeRendicionText.Text) || Int32.Parse(diaDeRendicionText.Text) < 1
+                    || Int32.Parse(diaDeRendicionText.Text) > 28)
+                {
+                    MessageBox.Show("El dia de rendicion debe ser entre 1 y 28 inclusive");
+                    return;
+                }
+
                 if (!this.empresaModificada.activo && this.empresaACargar.activo)
                 {
-                    if (this.empresaDao.puedeDeshabilitar(this.empresaModificada))
-                    {
-                        this.empresaDao.updateEmpresa(this.empresaModificada);
-                        MessageBox.Show("Datos actualizados!");
-                    }
-                    else
+                    if (!this.empresaDao.puedeDeshabilitar(this.empresaModificada))
                     {
                         MessageBox.Show("Esta empresa posee facturas cobradas pendientes de rendicion");
+                        return;
                     }
+
+                    this.empresaDao.updateEmpresa(this.empresaModificada);
+                    MessageBox.Show("Datos actualizados!");
+                    volverADefault();
                 }
                 else
                 {
                     this.empresaDao.updateEmpresa(this.empresaModificada);
                     MessageBox.Show("Datos actualizados!");
+                    volverADefault();
                 }
             }
             else
             {
                 MessageBox.Show("Complete los campos obligatorios.");
             }
+        }
+
+        private void volverADefault()
+        {
+            Utils.clearTextBoxes(this);
+            this.empresaModificada = new Empresa();
+            this.empresaACargar = new Empresa();
+            this.deshabilitarCampos();
+            this.botonActualizar.Enabled = false;
         }
 
         private Boolean camposCompletos()
@@ -184,11 +201,6 @@ namespace PagoAgilFrba.AbmEmpresa
             try
             {
                 this.updateEmpresa();
-                Utils.clearTextBoxes(this);
-                this.empresaModificada = new Empresa();
-                this.empresaACargar = new Empresa();
-                this.deshabilitarCampos();
-                this.botonActualizar.Enabled = false;
             }
             catch (SqlException)
             {

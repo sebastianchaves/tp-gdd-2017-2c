@@ -162,6 +162,7 @@
             // 
             this.departamentoInput.Enabled = false;
             this.departamentoInput.Location = new System.Drawing.Point(281, 73);
+            this.departamentoInput.MaxLength = 10;
             this.departamentoInput.Name = "departamentoInput";
             this.departamentoInput.Size = new System.Drawing.Size(37, 20);
             this.departamentoInput.TabIndex = 14;
@@ -170,6 +171,7 @@
             // 
             this.localidadInput.Enabled = false;
             this.localidadInput.Location = new System.Drawing.Point(83, 73);
+            this.localidadInput.MaxLength = 50;
             this.localidadInput.Name = "localidadInput";
             this.localidadInput.Size = new System.Drawing.Size(100, 20);
             this.localidadInput.TabIndex = 11;
@@ -178,6 +180,7 @@
             // 
             this.pisoInput.Enabled = false;
             this.pisoInput.Location = new System.Drawing.Point(281, 47);
+            this.pisoInput.MaxLength = 10;
             this.pisoInput.Name = "pisoInput";
             this.pisoInput.Size = new System.Drawing.Size(37, 20);
             this.pisoInput.TabIndex = 13;
@@ -186,6 +189,7 @@
             // 
             this.numeroDomicilioInput.Enabled = false;
             this.numeroDomicilioInput.Location = new System.Drawing.Point(83, 47);
+            this.numeroDomicilioInput.MaxLength = 20;
             this.numeroDomicilioInput.Name = "numeroDomicilioInput";
             this.numeroDomicilioInput.Size = new System.Drawing.Size(100, 20);
             this.numeroDomicilioInput.TabIndex = 10;
@@ -212,6 +216,7 @@
             // 
             this.codigoPostalInput.Enabled = false;
             this.codigoPostalInput.Location = new System.Drawing.Point(281, 21);
+            this.codigoPostalInput.MaxLength = 20;
             this.codigoPostalInput.Name = "codigoPostalInput";
             this.codigoPostalInput.Size = new System.Drawing.Size(37, 20);
             this.codigoPostalInput.TabIndex = 12;
@@ -247,6 +252,7 @@
             // 
             this.calleInput.Enabled = false;
             this.calleInput.Location = new System.Drawing.Point(83, 21);
+            this.calleInput.MaxLength = 80;
             this.calleInput.Name = "calleInput";
             this.calleInput.Size = new System.Drawing.Size(100, 20);
             this.calleInput.TabIndex = 9;
@@ -264,6 +270,7 @@
             // 
             this.dniInput.Enabled = false;
             this.dniInput.Location = new System.Drawing.Point(104, 75);
+            this.dniInput.MaxLength = 20;
             this.dniInput.Name = "dniInput";
             this.dniInput.Size = new System.Drawing.Size(235, 20);
             this.dniInput.TabIndex = 5;
@@ -273,6 +280,7 @@
             // 
             this.nombreInput.Enabled = false;
             this.nombreInput.Location = new System.Drawing.Point(104, 23);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(235, 20);
             this.nombreInput.TabIndex = 3;
@@ -300,6 +308,7 @@
             // 
             this.apellidoInput.Enabled = false;
             this.apellidoInput.Location = new System.Drawing.Point(104, 49);
+            this.apellidoInput.MaxLength = 255;
             this.apellidoInput.Name = "apellidoInput";
             this.apellidoInput.Size = new System.Drawing.Size(235, 20);
             this.apellidoInput.TabIndex = 4;
@@ -336,6 +345,7 @@
             // 
             this.telefonoInput.Enabled = false;
             this.telefonoInput.Location = new System.Drawing.Point(104, 153);
+            this.telefonoInput.MaxLength = 20;
             this.telefonoInput.Name = "telefonoInput";
             this.telefonoInput.Size = new System.Drawing.Size(235, 20);
             this.telefonoInput.TabIndex = 8;
@@ -354,6 +364,7 @@
             // 
             this.mailInput.Enabled = false;
             this.mailInput.Location = new System.Drawing.Point(104, 101);
+            this.mailInput.MaxLength = 255;
             this.mailInput.Name = "mailInput";
             this.mailInput.Size = new System.Drawing.Size(235, 20);
             this.mailInput.TabIndex = 6;
