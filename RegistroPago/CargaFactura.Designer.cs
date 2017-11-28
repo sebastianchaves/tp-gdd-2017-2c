@@ -88,9 +88,9 @@
             this.importeLabel.AutoSize = true;
             this.importeLabel.Location = new System.Drawing.Point(20, 130);
             this.importeLabel.Name = "importeLabel";
-            this.importeLabel.Size = new System.Drawing.Size(45, 13);
+            this.importeLabel.Size = new System.Drawing.Size(84, 13);
             this.importeLabel.TabIndex = 5;
-            this.importeLabel.Text = "Importe:";
+            this.importeLabel.Text = "Importe a pagar:";
             // 
             // numeroInput
             // 

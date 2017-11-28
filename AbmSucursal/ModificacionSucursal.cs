@@ -84,11 +84,15 @@ namespace PagoAgilFrba.AbmSucursal
             {
                 if (camposCompletos())
                 {
-                    this.sucursalDao.updateSucursal(this.sucursalModificada);
-                    Utils.clearTextBoxes(this);
-                    this.deshabilitarCampos();
-                    this.botonActualizar.Enabled = false;
-                    MessageBox.Show("Datos actualizados!");
+                    if (this.codigoPostalInput.Text.Length <= 10) {
+                        this.sucursalDao.updateSucursal(this.sucursalModificada);
+                        Utils.clearTextBoxes(this);
+                        this.deshabilitarCampos();
+                        this.botonActualizar.Enabled = false;
+                        MessageBox.Show("Datos actualizados!");
+                    } else {
+                        MessageBox.Show("El codigo postal no debe tener mas de 10 caracteres");
+                    }
                 }
                 else
                 {
@@ -97,7 +101,7 @@ namespace PagoAgilFrba.AbmSucursal
             }
             catch (SqlException)
             {
-                MessageBox.Show("Ya existe sucursal con ese codigo postal.");
+                MessageBox.Show("El codigo postal ya existe");
             }
         }
 

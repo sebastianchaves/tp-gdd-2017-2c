@@ -69,6 +69,11 @@ namespace PagoAgilFrba.AbmRol
 
                 this.rolDao.updateRol(this.rolModificado);
                 MessageBox.Show("Datos actualizados!");
+                Utils.clearTextBoxes(this);
+                this.rolModificado = new Rol();
+                this.rolSeleccionado = new Rol();
+                this.deshabilitarCampos();
+                this.botonActualizar.Enabled = false;
             }
             else
             {
@@ -232,11 +237,6 @@ namespace PagoAgilFrba.AbmRol
         private void botonActualizar_Click(object sender, EventArgs e)
         {
             this.actualizarRol();
-            Utils.clearTextBoxes(this);
-            this.rolModificado = new Rol();
-            this.rolSeleccionado = new Rol();
-            this.deshabilitarCampos();
-            this.botonActualizar.Enabled = false;
         }
 
         // Boton Volver

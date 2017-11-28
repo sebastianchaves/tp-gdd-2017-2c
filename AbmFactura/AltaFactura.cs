@@ -204,6 +204,7 @@ namespace PagoAgilFrba.AbmFactura
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             this.agregarFactura();
+            setFechasDefault();
         }
 
         // Boton Buscar Cliente

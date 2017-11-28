@@ -26,6 +26,7 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
             this.nuevoCliente = new Cliente();
             this.clienteDAO = new ClienteDAO<Cliente>();
+            this.setFechasDefault();
         }
 
         private void agregarCliente()
@@ -110,6 +111,14 @@ namespace PagoAgilFrba.AbmCliente
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             this.agregarCliente();
+            this.setFechasDefault();
+        }
+
+        private void setFechasDefault()
+        {
+            this.fechaDeNacimientoInput.CustomFormat = "";
+            this.fechaDeNacimientoInput.Value = Utils.appDate;
+            this.nuevoCliente.fechaDeNacimiento = this.fechaDeNacimientoInput.Value;
         }
 
         // Boton Cancelar
