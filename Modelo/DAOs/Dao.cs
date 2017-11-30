@@ -284,8 +284,15 @@ namespace PagoAgilFrba.Modelo.DAOs
                     }
                     else if (tipos.ElementAt(i).Equals(Utils.Utils.DATETIME_TYPE))
                     {
-                        insert += "convert(datetime, '" + valores.ElementAt(i) + "')";
-                        // DateTime.Parse(valores.ElementAt(i)).ToString()
+                        if (!valores.ElementAt(i).Equals("0001/01/01"))
+                        {
+                            insert += "convert(datetime, '" + valores.ElementAt(i) + "')";
+                        }
+                        else
+                        {
+                            String a = Utils.Utils.appDate.ToString();
+                            insert += "convert(datetime, '"+Utils.Utils.appDateS+"')";
+                        }
                     }
                     else if (tipos.ElementAt(i).Equals(Utils.Utils.BIT_TYPE))
                     {
@@ -356,7 +363,16 @@ namespace PagoAgilFrba.Modelo.DAOs
                         }
                         else if (tipo.Equals(Utils.Utils.DATETIME_TYPE))
                         {
-                            updateString += columna + " = convert(datetime, '" + valor + "')";
+                            if (!valor.Equals("0001/01/01"))
+                            {
+                                updateString += columna + " = convert(datetime, '" + valor + "')";
+                            }
+                            else
+                            {
+                                String a = Utils.Utils.appDate.ToString();
+                                updateString += "convert(datetime, '" + Utils.Utils.appDateS + "')";
+                            }
+                            
                         }
                         else if (tipo.Equals(Utils.Utils.BIT_TYPE))
                         {

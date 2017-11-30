@@ -24,6 +24,7 @@ namespace PagoAgilFrba.Modelo.Utils
         public const String BIT_TYPE = "BIT";
 
         public static DateTime appDate = Convert.ToDateTime(ConfigurationManager.AppSettings["AppDate"]);
+        public static String appDateS = "2007/11/23";
         public static DateTime minTime = new DateTime(1890, 1, 1);
         public static Usuario usuarioGlobal;
 
