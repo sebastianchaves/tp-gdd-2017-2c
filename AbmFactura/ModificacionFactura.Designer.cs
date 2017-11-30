@@ -101,6 +101,7 @@
             // 
             this.descripcionInput.Enabled = false;
             this.descripcionInput.Location = new System.Drawing.Point(74, 91);
+            this.descripcionInput.MaxLength = 256;
             this.descripcionInput.Name = "descripcionInput";
             this.descripcionInput.Size = new System.Drawing.Size(130, 20);
             this.descripcionInput.TabIndex = 16;
@@ -130,6 +131,7 @@
             // 
             this.cantidadInput.Enabled = false;
             this.cantidadInput.Location = new System.Drawing.Point(74, 58);
+            this.cantidadInput.MaxLength = 9;
             this.cantidadInput.Name = "cantidadInput";
             this.cantidadInput.Size = new System.Drawing.Size(131, 20);
             this.cantidadInput.TabIndex = 3;
@@ -150,6 +152,7 @@
             // 
             this.montoInput.Enabled = false;
             this.montoInput.Location = new System.Drawing.Point(74, 27);
+            this.montoInput.MaxLength = 9;
             this.montoInput.Name = "montoInput";
             this.montoInput.Size = new System.Drawing.Size(131, 20);
             this.montoInput.TabIndex = 2;
@@ -228,6 +231,7 @@
             // numeroInput
             // 
             this.numeroInput.Location = new System.Drawing.Point(133, 22);
+            this.numeroInput.MaxLength = 9;
             this.numeroInput.Name = "numeroInput";
             this.numeroInput.ReadOnly = true;
             this.numeroInput.Size = new System.Drawing.Size(224, 20);

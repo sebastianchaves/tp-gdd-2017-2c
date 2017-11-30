@@ -120,6 +120,7 @@
             // dniInput
             // 
             this.dniInput.Location = new System.Drawing.Point(105, 128);
+            this.dniInput.MaxLength = 9;
             this.dniInput.Name = "dniInput";
             this.dniInput.Size = new System.Drawing.Size(187, 20);
             this.dniInput.TabIndex = 2;
@@ -128,6 +129,7 @@
             // apellidoInput
             // 
             this.apellidoInput.Location = new System.Drawing.Point(105, 94);
+            this.apellidoInput.MaxLength = 255;
             this.apellidoInput.Name = "apellidoInput";
             this.apellidoInput.Size = new System.Drawing.Size(187, 20);
             this.apellidoInput.TabIndex = 1;
@@ -136,6 +138,7 @@
             // nombreInput
             // 
             this.nombreInput.Location = new System.Drawing.Point(105, 60);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(187, 20);
             this.nombreInput.TabIndex = 0;

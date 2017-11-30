@@ -22,6 +22,19 @@ namespace PagoAgilFrba.Modelo.Utils
             return matchea;
         }
 
+        public static Boolean numeroEnRango(String numeroS, int parteEntera)
+        {
+            Decimal numero;
+            if (Decimal.TryParse(numeroS, out numero))
+            {
+                return numero < (Decimal)Math.Pow(10, parteEntera);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static bool campoNumericoMayorA0(String text)
         {
             int i;

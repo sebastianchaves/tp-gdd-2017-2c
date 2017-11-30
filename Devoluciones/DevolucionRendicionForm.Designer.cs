@@ -225,6 +225,7 @@
             // motivoInput
             // 
             this.motivoInput.Location = new System.Drawing.Point(88, 61);
+            this.motivoInput.MaxLength = 255;
             this.motivoInput.Name = "motivoInput";
             this.motivoInput.Size = new System.Drawing.Size(237, 63);
             this.motivoInput.TabIndex = 9;

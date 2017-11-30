@@ -129,6 +129,7 @@
             // cuitInput
             // 
             this.cuitInput.Location = new System.Drawing.Point(105, 94);
+            this.cuitInput.MaxLength = 13;
             this.cuitInput.Name = "cuitInput";
             this.cuitInput.Size = new System.Drawing.Size(187, 20);
             this.cuitInput.TabIndex = 1;
@@ -137,6 +138,7 @@
             // nombreInput
             // 
             this.nombreInput.Location = new System.Drawing.Point(105, 60);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(187, 20);
             this.nombreInput.TabIndex = 0;

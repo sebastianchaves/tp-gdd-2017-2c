@@ -64,6 +64,7 @@
             // codigoPostalInput
             // 
             this.codigoPostalInput.Location = new System.Drawing.Point(116, 128);
+            this.codigoPostalInput.MaxLength = 10;
             this.codigoPostalInput.Name = "codigoPostalInput";
             this.codigoPostalInput.Size = new System.Drawing.Size(187, 20);
             this.codigoPostalInput.TabIndex = 8;
@@ -128,6 +129,7 @@
             // direccionInput
             // 
             this.direccionInput.Location = new System.Drawing.Point(116, 94);
+            this.direccionInput.MaxLength = 255;
             this.direccionInput.Name = "direccionInput";
             this.direccionInput.Size = new System.Drawing.Size(187, 20);
             this.direccionInput.TabIndex = 1;
@@ -136,6 +138,7 @@
             // nombreInput
             // 
             this.nombreInput.Location = new System.Drawing.Point(116, 60);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(187, 20);
             this.nombreInput.TabIndex = 0;

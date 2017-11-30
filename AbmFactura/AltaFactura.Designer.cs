@@ -155,6 +155,7 @@
             // numeroInput
             // 
             this.numeroInput.Location = new System.Drawing.Point(136, 18);
+            this.numeroInput.MaxLength = 9;
             this.numeroInput.Name = "numeroInput";
             this.numeroInput.Size = new System.Drawing.Size(211, 20);
             this.numeroInput.TabIndex = 8;
@@ -292,6 +293,7 @@
             // descripcionInput
             // 
             this.descripcionInput.Location = new System.Drawing.Point(74, 72);
+            this.descripcionInput.MaxLength = 255;
             this.descripcionInput.Name = "descripcionInput";
             this.descripcionInput.Size = new System.Drawing.Size(151, 20);
             this.descripcionInput.TabIndex = 13;
@@ -319,6 +321,7 @@
             // cantidadInput
             // 
             this.cantidadInput.Location = new System.Drawing.Point(74, 46);
+            this.cantidadInput.MaxLength = 9;
             this.cantidadInput.Name = "cantidadInput";
             this.cantidadInput.Size = new System.Drawing.Size(151, 20);
             this.cantidadInput.TabIndex = 10;
@@ -336,6 +339,7 @@
             // montoInput
             // 
             this.montoInput.Location = new System.Drawing.Point(74, 19);
+            this.montoInput.MaxLength = 9;
             this.montoInput.Name = "montoInput";
             this.montoInput.Size = new System.Drawing.Size(151, 20);
             this.montoInput.TabIndex = 7;

@@ -270,7 +270,7 @@
             // 
             this.dniInput.Enabled = false;
             this.dniInput.Location = new System.Drawing.Point(104, 75);
-            this.dniInput.MaxLength = 20;
+            this.dniInput.MaxLength = 9;
             this.dniInput.Name = "dniInput";
             this.dniInput.Size = new System.Drawing.Size(235, 20);
             this.dniInput.TabIndex = 5;

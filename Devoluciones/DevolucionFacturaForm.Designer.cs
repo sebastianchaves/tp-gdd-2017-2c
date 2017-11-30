@@ -40,8 +40,8 @@
             this.fechaInput = new System.Windows.Forms.DateTimePicker();
             this.devolucionFacturaLabel = new System.Windows.Forms.Label();
             this.datosRendicionGroupbox = new System.Windows.Forms.GroupBox();
-            this.botonNueva = new System.Windows.Forms.Button();
             this.botonCrear = new System.Windows.Forms.Button();
+            this.botonNueva = new System.Windows.Forms.Button();
             this.datosFacturaGroupbox.SuspendLayout();
             this.datosRendicionGroupbox.SuspendLayout();
             this.SuspendLayout();
@@ -128,6 +128,7 @@
             // motivoInput
             // 
             this.motivoInput.Location = new System.Drawing.Point(88, 61);
+            this.motivoInput.MaxLength = 255;
             this.motivoInput.Name = "motivoInput";
             this.motivoInput.Size = new System.Drawing.Size(237, 63);
             this.motivoInput.TabIndex = 9;
@@ -169,17 +170,6 @@
             this.datosRendicionGroupbox.TabStop = false;
             this.datosRendicionGroupbox.Text = "Datos devolucion";
             // 
-            // botonNueva
-            // 
-            this.botonNueva.Enabled = false;
-            this.botonNueva.Location = new System.Drawing.Point(139, 130);
-            this.botonNueva.Name = "botonNueva";
-            this.botonNueva.Size = new System.Drawing.Size(90, 30);
-            this.botonNueva.TabIndex = 14;
-            this.botonNueva.Text = "&Nueva";
-            this.botonNueva.UseVisualStyleBackColor = true;
-            this.botonNueva.Click += new System.EventHandler(this.botonNueva_Click);
-            // 
             // botonCrear
             // 
             this.botonCrear.Enabled = false;
@@ -190,6 +180,17 @@
             this.botonCrear.Text = "&Crear";
             this.botonCrear.UseVisualStyleBackColor = true;
             this.botonCrear.Click += new System.EventHandler(this.botonCrear_Click);
+            // 
+            // botonNueva
+            // 
+            this.botonNueva.Enabled = false;
+            this.botonNueva.Location = new System.Drawing.Point(139, 130);
+            this.botonNueva.Name = "botonNueva";
+            this.botonNueva.Size = new System.Drawing.Size(90, 30);
+            this.botonNueva.TabIndex = 14;
+            this.botonNueva.Text = "&Nueva";
+            this.botonNueva.UseVisualStyleBackColor = true;
+            this.botonNueva.Click += new System.EventHandler(this.botonNueva_Click);
             // 
             // DevolucionFacturaForm
             // 

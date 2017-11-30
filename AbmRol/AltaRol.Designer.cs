@@ -92,6 +92,7 @@
             // nombreInput
             // 
             this.nombreInput.Location = new System.Drawing.Point(113, 22);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(213, 20);
             this.nombreInput.TabIndex = 0;

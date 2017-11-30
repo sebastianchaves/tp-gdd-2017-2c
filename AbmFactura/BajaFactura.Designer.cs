@@ -35,10 +35,10 @@
             this.numeroLabel = new System.Windows.Forms.Label();
             this.numeroInput = new System.Windows.Forms.TextBox();
             this.datosFacturaGroupbox = new System.Windows.Forms.GroupBox();
-            this.fechaAltaInput = new System.Windows.Forms.DateTimePicker();
-            this.fechaVencimientoInput = new System.Windows.Forms.DateTimePicker();
             this.vencimientoLabel = new System.Windows.Forms.Label();
             this.fechaAltaLabel = new System.Windows.Forms.Label();
+            this.fechaVencimientoInput = new System.Windows.Forms.DateTimePicker();
+            this.fechaAltaInput = new System.Windows.Forms.DateTimePicker();
             this.datosFacturaGroupbox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,6 +96,7 @@
             // 
             this.numeroInput.Enabled = false;
             this.numeroInput.Location = new System.Drawing.Point(100, 23);
+            this.numeroInput.MaxLength = 9;
             this.numeroInput.Name = "numeroInput";
             this.numeroInput.Size = new System.Drawing.Size(199, 20);
             this.numeroInput.TabIndex = 14;
@@ -115,22 +116,6 @@
             this.datosFacturaGroupbox.TabStop = false;
             this.datosFacturaGroupbox.Text = "Datos factura";
             // 
-            // fechaAltaInput
-            // 
-            this.fechaAltaInput.Enabled = false;
-            this.fechaAltaInput.Location = new System.Drawing.Point(100, 62);
-            this.fechaAltaInput.Name = "fechaAltaInput";
-            this.fechaAltaInput.Size = new System.Drawing.Size(199, 20);
-            this.fechaAltaInput.TabIndex = 21;
-            // 
-            // fechaVencimientoInput
-            // 
-            this.fechaVencimientoInput.Enabled = false;
-            this.fechaVencimientoInput.Location = new System.Drawing.Point(100, 101);
-            this.fechaVencimientoInput.Name = "fechaVencimientoInput";
-            this.fechaVencimientoInput.Size = new System.Drawing.Size(199, 20);
-            this.fechaVencimientoInput.TabIndex = 22;
-            // 
             // vencimientoLabel
             // 
             this.vencimientoLabel.AutoSize = true;
@@ -148,6 +133,22 @@
             this.fechaAltaLabel.Size = new System.Drawing.Size(75, 13);
             this.fechaAltaLabel.TabIndex = 23;
             this.fechaAltaLabel.Text = "Fecha de alta:";
+            // 
+            // fechaVencimientoInput
+            // 
+            this.fechaVencimientoInput.Enabled = false;
+            this.fechaVencimientoInput.Location = new System.Drawing.Point(100, 101);
+            this.fechaVencimientoInput.Name = "fechaVencimientoInput";
+            this.fechaVencimientoInput.Size = new System.Drawing.Size(199, 20);
+            this.fechaVencimientoInput.TabIndex = 22;
+            // 
+            // fechaAltaInput
+            // 
+            this.fechaAltaInput.Enabled = false;
+            this.fechaAltaInput.Location = new System.Drawing.Point(100, 62);
+            this.fechaAltaInput.Name = "fechaAltaInput";
+            this.fechaAltaInput.Size = new System.Drawing.Size(199, 20);
+            this.fechaAltaInput.TabIndex = 21;
             // 
             // BajaFactura
             // 

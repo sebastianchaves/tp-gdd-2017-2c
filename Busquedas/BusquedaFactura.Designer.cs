@@ -94,6 +94,7 @@
             // numeroInput
             // 
             this.numeroInput.Location = new System.Drawing.Point(105, 60);
+            this.numeroInput.MaxLength = 9;
             this.numeroInput.Name = "numeroInput";
             this.numeroInput.Size = new System.Drawing.Size(187, 20);
             this.numeroInput.TabIndex = 0;

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.altaSucursalLabel = new System.Windows.Forms.Label();
             this.datosSucursalGroupBox = new System.Windows.Forms.GroupBox();
+            this.codigoPostalInput = new System.Windows.Forms.TextBox();
             this.codigoPostalLabel = new System.Windows.Forms.Label();
             this.direccionLabel = new System.Windows.Forms.Label();
             this.nombreLabel = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.nombreInput = new System.Windows.Forms.TextBox();
             this.botonVolver = new System.Windows.Forms.Button();
             this.botonAceptar = new System.Windows.Forms.Button();
-            this.codigoPostalInput = new System.Windows.Forms.TextBox();
             this.codigoPostalTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.datosSucursalGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,15 @@
             this.datosSucursalGroupBox.TabIndex = 6;
             this.datosSucursalGroupBox.TabStop = false;
             this.datosSucursalGroupBox.Text = "Datos Sucursal";
+            // 
+            // codigoPostalInput
+            // 
+            this.codigoPostalInput.Location = new System.Drawing.Point(126, 105);
+            this.codigoPostalInput.MaxLength = 10;
+            this.codigoPostalInput.Name = "codigoPostalInput";
+            this.codigoPostalInput.Size = new System.Drawing.Size(179, 20);
+            this.codigoPostalInput.TabIndex = 8;
+            this.codigoPostalInput.Leave += new System.EventHandler(this.codigoPostalInput_Leave);
             // 
             // codigoPostalLabel
             // 
@@ -98,6 +107,7 @@
             // direccionInput
             // 
             this.direccionInput.Location = new System.Drawing.Point(126, 65);
+            this.direccionInput.MaxLength = 255;
             this.direccionInput.Name = "direccionInput";
             this.direccionInput.Size = new System.Drawing.Size(179, 20);
             this.direccionInput.TabIndex = 2;
@@ -106,6 +116,7 @@
             // nombreInput
             // 
             this.nombreInput.Location = new System.Drawing.Point(126, 25);
+            this.nombreInput.MaxLength = 255;
             this.nombreInput.Name = "nombreInput";
             this.nombreInput.Size = new System.Drawing.Size(179, 20);
             this.nombreInput.TabIndex = 0;
@@ -130,14 +141,6 @@
             this.botonAceptar.Text = "Aceptar";
             this.botonAceptar.UseVisualStyleBackColor = true;
             this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
-            // 
-            // codigoPostalInput
-            // 
-            this.codigoPostalInput.Location = new System.Drawing.Point(126, 105);
-            this.codigoPostalInput.Name = "codigoPostalInput";
-            this.codigoPostalInput.Size = new System.Drawing.Size(179, 20);
-            this.codigoPostalInput.TabIndex = 8;
-            this.codigoPostalInput.Leave += new System.EventHandler(this.codigoPostalInput_Leave);
             // 
             // AltaSucursal
             // 
